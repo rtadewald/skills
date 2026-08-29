@@ -1,0 +1,6 @@
+interface:
+  display_name: "To Img"
+  short_description: "Pedido → n PNGs em paralelo (gpt2 @ 1K) em mocks/"
+  default_prompt: "Use $to-img: gere n imagens em paralelo com gpt2 @ 1K a partir do meu pedido e salve em mocks/."
+policy:
+  allow_implicit_invocation: false

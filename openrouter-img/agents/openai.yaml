@@ -1,0 +1,6 @@
+interface:
+  display_name: "OpenRouter Img"
+  short_description: "Top image models via OpenRouter"
+  default_prompt: "Use $openrouter-img to generate an image via OpenRouter (pick from the top models)."
+policy:
+  allow_implicit_invocation: false

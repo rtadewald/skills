@@ -1,0 +1,6 @@
+interface:
+  display_name: "To ASCII"
+  short_description: "Mock de app (PNG) → mesmo nome .txt em ASCII"
+  default_prompt: "Use $to-ascii: leia esta imagem de mock de app e grave o ASCII no mesmo diretório, mesmo nome, .txt."
+policy:
+  allow_implicit_invocation: false

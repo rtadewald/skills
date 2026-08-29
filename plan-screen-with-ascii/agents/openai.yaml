@@ -1,0 +1,6 @@
+interface:
+  display_name: "Plan Screen With ASCII"
+  short_description: "Ideia → conversa; duas propostas em texto; PNG em mocks/ após aprovação"
+  default_prompt: "Use $plan-screen-with-ascii: questione, mostre duas propostas de tela em texto e, quando eu aprovar, gere mocks/{n}-a.png."
+policy:
+  allow_implicit_invocation: false

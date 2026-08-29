@@ -1,0 +1,6 @@
+interface:
+  display_name: "Plan Screen"
+  short_description: "Ideia → conversa; 3 propostas + wireframe SVG; PNG em mocks/"
+  default_prompt: "Use $plan-screen: questione, mostre tres propostas com wireframe SVG em mocks/{n}-wire-a.svg e, quando eu aprovar, gere os PNGs."
+policy:
+  allow_implicit_invocation: false
