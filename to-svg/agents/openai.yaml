@@ -1,0 +1,6 @@
+interface:
+  display_name: "To SVG"
+  short_description: "Mock de app (PNG) → mesmo nome .svg (wireframe)"
+  default_prompt: "Use $to-svg: leia esta imagem de mock de app e grave o wireframe SVG no mesmo diretório, mesmo nome, .svg."
+policy:
+  allow_implicit_invocation: false
