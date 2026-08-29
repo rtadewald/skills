@@ -1,13 +1,13 @@
 ---
-name: img-to-ds
+name: design-system-from-img
 description: >-
   Analyze a UI mock image and build a design-system.html (plus assets/css and
-  STACK.md) under design-systems/<slug>/. Use when the user mentions img-to-ds
-  or asks to extract a design system from a screenshot/mock.
+  STACK.md) under design-systems/<slug>/. Use when the user mentions
+  design-system-from-img or asks to extract a design system from a screenshot/mock.
 disable-model-invocation: true
 ---
 
-# Img → DS
+# Design System ← Img
 
 You are a Design System Builder working from a **screenshot / mock image**.
 

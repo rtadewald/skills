@@ -1,6 +1,9 @@
 ---
-name: extract-design-system
-description: Analyze an HTML file and extract a clean design system from it. Splits inline `<style>` and `<script>` blocks into organized files under `assets/css/` and `assets/js/`, classifies and extracts SVGs (Lucide icons → `<i data-lucide>`, currentColor SVGs stay inline, hardcoded-color SVGs → `assets/images/svg/`), then writes a from-scratch `design-system.html` (visually identical to the input, with all visible text translated to PT-BR) plus a `STACK.md` listing the technologies used. Use when the user asks to extract / refactor / clean up / split / componentize a single-file HTML design or template. Takes one argument: the path to the source HTML file ($SOURCE).
+name: design-system-from-html
+description: >-
+  Analyze an HTML file and extract a clean design system from it. Splits inline
+  style/script into assets, classifies SVGs, writes design-system.html + STACK.md.
+  Use when the user mentions design-system-from-html or asks to extract a DS from HTML.
 ---
 
 ## INPUT

@@ -1,58 +1,51 @@
 # Skills
 
-Biblioteca pessoal de skills para agentes de IA (Cursor / Claude / Codex).
-
-Cada pasta é uma skill (`SKILL.md` + scripts/assets se precisar). Não é um app — são fluxos e ferramentas.
+Skills que uso nos agentes (Cursor / Claude / Codex). Cada pasta tem um `SKILL.md`.
 
 ---
 
-## Planejamento de telas
+## Telas
 
-Inventar e fechar a direção de uma tela de app (conversa → proposta → imagem).
+Pra inventar e fechar a cara de um app antes de gerar mock.
 
-| Skill | O que faz |
-|-------|-----------|
-| `plan-screen-with-svg` | Briefing + 3 propostas com **wireframe SVG** → gera PNGs em `mocks/` |
-| `plan-screen-with-ascii` | Mesmo fluxo, mas propostas com **planta ASCII** |
+- [`plan-screen-with-svg`](./plan-screen-with-svg): conversa, 3 propostas com wireframe SVG, depois PNG em `mocks/`
+- [`plan-screen-with-ascii`](./plan-screen-with-ascii): o mesmo fluxo, mas a planta vai em ASCII
 
 ## Design system
 
-Extrair / materializar a linguagem visual de uma referência.
+Quando quero tirar a linguagem visual de uma referência e deixar pronta pra implementar. Prefixo: `design-system-from-…`
 
-| Skill | O que faz |
-|-------|-----------|
-| `img-to-ds` | Mock (imagem) → `design-systems/<slug>/` com `design-system.html` + CSS |
-| `extract-design-system` | HTML monolítico → `design-system.html` limpo + assets separados |
+- [`design-system-from-html`](./design-system-from-html): HTML monolítico → `design-system.html` limpo + assets
+- [`design-system-from-img`](./design-system-from-img): mock (imagem) → `design-systems/<slug>/` com HTML + CSS
+- [`design-system-from-svg`](./design-system-from-svg): wireframe/mock SVG → `design-systems/<slug>/` com HTML + CSS
 
 ## Imagem
 
-Gerar ou converter artefatos visuais.
+Gerar, converter, brincar com PNG.
 
-| Skill | O que faz |
-|-------|-----------|
-| `to-img` | Qualquer pedido → **n** PNGs em paralelo (OpenRouter, default gpt2 @ 1K) em `mocks/` |
-| `to-ascii` | Mock PNG → planta ASCII (`.txt` ao lado) |
-| `to-svg` | Mock PNG → wireframe SVG (`.svg` ao lado) |
-| `openrouter-img` | CLI/API OpenRouter (vários modelos de imagem) |
-| `nano-banana-pro` | Gerar/editar imagem via Nano Banana Pro (Gemini) |
+- [`to-img`](./to-img): qualquer pedido → n PNGs em paralelo (OpenRouter, gpt2 @ 1K) em `mocks/`
+- [`to-ascii`](./to-ascii): mock PNG → planta ASCII (`.txt` ao lado)
+- [`to-svg`](./to-svg): mock PNG → wireframe SVG (`.svg` ao lado)
+- [`openrouter-img`](./openrouter-img): CLI dos modelos de imagem do OpenRouter
+- [`nano-banana-pro`](./nano-banana-pro): gerar/editar imagem com Nano Banana Pro (Gemini)
 
 ## Motion e mídia
 
-| Skill | O que faz |
-|-------|-----------|
-| `animate` | Decidir e implementar animação/transição com critério |
-| `mediabunny` | Áudio/vídeo com a lib Mediabunny |
+Mexer em animação, áudio e vídeo.
+
+- [`animate`](./animate): decide e implementa motion com critério (não só “coloca um fade”)
+- [`mediabunny`](./mediabunny): áudio/vídeo com a lib Mediabunny
 
 ## Planejamento e entrega
 
-| Skill | O que faz |
-|-------|-----------|
-| `grill-me` | Entrevista dura para afiar plano ou design |
-| `to-tickets` | Quebra plano/spec em tickets com dependências |
-| `handoff` | Compacta a conversa num documento para outro agente continuar |
+Afiando ideia, quebrando em tickets, passando o bastão.
+
+- [`grill-me`](./grill-me): entrevista dura pra afiar plano ou design
+- [`to-tickets`](./to-tickets): plano/spec/conversa → tickets com dependências
+- [`handoff`](./handoff): compacta a conversa pra outro agente continuar
 
 ## Utilitários
 
-| Skill | O que faz |
-|-------|-----------|
-| `context7-mcp` | Docs atuais de libs/frameworks via Context7 (em vez de chutar pela memória) |
+Coisas soltas que salvam tempo.
+
+- [`context7-mcp`](./context7-mcp): puxa docs atuais de libs via Context7 (em vez de chutar de memória)

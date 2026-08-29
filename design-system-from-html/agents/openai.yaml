@@ -1,0 +1,6 @@
+interface:
+  display_name: "DS from HTML"
+  short_description: "HTML monolítico → design-system.html + assets"
+  default_prompt: "Use $design-system-from-html: extraia o design system deste HTML."
+policy:
+  allow_implicit_invocation: false
