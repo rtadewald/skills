@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Artistic Data Dashboard</title>
+<!--
+  Design notes
+  ------------
+  Reference: assets/reference.jpg (1024×879)
+  Viewport: 1024px desktop (matches reference aspect ~1.16:1)
+  Font: Inter — small clean geometric sans matching UI labels
+  Spacing scale: 4 / 8 / 12 / 16 / 24 / 32px
+  Radius: 12px cards, 16–20px hero panel
+  Colors (sampled + design accents):
+    --bg #1b1c21 / #14151a
+    --card #252228 / #2a2429
+    --cyan #5ec8d4 / #3dd4e0
+    --red #c45a5a / #e07070
+    --muted #8a8488
+    Hero: warm #e8d6bc / #c2c3b1 landscape photo
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #1b1c21;
+  --bg-deep: #12131a;
+  --card: #252228;
+  --card-elev: #2c272c;
+  --card-rim: rgba(255, 255, 255, 0.06);
+  --cyan: #5ec8d4;
+  --cyan-bright: #7ee8f0;
+  --cyan-dim: #3a9aa8;
+  --red: #c45a5a;
+  --red-bright: #e07878;
+  --pink: #d4848a;
+  --orange: #d4926a;
+  --blue: #7a8fb0;
+  --teal: #5a9e9a;
+  --text: #c8c4c6;
+  --text-dim: #6e686c;
+  --text-faint: #4a4548;
+  --radius-card: 12px;
+  --radius-hero: 18px;
+  --font: "Inter", system-ui, -apple-system, sans-serif;
+  --gap: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  min-height: 100%;
+  background: var(--bg-deep);
+}
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 16px 48px;
+}
+
+.page {
+  width: 1024px;
+  max-width: 100%;
+  background: var(--bg);
+  border-radius: 24px;
+  padding: 28px 32px 32px;
+  position: relative;
+  overflow: visible;
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* —— Hero —— */
+.hero-wrap {
+  position: relative;
+  z-index: 2;
+  margin-bottom: -48px;
+}
+
+.hero {
+  position: relative;
+  height: 340px;
+  border-radius: var(--radius-hero);
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(40, 38, 42, 0.15) 0%, transparent 40%),
+    url("assets/hero.jpg") center 35% / cover no-repeat;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(27, 28, 33, 0.25) 0%,
+    transparent 28%,
+    transparent 62%,
+    rgba(27, 28, 33, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+.hero-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 20px;
+  background: linear-gradient(180deg, rgba(20, 18, 22, 0.35), transparent);
+}
+
+.hero-logo {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.hero-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  flex: 1;
+}
+
+.hero-nav a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero-nav a:hover { color: rgba(255, 255, 255, 0.85); }
+
+.hero-nav-right {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.hero-nav-right span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Flora breakouts */
+.flora {
+  position: absolute;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.flora-tree {
+  left: -18px;
+  top: 72px;
+  width: 168px;
+  height: auto;
+  filter: drop-shadow(4px 8px 16px rgba(0, 0, 0, 0.45));
+}
+
+.flora-flower {
+  right: -36px;
+  top: -28px;
+  width: 240px;
+  height: auto;
+  filter: drop-shadow(-4px 10px 20px rgba(0, 0, 0, 0.5));
+}
+
+.flora-leaves {
+  right: 160px;
+  top: 8px;
+  width: 120px;
+  height: auto;
+  opacity: 0.95;
+  filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.35));
+}
+
+/* —— Dashboard grid —— */
+.dashboard {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: 168px 1fr 112px;
+  gap: var(--gap);
+  align-items: stretch;
+  padding-top: 8px;
+}
+
+/* Left column */
+.col-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  min-height: 0;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--card-rim);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+
+.sliders {
+  padding: 16px 14px 14px;
+  background: linear-gradient(160deg, #2e292e 0%, #221e24 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.slider-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.slider-track {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: visible;
+}
+
+.slider-fill {
+  height: 100%;
+  border-radius: 999px;
+  position: relative;
+}
+
+.slider-fill.cyan {
+  width: 68%;
+  background: linear-gradient(90deg, var(--cyan-dim), var(--cyan-bright));
+  box-shadow: 0 0 10px rgba(94, 200, 212, 0.45);
+}
+
+.slider-fill.red {
+  width: 42%;
+  background: linear-gradient(90deg, #8a4040, var(--red-bright));
+  box-shadow: 0 0 10px rgba(196, 90, 90, 0.4);
+}
+
+.slider-thumb {
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.35), 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.slider-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 8px;
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+}
+
+.profile-list {
+  flex: 1;
+  padding: 10px 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: linear-gradient(180deg, #262226 0%, #1e1a1e 100%);
+  min-height: 280px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 6px;
+  border-radius: 8px;
+}
+
+.profile:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #6a5a58, #3a3234);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.avatar.a2 { background: linear-gradient(135deg, #5a6a78, #2e3840); }
+.avatar.a3 { background: linear-gradient(135deg, #7a5a4a, #3a2820); }
+.avatar.a4 { background: linear-gradient(135deg, #4a6a5a, #243028); }
+.avatar.a5 { background: linear-gradient(135deg, #6a4a5a, #322028); }
+.avatar.a6 { background: linear-gradient(135deg, #5a5a6a, #2a2a34); }
+
+.profile-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-text .name {
+  display: block;
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-text .sub {
+  display: block;
+  font-size: 7px;
+  color: var(--text-dim);
+  line-height: 1.3;
+  margin-top: 1px;
+}
+
+.status {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--cyan);
+  box-shadow: 0 0 6px rgba(94, 200, 212, 0.6);
+}
+
+.status.off { background: var(--text-faint); box-shadow: none; }
+.status.warn { background: var(--red); box-shadow: 0 0 6px rgba(196, 90, 90, 0.5); }
+
+/* Center charts */
+.col-center {
+  display: grid;
+  grid-template-columns: 1.35fr 0.55fr 0.85fr;
+  grid-template-rows: 1fr 1.05fr;
+  gap: var(--gap);
+  min-height: 340px;
+}
+
+.chart-card {
+  padding: 12px 12px 10px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(165deg, #2a252a 0%, #1f1b20 100%);
+  position: relative;
+}
+
+.chart-card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.chart-card h2 {
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.chart-card .chip {
+  font-size: 8px;
+  color: var(--cyan);
+  background: rgba(94, 200, 212, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.chart-body {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+.chart-body svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.card-line { grid-column: 1; grid-row: 1; }
+.card-bars { grid-column: 2; grid-row: 1; }
+.card-gauge { grid-column: 3; grid-row: 1; }
+.card-wave { grid-column: 1; grid-row: 2; }
+.card-area {
+  grid-column: 2 / 4;
+  grid-row: 2;
+}
+
+/* Right sidebar */
+.col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 10px;
+  background: linear-gradient(180deg, #262226 0%, #1a171c 100%);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--card-rim);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+}
+
+.bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bar-item .label {
+  font-size: 7px;
+  color: var(--text-dim);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.hbar {
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.hbar > span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+}
+
+.hbar .cyan { background: linear-gradient(90deg, var(--cyan-dim), var(--cyan)); box-shadow: 0 0 6px rgba(94, 200, 212, 0.35); }
+.hbar .red { background: linear-gradient(90deg, #8a3838, var(--red)); box-shadow: 0 0 6px rgba(196, 90, 90, 0.3); }
+.hbar .pink { background: linear-gradient(90deg, #8a5058, var(--pink)); }
+.hbar .blue { background: linear-gradient(90deg, #4a5a78, var(--blue)); }
+
+.bar-item .val {
+  font-size: 8px;
+  color: var(--text-faint);
+  align-self: flex-end;
+}
+
+/* Gauge glow */
+.gauge-glow {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(94, 200, 212, 0.55) 0%, rgba(94, 200, 212, 0.12) 45%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -42%);
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+@media (max-width: 900px) {
+  body { padding: 12px 8px 32px; }
+  .page { padding: 16px 14px 20px; border-radius: 16px; }
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+  .col-center {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    min-height: auto;
+  }
+  .card-line { grid-column: 1 / 3; }
+  .card-bars { grid-column: 1; }
+  .card-gauge { grid-column: 2; }
+  .card-wave { grid-column: 1; }
+  .card-area { grid-column: 2; grid-row: auto; }
+  .flora-flower { width: 160px; right: -16px; top: -12px; }
+  .flora-tree { width: 110px; left: -8px; }
+  .hero { height: 220px; }
+}
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="hero-wrap">
+      <img class="flora flora-tree" src="assets/tree.png" alt="" aria-hidden="true"/>
+      <img class="flora flora-leaves" src="assets/leaves.png" alt="" aria-hidden="true"/>
+      <img class="flora flora-flower" src="assets/flower.png" alt="" aria-hidden="true"/>
+
+      <section class="hero" aria-label="Landscape overview">
+        <nav class="hero-nav" aria-label="Primary">
+          <div class="hero-logo" aria-hidden="true"></div>
+          <ul>
+            <li><a href="#">Overview</a></li>
+            <li><a href="#">Signals</a></li>
+            <li><a href="#">Atlas</a></li>
+            <li><a href="#">Archive</a></li>
+            <li><a href="#">Field</a></li>
+          </ul>
+          <div class="hero-nav-right" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+        </nav>
+      </section>
+    </div>
+
+    <main class="dashboard">
+      <aside class="col-left">
+        <div class="card sliders" aria-label="Range controls">
+          <div class="slider-row">
+            <div class="slider-meta"><span>Signal A</span><span>68%</span></div>
+            <div class="slider-track">
+              <div class="slider-fill cyan"><span class="slider-thumb"></span></div>
+            </div>
+          </div>
+          <div class="slider-row">
+            <div class="slider-meta"><span>Signal B</span><span>42%</span></div>
+            <div class="slider-track">
+              <div class="slider-fill red"><span class="slider-thumb"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card profile-list" aria-label="Sources">
+          <div class="profile">
+            <div class="avatar" aria-hidden="true"></div>
+            <div class="profile-text">
+              <span class="name">North Ridge</span>
+              <span class="sub">Telemetry · live</span>
+            </div>
+            <span class="status" aria-label="online"></span>
+          </div>
+          <div class="profile">
+            <div class="avatar a2" aria-hidden="true"></div>
+            <div class="profile-text">
+              <span class="name">Cedar Basin</span>
+              <span class="sub">Sensor array</span>
+            </div>
+            <span class="status" aria-label="online"></span>
+          </div>
+          <div class="profile">
+            <div class="avatar a3" aria-hidden="true"></div>
+            <div class="profile-text">
+              <span class="name">Ash Hollow</span>
+              <span class="sub">Paused</span>
+            </div>
+            <span class="status off" aria-label="offline"></span>
+          </div>
+          <div class="profile">
+            <div class="avatar a4" aria-hidden="true"></div>
+            <div class="profile-text">
+              <span class="name">Red Mesa</span>
+              <span class="sub">Drift +0.4</span>
+            </div>
+            <span class="status warn" aria-label="warning"></span>
+          </div>
+          <div class="profile">
+            <div class="avatar a5" aria-hidden="true"></div>
+            <div class="profile-text">
+              <span class="name">Blue Fen</span>
+              <span class="sub">Humidity</span>
+            </div>
+            <span class="status" aria-label="online"></span>
+          </div>
+          <div class="profile">
+            <div class="avatar a6" aria-hidden="true"></div>
+            <div class="profile-text">
+              <span class="name">Ivory Peak</span>
+              <span class="sub">Wind vector</span>
+            </div>
+            <span class="status" aria-label="online"></span>
+          </div>
+        </div>
+      </aside>
+
+      <section class="col-center" aria-label="Charts">
+        <!-- Line / scatter -->
+        <article class="card chart-card card-line">
+          <header>
+            <h2>Pulse</h2>
+            <span class="chip">+12.4</span>
+          </header>
+          <div class="chart-body">
+            <svg viewBox="0 0 280 120" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="gLineBlue" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#7a9ec8" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="#7a9ec8" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <!-- faint grid -->
+              <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+                <line x1="0" y1="30" x2="280" y2="30"/>
+                <line x1="0" y1="60" x2="280" y2="60"/>
+                <line x1="0" y1="90" x2="280" y2="90"/>
+              </g>
+              <path d="M0,78 C28,72 42,40 70,48 C98,56 112,88 140,70 C168,52 182,28 210,38 C238,48 252,66 280,52 L280,120 L0,120 Z" fill="url(#gLineBlue)"/>
+              <path d="M0,78 C28,72 42,40 70,48 C98,56 112,88 140,70 C168,52 182,28 210,38 C238,48 252,66 280,52" fill="none" stroke="#8aa8c8" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M0,92 C35,85 50,60 80,68 C110,76 125,98 155,82 C185,66 200,45 230,55 C250,62 265,78 280,70" fill="none" stroke="#c45a5a" stroke-width="1.5" stroke-linecap="round" opacity="0.9"/>
+              <path d="M10,55 C40,48 55,70 85,62 C115,54 130,32 160,42 C190,52 205,78 235,65 C255,58 270,48 280,44" fill="none" stroke="#5ec8d4" stroke-width="1.4" stroke-linecap="round" opacity="0.85"/>
+              <!-- dots -->
+              <circle cx="70" cy="48" r="3" fill="#c45a5a" stroke="#1b1c21" stroke-width="1"/>
+              <circle cx="140" cy="70" r="2.5" fill="#5ec8d4" stroke="#1b1c21" stroke-width="1"/>
+              <circle cx="210" cy="38" r="3" fill="#e07878" stroke="#1b1c21" stroke-width="1"/>
+              <circle cx="160" cy="42" r="2.5" fill="#7ee8f0" stroke="#1b1c21" stroke-width="1"/>
+              <circle cx="230" cy="55" r="2.5" fill="#c45a5a" stroke="#1b1c21" stroke-width="1"/>
+            </svg>
+          </div>
+        </article>
+
+        <!-- Vertical bars -->
+        <article class="card chart-card card-bars">
+          <header>
+            <h2>Bins</h2>
+          </header>
+          <div class="chart-body">
+            <svg viewBox="0 0 80 120" preserveAspectRatio="none" aria-hidden="true">
+              <g fill="#3a9aa8" opacity="0.85">
+                <rect x="6" y="78" width="5" height="32" rx="1"/>
+                <rect x="14" y="58" width="5" height="52" rx="1"/>
+                <rect x="22" y="68" width="5" height="42" rx="1"/>
+                <rect x="30" y="42" width="5" height="68" rx="1"/>
+                <rect x="38" y="52" width="5" height="58" rx="1"/>
+                <rect x="46" y="28" width="5" height="82" rx="1"/>
+                <rect x="54" y="48" width="5" height="62" rx="1"/>
+                <rect x="62" y="62" width="5" height="48" rx="1"/>
+                <rect x="70" y="72" width="5" height="38" rx="1"/>
+              </g>
+              <g fill="#c45a5a" opacity="0.55">
+                <rect x="6" y="95" width="5" height="15" rx="1"/>
+                <rect x="22" y="88" width="5" height="22" rx="1"/>
+                <rect x="38" y="82" width="5" height="28" rx="1"/>
+                <rect x="54" y="90" width="5" height="20" rx="1"/>
+                <rect x="70" y="98" width="5" height="12" rx="1"/>
+              </g>
+            </svg>
+          </div>
+        </article>
+
+        <!-- Donut / gauge -->
+        <article class="card chart-card card-gauge">
+          <header>
+            <h2>Core</h2>
+            <span class="chip">72%</span>
+          </header>
+          <div class="chart-body" style="display:flex;align-items:center;justify-content:center;">
+            <div style="position:relative;width:100%;max-width:140px;aspect-ratio:1;">
+              <div class="gauge-glow"></div>
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <circle cx="50" cy="50" r="34" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="8"/>
+                <circle cx="50" cy="50" r="34" fill="none" stroke="#3a5058" stroke-width="8"
+                  stroke-dasharray="160 214" stroke-dashoffset="40" stroke-linecap="round"
+                  transform="rotate(-90 50 50)"/>
+                <circle cx="50" cy="50" r="34" fill="none" stroke="#5ec8d4" stroke-width="8"
+                  stroke-dasharray="72 214" stroke-dashoffset="-20" stroke-linecap="round"
+                  transform="rotate(-90 50 50)"
+                  style="filter: drop-shadow(0 0 6px rgba(94,200,212,0.7));"/>
+                <circle cx="50" cy="50" r="18" fill="rgba(94,200,212,0.12)"/>
+                <circle cx="50" cy="50" r="10" fill="rgba(126,232,240,0.35)"/>
+                <circle cx="50" cy="50" r="4" fill="#7ee8f0"/>
+              </svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- Wave -->
+        <article class="card chart-card card-wave">
+          <header>
+            <h2>Oscillation</h2>
+          </header>
+          <div class="chart-body">
+            <svg viewBox="0 0 280 110" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="gWave" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#5ec8d4" stop-opacity="0.25"/>
+                  <stop offset="100%" stop-color="#5ec8d4" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,55 C20,40 35,75 55,60 C75,45 90,25 110,40 C130,55 145,80 165,65 C185,50 200,30 220,45 C240,60 255,70 280,50 L280,110 L0,110 Z" fill="url(#gWave)"/>
+              <path d="M0,55 C20,40 35,75 55,60 C75,45 90,25 110,40 C130,55 145,80 165,65 C185,50 200,30 220,45 C240,60 255,70 280,50" fill="none" stroke="#5ec8d4" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M0,70 C25,62 40,85 60,72 C80,58 95,48 115,58 C135,68 150,88 170,75 C190,62 205,42 225,55 C245,68 260,78 280,68" fill="none" stroke="#c45a5a" stroke-width="1.4" opacity="0.75" stroke-linecap="round"/>
+              <path d="M0,42 C30,50 45,28 70,35 C95,42 110,58 135,48 C160,38 175,22 200,32 C225,42 245,55 280,38" fill="none" stroke="#8aa8c8" stroke-width="1.2" opacity="0.7" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </article>
+
+        <!-- Stacked area -->
+        <article class="card chart-card card-area">
+          <header>
+            <h2>Layers</h2>
+            <span class="chip">multi</span>
+          </header>
+          <div class="chart-body">
+            <svg viewBox="0 0 360 110" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="aTeal" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#5a9e9a" stop-opacity="0.55"/>
+                  <stop offset="100%" stop-color="#5a9e9a" stop-opacity="0.05"/>
+                </linearGradient>
+                <linearGradient id="aPink" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#d4848a" stop-opacity="0.5"/>
+                  <stop offset="100%" stop-color="#d4848a" stop-opacity="0.05"/>
+                </linearGradient>
+                <linearGradient id="aOrange" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#d4926a" stop-opacity="0.45"/>
+                  <stop offset="100%" stop-color="#d4926a" stop-opacity="0.04"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,80 C40,72 70,50 110,55 C150,60 180,85 220,70 C260,55 300,40 360,48 L360,110 L0,110 Z" fill="url(#aTeal)"/>
+              <path d="M0,70 C45,60 80,35 120,42 C160,50 190,72 230,58 C270,44 310,30 360,38 L360,110 L0,110 Z" fill="url(#aPink)"/>
+              <path d="M0,88 C50,82 90,65 130,70 C170,75 200,92 245,80 C290,68 320,55 360,62 L360,110 L0,110 Z" fill="url(#aOrange)"/>
+              <path d="M0,80 C40,72 70,50 110,55 C150,60 180,85 220,70 C260,55 300,40 360,48" fill="none" stroke="#5a9e9a" stroke-width="1.2" opacity="0.8"/>
+              <path d="M0,70 C45,60 80,35 120,42 C160,50 190,72 230,58 C270,44 310,30 360,38" fill="none" stroke="#d4848a" stroke-width="1.2" opacity="0.85"/>
+              <path d="M0,88 C50,82 90,65 130,70 C170,75 200,92 245,80 C290,68 320,55 360,62" fill="none" stroke="#d4926a" stroke-width="1.1" opacity="0.75"/>
+            </svg>
+          </div>
+        </article>
+      </section>
+
+      <aside class="col-right" aria-label="Metrics">
+        <div class="bar-item">
+          <span class="label">Alpha</span>
+          <div class="hbar"><span class="cyan" style="width:82%"></span></div>
+          <span class="val">82</span>
+        </div>
+        <div class="bar-item">
+          <span class="label">Beta</span>
+          <div class="hbar"><span class="red" style="width:54%"></span></div>
+          <span class="val">54</span>
+        </div>
+        <div class="bar-item">
+          <span class="label">Gamma</span>
+          <div class="hbar"><span class="cyan" style="width:71%"></span></div>
+          <span class="val">71</span>
+        </div>
+        <div class="bar-item">
+          <span class="label">Delta</span>
+          <div class="hbar"><span class="pink" style="width:38%"></span></div>
+          <span class="val">38</span>
+        </div>
+        <div class="bar-item">
+          <span class="label">Epsilon</span>
+          <div class="hbar"><span class="red" style="width:65%"></span></div>
+          <span class="val">65</span>
+        </div>
+        <div class="bar-item">
+          <span class="label">Zeta</span>
+          <div class="hbar"><span class="blue" style="width:47%"></span></div>
+          <span class="val">47</span>
+        </div>
+        <div class="bar-item">
+          <span class="label">Eta</span>
+          <div class="hbar"><span class="cyan" style="width:90%"></span></div>
+          <span class="val">90</span>
+        </div>
+        <div class="bar-item">
+          <span class="label">Theta</span>
+          <div class="hbar"><span class="red" style="width:28%"></span></div>
+          <span class="val">28</span>
+        </div>
+        <div class="bar-item">
+          <span class="label">Iota</span>
+          <div class="hbar"><span class="pink" style="width:59%"></span></div>
+          <span class="val">59</span>
+        </div>
+        <div class="bar-item">
+          <span class="label">Kappa</span>
+          <div class="hbar"><span class="cyan" style="width:76%"></span></div>
+          <span class="val">76</span>
+        </div>
+        <div class="bar-item">
+          <span class="label">Lambda</span>
+          <div class="hbar"><span class="blue" style="width:44%"></span></div>
+          <span class="val">44</span>
+        </div>
+        <div class="bar-item">
+          <span class="label">Mu</span>
+          <div class="hbar"><span class="red" style="width:61%"></span></div>
+          <span class="val">61</span>
+        </div>
+      </aside>
+    </main>
+  </div>
+</body>
+</html>

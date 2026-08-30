@@ -13,11 +13,13 @@ Pra inventar e fechar a cara de um app antes de gerar mock.
 
 ## Design system
 
-Quando quero tirar a linguagem visual de uma referência e deixar pronta pra implementar. Prefixo: `design-system-from-…`
+Quando quero tirar a linguagem visual de uma referência e deixar pronta pra implementar. Prefixo: `ds-from-…` / `ds-cards-…`
 
-- [`design-system-from-html`](./design-system-from-html): HTML monolítico → `design-system.html` limpo + assets
-- [`design-system-from-img`](./design-system-from-img): mock (imagem) → `design-systems/<slug>/` com HTML + CSS
-- [`design-system-from-svg`](./design-system-from-svg): wireframe/mock SVG → `design-systems/<slug>/` com HTML + CSS
+- [`ds-from-html`](./ds-from-html): HTML monolítico → `design-system.html` limpo + assets
+- [`ds-from-img`](./ds-from-img): mock (imagem) → `design-systems/<slug>/` com HTML + CSS
+- [`ds-from-svg`](./ds-from-svg): wireframe/mock SVG → `design-systems/<slug>/` com HTML + CSS
+- [`ds-cards-from-img`](./ds-cards-from-img): mock → cards com máscara + `sample_cards.py` (mais preciso)
+- [`ds-cards-from-img-2`](./ds-cards-from-img-2): o mesmo, fluxo **rápido** (bbox + PIL na original, sem crops/script)
 
 ## Imagem
 

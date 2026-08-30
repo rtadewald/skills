@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Solatarics — cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* PIL reference.jpg — quiet fills / rim snaps / accents */
+:root {
+  --bg-tl: #17213a;
+  --bg-c: #0d112a;
+  --bg-br: #1a2640;
+  --gutter: #0c1127;
+  --font: "Inter", system-ui, sans-serif;
+  --radius: 16px;
+  --text: #b2b6c1;
+  --text-hi: #e8eaf0;
+  --dim: rgba(178, 182, 193, 0.55);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  font-family: var(--font);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  padding: 36px 28px 56px;
+  background:
+    radial-gradient(ellipse 48% 36% at 82% 10%, rgba(30,49,81,0.7), transparent 55%),
+    radial-gradient(ellipse 40% 32% at 14% 88%, rgba(48,40,77,0.45), transparent 52%),
+    linear-gradient(165deg, var(--bg-tl) 0%, var(--bg-c) 48%, var(--gutter) 78%, var(--bg-br));
+}
+.wrap { max-width: 1120px; margin: 0 auto; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+
+.card {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  isolation: isolate;
+  backdrop-filter: blur(22px) saturate(1.35);
+  -webkit-backdrop-filter: blur(22px) saturate(1.35);
+  min-height: 286px;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--border-grad);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 4;
+  opacity: var(--rim-op, 0.92);
+}
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--flare);
+  pointer-events: none;
+  z-index: 1;
+}
+.card > .inner { position: relative; z-index: 2; height: 100%; padding: 18px 20px; }
+
+/* tl — fill ~90° (right cyan #2473a4), rim hot ~78° BR */
+.card--solatarics {
+  background: linear-gradient(90deg,
+    rgba(24,33,63,0.82) 0%,
+    rgba(36,34,72,0.48) 42%,
+    rgba(38,86,133,0.38) 78%,
+    rgba(36,115,164,0.42) 100%);
+  --border-grad: linear-gradient(90deg,
+    #17213b 0%,
+    #1b2741 35%,
+    #245079 62%,
+    #2473a4 82%,
+    #223b65 100%);
+  --flare: radial-gradient(ellipse 56% 50% at 86% 72%,
+    rgba(36,115,164,0.4), transparent 62%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    14px 18px 40px -12px rgba(36,115,164,0.28),
+    0 24px 48px rgba(8,10,24,0.45);
+}
+.card--solatarics .layout {
+  display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 12px; min-height: 250px;
+}
+.card--solatarics h2 {
+  margin: 0 0 10px; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: var(--text-hi);
+}
+.blurb { font-size: 10px; line-height: 1.45; color: var(--dim); margin: 0 0 8px; }
+.icon-row { display: flex; gap: 10px; margin-top: 16px; }
+.icon-pill { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.icon-pill span {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #7be8ff, #2a4a7a 70%);
+  box-shadow: 0 0 12px rgba(73,180,224,0.5);
+  border: 1px solid rgba(123,232,255,0.3);
+}
+.icon-pill small { font-size: 7px; color: rgba(178,182,193,0.4); max-width: 36px; text-align: center; }
+.viz-stack {
+  position: relative; display: flex; align-items: flex-end; justify-content: center;
+  gap: 5px; padding: 16px 8px 8px;
+}
+.viz-stack .orb {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(193,103,160,0.45);
+  box-shadow: 0 0 14px rgba(193,103,160,0.3);
+  background: radial-gradient(circle at 40% 35%, rgba(100,95,156,0.35), transparent 65%);
+}
+.viz-stack .orb.o1 { width: 92px; height: 92px; top: 12%; left: 12%; opacity: 0.5; }
+.viz-stack .orb.o2 { width: 52px; height: 52px; top: 4%; right: 12%; opacity: 0.38; }
+.plate {
+  width: 42px; border-radius: 6px;
+  background: linear-gradient(180deg, rgba(203,129,181,0.78), rgba(128,158,221,0.35) 55%, #1a2848);
+  box-shadow: 0 0 14px rgba(193,103,160,0.45), inset 0 1px 0 rgba(255,255,255,0.28);
+}
+.plate.p1 { height: 72px; } .plate.p2 { height: 110px; }
+.plate.p3 { height: 88px; } .plate.p4 { height: 56px; }
+.heartbeat {
+  margin-top: 8px; height: 2px; width: 100%;
+  background: linear-gradient(90deg, transparent 0%, #515ea4 40%, #c167a0 55%, #515ea4 70%, transparent);
+  box-shadow: 0 0 8px rgba(81,94,164,0.5);
+}
+
+/* tr — fill ~225° (BL magenta #ca7ddf), rim hot ~232° */
+.card--her {
+  background: linear-gradient(225deg,
+    rgba(24,39,69,0.78) 0%,
+    rgba(45,63,109,0.42) 38%,
+    rgba(125,116,203,0.38) 72%,
+    rgba(202,125,223,0.42) 100%);
+  --border-grad: linear-gradient(225deg,
+    #1d2d48 0%,
+    #1e304e 28%,
+    #5a8ad0 48%,
+    #ca7ddf 70%,
+    #c87bde 85%,
+    #0f0f27 100%);
+  --flare: radial-gradient(ellipse 70% 48% at 28% 100%,
+    rgba(202,125,223,0.42), transparent 58%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.09),
+    inset 0 -24px 36px -18px rgba(186,135,236,0.22),
+    0 26px 48px -10px rgba(121,115,173,0.42),
+    0 18px 40px rgba(8,10,24,0.4);
+}
+.card--her .layout {
+  display: grid; grid-template-columns: 1.25fr 0.85fr; gap: 12px; min-height: 250px;
+}
+.her-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
+.her-head h2 { margin: 0; font-size: 18px; font-weight: 700; color: var(--text-hi); }
+.her-head .metric { font-size: 20px; font-weight: 700; letter-spacing: -0.03em; color: var(--text-hi); }
+.her-head .tag {
+  font-size: 8px; padding: 2px 7px; border-radius: 999px;
+  background: rgba(116,240,255,0.1);
+  border: 1px solid rgba(116,240,255,0.32);
+  color: #74f0ff;
+}
+.chart-area { width: 100%; height: 148px; margin-top: 4px; }
+.side-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.side-list li { display: flex; align-items: center; gap: 8px; font-size: 9px; color: var(--dim); }
+.side-list .dot {
+  width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
+  background: radial-gradient(circle at 30% 30%, #74f0ff, #8b65a2);
+  box-shadow: 0 0 8px rgba(116,240,255,0.4);
+}
+.pulse-line {
+  margin-top: 10px; height: 1px;
+  background: linear-gradient(90deg, transparent, #74f0ff, #ca7ddf, transparent);
+  box-shadow: 0 0 8px rgba(116,240,255,0.45);
+  position: relative;
+}
+.pulse-line::before {
+  content: ""; position: absolute; left: 40%; top: -3px;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #74f0ff; box-shadow: 0 0 8px #74f0ff;
+}
+
+/* ml — fill ~45°, rim ~80° TR soft blue #264572 */
+.card--gour {
+  background: linear-gradient(45deg,
+    rgba(42,45,71,0.8) 0%,
+    rgba(62,41,77,0.45) 40%,
+    rgba(34,53,94,0.48) 78%,
+    rgba(38,69,114,0.42) 100%);
+  --border-grad: linear-gradient(80deg,
+    #0f0f28 0%,
+    #282347 30%,
+    #264572 62%,
+    #243a66 82%,
+    #11162c 100%);
+  --flare: radial-gradient(ellipse 48% 46% at 22% 58%,
+    rgba(206,87,151,0.32), transparent 60%);
+  --rim-op: 0.72;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.07),
+    0 22px 42px rgba(8,10,24,0.48);
+}
+.card--gour h2 { margin: 0 0 12px; font-size: 16px; font-weight: 700; color: var(--text-hi); }
+.gour-body { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 10px; align-items: center; }
+.bars-3d { display: flex; align-items: flex-end; gap: 3px; height: 120px; padding: 0 4px; }
+.bars-3d i {
+  display: block; width: 7px; border-radius: 3px 3px 1px 1px;
+  background: linear-gradient(180deg, #65d6fe, #ce5797 55%, #2a1a48);
+  box-shadow: 0 0 8px rgba(86,175,229,0.35);
+}
+.legend { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 14px; }
+.legend span { display: flex; align-items: center; gap: 5px; font-size: 9px; color: var(--dim); }
+.legend i { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+
+/* mr — fill ~45° (cyan orb #27e6fa), rim hot ~57° TR */
+.card--pac {
+  background: linear-gradient(45deg,
+    rgba(85,60,108,0.72) 0%,
+    rgba(105,50,100,0.4) 28%,
+    rgba(58,136,201,0.35) 68%,
+    rgba(39,230,250,0.28) 100%);
+  --border-grad: linear-gradient(55deg,
+    #0e0e28 0%,
+    #1c2a45 22%,
+    #6080bf 45%,
+    #27e6fa 62%,
+    #c166bb 78%,
+    #1d2e4a 100%);
+  --flare:
+    radial-gradient(ellipse 50% 38% at 18% 6%, rgba(193,102,187,0.42), transparent 55%),
+    radial-gradient(ellipse 58% 55% at 82% 48%, rgba(39,230,250,0.38), transparent 60%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    -10px -16px 36px -10px rgba(193,102,187,0.35),
+    16px 0 40px -8px rgba(39,230,250,0.28),
+    0 22px 44px rgba(8,10,24,0.45);
+}
+.card--pac h2 { margin: 0 0 12px; font-size: 18px; font-weight: 700; color: var(--text-hi); }
+.pac-layout { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 10px; min-height: 220px; }
+.avatar-cluster { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; align-content: start; }
+.avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, #9adfff, transparent 45%),
+    radial-gradient(circle at 60% 70%, #3f3a67, #1a2848);
+  border: 1.5px solid rgba(39,230,250,0.45);
+  box-shadow: 0 0 14px rgba(39,230,250,0.4);
+}
+.thumbs { display: flex; gap: 6px; margin-top: 10px; }
+.thumbs b {
+  display: block; width: 52px; height: 34px; border-radius: 6px;
+  background: linear-gradient(135deg, rgba(58,42,88,0.75), rgba(26,64,104,0.65));
+  border: 1px solid rgba(39,230,250,0.22);
+}
+.spiral-orb { display: flex; align-items: center; justify-content: center; }
+.spiral-orb .sphere {
+  width: 150px; height: 150px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255,255,255,0.2), transparent 38%),
+    radial-gradient(circle at 50% 55%, rgba(39,230,250,0.26), #0a1830 72%);
+  border: 1px solid rgba(151,253,255,0.32);
+  box-shadow:
+    0 0 44px rgba(39,230,250,0.4),
+    inset 0 0 24px rgba(39,230,250,0.18),
+    inset 0 -10px 20px rgba(0,0,0,0.3);
+  display: flex; align-items: center; justify-content: center;
+}
+.spiral-orb svg { filter: drop-shadow(0 0 8px #27e6fa); }
+
+/* bl — fill ~135°, rim ~65° TR #214871 */
+.card--ausk {
+  background: linear-gradient(135deg,
+    rgba(47,48,96,0.78) 0%,
+    rgba(88,82,117,0.42) 32%,
+    rgba(30,43,78,0.5) 68%,
+    rgba(33,72,113,0.4) 100%);
+  --border-grad: linear-gradient(65deg,
+    #10152b 0%,
+    #242244 35%,
+    #214871 68%,
+    #203c67 85%,
+    #16223a 100%);
+  --flare: radial-gradient(ellipse 42% 36% at 78% 14%,
+    rgba(33,72,113,0.38), transparent 58%);
+  --rim-op: 0.82;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.09),
+    6px -8px 24px -10px rgba(33,72,113,0.22),
+    0 20px 40px rgba(8,10,24,0.48);
+}
+.card--ausk .ausk-head {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;
+}
+.card--ausk h2 { margin: 0; font-size: 18px; font-weight: 700; color: var(--text-hi); }
+.status-pill {
+  font-size: 8px; padding: 3px 8px; border-radius: 999px;
+  border: 1px solid rgba(117,169,219,0.28);
+  color: rgba(178,182,193,0.7);
+  background: rgba(33,72,113,0.25);
+}
+.ausk-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 14px; }
+.kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.kpi {
+  border-radius: 10px;
+  padding: 12px 10px;
+  background: linear-gradient(160deg, rgba(94,79,132,0.35), rgba(17,23,49,0.45));
+  backdrop-filter: blur(12px) saturate(1.25);
+  -webkit-backdrop-filter: blur(12px) saturate(1.25);
+  border: 1px solid rgba(117,169,219,0.16);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.09);
+}
+.kpi .val { font-size: 20px; font-weight: 700; color: var(--text-hi); letter-spacing: -0.02em; }
+.kpi .lbl { font-size: 8px; color: rgba(178,182,193,0.45); margin-top: 2px; }
+.pos-list h3 { margin: 0 0 8px; font-size: 11px; font-weight: 600; color: rgba(178,182,193,0.85); }
+.pos-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+.pos-list li { display: flex; align-items: center; gap: 8px; font-size: 9px; color: var(--dim); }
+.pos-list .ico {
+  width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
+  background: radial-gradient(circle at 35% 30%, #75a9db, #2d6494);
+  box-shadow: 0 0 8px rgba(117,169,219,0.35);
+}
+
+/* br — fill ~0° (top cool), rim ~158° bottom blue #3964a8; vortex #fbace5 */
+.card--tumio {
+  background: linear-gradient(0deg,
+    rgba(30,38,75,0.8) 0%,
+    rgba(34,57,111,0.45) 45%,
+    rgba(70,98,161,0.32) 78%,
+    rgba(26,40,67,0.55) 100%);
+  --border-grad: linear-gradient(180deg,
+    #0b0f28 0%,
+    #1e264b 28%,
+    #324e87 55%,
+    #3964a8 78%,
+    #1c2a45 100%);
+  --flare: radial-gradient(ellipse 55% 50% at 58% 48%,
+    rgba(251,172,229,0.38), transparent 60%);
+  --rim-op: 0.8;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.09),
+    8px -8px 28px -10px rgba(57,100,168,0.25),
+    0 0 32px rgba(251,172,229,0.14),
+    0 22px 44px rgba(8,10,24,0.48);
+}
+.card--tumio h2 {
+  margin: 0 0 4px; font-size: 15px; font-weight: 700; color: var(--text-hi); line-height: 1.25;
+}
+.card--tumio .sub { font-size: 9px; color: var(--dim); margin: 0 0 10px; }
+.tumio-layout { display: grid; grid-template-columns: 0.75fr 1.25fr; gap: 8px; min-height: 220px; }
+.tumio-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.tumio-list li {
+  font-size: 9px; line-height: 1.35; color: var(--dim);
+  padding-left: 10px; border-left: 2px solid rgba(251,172,229,0.45);
+}
+.portal { position: relative; display: flex; align-items: center; justify-content: center; }
+.portal .orb-bg {
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(circle, rgba(68,252,255,0.5), transparent 70%);
+  filter: blur(2px); opacity: 0.45;
+}
+.portal .orb-bg.b1 { width: 28px; height: 28px; top: 10%; left: 16%; }
+.portal .orb-bg.b2 {
+  width: 18px; height: 18px; bottom: 18%; right: 10%;
+  background: radial-gradient(circle, rgba(251,172,229,0.55), transparent 70%);
+}
+.portal-viz { display: flex; align-items: flex-end; gap: 6px; }
+.portal-bars { display: flex; align-items: flex-end; gap: 3px; height: 100px; }
+.portal-bars i {
+  width: 6px; border-radius: 2px;
+  background: linear-gradient(180deg, #44fcff, #fbace5);
+  box-shadow: 0 0 8px rgba(54,227,249,0.35);
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="grid">
+
+    <article class="card card--solatarics">
+      <div class="inner">
+        <div class="layout">
+          <div>
+            <h2>Solatarics</h2>
+            <p class="blurb">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+            <p class="blurb">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+            <div class="icon-row">
+              <div class="icon-pill"><span></span><small>Nova</small></div>
+              <div class="icon-pill"><span style="background:radial-gradient(circle at 35% 30%,#e8a0d0,#4a2a68 70%)"></span><small>Orbit</small></div>
+              <div class="icon-pill"><span style="background:radial-gradient(circle at 35% 30%,#95f2ff,#2a5080 70%)"></span><small>Pulse</small></div>
+              <div class="icon-pill"><span style="background:radial-gradient(circle at 35% 30%,#b8c0ff,#303868 70%)"></span><small>Link</small></div>
+            </div>
+            <div class="heartbeat"></div>
+          </div>
+          <div class="viz-stack">
+            <div class="orb o1"></div>
+            <div class="orb o2"></div>
+            <div class="plate p1"></div>
+            <div class="plate p2"></div>
+            <div class="plate p3"></div>
+            <div class="plate p4"></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card card--her">
+      <div class="inner">
+        <div class="layout">
+          <div>
+            <div class="her-head">
+              <h2>Her PIPyo</h2>
+              <span class="metric">07, 0092</span>
+              <span class="tag">live</span>
+            </div>
+            <svg class="chart-area" viewBox="0 0 320 150" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#85f2ff" stop-opacity="0.55"/>
+                  <stop offset="55%" stop-color="#ca7ddf" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="#37466f" stop-opacity="0.05"/>
+                </linearGradient>
+                <linearGradient id="strokeGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#74f0ff"/>
+                  <stop offset="55%" stop-color="#ca7ddf"/>
+                  <stop offset="100%" stop-color="#85f2ff"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,110 L28,95 L55,118 L82,70 L110,88 L138,42 L165,78 L192,30 L220,65 L248,48 L275,72 L300,38 L320,55 L320,150 L0,150 Z" fill="url(#areaFill)"/>
+              <path d="M0,110 L28,95 L55,118 L82,70 L110,88 L138,42 L165,78 L192,30 L220,65 L248,48 L275,72 L300,38 L320,55" fill="none" stroke="url(#strokeGrad)" stroke-width="2.2" style="filter:drop-shadow(0 0 4px #74f0ff)"/>
+              <path d="M0,125 L40,118 L80,130 L120,105 L160,122 L200,98 L240,115 L280,92 L320,108" fill="none" stroke="#529bd0" stroke-width="1.2" opacity="0.7"/>
+            </svg>
+            <div class="pulse-line"></div>
+          </div>
+          <div>
+            <p class="blurb">Prontoa otorpoticents unde omnis iste natus error sit voluptatem.</p>
+            <ul class="side-list">
+              <li><span class="dot"></span>Alpha metric stream</li>
+              <li><span class="dot" style="background:radial-gradient(circle at 30% 30%,#e8a0d0,#6b629f)"></span>Beta pulse channel</li>
+              <li><span class="dot" style="background:radial-gradient(circle at 30% 30%,#85f2ff,#2c426d)"></span>Gamma node sync</li>
+              <li><span class="dot" style="background:radial-gradient(circle at 30% 30%,#c8b0ff,#37466f)"></span>Delta overlay</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card card--gour">
+      <div class="inner">
+        <h2>Gour Derhic Fennal</h2>
+        <div class="gour-body">
+          <div style="display:flex;justify-content:center">
+            <svg width="118" height="118" viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="46" fill="none" stroke="#2c2d53" stroke-width="14"/>
+              <circle cx="60" cy="60" r="46" fill="none" stroke="#ce5797" stroke-width="14"
+                      stroke-dasharray="180 289" stroke-linecap="round" transform="rotate(-90 60 60)"
+                      style="filter:drop-shadow(0 0 6px #ce5797)"/>
+              <circle cx="60" cy="60" r="30" fill="none" stroke="#56afe5" stroke-width="10"
+                      stroke-dasharray="120 189" stroke-linecap="round" transform="rotate(40 60 60)"
+                      style="filter:drop-shadow(0 0 5px #65d6fe)"/>
+              <circle cx="60" cy="60" r="18" fill="rgba(26,20,48,0.85)" stroke="#478ecc" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="bars-3d" aria-hidden="true">
+            <i style="height:42%"></i><i style="height:68%"></i><i style="height:55%"></i>
+            <i style="height:88%"></i><i style="height:72%"></i><i style="height:95%"></i>
+            <i style="height:60%"></i><i style="height:78%"></i><i style="height:48%"></i>
+            <i style="height:85%"></i><i style="height:70%"></i><i style="height:52%"></i>
+            <i style="height:90%"></i><i style="height:64%"></i><i style="height:76%"></i>
+            <i style="height:44%"></i><i style="height:82%"></i><i style="height:58%"></i>
+          </div>
+        </div>
+        <div class="legend">
+          <span><i style="background:#ce5797;box-shadow:0 0 6px #ce5797"></i>Series A</span>
+          <span><i style="background:#d667ab"></i>Series B</span>
+          <span><i style="background:#478ecc"></i>Series C</span>
+          <span><i style="background:#65d6fe;box-shadow:0 0 6px #65d6fe"></i>Series D</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card card--pac">
+      <div class="inner">
+        <h2>Pacrights</h2>
+        <div class="pac-layout">
+          <div>
+            <div class="avatar-cluster">
+              <div class="avatar"></div>
+              <div class="avatar" style="background:radial-gradient(circle at 35% 30%,#e8c0ff,transparent 45%),radial-gradient(circle at 60% 70%,#3f3a67,#1a2848)"></div>
+              <div class="avatar" style="background:radial-gradient(circle at 35% 30%,#27e6fa,transparent 45%),radial-gradient(circle at 60% 70%,#1dafcd,#0a2038)"></div>
+            </div>
+            <div class="thumbs">
+              <b></b>
+              <b style="background:linear-gradient(135deg,rgba(29,175,205,0.5),rgba(43,52,94,0.7))"></b>
+              <b style="background:linear-gradient(135deg,rgba(193,102,187,0.45),rgba(26,40,72,0.7))"></b>
+            </div>
+          </div>
+          <div class="spiral-orb">
+            <div class="sphere">
+              <svg width="100" height="100" viewBox="0 0 100 100" aria-hidden="true">
+                <path d="M50,50 Q62,38 70,50 Q78,68 58,72 Q32,76 30,52 Q28,28 50,26 Q78,24 80,50 Q82,82 50,84 Q18,86 16,50"
+                      fill="none" stroke="#27e6fa" stroke-width="2.2"/>
+                <path d="M50,50 Q58,42 64,50 Q70,62 56,64 Q40,66 40,52 Q40,38 50,38"
+                      fill="none" stroke="#97fdff" stroke-width="1.6" opacity="0.8"/>
+                <circle cx="50" cy="50" r="4" fill="#27e6fa"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card card--ausk">
+      <div class="inner">
+        <div class="ausk-head">
+          <h2>Auskbur Stare</h2>
+          <span class="status-pill">Status</span>
+        </div>
+        <div class="ausk-layout">
+          <div class="kpi-grid">
+            <div class="kpi"><div class="val">€ 77</div><div class="lbl">active nodes</div></div>
+            <div class="kpi"><div class="val">4,50%</div><div class="lbl">delta</div></div>
+            <div class="kpi"><div class="val">6%</div><div class="lbl">load</div></div>
+            <div class="kpi"><div class="val">33%</div><div class="lbl">capacity</div></div>
+          </div>
+          <div class="pos-list">
+            <h3>Lorarivo</h3>
+            <ul>
+              <li><span class="ico"></span>North sector</li>
+              <li><span class="ico" style="background:radial-gradient(circle at 35% 30%,#c4bed1,#2d6494)"></span>Relay hub</li>
+              <li><span class="ico" style="background:radial-gradient(circle at 35% 30%,#75a9db,#45345e)"></span>Orbit lane</li>
+              <li><span class="ico"></span>Core link</li>
+              <li><span class="ico" style="background:radial-gradient(circle at 35% 30%,#fff,#29436d)"></span>Edge node</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card card--tumio">
+      <div class="inner">
+        <h2>Tumio Postolics State</h2>
+        <p class="sub">Omninany Pamont</p>
+        <div class="tumio-layout">
+          <ul class="tumio-list">
+            <li>Neural spiral sync active across sectors</li>
+            <li>Portal bloom at magenta peak</li>
+            <li>Bar cluster rising on cyan rail</li>
+            <li>Orbital debris field monitored</li>
+            <li>State vector locked to core</li>
+          </ul>
+          <div class="portal">
+            <div class="orb-bg b1"></div>
+            <div class="orb-bg b2"></div>
+            <div class="portal-viz">
+              <svg width="130" height="130" viewBox="0 0 130 130" aria-hidden="true">
+                <defs>
+                  <linearGradient id="spiralGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#44fcff"/>
+                    <stop offset="50%" stop-color="#fbace5"/>
+                    <stop offset="100%" stop-color="#98f4ff"/>
+                  </linearGradient>
+                </defs>
+                <path d="M65,65 Q82,48 95,65 Q108,90 72,98 Q28,108 26,65 Q24,22 65,18 Q112,14 116,65 Q120,120 65,124 Q10,128 8,65"
+                      fill="none" stroke="url(#spiralGrad)" stroke-width="3"
+                      style="filter:drop-shadow(0 0 8px #fbace5)"/>
+                <path d="M65,65 Q75,55 84,65 Q92,80 70,84 Q44,88 44,65 Q44,42 65,40"
+                      fill="none" stroke="#98f4ff" stroke-width="1.8" opacity="0.85"/>
+                <circle cx="65" cy="65" r="5" fill="#fbace5"/>
+              </svg>
+              <div class="portal-bars" aria-hidden="true">
+                <i style="height:35%"></i><i style="height:55%"></i><i style="height:72%"></i>
+                <i style="height:48%"></i><i style="height:88%"></i><i style="height:62%"></i><i style="height:40%"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</div>
+</body>
+</html>

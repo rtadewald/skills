@@ -1,9 +1,9 @@
 ---
-name: design-system-from-html
+name: ds-from-html
 description: >-
   Analyze an HTML file and extract a clean design system from it. Splits inline
   style/script into assets, classifies SVGs, writes design-system.html + STACK.md.
-  Use when the user mentions design-system-from-html or asks to extract a DS from HTML.
+  Use when the user mentions ds-from-html or asks to extract a DS from HTML.
 ---
 
 ## INPUT

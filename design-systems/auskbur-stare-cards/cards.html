@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auskbur Stare</title>
+<style>
+  :root{
+    --page-0:#0d1228; --page-1:#111832; --page-2:#1b2744;
+
+    --slide-a:#1e2648; --slide-b:#1d2e53; --slide-c:#22375f;
+    --slide-rim-t:#101028; --slide-rim-l:#2b2248; --slide-rim-r:#224369; --slide-rim-b:#1e2b51;
+
+    --panel-a:#52305f; --panel-b:#4b3a72; --panel-c:#454078;
+    --panel-rim:#cfcaff; --panel-rim-l:#724c81; --panel-rim-tl:#282049; --panel-rim-br:#333d6d;
+
+    --tl-a:#7b5a86; --tl-b:#6b5385; --tl-c:#5f4a80;
+    --tr-a:#4a5088; --tr-b:#565c8e; --tr-c:#4e5490;
+    --bl-a:#5f4a80; --bl-b:#58467c; --bl-c:#4e3f74;
+    --br-a:#4b5089; --br-b:#51568f; --br-c:#4a4f8a;
+
+    --pill-a:#2a2147; --pill-b:#756d8d; --pill-c:#443e62; --pill-rim:#9b8dc0;
+
+    --list-a:#2f3b66; --list-b:#2b3763; --list-c:#253560;
+    --btn-ghost:#232e50; --btn-solid-a:#4c5479; --btn-solid-b:#5b6390;
+
+    --txt-light:#e9e4f7; --txt-muted:#72729e;
+    --tile-light:#f2ddf9; --tile-light-b:#e6e7f9; --tile-pink:#eec8f3;
+    --cyan:#4c9ed8; --cyan-soft:#7fc0ea; --cyan-muted:#58759e;
+    --body:#5c6f96;
+    --magenta:#e0619b;
+    --list-accent:#c3cff9;
+
+    --font: Verdana, "DejaVu Sans", "Avenir Next", "Helvetica Neue", system-ui, sans-serif;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0}
+
+  body{
+    min-height:100vh;
+    display:grid; place-items:center;
+    padding:64px 24px;
+    font-family:var(--font);
+    background:
+      radial-gradient(110% 85% at 82% 6%, var(--page-2) 0%, rgba(27,39,68,0) 55%),
+      radial-gradient(90% 75% at 10% 98%, #141e37 0%, rgba(20,30,55,0) 58%),
+      var(--page-0);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ── slide card ─────────────────────────────────────────── */
+  .slide{
+    position:relative;
+    width:880px; height:510px;
+    border-radius:15px;
+    padding:1px;
+    background:linear-gradient(135deg,
+      var(--slide-rim-l) 0%,
+      var(--slide-rim-t) 34%,
+      var(--slide-rim-b) 64%,
+      var(--slide-rim-r) 100%);
+    box-shadow:
+      0 36px 84px -22px rgba(3,5,16,.9),
+      0 0 70px -18px rgba(76,158,216,.18);
+  }
+  .slide-inner{
+    position:relative;
+    height:100%;
+    border-radius:14px;
+    overflow:hidden;
+    background:linear-gradient(118deg, var(--slide-a) 0%, var(--slide-b) 46%, var(--slide-c) 100%);
+  }
+  .slide-inner::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(52% 100% at 98% 10%, rgba(76,158,216,.22) 0%, rgba(76,158,216,0) 66%),
+      radial-gradient(44% 82% at 4% 96%, rgba(102,72,128,.30) 0%, rgba(102,72,128,0) 68%),
+      radial-gradient(38% 70% at 8% 8%, rgba(126,96,164,.20) 0%, rgba(126,96,164,0) 70%);
+    pointer-events:none;
+  }
+  .slide-inner::after{
+    content:"";
+    position:absolute; left:0; right:0; top:0; height:1px;
+    background:linear-gradient(90deg,
+      rgba(224,97,155,0) 0%, rgba(224,97,155,.30) 20%,
+      rgba(76,158,216,.40) 70%, rgba(76,158,216,0) 100%);
+    pointer-events:none;
+  }
+  .stage{position:relative; height:100%; z-index:1}
+
+  /* ── slide chrome ───────────────────────────────────────── */
+  .eyebrow{
+    position:absolute; left:36px; top:15px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .eyebrow .dot{
+    width:5px; height:5px; border-radius:50%;
+    background:var(--magenta);
+    box-shadow:0 0 8px 1px rgba(224,97,155,.65);
+  }
+  .eyebrow .rule{
+    width:74px; height:2px; border-radius:2px;
+    background:linear-gradient(90deg, rgba(233,228,247,.42), rgba(233,228,247,.05));
+  }
+  .eyebrow span{
+    font-size:7.5px; letter-spacing:.16em; text-transform:uppercase;
+    color:rgba(233,228,247,.34);
+  }
+  .slide-no{
+    position:absolute; right:34px; top:15px;
+    font-size:7.5px; letter-spacing:.16em;
+    color:rgba(233,228,247,.28);
+  }
+  .footline{
+    position:absolute; left:36px; bottom:17px;
+    display:flex; align-items:center; gap:8px;
+    font-size:7.5px; letter-spacing:.10em;
+    color:rgba(233,228,247,.26);
+  }
+  .footline b{font-size:9px; color:rgba(233,228,247,.44); font-weight:700}
+  .flare{
+    position:absolute; left:50%; bottom:9px; translate:-50% 0;
+    width:176px; height:2px; border-radius:2px;
+    background:linear-gradient(90deg,
+      rgba(224,97,155,0), var(--magenta) 40%, rgba(76,158,216,.75) 76%, rgba(76,158,216,0));
+    filter:blur(.4px); opacity:.7;
+  }
+
+  /* ── left column ────────────────────────────────────────── */
+  .kicker{
+    position:absolute; left:36px; top:47px;
+    font-size:7.5px; letter-spacing:.20em; text-transform:uppercase;
+    color:rgba(233,228,247,.34);
+  }
+  .title{
+    position:absolute; left:36px; top:63px;
+    font-size:26px; font-weight:700; letter-spacing:-.015em;
+    color:var(--txt-light);
+    text-shadow:0 2px 20px rgba(207,202,255,.22);
+  }
+
+  /* ── badge pill (straddles panel edge) ──────────────────── */
+  .badge{
+    position:absolute; left:146px; top:137px; z-index:3;
+    width:182px; height:30px;
+    border-radius:999px; padding:1px;
+    background:linear-gradient(135deg,
+      rgba(155,141,192,.65), rgba(43,37,77,.92) 46%, rgba(118,117,166,.75));
+    box-shadow:0 8px 22px -8px rgba(4,6,20,.85), 0 0 20px -9px rgba(155,141,192,.7);
+  }
+  .badge-in{
+    width:100%; height:100%;
+    display:grid; place-items:center;
+    border-radius:999px;
+    background:linear-gradient(270deg, var(--pill-a) 0%, var(--pill-b) 42%, var(--pill-c) 100%);
+  }
+  .badge-in span{
+    font-size:10px; font-weight:700; letter-spacing:.04em;
+    color:#e2dcf5;
+    text-shadow:0 1px 7px rgba(30,24,58,.95);
+  }
+
+  /* ── metrics panel ──────────────────────────────────────── */
+  .metrics{
+    position:absolute; left:36px; top:152px;
+    width:412px; height:288px;
+    border-radius:12px; padding:1px;
+    background:linear-gradient(142deg,
+      rgba(40,32,73,.98) 0%,
+      rgba(114,76,129,.85) 24%,
+      rgba(207,202,255,.34) 54%,
+      rgba(51,61,109,.98) 100%);
+    box-shadow:
+      0 20px 46px -18px rgba(4,6,20,.9),
+      0 0 32px -14px rgba(207,202,255,.26);
+  }
+  .metrics-in{
+    height:100%;
+    border-radius:11px;
+    padding:13px 12px 12px;
+    display:grid;
+    grid-template-columns:198px 1fr;
+    grid-template-rows:124px 1fr;
+    gap:8px;
+    background:linear-gradient(105deg, var(--panel-a) 0%, var(--panel-b) 55%, var(--panel-c) 100%);
+    box-shadow:inset 0 1px 0 rgba(231,222,247,.10);
+  }
+
+  .tile{
+    position:relative;
+    border-radius:9px;
+    padding:11px 12px;
+    display:flex; flex-direction:column;
+    border:1px solid rgba(219,197,244,.14);
+    box-shadow:
+      inset 0 1px 0 rgba(242,221,249,.14),
+      0 6px 16px -9px rgba(4,6,20,.7);
+    overflow:hidden;
+  }
+  .tile::after{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(76% 58% at 10% 4%, rgba(242,221,249,.12), rgba(242,221,249,0) 68%);
+    pointer-events:none;
+  }
+  .t-tl{background:linear-gradient(180deg, var(--tl-a), var(--tl-b) 46%, var(--tl-c))}
+  .t-tr{background:linear-gradient(180deg, var(--tr-a), var(--tr-b) 54%, var(--tr-c))}
+  .t-bl{background:linear-gradient(180deg, var(--bl-a), var(--bl-b) 50%, var(--bl-c))}
+  .t-br{background:linear-gradient(180deg, var(--br-a), var(--br-b) 54%, var(--br-c))}
+
+  .tile .head{display:flex; align-items:center; justify-content:space-between; gap:8px}
+  .tile .lbl{
+    font-size:7.5px; letter-spacing:.13em; text-transform:uppercase;
+    color:rgba(245,232,252,.66);
+  }
+  .tile .row{margin-top:auto; display:flex; align-items:baseline; gap:8px}
+  .tile .val{
+    font-size:25px; font-weight:700; letter-spacing:-.025em;
+    color:var(--tile-light);
+    text-shadow:0 2px 16px rgba(219,197,244,.32);
+  }
+  .t-bl .val{color:var(--tile-pink); text-shadow:0 2px 16px rgba(223,201,250,.36)}
+  .t-tr .val, .t-br .val{color:var(--tile-light-b); text-shadow:0 2px 16px rgba(184,195,240,.32)}
+  .tile .cap{
+    margin-top:6px;
+    font-size:7.5px; line-height:1.55;
+    color:rgba(243,232,252,.46);
+  }
+  .glyph{
+    width:19px; height:19px; border-radius:50%;
+    display:grid; place-items:center; flex:none;
+    border:1px solid rgba(242,221,249,.32);
+    background:rgba(123,90,134,.5);
+    box-shadow:0 0 12px -5px rgba(219,197,244,.85);
+    font-size:9px; color:var(--tile-light);
+  }
+
+  /* ── right column ───────────────────────────────────────── */
+  .right{position:absolute; left:480px; top:76px; width:376px}
+  .right .kick{
+    font-size:7.5px; letter-spacing:.20em; text-transform:uppercase;
+    color:rgba(88,117,158,.9);
+  }
+  .right h2{
+    margin-top:7px;
+    font-size:16px; font-weight:700; line-height:1.34;
+    color:var(--cyan);
+    text-shadow:0 2px 18px rgba(76,158,216,.30);
+  }
+  .right h2 b{display:block; color:#a8d7f2; font-weight:700}
+  .right h2 em{display:block; font-style:normal; font-weight:700; color:var(--cyan-soft)}
+  .right p{
+    margin-top:13px;
+    font-size:8.5px; line-height:1.9;
+    color:rgba(126,146,181,.72);
+    max-width:342px;
+  }
+
+  /* ── list card ──────────────────────────────────────────── */
+  .list{
+    position:absolute; left:480px; top:294px;
+    width:376px; height:170px;
+    border-radius:11px; padding:1px;
+    background:linear-gradient(140deg,
+      rgba(47,59,98,.98) 0%,
+      rgba(46,68,113,.85) 42%,
+      rgba(195,207,249,.24) 72%,
+      rgba(31,49,91,.98) 100%);
+    box-shadow:0 18px 40px -20px rgba(4,6,20,.9);
+  }
+  .list-in{
+    height:100%;
+    border-radius:10px;
+    padding:10px 12px 11px;
+    display:flex; flex-direction:column;
+    background:linear-gradient(180deg, var(--list-a) 0%, var(--list-b) 52%, var(--list-c) 100%);
+    box-shadow:inset 0 1px 0 rgba(205,211,247,.12);
+  }
+  .list-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-bottom:8px;
+    border-bottom:1px solid rgba(205,211,247,.09);
+  }
+  .list-head span{
+    font-size:7.5px; letter-spacing:.16em; text-transform:uppercase;
+    color:rgba(205,211,247,.50);
+  }
+  .list-head i{
+    width:42px; height:2px; border-radius:2px; display:block;
+    background:linear-gradient(90deg, rgba(195,207,249,.42), rgba(195,207,249,.04));
+  }
+  .rows{display:flex; flex-direction:column}
+  .row2{
+    display:grid; grid-template-columns:1fr 1fr; gap:10px;
+    padding:7px 0;
+    border-bottom:1px solid rgba(205,211,247,.06);
+  }
+  .item{display:flex; align-items:center; gap:7px}
+  .chk{
+    width:11px; height:11px; border-radius:3px; flex:none;
+    display:grid; place-items:center;
+    background:linear-gradient(140deg, rgba(195,207,249,.30), rgba(76,158,216,.32));
+    box-shadow:0 0 8px -3px rgba(195,207,249,.8);
+  }
+  .chk::before{
+    content:"";
+    width:5px; height:3px;
+    border-left:1.4px solid #eaf1ff; border-bottom:1.4px solid #eaf1ff;
+    rotate:-45deg; translate:0 -1px;
+  }
+  .item span{
+    font-size:8px; color:rgba(205,211,247,.72);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .actions{
+    margin-top:auto; padding-top:9px;
+    display:grid; grid-template-columns:1fr 1fr; gap:10px;
+  }
+  .btn{
+    height:22px; border-radius:999px;
+    display:grid; place-items:center;
+    font-size:7.5px; letter-spacing:.10em; text-transform:uppercase;
+  }
+  .btn.ghost{
+    border:1px solid rgba(195,207,249,.20);
+    background:var(--btn-ghost);
+    color:rgba(205,211,247,.72);
+  }
+  .btn.solid{
+    border:1px solid rgba(207,202,255,.28);
+    background:linear-gradient(90deg, var(--btn-solid-a), var(--btn-solid-b));
+    color:#eee9ff;
+    box-shadow:0 6px 16px -9px rgba(4,6,20,.9), 0 0 16px -9px rgba(207,202,255,.8);
+  }
+</style>
+</head>
+<body>
+
+<div class="slide">
+  <div class="slide-inner">
+    <div class="stage">
+
+      <div class="eyebrow">
+        <i class="dot"></i>
+        <i class="rule"></i>
+        <span>Auskbur Report</span>
+      </div>
+      <div class="slide-no">05</div>
+
+      <div class="kicker">Vedcorn</div>
+      <h1 class="title">Auskbur Stare</h1>
+
+      <div class="badge"><div class="badge-in"><span>Vedext Stars</span></div></div>
+
+      <section class="metrics">
+        <div class="metrics-in">
+
+          <article class="tile t-tl">
+            <div class="head">
+              <div class="lbl">Prodicasterend</div>
+              <div class="glyph">&#9201;</div>
+            </div>
+            <div class="row"><div class="val">77</div></div>
+            <div class="cap">Sacreted trantion of vedext<br>starem pertinal</div>
+          </article>
+
+          <article class="tile t-tr">
+            <div class="head"><div class="lbl">Fressierion</div></div>
+            <div class="row"><div class="val">4,50%</div></div>
+            <div class="cap">Preformed alterocacio<br>over Auskbur stare</div>
+          </article>
+
+          <article class="tile t-bl">
+            <div class="head"><div class="lbl">Vetrecpronast</div></div>
+            <div class="row"><div class="val">6%</div></div>
+            <div class="cap">Retrantoments frencd<br>by sagnerts</div>
+          </article>
+
+          <article class="tile t-br">
+            <div class="head"><div class="lbl">Comportmments</div></div>
+            <div class="row"><div class="val">3.5%</div></div>
+            <div class="cap">Concinnesss atterion<br>per prostess cycle</div>
+          </article>
+
+        </div>
+      </section>
+
+      <div class="right">
+        <div class="kick">Papithm</div>
+        <h2>
+          <b>Loreivo</b>
+          dis alterocacio
+          <em>Etrectiy free riers</em>
+        </h2>
+        <p>
+          Sacreted prostess trantion of the vedext starem, prefinal over alterocacio
+          riers and comportmments. Etrectiy free riers alterned by sagnerts, with
+          retrantoments frencd across concinnesss atterion and prodicasterend
+          vetrecpronast of the Auskbur stare.
+        </p>
+      </div>
+
+      <section class="list">
+        <div class="list-in">
+          <div class="list-head">
+            <span>Roof Features</span>
+            <i></i>
+          </div>
+          <div class="rows">
+            <div class="row2">
+              <div class="item"><i class="chk"></i><span>Retrantoments</span></div>
+              <div class="item"><i class="chk"></i><span>Rerlored Prostess</span></div>
+            </div>
+            <div class="row2">
+              <div class="item"><i class="chk"></i><span>Iarto lein tratns</span></div>
+              <div class="item"><i class="chk"></i><span>Concinnesss atterion</span></div>
+            </div>
+            <div class="row2">
+              <div class="item"><i class="chk"></i><span>Kals lets frencd</span></div>
+              <div class="item"><i class="chk"></i><span>Enegnerd Sagnerts</span></div>
+            </div>
+          </div>
+          <div class="actions">
+            <div class="btn ghost">Fitrimass</div>
+            <div class="btn solid">Sagreat Insers</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="footline"><b>1</b><span>Sundmirks alterocacio</span></div>
+      <i class="flare"></i>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

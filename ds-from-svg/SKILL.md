@@ -1,9 +1,9 @@
 ---
-name: design-system-from-svg
+name: ds-from-svg
 description: >-
   Analyze a UI wireframe or mock SVG and build a design-system.html (plus
   assets/css and STACK.md) under design-systems/<slug>/. Use when the user
-  mentions design-system-from-svg or asks to extract a design system from SVG.
+  mentions ds-from-svg or asks to extract a design system from SVG.
 disable-model-invocation: true
 ---
 

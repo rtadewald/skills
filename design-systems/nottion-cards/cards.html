@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Nottion</title>
+<style>
+:root {
+  --page-0: #15161a;
+  --page-1: #222327;
+  --page-2: #35292d;
+  --page-3: #0d0e13;
+
+  --left-a: #353135; --left-b: #3a3236; --left-c: #312c31;
+  --left-rim-t: #4d474e; --left-rim-r: #674c49; --left-rim-b: #28262c; --left-rim-l: #2f2e33;
+  --left-txt: #ecd3c4; --left-muted: #857f7e;
+
+  --scatter-a: #2c2125; --scatter-b: #1c191f; --scatter-c: #3a2a2c;
+  --scatter-rim-t: #785a50; --scatter-rim-b: #1d181c;
+
+  --line-a: #3e373a; --line-b: #3a3136; --line-c: #2a272b;
+  --line-rim: #3c2d30;
+
+  --donut-a: #1e1e23; --donut-b: #3e3333; --donut-c: #352b29;
+  --donut-rim-t: #4d242a; --donut-rim-b: #5b493b;
+
+  --area-a: #28252a; --area-b: #252328; --area-c: #3c413f;
+  --area-rim: #1a191e;
+
+  --rbars-a: #3f4644; --rbars-b: #140e15; --rbars-c: #231b1f;
+  --rbars-rim-t: #4b5551; --rbars-rim-b: #1c1b21;
+
+  --teal: #9bbcbf;
+  --teal-hot: #46c0ab;
+  --teal-deep: #64a89e;
+  --rose: #b78d99;
+  --rose-hot: #e18e96;
+  --terra: #ac6f7e;
+  --dot: #c49b85;
+  --ink: #e8ddd4;
+  --muted: #857f7e;
+
+  --radius: 12px;
+  --font: "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  padding:48px 28px 72px;
+  background:
+    radial-gradient(90% 70% at 72% 18%, color-mix(in srgb, var(--page-2) 55%, transparent), transparent 62%),
+    radial-gradient(70% 55% at 18% 88%, #1a1b20 0%, transparent 58%),
+    linear-gradient(165deg, var(--page-1) 0%, var(--page-0) 48%, var(--page-3) 100%);
+}
+
+.stage{
+  max-width:980px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns: 1.05fr 1.55fr 0.95fr 0.42fr;
+  grid-template-rows: 118px 1fr;
+  gap:14px;
+  min-height:520px;
+}
+
+.card{
+  position:relative;
+  border-radius:var(--radius);
+  overflow:hidden;
+  isolation:isolate;
+}
+.card::before{
+  content:"";
+  position:absolute;inset:0;
+  border-radius:inherit;
+  padding:1px;
+  background:inherit;
+  pointer-events:none;
+  mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite:exclude;
+  -webkit-mask-composite:xor;
+  opacity:.9;
+}
+.glass{
+  backdrop-filter:blur(10px) saturate(1.05);
+  -webkit-backdrop-filter:blur(10px) saturate(1.05);
+}
+
+/* left */
+.left{
+  grid-row:1 / -1;
+  background:
+    linear-gradient(180deg, var(--left-a) 0%, var(--left-b) 50%, var(--left-c) 100%);
+  box-shadow:
+    0 22px 48px -18px rgba(0,0,0,.72),
+    inset 0 1px 0 color-mix(in srgb, var(--left-rim-t) 55%, transparent),
+    inset 1px 0 0 color-mix(in srgb, var(--left-rim-l) 40%, transparent),
+    inset -1px 0 0 color-mix(in srgb, var(--left-rim-r) 35%, transparent);
+  padding:18px 16px 20px;
+  display:flex;flex-direction:column;gap:18px;
+}
+.left::before{
+  background:linear-gradient(135deg, var(--left-rim-t), transparent 40%, var(--left-rim-r) 100%);
+}
+.bars{display:flex;flex-direction:column;gap:11px;padding:4px 2px 8px}
+.bar{
+  height:7px;border-radius:999px;
+  background:rgba(255,255,255,.06);
+  position:relative;overflow:hidden;
+}
+.bar > i{
+  display:block;height:100%;border-radius:inherit;
+  box-shadow:0 0 10px currentColor;
+}
+.bar.teal > i{width:72%;background:var(--teal);color:var(--teal)}
+.bar.rose > i{width:48%;background:var(--rose);color:var(--rose)}
+.bar::after{
+  content:"";position:absolute;top:1px;bottom:1px;width:1.5px;
+  background:rgba(255,255,255,.75);border-radius:1px;
+}
+.bar.teal::after{left:72%}
+.bar.rose::after{left:48%}
+
+.list{display:flex;flex-direction:column;gap:14px;flex:1}
+.row{display:flex;align-items:center;gap:10px}
+.ico{
+  width:22px;height:22px;border-radius:50%;flex:none;
+  background:radial-gradient(circle at 35% 30%, #5a5558, #2a2629 70%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
+  position:relative;
+}
+.ico::after{
+  content:"";position:absolute;inset:6px;
+  border-radius:50%;
+  background:rgba(236,211,196,.35);
+}
+.row:nth-child(2) .ico{background:radial-gradient(circle at 35% 30%, #6a4e52, #2c2226 70%)}
+.row:nth-child(3) .ico{background:radial-gradient(circle at 35% 30%, #4a5a58, #222628 70%)}
+.meta{flex:1;min-width:0}
+.meta b{
+  display:block;font-size:10px;font-weight:500;letter-spacing:.02em;
+  color:var(--left-txt);opacity:.78;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.meta span{
+  display:block;margin-top:3px;font-size:8px;color:var(--left-muted);opacity:.85;
+  letter-spacing:.04em;
+}
+.pill{
+  width:7px;height:7px;border-radius:50%;flex:none;
+  background:var(--teal);box-shadow:0 0 8px var(--teal);opacity:.85;
+}
+.row:nth-child(2) .pill{background:var(--terra);box-shadow:0 0 8px var(--terra)}
+.row:nth-child(4) .pill{opacity:0}
+
+/* scatter */
+.scatter{
+  grid-column:2;grid-row:1;
+  background:linear-gradient(45deg, var(--scatter-a) 0%, var(--scatter-b) 50%, var(--scatter-c) 100%);
+  box-shadow:
+    0 18px 40px -16px rgba(0,0,0,.7),
+    inset 0 1px 0 color-mix(in srgb, var(--scatter-rim-t) 45%, transparent),
+    inset 0 -1px 0 color-mix(in srgb, var(--scatter-rim-b) 50%, transparent);
+}
+.scatter::before{
+  background:linear-gradient(180deg, var(--scatter-rim-t), transparent 55%);
+}
+.scatter svg{position:absolute;inset:8px 12px;width:calc(100% - 24px);height:calc(100% - 16px)}
+
+/* donut */
+.donut{
+  grid-column:3;grid-row:1;
+  background:linear-gradient(180deg, var(--donut-a) 0%, var(--donut-b) 50%, var(--donut-c) 100%);
+  box-shadow:
+    0 18px 40px -16px rgba(0,0,0,.7),
+    inset 0 1px 0 color-mix(in srgb, var(--donut-rim-t) 40%, transparent);
+  display:flex;align-items:center;gap:14px;
+  padding:14px 16px;
+}
+.donut::before{
+  background:linear-gradient(135deg, var(--donut-rim-t), transparent 45%, var(--donut-rim-b));
+}
+.donut-copy{flex:1;display:flex;flex-direction:column;gap:6px}
+.donut-copy b{font-size:9px;font-weight:500;color:var(--ink);opacity:.7}
+.donut-copy span{font-size:8px;color:var(--muted)}
+.ring{
+  width:54px;height:54px;flex:none;position:relative;
+}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .glow{
+  position:absolute;inset:0;
+  filter:drop-shadow(0 0 6px var(--teal-hot));
+  pointer-events:none;
+}
+
+/* line */
+.line{
+  grid-column:2;grid-row:2;
+  background:linear-gradient(180deg, var(--line-a) 0%, var(--line-b) 50%, var(--line-c) 100%);
+  box-shadow:
+    0 22px 48px -18px rgba(0,0,0,.72),
+    inset 0 1px 0 color-mix(in srgb, var(--line-rim) 40%, transparent);
+  padding:16px 14px 12px;
+}
+.line::before{
+  background:linear-gradient(180deg, var(--line-rim), transparent 50%);
+}
+.line svg{width:100%;height:100%;display:block;min-height:200px}
+
+/* area */
+.area{
+  grid-column:3;grid-row:2;
+  background:linear-gradient(270deg, var(--area-a) 0%, var(--area-b) 50%, var(--area-c) 100%);
+  box-shadow:
+    0 22px 48px -18px rgba(0,0,0,.72),
+    inset 0 1px 0 color-mix(in srgb, var(--area-rim) 35%, transparent);
+  padding:14px 12px 10px;
+}
+.area::before{
+  background:linear-gradient(180deg, var(--area-rim), transparent 50%);
+}
+.area svg{width:100%;height:100%;display:block;min-height:200px}
+
+/* right bars */
+.rbars{
+  grid-column:4;grid-row:1 / -1;
+  background:linear-gradient(180deg, var(--rbars-a) 0%, var(--rbars-b) 35%, var(--rbars-c) 100%);
+  box-shadow:
+    0 22px 48px -18px rgba(0,0,0,.75),
+    inset 0 1px 0 color-mix(in srgb, var(--rbars-rim-t) 45%, transparent);
+  padding:16px 10px;
+  display:flex;flex-direction:column;justify-content:space-between;gap:5px;
+}
+.rbars::before{
+  background:linear-gradient(180deg, var(--rbars-rim-t), transparent 40%, var(--rbars-rim-b));
+}
+.rbars i{
+  display:block;height:4px;border-radius:2px;
+  background:rgba(255,255,255,.14);
+}
+.rbars i:nth-child(3){width:78%;background:var(--terra);box-shadow:0 0 8px var(--terra)}
+.rbars i:nth-child(5){width:62%;background:var(--teal-deep);box-shadow:0 0 8px var(--teal-deep)}
+.rbars i:nth-child(8){width:88%;background:var(--rose);box-shadow:0 0 8px var(--rose)}
+.rbars i:nth-child(11){width:45%;background:var(--teal);box-shadow:0 0 8px var(--teal)}
+.rbars i:nth-child(1){width:55%}
+.rbars i:nth-child(2){width:70%}
+.rbars i:nth-child(4){width:40%}
+.rbars i:nth-child(6){width:85%}
+.rbars i:nth-child(7){width:50%}
+.rbars i:nth-child(9){width:65%}
+.rbars i:nth-child(10){width:35%}
+.rbars i:nth-child(12){width:72%}
+.rbars i:nth-child(13){width:48%}
+.rbars i:nth-child(14){width:90%}
+.rbars i:nth-child(15){width:38%}
+.rbars i:nth-child(16){width:60%}
+.rbars i:nth-child(17){width:75%}
+.rbars i:nth-child(18){width:42%}
+
+.brand{
+  margin:36px auto 0;
+  text-align:center;
+  font-family:Georgia, "Times New Roman", serif;
+  font-size:13px;
+  letter-spacing:.42em;
+  color:rgba(236,211,196,.38);
+  font-weight:400;
+}
+
+@media (max-width:820px){
+  .stage{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto;
+  }
+  .left{grid-row:auto;min-height:360px}
+  .scatter,.donut,.line,.area{grid-column:auto;grid-row:auto;min-height:140px}
+  .rbars{grid-column:1 / -1;grid-row:auto;flex-direction:row;flex-wrap:wrap;min-height:64px;gap:8px}
+  .rbars i{width:48px !important}
+}
+</style>
+</head>
+<body>
+<div class="stage">
+  <section class="card glass left">
+    <div class="bars">
+      <div class="bar teal"><i></i></div>
+      <div class="bar rose"><i></i></div>
+    </div>
+    <div class="list">
+      <div class="row"><div class="ico"></div><div class="meta"><b>──────── ────</b><span>··· ·····</span></div><div class="pill"></div></div>
+      <div class="row"><div class="ico"></div><div class="meta"><b>────── ───────</b><span>··· ····</span></div><div class="pill"></div></div>
+      <div class="row"><div class="ico"></div><div class="meta"><b>──────────</b><span>···· ·····</span></div><div class="pill"></div></div>
+      <div class="row"><div class="ico"></div><div class="meta"><b>───── ────</b><span>··· ······</span></div><div class="pill"></div></div>
+      <div class="row"><div class="ico"></div><div class="meta"><b>─────── ···</b><span>···· ····</span></div><div class="pill"></div></div>
+    </div>
+  </section>
+
+  <section class="card glass scatter">
+    <svg viewBox="0 0 320 90" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M20 60 C60 40, 90 70, 130 45 S190 20, 230 50 S280 70, 300 35" fill="none" stroke="rgba(180,140,130,.35)" stroke-width="1"/>
+      <path d="M30 50 C80 65, 110 30, 160 55 S220 75, 270 40" fill="none" stroke="rgba(100,160,150,.28)" stroke-width="1"/>
+      <g filter="url(#sg)">
+        <circle cx="48" cy="52" r="2.2" fill="#e8c4b0"/>
+        <circle cx="92" cy="38" r="2.6" fill="var(--rose-hot)"/>
+        <circle cx="128" cy="58" r="2" fill="#f0e6dc"/>
+        <circle cx="168" cy="32" r="2.8" fill="var(--terra)"/>
+        <circle cx="210" cy="48" r="2.2" fill="#f2ddd0"/>
+        <circle cx="248" cy="28" r="2.4" fill="var(--rose-hot)"/>
+        <circle cx="286" cy="55" r="2" fill="#e8c4b0"/>
+        <circle cx="70" cy="70" r="1.8" fill="rgba(255,255,255,.55)"/>
+        <circle cx="190" cy="68" r="1.8" fill="rgba(255,255,255,.45)"/>
+      </g>
+      <defs>
+        <filter id="sg" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="1.2" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+    </svg>
+  </section>
+
+  <section class="card glass donut">
+    <div class="donut-copy">
+      <b>───────</b>
+      <span>··· ····· ···</span>
+      <span>···· ····</span>
+    </div>
+    <div class="ring">
+      <svg viewBox="0 0 36 36" aria-hidden="true">
+        <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="3.2"/>
+        <circle class="glow" cx="18" cy="18" r="14" fill="none" stroke="var(--teal-hot)" stroke-width="3.2"
+          stroke-dasharray="22 88" stroke-linecap="round"
+          style="filter:drop-shadow(0 0 3px var(--teal-hot))"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="card glass line">
+    <svg viewBox="0 0 340 220" preserveAspectRatio="none" aria-hidden="true">
+      <g stroke="rgba(255,255,255,.05)" stroke-width="1">
+        <line x1="20" y1="40" x2="320" y2="40"/><line x1="20" y1="90" x2="320" y2="90"/>
+        <line x1="20" y1="140" x2="320" y2="140"/><line x1="20" y1="190" x2="320" y2="190"/>
+      </g>
+      <path d="M24 150 C60 130, 90 80, 130 100 S180 170, 220 120 S280 60, 318 90"
+        fill="none" stroke="var(--teal)" stroke-width="1.8"
+        style="filter:drop-shadow(0 0 4px var(--teal))"/>
+      <path d="M24 110 C70 150, 100 160, 140 130 S200 70, 240 110 S290 160, 318 140"
+        fill="none" stroke="var(--terra)" stroke-width="1.8"
+        style="filter:drop-shadow(0 0 4px var(--terra))"/>
+      <circle cx="220" cy="120" r="3.2" fill="var(--rose-hot)"
+        style="filter:drop-shadow(0 0 5px var(--rose-hot))"/>
+    </svg>
+  </section>
+
+  <section class="card glass area">
+    <svg viewBox="0 0 220 220" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="ag" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="#c45a4a"/>
+          <stop offset="35%" stop-color="#a85a78"/>
+          <stop offset="65%" stop-color="#4a8a9a"/>
+          <stop offset="100%" stop-color="var(--teal-hot)"/>
+        </linearGradient>
+        <linearGradient id="afade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="url(#ag)" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#1a1b20" stop-opacity="0.15"/>
+        </linearGradient>
+        <filter id="aglow"><feGaussianBlur stdDeviation="1.4"/></filter>
+      </defs>
+      <path d="M8 190 L8 150 C28 140, 40 100, 58 95 S90 130, 108 110 S140 40, 158 55 S185 120, 200 100 L212 110 L212 190 Z"
+        fill="url(#ag)" opacity="0.88"/>
+      <path d="M8 150 C28 140, 40 100, 58 95 S90 130, 108 110 S140 40, 158 55 S185 120, 200 100 L212 110"
+        fill="none" stroke="rgba(180,230,220,.55)" stroke-width="1.4"
+        filter="url(#aglow)"/>
+    </svg>
+  </section>
+
+  <section class="card glass rbars">
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+  </section>
+</div>
+<p class="brand">NOTTION</p>
+</body>
+</html>
