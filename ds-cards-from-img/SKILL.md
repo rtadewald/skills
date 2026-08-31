@@ -12,7 +12,6 @@ disable-model-invocation: true
 # DS Cards ← Img
 
 Recreate **cards only** with measured fidelity. Prefer **mask-local samples** over guessing on the full frame — without spending minutes on per-card vision.
-
 ## Balance (speed × precision)
 
 | Do | Don't |

@@ -1,95 +1,165 @@
 ---
 name: ds-cards-from-img-2
 description: >-
-  Fast card extraction from a UI mock: one vision Read + one inline PIL pass on
-  original bboxes (no disk crops, no sample_cards.py). Silent cards.html under
-  design-systems/<slug>-cards/. Use when the user mentions ds-cards-from-img-2
-  or wants quicker card replication than ds-cards-from-img.
+  Analyze a UI mock image and build a design-system.html (plus assets/css and
+  STACK.md) under design-systems/<slug>/. Use when the user mentions
+  design-system-from-img or asks to extract a design system from a screenshot/mock.
 disable-model-invocation: true
 ---
 
-# DS Cards ← Img (2 — fast)
+# Design System ← Img
 
-Same goal as `ds-cards-from-img` (cards only, measured colors), tuned for **speed**:
+You are a Design System Builder working from a **screenshot / mock image**.
 
-- **No** disk crops, **no** `sample_cards.py`, **no** `boxes.json` / `tokens.json` required
-- Sample on the **original** via bboxes in **one** inline Python pass
-- Still: eyedropper fills/rims, gradient angle, borders, shadows, opacity, layout, quick font match
-
-Prefer this when iterating quickly. Prefer `ds-cards-from-img` when you want the masked script pipeline.
-
-## Communication
-
-- Chat: **paths only**.
-- HTML: **silent** (no method notes / galleries).
+Deeply analyze the image, extract its visual language into organized CSS, and write a clean `design-system.html` from scratch that is visually as close as possible to the mock.
 
 ## INPUT
 
-`$SOURCE` or attached image. Optional scope. Default: all distinct cards visible (cap **8** for speed). Collage → **one** panel.
+Path to the image (`$SOURCE`), or the image attached in the conversation. If missing, ask.
 
 ## OUTPUT
 
+Always work under **`design-systems/`** in the user's project cwd (create the folder if it does not exist).
+
+Inside it, create **one folder per design**, named after the product/screen you infer from the image:
+
+- Prefer the product name visible in the UI (logo, title) → slug kebab-case (`langclean`, `acme-dashboard`).
+- If no clear name: invent a short slug from the climate + function (`warm-agent-disk`, `neon-chat-ops`).
+- If the slug folder already exists, append `-2`, `-3`, … — do not overwrite.
+
+Does not modify `$SOURCE`.
+Do not print a long explanation. Execute, then show the paths created.
+
 ```
-design-systems/<slug>-cards/
-  cards.html
-  reference.[ext]
+design-systems/
+  <slug>/
+    design-system.html
+    STACK.md
+    assets/
+      css/
+        tokens.css
+        layout.css
+        components.css
+        ...
+      images/
+        reference.[ext]   ← copy of $SOURCE
 ```
 
-Existing folder → `-2`, `-3`, …. No `crop-*.png`.
+---
+
+## STEP 0 — FOLDER + NAME
+
+1. Ensure `design-systems/` exists in the cwd.
+2. From the image, choose `<slug>` (see OUTPUT rules).
+3. Create `design-systems/<slug>/`. All later files go **only** inside this folder.
 
 ---
 
-## SPEED
+## STEP 1 — ANALYZE THE IMAGE
 
-- **1×** vision Read of the full image.
-- **1×** Python/PIL on `reference` (bboxes + samples). No second scripts, no `--auto` detector loops.
-- Cap 8 cards. Font match **once**, reuse.
+Read the image carefully. Memorize before writing any file:
 
----
+- **Surfaces** — cards, panels, chrome (header/sidebar)
+- **Background** — page/app backdrop: flat color, gradient, image, noise, pattern, blur; how it sits behind the UI
+- **Colors** — every distinct fill, text, accent, border, chart series (estimate hex/rgba)
+- **Typography** — families (serif/sans/mono), sizes, weights, letter-spacing, hierarchy
+- **Spacing** — padding, gaps, margins, density of the grid
+- **Radius / shadow / border** — how soft or hard the UI feels
+- **Layout** — columns, regions, alignment, aspect (e.g. 16:9 desktop)
+- **Components** — buttons, inputs, chat bubbles, cards, badges, nav, charts, progress bars, heatmaps, 3D/mascot
+- **Decorative effects** — gradients, glows, mesh, glass, patterns
+- **Content** — every visible string (labels, numbers, nav, chat). Keep product language; visible UI text in the HTML → **PT-BR**
 
-## STEP 0 — FOLDER
-
-`design-systems/<slug>-cards/` + `reference.[ext]`.
-
----
-
-## STEP 1 — READ → BBOXES (IN HEAD / NOTES)
-
-From the one Read: id + `(x0,y0,x1,y1)` per card. Do not write crop files.
-
----
-
-## STEP 2 — ONE INLINE PIL PASS
-
-On the original, for page bg + each bbox (inset ~10–15% for fill; 1–6px strips for rims):
-
-- Fill hex + ≥3 gradient stops; infer angle (`0/45/90/135/180/…`) → `linear-gradient(<angle>deg, …)`
-- Rim TL/TR/BL/BR + edge stops (glow where/which color; note if cards differ)
-- Accent hotspots; text light/muted/dark
-- Glass vs opaque (bg bleed?) → `backdrop-filter` or solid
-- Shadow: offset/blur/color → `box-shadow`
-
-No eyeballing palettes. Keep the script short; print hex to use immediately in CSS (no tokens.json required).
+Do not begin writing CSS/HTML until this step is complete (folder from Step 0 may already exist).
 
 ---
 
-## STEP 3 — TYPE (ONCE)
+## STEP 2 — EXTRACT TOKENS → `assets/css/`
 
-In-memory glyph IoU vs local fonts → best `font-family`. No font prose in HTML.
+Inside `design-systems/<slug>/`, create CSS split by concern (merge if thin):
+
+| File | Contents |
+|------|----------|
+| `tokens.css` | `:root` CSS variables: colors, type scale, spacing, radii, shadows |
+| `layout.css` | shell, grid, regions, header, columns |
+| `components.css` | buttons, cards, inputs, chat, badges, nav |
+| `charts.css` | bars, area charts, heatmaps, progress (if present) |
+| `effects.css` | gradients, glows, glass, decorative motion (if present) |
+
+Name by function. Prefer variables in `tokens.css`; components consume `var(--…)`.
+
+Copy `$SOURCE` to `design-systems/<slug>/assets/images/reference.[ext]` so the DS folder stays self-contained.
 
 ---
 
-## STEP 4 — `cards.html`
+## STEP 3 — WRITE `design-system.html` FROM SCRATCH
 
-Silent page: sampled bg + all cards (fill → glass → border glow → shadow → content). Strings/layout from the Read.
+At `design-systems/<slug>/design-system.html`. This is **not** a caption of the image — it is a working HTML recreation of the screen.
+
+**`<head>`:**
+```html
+<head>
+  <!-- fonts -->
+  <link .../>
+
+  <!-- css -->
+  <!-- [what this file contains] -->
+  <link rel="stylesheet" href="assets/css/tokens.css"/>
+  <link rel="stylesheet" href="assets/css/layout.css"/>
+  ...
+</head>
+```
+
+**`<body>`:** recreate every major region from the mock (header, side panel, cards, charts, mascot/3D area, CTAs). Section comments only:
+
+```html
+<body>
+  <!-- header -->
+  ...
+  <!-- agent-panel -->
+  ...
+  <!-- dashboard-grid -->
+  ...
+</body>
+```
+
+**Visual fidelity:**
+- Same layout structure and hierarchy as the mock
+- Colors / type / radius / shadow match the extracted tokens
+- Real content: numbers, labels, chat lines — not lorem
+- Charts approximated in HTML/CSS/SVG (same shape and weight as the mock)
+- 3D/mascot: use `reference` crop or a placeholder with the same footprint if you cannot recreate the mesh; keep position/overlap
+- All visible text in **PT-BR** (do not translate class names, paths, or code)
+
+**Stack:**
+- Prefer plain CSS + variables. Add Tailwind / Lucide / Chart lib only if they clearly help fidelity — then list them in `STACK.md`
+- Keep HTML compact: no useless blank lines, no unused assets
+
+---
+
+## STEP 4 — WRITE `STACK.md`
+
+At `design-systems/<slug>/STACK.md`. One line per technology actually used. No fluff.
+
+```
+- **CSS custom properties** — tokens for color, type, spacing
+- **Google Fonts · X** — display/body (if linked)
+```
+
+Only what is present in the files you wrote.
 
 ---
 
 ## QUALITY BAR
 
-- [ ] ≤1 Read, ≤1 PIL pass, no disk crops
-- [ ] Sampled fills/rims/angles (not invented)
-- [ ] Borders/shadows/opacity plausible
-- [ ] HTML silent; chat = paths
+Before finishing, verify:
+
+- [ ] Output lives under `design-systems/<slug>/` (never loose next to `$SOURCE`)
+- [ ] Every major region of the mock appears in `design-system.html`
+- [ ] Tokens live in CSS variables; no random one-off hex scattered without reason
+- [ ] Assets resolve relative to `design-system.html`
+- [ ] Visible text is PT-BR
+- [ ] Opening `design-system.html` in a browser looks like the mock (layout + climate), not a generic dashboard
+- [ ] `STACK.md` and `assets/images/reference.*` exist
 
 Show the paths. Stop.

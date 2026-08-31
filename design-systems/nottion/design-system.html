@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Nottion</title>
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- css -->
+  <!-- tokens: cores, tipo, espaçamento, raios, sombras -->
+  <link rel="stylesheet" href="assets/css/tokens.css"/>
+  <!-- layout: shell, grid, regiões -->
+  <link rel="stylesheet" href="assets/css/layout.css"/>
+  <!-- components: nav, cards, sliders, lista, métricas -->
+  <link rel="stylesheet" href="assets/css/components.css"/>
+  <!-- charts: svg charts, donut, barras -->
+  <link rel="stylesheet" href="assets/css/charts.css"/>
+  <!-- effects: hero art, flora, gradientes -->
+  <link rel="stylesheet" href="assets/css/effects.css"/>
+</head>
+<body>
+  <!-- shell -->
+  <div class="shell" role="application" aria-label="Painel Nottion">
+    <img class="flora flora-tree" src="assets/images/tree.png" alt="" aria-hidden="true"/>
+    <img class="flora flora-leaves" src="assets/images/leaves.png" alt="" aria-hidden="true"/>
+    <img class="flora flora-flower" src="assets/images/flower.png" alt="" aria-hidden="true"/>
+
+    <div class="shell-inner">
+      <!-- hero -->
+      <header class="hero">
+        <div class="hero-art" role="img" aria-label="Paisagem com montanha e flores"></div>
+        <nav class="nav" aria-label="Principal">
+          <div class="nav-brand" aria-hidden="true"></div>
+          <a href="#">Visão geral</a>
+          <a href="#">Sinais</a>
+          <a href="#">Atlas</a>
+          <span class="nav-sep" aria-hidden="true"></span>
+          <a href="#">Estúdio</a>
+          <span class="nav-cta">Ao vivo</span>
+        </nav>
+      </header>
+
+      <!-- dashboard-grid -->
+      <div class="main">
+        <!-- sidebar -->
+        <aside class="sidebar" aria-label="Canais">
+          <div class="sliders">
+            <div class="slider-row">
+              <div class="slider-meta"><span>Florescência</span><span>68%</span></div>
+              <div class="track">
+                <div class="track-fill teal"></div>
+                <div class="track-knob"></div>
+              </div>
+            </div>
+            <div class="slider-row">
+              <div class="slider-meta"><span>Deriva</span><span>42%</span></div>
+              <div class="track">
+                <div class="track-fill coral"></div>
+                <div class="track-knob"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="list-panel">
+            <div class="list-item active">
+              <div class="avatar" aria-hidden="true"></div>
+              <div class="list-text">
+                <div class="list-title">Cume norte</div>
+                <div class="list-sub">Pulso · 12m</div>
+              </div>
+              <div class="radio on" aria-hidden="true"></div>
+            </div>
+            <div class="list-item">
+              <div class="avatar a2" aria-hidden="true"></div>
+              <div class="list-text">
+                <div class="list-title">Riacho do vale</div>
+                <div class="list-sub">Inativo · 4h</div>
+              </div>
+              <div class="radio" aria-hidden="true"></div>
+            </div>
+            <div class="list-item">
+              <div class="avatar a3" aria-hidden="true"></div>
+              <div class="list-text">
+                <div class="list-title">Rede do dossel</div>
+                <div class="list-sub">Sinc · 28m</div>
+              </div>
+              <div class="radio" aria-hidden="true"></div>
+            </div>
+            <div class="list-item">
+              <div class="avatar a4" aria-hidden="true"></div>
+              <div class="list-text">
+                <div class="list-title">Camada de névoa</div>
+                <div class="list-sub">Quente · 1h</div>
+              </div>
+              <div class="radio" aria-hidden="true"></div>
+            </div>
+            <div class="list-item">
+              <div class="avatar" aria-hidden="true"></div>
+              <div class="list-text">
+                <div class="list-title">Grade de pétalas</div>
+                <div class="list-sub">Ao vivo · 2m</div>
+              </div>
+              <div class="radio on" aria-hidden="true"></div>
+            </div>
+            <div class="list-item">
+              <div class="avatar a2" aria-hidden="true"></div>
+              <div class="list-text">
+                <div class="list-title">Corredor do céu</div>
+                <div class="list-sub">Na fila</div>
+              </div>
+              <div class="radio" aria-hidden="true"></div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- charts -->
+        <section class="charts" aria-label="Visualizações">
+          <article class="card">
+            <div class="card-head">
+              <span class="card-title">Trilha do terreno</span>
+              <span class="card-meta">Δ 2,4%</span>
+            </div>
+            <div class="chart-body">
+              <svg viewBox="0 0 280 140" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M8 110 C40 100, 55 70, 80 75 S120 110, 150 90 S200 40, 230 55 S260 90, 272 70"
+                      fill="none" stroke="#5a5558" stroke-width="1.2"/>
+                <path d="M8 95 C35 85, 60 55, 90 60 S130 95, 160 70 S210 30, 240 48 S265 80, 272 58"
+                      fill="none" stroke="#4ebeae" stroke-width="1.6"
+                      style="filter: drop-shadow(0 0 4px rgba(78,190,174,.5))"/>
+                <path d="M8 120 C45 115, 70 100, 100 105 S145 125, 175 110 S220 85, 250 95 S268 105, 272 100"
+                      fill="none" stroke="#e07a6a" stroke-width="1.4" opacity="0.85"/>
+                <circle class="glow-dot" cx="90" cy="60" r="3.5" fill="#4ebeae"/>
+                <circle class="glow-dot" cx="160" cy="70" r="3" fill="#4ebeae"/>
+                <circle class="glow-dot" cx="240" cy="48" r="3.5" fill="#4ebeae"/>
+                <circle class="glow-dot" cx="175" cy="110" r="2.5" fill="#e07a6a"/>
+                <circle cx="100" cy="105" r="2" fill="#e07a6a"/>
+              </svg>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <span class="card-title">Frequência</span>
+              <span class="card-meta">n=48</span>
+            </div>
+            <div class="chart-body">
+              <svg viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true">
+                <g stroke="#6a6568" stroke-width="1.2" stroke-linecap="round">
+                  <line x1="12" y1="120" x2="12" y2="85"/><line x1="20" y1="120" x2="20" y2="70"/>
+                  <line x1="28" y1="120" x2="28" y2="95"/><line x1="36" y1="120" x2="36" y2="55"/>
+                  <line x1="44" y1="120" x2="44" y2="78"/><line x1="52" y1="120" x2="52" y2="48"/>
+                  <line x1="60" y1="120" x2="60" y2="88"/><line x1="68" y1="120" x2="68" y2="62"/>
+                  <line x1="76" y1="120" x2="76" y2="100"/><line x1="84" y1="120" x2="84" y2="40"/>
+                  <line x1="92" y1="120" x2="92" y2="72"/><line x1="100" y1="120" x2="100" y2="58"/>
+                  <line x1="108" y1="120" x2="108" y2="90"/><line x1="116" y1="120" x2="116" y2="45"/>
+                  <line x1="124" y1="120" x2="124" y2="68"/><line x1="132" y1="120" x2="132" y2="82"/>
+                  <line x1="140" y1="120" x2="140" y2="52"/><line x1="148" y1="120" x2="148" y2="75"/>
+                  <line x1="156" y1="120" x2="156" y2="98"/><line x1="164" y1="120" x2="164" y2="60"/>
+                  <line x1="172" y1="120" x2="172" y2="88"/><line x1="180" y1="120" x2="180" y2="70"/>
+                  <line x1="188" y1="120" x2="188" y2="92"/>
+                </g>
+                <g fill="#e07a6a">
+                  <circle cx="36" cy="55" r="2.2"/><circle cx="52" cy="48" r="2.2"/>
+                  <circle cx="84" cy="40" r="2.5"/><circle cx="116" cy="45" r="2.2"/>
+                  <circle cx="140" cy="52" r="2.2"/><circle cx="164" cy="60" r="2"/>
+                </g>
+                <g fill="#4ebeae">
+                  <circle cx="20" cy="70" r="2"/><circle cx="68" cy="62" r="2"/>
+                  <circle cx="100" cy="58" r="2"/><circle cx="180" cy="70" r="2"/>
+                </g>
+              </svg>
+            </div>
+          </article>
+
+          <article class="card card-donut">
+            <div class="card-head">
+              <span class="card-title">Composição</span>
+              <span class="card-meta">Hoje</span>
+            </div>
+            <div class="metric-list">
+              <div class="metric">
+                <span class="metric-label">Ativo</span>
+                <div class="metric-value">64,2<span>+1,8</span></div>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Repouso</span>
+                <div class="metric-value">22,0<span>−0,4</span></div>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Ruído</span>
+                <div class="metric-value">13,8</div>
+              </div>
+            </div>
+            <div class="donut-wrap">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <circle cx="50" cy="50" r="34" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="10"/>
+                <circle cx="50" cy="50" r="34" fill="none" stroke="#3a353a" stroke-width="10"
+                        stroke-dasharray="80 134" stroke-dashoffset="20" transform="rotate(-90 50 50)"/>
+                <circle cx="50" cy="50" r="34" fill="none" stroke="#4ebeae" stroke-width="10"
+                        stroke-dasharray="120 94" stroke-dashoffset="-60" transform="rotate(-90 50 50)"
+                        style="filter: drop-shadow(0 0 6px rgba(78,190,174,.55))"/>
+                <circle cx="50" cy="50" r="34" fill="none" stroke="#e07a6a" stroke-width="10"
+                        stroke-dasharray="30 184" stroke-dashoffset="-180" transform="rotate(-90 50 50)"/>
+              </svg>
+              <div class="donut-center">
+                <strong>64%</strong>
+                <span>Parte</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <span class="card-title">Oscilação</span>
+              <span class="card-meta">2 séries</span>
+            </div>
+            <div class="chart-body">
+              <svg viewBox="0 0 280 140" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M0 70 C20 40, 40 40, 60 70 S100 100, 120 70 S160 40, 180 70 S220 100, 240 70 S270 40, 280 55"
+                      fill="none" stroke="#4ebeae" stroke-width="1.8"
+                      style="filter: drop-shadow(0 0 4px rgba(78,190,174,.45))"/>
+                <path d="M0 85 C20 60, 40 60, 60 85 S100 110, 120 85 S160 60, 180 85 S220 110, 240 85 S270 60, 280 72"
+                      fill="none" stroke="#e07a6a" stroke-width="1.4" opacity="0.9"/>
+              </svg>
+            </div>
+          </article>
+
+          <article class="card card-span2">
+            <div class="card-head">
+              <span class="card-title">Camadas de faixa</span>
+              <span class="card-meta">Empilhado · 3</span>
+            </div>
+            <div class="chart-body">
+              <svg viewBox="0 0 420 140" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="areaTeal" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#4ebeae" stop-opacity="0.75"/>
+                    <stop offset="100%" stop-color="#4ebeae" stop-opacity="0.05"/>
+                  </linearGradient>
+                  <linearGradient id="areaPink" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#c97b8a" stop-opacity="0.7"/>
+                    <stop offset="100%" stop-color="#c97b8a" stop-opacity="0.05"/>
+                  </linearGradient>
+                  <linearGradient id="areaOrange" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#d4895a" stop-opacity="0.7"/>
+                    <stop offset="100%" stop-color="#d4895a" stop-opacity="0.05"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0 120 L0 90 C40 85, 70 50, 110 55 S170 100, 210 85 S280 35, 330 50 S380 90, 420 75 L420 120 Z"
+                      fill="url(#areaOrange)" opacity="0.85"/>
+                <path d="M0 120 L0 100 C50 95, 90 70, 130 75 S190 110, 240 95 S310 55, 360 70 S400 95, 420 88 L420 120 Z"
+                      fill="url(#areaPink)" opacity="0.8"/>
+                <path d="M0 120 L0 105 C45 100, 80 85, 120 88 S180 115, 230 105 S300 75, 350 90 S395 110, 420 100 L420 120 Z"
+                      fill="url(#areaTeal)" opacity="0.85"/>
+                <path d="M0 90 C40 85, 70 50, 110 55 S170 100, 210 85 S280 35, 330 50 S380 90, 420 75"
+                      fill="none" stroke="#d4895a" stroke-width="1" opacity="0.6"/>
+                <path d="M0 100 C50 95, 90 70, 130 75 S190 110, 240 95 S310 55, 360 70 S400 95, 420 88"
+                      fill="none" stroke="#c97b8a" stroke-width="1" opacity="0.55"/>
+                <path d="M0 105 C45 100, 80 85, 120 88 S180 115, 230 105 S300 75, 350 90 S395 110, 420 100"
+                      fill="none" stroke="#4ebeae" stroke-width="1.2"
+                      style="filter: drop-shadow(0 0 3px rgba(78,190,174,.4))"/>
+              </svg>
+            </div>
+          </article>
+        </section>
+
+        <!-- intensity-rails -->
+        <aside class="right-bars" aria-label="Trilhos de intensidade">
+          <div class="hbar teal" style="width:92%"></div>
+          <div class="hbar mid" style="width:58%"></div>
+          <div class="hbar coral" style="width:74%"></div>
+          <div class="hbar dim" style="width:40%"></div>
+          <div class="hbar mid" style="width:85%"></div>
+          <div class="hbar teal" style="width:48%"></div>
+          <div class="hbar coral" style="width:66%"></div>
+          <div class="hbar dim" style="width:30%"></div>
+          <div class="hbar mid" style="width:70%"></div>
+          <div class="hbar teal" style="width:88%"></div>
+          <div class="hbar dim" style="width:45%"></div>
+          <div class="hbar coral" style="width:55%"></div>
+          <div class="hbar mid" style="width:78%"></div>
+          <div class="hbar teal" style="width:36%"></div>
+          <div class="hbar dim" style="width:62%"></div>
+          <div class="hbar coral" style="width:90%"></div>
+          <div class="hbar mid" style="width:42%"></div>
+          <div class="hbar teal" style="width:68%"></div>
+          <div class="hbar dim" style="width:50%"></div>
+          <div class="hbar coral" style="width:33%"></div>
+          <div class="hbar mid" style="width:76%"></div>
+          <div class="hbar teal" style="width:54%"></div>
+          <div class="hbar dim" style="width:82%"></div>
+          <div class="hbar coral" style="width:44%"></div>
+          <div class="hbar mid" style="width:60%"></div>
+          <div class="hbar teal" style="width:71%"></div>
+          <div class="hbar dim" style="width:38%"></div>
+          <div class="hbar coral" style="width:86%"></div>
+          <div class="hbar mid" style="width:52%"></div>
+          <div class="hbar teal" style="width:64%"></div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- brand -->
+  <p class="brand">Nottion</p>
+</body>
+</html>

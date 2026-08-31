@@ -20,6 +20,7 @@ Quando quero tirar a linguagem visual de uma referência e deixar pronta pra imp
 - [`ds-from-svg`](./ds-from-svg): wireframe/mock SVG → `design-systems/<slug>/` com HTML + CSS
 - [`ds-cards-from-img`](./ds-cards-from-img): mock → cards com máscara + `sample_cards.py` (mais preciso)
 - [`ds-cards-from-img-2`](./ds-cards-from-img-2): o mesmo, fluxo **rápido** (bbox + PIL na original, sem crops/script)
+- [`img-to-html`](./img-to-html): mock → `measure.py` + vocab fechado → `index.html` + render/diff 2–3× (assets via OpenRouter)
 
 ## Imagem
 
