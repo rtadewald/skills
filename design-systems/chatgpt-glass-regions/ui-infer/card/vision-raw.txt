@@ -1,0 +1,29 @@
+{
+  "shape": "rounded",
+  "radius_css": "16px",
+  "background": {
+    "kind": "linear",
+    "css": "linear-gradient(180deg, rgba(86, 77, 145, 0.45) 0%, rgba(28, 26, 58, 0.45) 100%)"
+  },
+  "border": {
+    "kind": "solid",
+    "width_px": 1,
+    "css": "1px solid rgba(134, 117, 219, 0.2)"
+  },
+  "shadow": [
+    {
+      "css": "0 0 40px rgba(26, 22, 53, 0.14)"
+    }
+  ],
+  "glass": {
+    "backdrop_blur_px": 12,
+    "notes": "glass_likely true, alpha_est 0.453"
+  },
+  "typography": {
+    "color": "#a997ed",
+    "weight": 500,
+    "size_px": null
+  },
+  "confidence": 85,
+  "notes": "Card with subtle glassmorphism, vertical gradient background utilizing alpha estimation, outer glow, and visible border radius (adjusted from measured 2px to 16px visually based on standard card curves)."
+}

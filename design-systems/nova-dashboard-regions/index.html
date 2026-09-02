@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1536" />
+  <title>NOVA — typography shell</title>
+  <link rel="stylesheet" href="typography.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      background: #0d0d0d;
+      padding: 24px;
+    }
+
+    .viewport {
+      width: 1536px;
+      height: 1024px;
+      flex-shrink: 0;
+      transform-origin: top center;
+    }
+
+    @media (max-width: 1560px) {
+      .viewport { transform: scale(calc(100vw / 1560)); }
+    }
+
+    .shell {
+      position: relative;
+      width: 1536px;
+      height: 1024px;
+      background: #050608;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      color: #e8e8ec;
+    }
+
+    .abs { position: absolute; }
+
+    /* chrome — tipografia (family/weight/size/color/tracking) vem de typography.css */
+    .lnk {
+      white-space: nowrap;
+    }
+
+    .lnk.is-active {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      padding: 8px 18px;
+    }
+
+    .t3 {
+      white-space: nowrap;
+    }
+
+    .t3.accent,
+    .t3 .accent { color: #a3e635; }
+
+    .t2 {
+      white-space: nowrap;
+    }
+
+    .h1 {
+      white-space: nowrap;
+    }
+
+    .h1.accent { color: #a3e635; }
+
+    .t1 {
+      white-space: nowrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: 48px;
+      padding: 0 28px;
+      border-radius: 999px;
+      border: none;
+      background: #fff;
+      cursor: default;
+      white-space: nowrap;
+    }
+
+    .btn2 {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: 48px;
+      padding: 0 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: transparent;
+      cursor: default;
+      white-space: nowrap;
+    }
+
+    .btn2.sm {
+      height: 32px;
+      padding: 0 14px;
+      font-size: 13px;
+      border-radius: 8px;
+    }
+
+    .h3 { white-space: nowrap; }
+
+    .logo {
+      font-size: 22px;
+      letter-spacing: 0.42em;
+      color: #fff;
+    }
+
+    .ph {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px dashed rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+    }
+
+    .ph-img { border-radius: 16px; }
+
+    .nav-bar {
+      top: 0; left: 0; right: 0;
+      height: 96px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .tool-ico {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .av {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #a3e635;
+      margin: 0 6px 1px;
+      vertical-align: middle;
+    }
+
+    .rail-label {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      line-height: 1.25;
+      text-align: center;
+      white-space: normal;
+      max-width: 88px;
+    }
+
+    .card {
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .card-label { font-size: 14px; letter-spacing: 0.12em; }
+    .card-meta { font-size: 14px; }
+    .tl-sub { font-size: 12px; letter-spacing: 0.06em; }
+    .tl-status { font-size: 12px; letter-spacing: 0.08em; }
+
+    .side-deco {
+      top: 170px;
+      left: 36px;
+      width: 2px;
+      height: 220px;
+      border-left: 2px dashed rgba(255, 255, 255, 0.18);
+    }
+  </style>
+</head>
+<body>
+  <div class="viewport">
+    <div class="shell">
+
+      <!-- nav -->
+      <div class="nav-bar abs"></div>
+      <div class="h3 logo abs" style="top:42px;left:91px">NOVA</div>
+
+      <span class="lnk is-active abs" style="top:34px;left:414px">Dashboard</span>
+      <span class="lnk abs" style="top:42px;left:560px">Missions</span>
+      <span class="lnk abs" style="top:42px;left:678px">Star Map</span>
+      <span class="lnk abs" style="top:42px;left:799px">Fleet</span>
+      <span class="lnk abs" style="top:42px;left:889px">Research</span>
+      <span class="lnk abs" style="top:42px;left:1015px">Logs</span>
+
+      <div class="tool-ico ph abs" style="top:32px;left:1360px"></div>
+      <div class="tool-ico ph abs" style="top:32px;left:1410px"></div>
+      <div class="av ph abs" style="top:30px;left:1460px"></div>
+
+      <!-- hero left -->
+      <div class="side-deco abs"></div>
+      <p class="t3 abs" style="top:146px;left:130px;font-size:15px;letter-spacing:0.1em">
+        SYSTEM STATUS <span class="status-dot"></span><span class="accent">NOMINAL</span>
+      </p>
+
+      <div class="h1 abs" style="top:203px;left:116px">EXPLORE.</div>
+      <div class="h1 abs" style="top:274px;left:116px">DISCOVER.</div>
+      <div class="h1 accent abs" style="top:346px;left:118px">ENDURE.</div>
+
+      <p class="t1 abs" style="top:426px;left:116px">Navigate the unknown, catalog new worlds,</p>
+      <p class="t1 abs" style="top:456px;left:114px">and expand the boundaries of human presence.</p>
+
+      <button class="btn abs" type="button" style="top:515px;left:114px">LAUNCH MISSION</button>
+      <button class="btn2 abs" type="button" style="top:515px;left:355px">VIEW STAR MAP</button>
+
+      <!-- media -->
+      <div class="ph ph-img abs" style="top:110px;left:560px;width:620px;height:440px"></div>
+      <p class="t2 abs" style="top:220px;left:1148px;font-size:14px">TARGET: KEPLER-186F</p>
+      <p class="t2 abs" style="top:266px;left:1147px;font-size:14px">DISTANCE: 812 LY</p>
+
+      <!-- rail -->
+      <div class="h2 abs" style="top:207px;left:1440px">07</div>
+      <div class="t3 rail-label abs" style="top:241px;left:1418px">ACTIVE<br />MISSIONS</div>
+
+      <div class="h2 abs" style="top:372px;left:1440px">23</div>
+      <div class="t3 rail-label abs" style="top:404px;left:1418px">PLANETS<br />MAPPED</div>
+
+      <div class="h2 abs" style="top:510px;left:1429px">1.2M</div>
+      <div class="t3 rail-label abs" style="top:540px;left:1410px;max-width:100px">DATA POINTS<br />COLLECTED</div>
+
+      <!-- card shells (approx OCR) -->
+      <div class="card abs" style="top:600px;left:34px;width:300px;height:360px"></div>
+      <div class="card abs" style="top:600px;left:348px;width:300px;height:360px"></div>
+      <div class="card abs" style="top:600px;left:662px;width:300px;height:360px"></div>
+      <div class="card abs" style="top:600px;left:976px;width:340px;height:360px"></div>
+
+      <!-- card 1 -->
+      <span class="t3 card-label abs" style="top:627px;left:50px">FLEET STATUS</span>
+      <span class="t2 card-meta abs" style="top:629px;left:263px">3/5</span>
+      <div class="ph abs" style="top:670px;left:50px;width:268px;height:180px;border-radius:12px"></div>
+      <span class="h3 abs" style="top:884px;left:50px;font-size:20px">NSS VOYAGER</span>
+      <span class="t3 accent abs" style="top:888px;left:180px;font-size:13px"><span class="status-dot"></span>READY</span>
+      <span class="t3 abs" style="top:946px;left:260px;font-size:12px">82%</span>
+
+      <!-- card 2 -->
+      <span class="t3 card-label abs" style="top:627px;left:359px">NEXT MISSION</span>
+      <span class="t3 card-meta abs" style="top:629px;left:552px;font-size:14px">ETA 2D 14H</span>
+      <div class="ph abs" style="top:670px;left:364px;width:268px;height:200px;border-radius:12px"></div>
+      <span class="h3 abs" style="top:903px;left:371px;font-size:20px">KEPLER-186F</span>
+      <span class="t2 abs" style="top:934px;left:371px;font-size:15px;color:rgba(255,255,255,0.55)">SURVEY MISSION</span>
+
+      <!-- card 3 -->
+      <span class="t3 card-label abs" style="top:627px;left:689px">SYSTEM SCAN</span>
+      <span class="t3 accent abs" style="top:629px;left:870px;font-size:14px"><span class="status-dot"></span>LIVE</span>
+      <div class="ph abs" style="top:670px;left:678px;width:268px;height:200px;border-radius:12px"></div>
+      <span class="h2 abs" style="top:906px;left:689px;font-size:28px">7</span>
+      <span class="t2 abs" style="top:940px;left:689px;font-size:14px;letter-spacing:0.06em">SIGNALS DETECTED</span>
+      <button class="btn2 sm abs" type="button" style="top:920px;left:838px">VIEW</button>
+
+      <!-- card 4 timeline -->
+      <span class="t3 card-label abs" style="top:627px;left:984px">MISSION TIMELINE</span>
+      <span class="t3 card-meta abs" style="top:629px;left:1202px;font-size:14px">UPCOMING</span>
+
+      <span class="t2 abs" style="top:684px;left:1045px">Engine Calibration</span>
+      <span class="t3 accent tl-status abs" style="top:686px;left:1205px">COMPLETE</span>
+      <span class="t3 tl-sub abs" style="top:704px;left:1045px">09:15 UTC</span>
+
+      <span class="t2 abs" style="top:753px;left:1071px">Gravity Assist</span>
+      <span class="t3 tl-sub abs" style="top:759px;left:1237px">16:40</span>
+      <span class="t3 accent tl-status abs" style="top:775px;left:1071px">IN PROGRESS</span>
+
+      <span class="h3 abs" style="top:827px;left:1045px">Arrival: Kepler-186F</span>
+      <span class="t3 tl-sub abs" style="top:852px;left:1045px">ETA 2D 14H</span>
+
+      <span class="t2 abs" style="top:911px;left:1070px;color:rgba(255,255,255,0.4)">Surface Survey</span>
+      <span class="t3 tl-status abs" style="top:931px;left:1070px;color:rgba(255,255,255,0.35)">PENDING</span>
+
+      <!-- scroll -->
+      <div class="ph ph-img abs" style="top:820px;left:1390px;width:110px;height:70px;border-radius:14px"></div>
+      <span class="t3 abs" style="top:886px;left:1402px;font-size:12px;letter-spacing:0.1em;text-align:center;width:80px;white-space:normal;line-height:1.3">SCROLL TO<br />EXPLORE</span>
+
+    </div>
+  </div>
+</body>
+</html>

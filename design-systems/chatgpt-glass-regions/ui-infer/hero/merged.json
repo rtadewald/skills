@@ -1,0 +1,164 @@
+{
+  "measured": {
+    "type": "hero",
+    "box": [
+      240,
+      120,
+      760,
+      610
+    ],
+    "size": [
+      520,
+      490
+    ],
+    "fill": "#252445",
+    "gradient": {
+      "angle_deg": 180,
+      "axis": "vertical",
+      "stops": [
+        {
+          "pct": 0,
+          "hex": "#685fa5"
+        },
+        {
+          "pct": 25,
+          "hex": "#1e1d3c"
+        },
+        {
+          "pct": 50,
+          "hex": "#181835"
+        },
+        {
+          "pct": 75,
+          "hex": "#12132b"
+        },
+        {
+          "pct": 100,
+          "hex": "#181831"
+        }
+      ]
+    },
+    "rim": {
+      "top": [
+        "#1b1c38",
+        "#232346",
+        "#14142c",
+        "#0d0a1d",
+        "#0d0a21"
+      ],
+      "bottom": [
+        "#13152c",
+        "#1d1d43",
+        "#11112b",
+        "#100e26",
+        "#100d2a"
+      ],
+      "left": [
+        "#1b1c38",
+        "#1e1f3e",
+        "#23254c",
+        "#1c1f40",
+        "#13152c"
+      ],
+      "right": [
+        "#0e0a21",
+        "#100d2c",
+        "#0e0c24",
+        "#0f0c29",
+        "#100d2a"
+      ],
+      "TL": "#1b1c38",
+      "TR": "#0d0a21",
+      "BL": "#13152c",
+      "BR": "#100d2a"
+    },
+    "radius_px": 11,
+    "glass_likely": true,
+    "fill_variance": 972.7,
+    "alpha": {
+      "alpha_est": 0.052,
+      "fill_rgb": [
+        33,
+        33,
+        64
+      ],
+      "bg_rgb": [
+        25,
+        25,
+        55
+      ],
+      "fill_hex": "#212040",
+      "bg_hex": "#181837"
+    },
+    "outer": {
+      "detected": true,
+      "delta": 6.71,
+      "ring_hex": "#1f1e3f",
+      "far_hex": "#232044",
+      "kind": "shadow",
+      "suggest_blur_px": 40,
+      "suggest_opacity": 0.084
+    },
+    "text": {
+      "light": "#c9c7e0",
+      "muted": "#605c8f"
+    },
+    "lighting": {
+      "top_brightness": 30.2,
+      "bottom_brightness": 28.9,
+      "top_lit": false
+    }
+  },
+  "vision": {
+    "shape": "rounded",
+    "radius_css": "11px",
+    "background": {
+      "kind": "linear",
+      "css": "linear-gradient(180deg, rgba(104, 95, 165, 0.2) 0%, rgba(30, 29, 60, 0.4) 25%, rgba(24, 24, 53, 0.4) 50%, rgba(18, 19, 43, 0.4) 75%, rgba(24, 24, 49, 0.4) 100%)"
+    },
+    "border": {
+      "kind": "gradient",
+      "width_px": 1,
+      "css": "linear-gradient(180deg, rgba(104, 95, 165, 0.5), rgba(29, 29, 67, 0.5))"
+    },
+    "shadow": [
+      {
+        "css": "0px 4px 40px 0px rgba(31, 30, 63, 0.08)"
+      },
+      {
+        "css": "inset 0px 1px 0px 0px rgba(104, 95, 165, 0.2)"
+      }
+    ],
+    "glass": {
+      "backdrop_blur_px": 12,
+      "notes": "Uses semi-transparent gradient background with backdrop-filter for glassmorphism."
+    },
+    "typography": {
+      "color": "#c9c7e0",
+      "weight": 500,
+      "size_px": null
+    },
+    "confidence": 90,
+    "notes": "Extracted gradient values and adjusted opacity for glass effect. Added inset shadow for top highlight."
+  },
+  "merged_css": {
+    "border_radius": "11px",
+    "background": "linear-gradient(180deg, rgba(104,95,165,0.200) 0%, rgba(30,29,60,0.200) 25%, rgba(24,24,53,0.200) 50%, rgba(18,19,43,0.200) 75%, rgba(24,24,49,0.200) 100%)",
+    "border": "1px solid rgba(35,35,70,0.350)",
+    "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(27,28,56,0.450), 0 4px 40px rgba(31,30,63,0.084)",
+    "backdrop_filter": "blur(12px)",
+    "color": "#c9c7e0",
+    "font_size_px": 172,
+    "font_weight": 500,
+    "height_px": 490,
+    "min_width_px": 520,
+    "alpha_used": 0.2,
+    "border_vision": "linear-gradient(180deg, rgba(104, 95, 165, 0.5), rgba(29, 29, 67, 0.5))",
+    "shadow_vision": [
+      "0px 4px 40px 0px rgba(31, 30, 63, 0.08)",
+      "inset 0px 1px 0px 0px rgba(104, 95, 165, 0.2)"
+    ],
+    "background_vision": "linear-gradient(180deg, rgba(104, 95, 165, 0.2) 0%, rgba(30, 29, 60, 0.4) 25%, rgba(24, 24, 53, 0.4) 50%, rgba(18, 19, 43, 0.4) 75%, rgba(24, 24, 49, 0.4) 100%)"
+  },
+  "merge_policy": "fill/gradient/rim hex from pixels; alpha from VLM when pixel alpha\u226aglass; blur+shape from VLM"
+}

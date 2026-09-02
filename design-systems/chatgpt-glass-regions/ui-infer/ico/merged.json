@@ -1,0 +1,164 @@
+{
+  "measured": {
+    "type": "ico",
+    "box": [
+      44,
+      108,
+      68,
+      132
+    ],
+    "size": [
+      24,
+      24
+    ],
+    "fill": "#a78be7",
+    "gradient": {
+      "angle_deg": 270,
+      "axis": "horizontal",
+      "stops": [
+        {
+          "pct": 0,
+          "hex": "#876be6"
+        },
+        {
+          "pct": 25,
+          "hex": "#ac90e8"
+        },
+        {
+          "pct": 50,
+          "hex": "#b693f3"
+        },
+        {
+          "pct": 75,
+          "hex": "#ad8ce5"
+        },
+        {
+          "pct": 100,
+          "hex": "#aa8de2"
+        }
+      ]
+    },
+    "rim": {
+      "top": [
+        "#7f6cda",
+        "#8d74e0",
+        "#a682f5",
+        "#a988f4",
+        "#9375ec"
+      ],
+      "bottom": [
+        "#6458bb",
+        "#6856b9",
+        "#8d7bcb",
+        "#8776c7",
+        "#5c4baa"
+      ],
+      "left": [
+        "#806fda",
+        "#8268e1",
+        "#826bde",
+        "#6f5cca",
+        "#6356b7"
+      ],
+      "right": [
+        "#9176ea",
+        "#ab89f9",
+        "#bb9cf5",
+        "#9d84d8",
+        "#5b4bad"
+      ],
+      "TL": "#866fde",
+      "TR": "#a384f2",
+      "BL": "#6a58bf",
+      "BR": "#8977c5"
+    },
+    "radius_px": 9,
+    "glass_likely": true,
+    "fill_variance": 1179.13,
+    "alpha": {
+      "alpha_est": 0.55,
+      "fill_rgb": [
+        171,
+        141,
+        231
+      ],
+      "bg_rgb": [
+        91,
+        83,
+        169
+      ],
+      "fill_hex": "#aa8de7",
+      "bg_hex": "#5b53a9"
+    },
+    "outer": {
+      "detected": true,
+      "delta": 41.99,
+      "ring_hex": "#6358b2",
+      "far_hex": "#514d8e",
+      "kind": "glow",
+      "suggest_blur_px": 40,
+      "suggest_opacity": 0.525
+    },
+    "text": {
+      "light": "#b496f2",
+      "muted": "#745fc8"
+    },
+    "lighting": {
+      "top_brightness": 169.2,
+      "bottom_brightness": 123.0,
+      "top_lit": true
+    }
+  },
+  "vision": {
+    "shape": "rounded",
+    "radius_css": "9px",
+    "background": {
+      "kind": "linear",
+      "css": "linear-gradient(270deg, rgba(135, 107, 230, 0.55) 0%, rgba(172, 144, 232, 0.55) 25%, rgba(182, 147, 243, 0.55) 50%, rgba(173, 140, 229, 0.55) 75%, rgba(170, 141, 226, 0.55) 100%)"
+    },
+    "border": {
+      "kind": "gradient",
+      "width_px": 1,
+      "css": "linear-gradient(to bottom, #9375ec, #5c4baa)"
+    },
+    "shadow": [
+      {
+        "css": "0px 0px 40px rgba(99, 88, 178, 0.525)"
+      },
+      {
+        "css": "inset 0 1px 1px rgba(255, 255, 255, 0.15)"
+      }
+    ],
+    "glass": {
+      "backdrop_blur_px": 12,
+      "notes": "Semi-transparent gradient fill with background blur"
+    },
+    "typography": {
+      "color": "#b496f2",
+      "weight": 500,
+      "size_px": null
+    },
+    "confidence": 85,
+    "notes": "Glassmorphism icon box with horizontal gradient and top highlight. Border synthesized from rim values."
+  },
+  "merged_css": {
+    "border_radius": "9px",
+    "background": "linear-gradient(270deg, rgba(135,107,230,0.550) 0%, rgba(172,144,232,0.550) 25%, rgba(182,147,243,0.550) 50%, rgba(173,140,229,0.550) 75%, rgba(170,141,226,0.550) 100%)",
+    "border": "1px solid rgba(169,136,244,0.550)",
+    "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(163,132,242,0.450), 0 0 40px rgba(99,88,178,0.525)",
+    "backdrop_filter": "blur(12px)",
+    "color": "#b496f2",
+    "font_size_px": 11,
+    "font_weight": 500,
+    "height_px": 24,
+    "min_width_px": 24,
+    "alpha_used": 0.55,
+    "border_vision": "linear-gradient(to bottom, #9375ec, #5c4baa)",
+    "shadow_vision": [
+      "0px 0px 40px rgba(99, 88, 178, 0.525)",
+      "inset 0 1px 1px rgba(255, 255, 255, 0.15)"
+    ],
+    "background_vision": "linear-gradient(270deg, rgba(135, 107, 230, 0.55) 0%, rgba(172, 144, 232, 0.55) 25%, rgba(182, 147, 243, 0.55) 50%, rgba(173, 140, 229, 0.55) 75%, rgba(170, 141, 226, 0.55) 100%)"
+  },
+  "merge_policy": "fill/gradient/rim hex from pixels; alpha from VLM when pixel alpha\u226aglass; blur+shape from VLM"
+}

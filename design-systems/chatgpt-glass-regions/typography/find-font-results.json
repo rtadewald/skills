@@ -1,0 +1,542 @@
+{
+  "h3": {
+    "text": "ChatGPT",
+    "crop": "typography/crops/h3.png",
+    "box_px": [
+      86,
+      51,
+      163,
+      74
+    ],
+    "result": {
+      "font": "Kulim Park",
+      "variant": "Kulim Park — Bold",
+      "weight": null,
+      "weight_css": 600,
+      "italic": false,
+      "score": 0.7073,
+      "overlap": 0.6649,
+      "tracking": -0.0399,
+      "letter_spacing": "-0.020em",
+      "font_size_px": 19.2,
+      "file": "fonts/google/ofl/kulimpark/KulimPark-Bold.ttf",
+      "file_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/kulimpark/KulimPark-Bold.ttf",
+      "license_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/kulimpark/OFL.txt",
+      "color": "#f4f4ff",
+      "background": "#35345f",
+      "css": "font-family: \"Kulim Park\"; font-weight: 600; font-size: 19.2px; letter-spacing: -0.020em; color: #f4f4ff;",
+      "alternatives": [
+        {
+          "font": "Roboto Flex",
+          "weight": 550,
+          "weight_css": 450,
+          "score": 0.6975,
+          "file": "fonts/google/ofl/robotoflex/RobotoFlex[GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght].ttf"
+        },
+        {
+          "font": "Roboto Flex",
+          "weight": 500,
+          "weight_css": 400,
+          "score": 0.6969,
+          "file": "fonts/google/ofl/robotoflex/RobotoFlex[GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght].ttf"
+        },
+        {
+          "font": "Hanken Grotesk",
+          "weight": 700,
+          "weight_css": 600,
+          "score": 0.6968,
+          "file": "fonts/google/ofl/hankengrotesk/HankenGrotesk[wght].ttf"
+        },
+        {
+          "font": "Roboto Flex",
+          "weight": 600,
+          "weight_css": 500,
+          "score": 0.6947,
+          "file": "fonts/google/ofl/robotoflex/RobotoFlex[GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght].ttf"
+        }
+      ],
+      "local_font": "typography/fonts/kulimpark__KulimPark-Bold.ttf",
+      "overlay_log": "typography/logs/h3-sobreposicao.png"
+    }
+  },
+  "lnk": {
+    "text": "Explore GPTs",
+    "crop": "typography/crops/lnk.png",
+    "box_px": [
+      69,
+      152,
+      142,
+      170
+    ],
+    "result": {
+      "font": "Saira SemiCondensed",
+      "variant": "Saira SemiCondensed — SemiBold",
+      "weight": null,
+      "weight_css": 500,
+      "italic": false,
+      "score": 0.6019,
+      "overlap": 0.5707,
+      "tracking": -0.019,
+      "letter_spacing": "0.001em",
+      "font_size_px": 12.7,
+      "file": "fonts/google/ofl/sairasemicondensed/SairaSemiCondensed-SemiBold.ttf",
+      "file_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/sairasemicondensed/SairaSemiCondensed-SemiBold.ttf",
+      "license_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/sairasemicondensed/OFL.txt",
+      "color": "#b8b8de",
+      "background": "#292850",
+      "css": "font-family: \"Saira SemiCondensed\"; font-weight: 500; font-size: 12.7px; letter-spacing: 0.001em; color: #b8b8de;",
+      "alternatives": [
+        {
+          "font": "Jaldi",
+          "weight": null,
+          "weight_css": 600,
+          "score": 0.593,
+          "file": "fonts/google/ofl/jaldi/Jaldi-Bold.ttf"
+        },
+        {
+          "font": "NanumGothic",
+          "weight": null,
+          "weight_css": 600,
+          "score": 0.5927,
+          "file": "fonts/google/ofl/nanumgothic/NanumGothic-Bold.ttf"
+        },
+        {
+          "font": "NanumGothic",
+          "weight": null,
+          "weight_css": 700,
+          "score": 0.5914,
+          "file": "fonts/google/ofl/nanumgothic/NanumGothic-ExtraBold.ttf"
+        },
+        {
+          "font": "Hind Jalandhar",
+          "weight": null,
+          "weight_css": 500,
+          "score": 0.5913,
+          "file": "fonts/google/ofl/hindjalandhar/HindJalandhar-SemiBold.ttf"
+        }
+      ],
+      "local_font": "typography/fonts/sairasemicondensed__SairaSemiCondensed-SemiBold.ttf",
+      "overlay_log": "typography/logs/lnk-sobreposicao.png"
+    }
+  },
+  "h2": {
+    "text": "Your Activity",
+    "crop": "typography/crops/h2.png",
+    "box_px": [
+      792,
+      448,
+      857,
+      466
+    ],
+    "result": {
+      "font": "Finlandica Headline",
+      "variant": "Finlandica Headline — weight 750",
+      "weight": 750,
+      "weight_css": 650,
+      "italic": false,
+      "score": 0.5335,
+      "overlap": 0.5391,
+      "tracking": -0.099,
+      "letter_spacing": "-0.079em",
+      "font_size_px": 13.2,
+      "file": "fonts/google/ofl/finlandicaheadline/FinlandicaHeadline[wght].ttf",
+      "file_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/finlandicaheadline/FinlandicaHeadline[wght].ttf",
+      "license_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/finlandicaheadline/OFL.txt",
+      "color": "#cdcae2",
+      "background": "#181535",
+      "css": "font-family: \"Finlandica Headline\"; font-weight: 650; font-size: 13.2px; letter-spacing: -0.079em; color: #cdcae2;",
+      "alternatives": [
+        {
+          "font": "Beiruti",
+          "weight": 850,
+          "weight_css": 750,
+          "score": 0.5251,
+          "file": "fonts/google/ofl/beiruti/Beiruti[wght].ttf"
+        },
+        {
+          "font": "Finlandica Headline",
+          "weight": 800,
+          "weight_css": 700,
+          "score": 0.525,
+          "file": "fonts/google/ofl/finlandicaheadline/FinlandicaHeadline[wght].ttf"
+        },
+        {
+          "font": "Winky Sans",
+          "weight": 900,
+          "weight_css": 800,
+          "score": 0.5191,
+          "file": "fonts/google/ofl/winkysans/WinkySans[wght].ttf"
+        },
+        {
+          "font": "Finlandica Headline",
+          "weight": 850,
+          "weight_css": 750,
+          "score": 0.5185,
+          "file": "fonts/google/ofl/finlandicaheadline/FinlandicaHeadline[wght].ttf"
+        }
+      ],
+      "local_font": "typography/fonts/finlandicaheadline__FinlandicaHeadline[wght].ttf",
+      "overlay_log": "typography/logs/h2-sobreposicao.png"
+    }
+  },
+  "t2": {
+    "text": "Brainstorming Ideas",
+    "crop": "typography/crops/t2.png",
+    "box_px": [
+      44,
+      446,
+      138,
+      462
+    ],
+    "result": {
+      "font": "Roboto Condensed",
+      "variant": "Roboto Condensed — weight 650",
+      "weight": 650,
+      "weight_css": 550,
+      "italic": false,
+      "score": 0.6046,
+      "overlap": 0.6242,
+      "tracking": -0.0176,
+      "letter_spacing": "0.002em",
+      "font_size_px": 11.4,
+      "file": "fonts/google/ofl/robotocondensed/RobotoCondensed[wght].ttf",
+      "file_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/robotocondensed/RobotoCondensed[wght].ttf",
+      "license_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/robotocondensed/OFL.txt",
+      "color": "#9ea1b4",
+      "background": "#0f1123",
+      "css": "font-family: \"Roboto Condensed\"; font-weight: 550; font-size: 11.4px; letter-spacing: 0.002em; color: #9ea1b4;",
+      "alternatives": [
+        {
+          "font": "Roboto Condensed",
+          "weight": 700,
+          "weight_css": 600,
+          "score": 0.5999,
+          "file": "fonts/google/ofl/robotocondensed/RobotoCondensed[wght].ttf"
+        },
+        {
+          "font": "Roboto Condensed",
+          "weight": 750,
+          "weight_css": 650,
+          "score": 0.5951,
+          "file": "fonts/google/ofl/robotocondensed/RobotoCondensed[wght].ttf"
+        },
+        {
+          "font": "Roboto Condensed",
+          "weight": 800,
+          "weight_css": 700,
+          "score": 0.5922,
+          "file": "fonts/google/ofl/robotocondensed/RobotoCondensed[wght].ttf"
+        },
+        {
+          "font": "Roboto Condensed",
+          "weight": 550,
+          "weight_css": 450,
+          "score": 0.5917,
+          "file": "fonts/google/ofl/robotocondensed/RobotoCondensed-Italic[wght].ttf"
+        }
+      ],
+      "local_font": "typography/fonts/robotocondensed__RobotoCondensed[wght].ttf",
+      "overlay_log": "typography/logs/t2-sobreposicao.png"
+    }
+  },
+  "t3": {
+    "text": "Messages sent",
+    "crop": "typography/crops/t3.png",
+    "box_px": [
+      792,
+      474,
+      865,
+      490
+    ],
+    "result": {
+      "font": "Winky Rough",
+      "variant": "Winky Rough — weight 550",
+      "weight": 550,
+      "weight_css": 450,
+      "italic": false,
+      "score": 0.6433,
+      "overlap": 0.6137,
+      "tracking": -0.0426,
+      "letter_spacing": "-0.023em",
+      "font_size_px": 12.1,
+      "file": "fonts/google/ofl/winkyrough/WinkyRough[wght].ttf",
+      "file_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/winkyrough/WinkyRough[wght].ttf",
+      "license_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/winkyrough/OFL.txt",
+      "color": "#9a98b8",
+      "background": "#131130",
+      "css": "font-family: \"Winky Rough\"; font-weight: 450; font-size: 12.1px; letter-spacing: -0.023em; color: #9a98b8;",
+      "alternatives": [
+        {
+          "font": "Roboto Condensed",
+          "weight": 850,
+          "weight_css": 750,
+          "score": 0.6374,
+          "file": "fonts/google/ofl/robotocondensed/RobotoCondensed[wght].ttf"
+        },
+        {
+          "font": "Winky Rough",
+          "weight": 600,
+          "weight_css": 500,
+          "score": 0.6358,
+          "file": "fonts/google/ofl/winkyrough/WinkyRough[wght].ttf"
+        },
+        {
+          "font": "Roboto Condensed",
+          "weight": 700,
+          "weight_css": 600,
+          "score": 0.6357,
+          "file": "fonts/google/ofl/robotocondensed/RobotoCondensed[wght].ttf"
+        },
+        {
+          "font": "Roboto Condensed",
+          "weight": 900,
+          "weight_css": 800,
+          "score": 0.6356,
+          "file": "fonts/google/ofl/robotocondensed/RobotoCondensed[wght].ttf"
+        }
+      ],
+      "local_font": "typography/fonts/winkyrough__WinkyRough[wght].ttf",
+      "overlay_log": "typography/logs/t3-sobreposicao.png"
+    }
+  },
+  "btn": {
+    "text": "View all chats",
+    "crop": "typography/crops/btn.png",
+    "box_px": [
+      82,
+      616,
+      151,
+      633
+    ],
+    "result": {
+      "font": "Roboto Condensed",
+      "variant": "Roboto Condensed — weight 750",
+      "weight": 750,
+      "weight_css": 650,
+      "italic": false,
+      "score": 0.5801,
+      "overlap": 0.5521,
+      "tracking": -0.016,
+      "letter_spacing": "0.004em",
+      "font_size_px": 11.8,
+      "file": "fonts/google/ofl/robotocondensed/RobotoCondensed[wght].ttf",
+      "file_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/robotocondensed/RobotoCondensed[wght].ttf",
+      "license_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/robotocondensed/OFL.txt",
+      "color": "#b7b8cf",
+      "background": "#191b34",
+      "css": "font-family: \"Roboto Condensed\"; font-weight: 650; font-size: 11.8px; letter-spacing: 0.004em; color: #b7b8cf;",
+      "alternatives": [
+        {
+          "font": "Roboto Condensed",
+          "weight": 550,
+          "weight_css": 450,
+          "score": 0.5797,
+          "file": "fonts/google/ofl/robotocondensed/RobotoCondensed[wght].ttf"
+        },
+        {
+          "font": "Roboto Condensed",
+          "weight": 600,
+          "weight_css": 500,
+          "score": 0.5777,
+          "file": "fonts/google/ofl/robotocondensed/RobotoCondensed[wght].ttf"
+        },
+        {
+          "font": "Roboto Condensed",
+          "weight": 650,
+          "weight_css": 550,
+          "score": 0.577,
+          "file": "fonts/google/ofl/robotocondensed/RobotoCondensed[wght].ttf"
+        },
+        {
+          "font": "Roboto Condensed",
+          "weight": 800,
+          "weight_css": 700,
+          "score": 0.5767,
+          "file": "fonts/google/ofl/robotocondensed/RobotoCondensed[wght].ttf"
+        }
+      ],
+      "local_font": "typography/fonts/robotocondensed__RobotoCondensed[wght].ttf",
+      "overlay_log": "typography/logs/btn-sobreposicao.png"
+    }
+  },
+  "btn2": {
+    "text": "Summarize Text",
+    "crop": "typography/crops/btn2.png",
+    "box_px": [
+      440,
+      375,
+      521,
+      392
+    ],
+    "result": {
+      "font": "Blaka Hollow",
+      "variant": "Blaka Hollow — Regular",
+      "weight": null,
+      "weight_css": 300,
+      "italic": false,
+      "score": 0.5681,
+      "overlap": 0.54,
+      "tracking": -0.0285,
+      "letter_spacing": "-0.008em",
+      "font_size_px": 12.9,
+      "file": "fonts/google/ofl/blakahollow/BlakaHollow-Regular.ttf",
+      "file_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/blakahollow/BlakaHollow-Regular.ttf",
+      "license_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/blakahollow/OFL.txt",
+      "color": "#b4b4ce",
+      "background": "#1f1e3c",
+      "css": "font-family: \"Blaka Hollow\"; font-weight: 300; font-size: 12.9px; letter-spacing: -0.008em; color: #b4b4ce;",
+      "alternatives": [
+        {
+          "font": "Finlandica Headline",
+          "weight": 750,
+          "weight_css": 650,
+          "score": 0.5653,
+          "file": "fonts/google/ofl/finlandicaheadline/FinlandicaHeadline[wght].ttf"
+        },
+        {
+          "font": "Monoton",
+          "weight": null,
+          "weight_css": 300,
+          "score": 0.5623,
+          "file": "fonts/google/ofl/monoton/Monoton-Regular.ttf"
+        },
+        {
+          "font": "Finlandica Headline",
+          "weight": 800,
+          "weight_css": 700,
+          "score": 0.5497,
+          "file": "fonts/google/ofl/finlandicaheadline/FinlandicaHeadline[wght].ttf"
+        },
+        {
+          "font": "Blaka",
+          "weight": null,
+          "weight_css": 300,
+          "score": 0.5481,
+          "file": "fonts/google/ofl/blaka/Blaka-Regular.ttf"
+        }
+      ],
+      "local_font": "typography/fonts/blakahollow__BlakaHollow-Regular.ttf",
+      "overlay_log": "typography/logs/btn2-sobreposicao.png"
+    }
+  },
+  "h1": {
+    "text": "What can I help",
+    "crop": "typography/crops/h1.png",
+    "box_px": [
+      413,
+      142,
+      606,
+      176
+    ],
+    "result": {
+      "font": "Figtree",
+      "variant": "Figtree — weight 550",
+      "weight": 550,
+      "weight_css": 450,
+      "italic": false,
+      "score": 0.8385,
+      "overlap": 0.8134,
+      "tracking": -0.021,
+      "letter_spacing": "-0.001em",
+      "font_size_px": 27.9,
+      "file": "fonts/google/ofl/figtree/Figtree[wght].ttf",
+      "file_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/figtree/Figtree[wght].ttf",
+      "license_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/figtree/OFL.txt",
+      "color": "#f3f2ff",
+      "background": "#1f1e3a",
+      "css": "font-family: \"Figtree\"; font-weight: 450; font-size: 27.9px; letter-spacing: -0.001em; color: #f3f2ff;",
+      "alternatives": [
+        {
+          "font": "TikTok Sans",
+          "weight": 450,
+          "weight_css": 350,
+          "score": 0.8294,
+          "file": "fonts/google/ofl/tiktoksans/TikTokSans[opsz,slnt,wdth,wght].ttf"
+        },
+        {
+          "font": "TikTok Sans",
+          "weight": 500,
+          "weight_css": 400,
+          "score": 0.8272,
+          "file": "fonts/google/ofl/tiktoksans/TikTokSans[opsz,slnt,wdth,wght].ttf"
+        },
+        {
+          "font": "Maven Pro VF Beta",
+          "weight": 600,
+          "weight_css": 500,
+          "score": 0.825,
+          "file": "fonts/google/ofl/mavenprovfbeta/MavenProVFBeta.ttf"
+        },
+        {
+          "font": "Figtree",
+          "weight": 500,
+          "weight_css": 400,
+          "score": 0.821,
+          "file": "fonts/google/ofl/figtree/Figtree[wght].ttf"
+        }
+      ],
+      "local_font": "typography/fonts/figtree__Figtree[wght].ttf",
+      "overlay_log": "typography/logs/h1-sobreposicao.png"
+    }
+  },
+  "t1": {
+    "text": "Our most advanced model",
+    "crop": "typography/crops/t1.png",
+    "box_px": [
+      792,
+      136,
+      918,
+      152
+    ],
+    "result": {
+      "font": "Blaka Hollow",
+      "variant": "Blaka Hollow — Regular",
+      "weight": null,
+      "weight_css": 300,
+      "italic": false,
+      "score": 0.5277,
+      "overlap": 0.5153,
+      "tracking": 0.0287,
+      "letter_spacing": "0.049em",
+      "font_size_px": 12.3,
+      "file": "fonts/google/ofl/blakahollow/BlakaHollow-Regular.ttf",
+      "file_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/blakahollow/BlakaHollow-Regular.ttf",
+      "license_url": "http://127.0.0.1:8000/font-file/fonts/google/ofl/blakahollow/OFL.txt",
+      "color": "#a7a6c4",
+      "background": "#1c1a3a",
+      "css": "font-family: \"Blaka Hollow\"; font-weight: 300; font-size: 12.3px; letter-spacing: 0.049em; color: #a7a6c4;",
+      "alternatives": [
+        {
+          "font": "Rubik Beastly",
+          "weight": null,
+          "weight_css": 300,
+          "score": 0.527,
+          "file": "fonts/google/ofl/rubikbeastly/RubikBeastly-Regular.ttf"
+        },
+        {
+          "font": "Nabla",
+          "weight": null,
+          "weight_css": 300,
+          "score": 0.5236,
+          "file": "fonts/google/ofl/nabla/Nabla[EDPT,EHLT].ttf"
+        },
+        {
+          "font": "Rubik Distressed",
+          "weight": null,
+          "weight_css": 300,
+          "score": 0.5128,
+          "file": "fonts/google/ofl/rubikdistressed/RubikDistressed-Regular.ttf"
+        },
+        {
+          "font": "Alumni Sans Collegiate One",
+          "weight": null,
+          "weight_css": 300,
+          "score": 0.5107,
+          "file": "fonts/google/ofl/alumnisanscollegiateone/AlumniSansCollegiateOne-Italic.ttf"
+        }
+      ],
+      "local_font": "typography/fonts/blakahollow__BlakaHollow-Regular.ttf",
+      "overlay_log": "typography/logs/t1-sobreposicao.png"
+    }
+  }
+}

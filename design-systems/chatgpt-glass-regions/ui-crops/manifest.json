@@ -1,0 +1,283 @@
+{
+  "source": "wireframe.txt unique region/tag types \u2192 one best crop each",
+  "reference": "reference.jpg",
+  "image_size": [
+    1024,
+    682
+  ],
+  "types": [
+    "nav",
+    "section",
+    "hero",
+    "form",
+    "rail",
+    "card",
+    "card2",
+    "card3",
+    "btn",
+    "btn2",
+    "in",
+    "av",
+    "ico",
+    "img",
+    "chart"
+  ],
+  "crops": [
+    {
+      "type": "nav",
+      "file": "nav.png",
+      "box": [
+        24,
+        32,
+        224,
+        661
+      ],
+      "size": [
+        200,
+        629
+      ],
+      "wireframe": "nav",
+      "detect_prompt": "left navigation sidebar panel",
+      "candidates": 1
+    },
+    {
+      "type": "section",
+      "file": "section.png",
+      "box": [
+        240,
+        40,
+        980,
+        95
+      ],
+      "size": [
+        740,
+        55
+      ],
+      "wireframe": "section",
+      "detect_prompt": "layout-corrected from wireframe regions",
+      "candidates": 1
+    },
+    {
+      "type": "hero",
+      "file": "hero.png",
+      "box": [
+        240,
+        120,
+        760,
+        610
+      ],
+      "size": [
+        520,
+        490
+      ],
+      "wireframe": "hero",
+      "detect_prompt": "layout-corrected from wireframe regions",
+      "candidates": 1
+    },
+    {
+      "type": "form",
+      "file": "form.png",
+      "box": [
+        260,
+        231,
+        756,
+        347
+      ],
+      "size": [
+        496,
+        116
+      ],
+      "wireframe": "form",
+      "detect_prompt": "message composer text box",
+      "candidates": 1
+    },
+    {
+      "type": "rail",
+      "file": "rail.png",
+      "box": [
+        760,
+        40,
+        1000,
+        660
+      ],
+      "size": [
+        240,
+        620
+      ],
+      "wireframe": "rail",
+      "detect_prompt": "layout-corrected from wireframe regions",
+      "candidates": 3
+    },
+    {
+      "type": "card",
+      "file": "card.png",
+      "box": [
+        776,
+        97,
+        984,
+        276
+      ],
+      "size": [
+        208,
+        179
+      ],
+      "wireframe": "card",
+      "detect_prompt": "GPT-4o glass model card",
+      "candidates": 1
+    },
+    {
+      "type": "card2",
+      "file": "card2.png",
+      "box": [
+        258,
+        441,
+        370,
+        593
+      ],
+      "size": [
+        112,
+        152
+      ],
+      "wireframe": "card2",
+      "detect_prompt": "vertical task suggestion card Write an email",
+      "candidates": 1
+    },
+    {
+      "type": "card3",
+      "file": "card3.png",
+      "box": [
+        778,
+        591,
+        982,
+        645
+      ],
+      "size": [
+        204,
+        54
+      ],
+      "wireframe": "card3",
+      "detect_prompt": "ChatGPT Plus upgrade banner card",
+      "candidates": 1
+    },
+    {
+      "type": "btn",
+      "file": "btn.png",
+      "box": [
+        38,
+        606,
+        214,
+        646
+      ],
+      "size": [
+        176,
+        40
+      ],
+      "wireframe": "btn",
+      "detect_prompt": "View all chats wide button",
+      "candidates": 1
+    },
+    {
+      "type": "btn2",
+      "file": "btn2.png",
+      "box": [
+        262,
+        365,
+        394,
+        407
+      ],
+      "size": [
+        132,
+        42
+      ],
+      "wireframe": "btn2",
+      "detect_prompt": "Create Image pill button",
+      "candidates": 1
+    },
+    {
+      "type": "in",
+      "file": "in.png",
+      "box": [
+        241,
+        48,
+        627,
+        85
+      ],
+      "size": [
+        386,
+        37
+      ],
+      "wireframe": "in",
+      "detect_prompt": "search input field",
+      "candidates": 1
+    },
+    {
+      "type": "av",
+      "file": "av.png",
+      "box": [
+        937,
+        49,
+        967,
+        81
+      ],
+      "size": [
+        30,
+        32
+      ],
+      "wireframe": "av",
+      "detect_prompt": "user profile avatar circle",
+      "candidates": 1
+    },
+    {
+      "type": "ico",
+      "file": "ico.png",
+      "box": [
+        44,
+        108,
+        68,
+        132
+      ],
+      "size": [
+        24,
+        24
+      ],
+      "wireframe": "ico",
+      "detect_prompt": "layout-corrected from wireframe regions",
+      "candidates": 1
+    },
+    {
+      "type": "img",
+      "file": "img.png",
+      "box": [
+        817,
+        166,
+        975,
+        276
+      ],
+      "size": [
+        158,
+        110
+      ],
+      "wireframe": "img",
+      "detect_prompt": "3D glass layers purple sphere graphic",
+      "candidates": 1
+    },
+    {
+      "type": "chart",
+      "file": "chart.png",
+      "box": [
+        780,
+        537,
+        980,
+        572
+      ],
+      "size": [
+        200,
+        35
+      ],
+      "wireframe": "chart",
+      "detect_prompt": "activity wave chart graph",
+      "candidates": 1
+    }
+  ],
+  "note": "One crop per unique wireframe region/tag type (card/card2/card3/btn/\u2026)"
+}

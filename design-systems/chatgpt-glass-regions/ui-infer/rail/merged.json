@@ -1,0 +1,160 @@
+{
+  "measured": {
+    "type": "rail",
+    "box": [
+      760,
+      40,
+      1000,
+      660
+    ],
+    "size": [
+      240,
+      620
+    ],
+    "fill": "#29244f",
+    "gradient": {
+      "angle_deg": 180,
+      "axis": "vertical",
+      "stops": [
+        {
+          "pct": 0,
+          "hex": "#615795"
+        },
+        {
+          "pct": 25,
+          "hex": "#47349e"
+        },
+        {
+          "pct": 50,
+          "hex": "#141430"
+        },
+        {
+          "pct": 75,
+          "hex": "#0d0a25"
+        },
+        {
+          "pct": 100,
+          "hex": "#100d2a"
+        }
+      ]
+    },
+    "rim": {
+      "top": [
+        "#0f0c27",
+        "#1e1741",
+        "#19103a",
+        "#140e30",
+        "#120c2e"
+      ],
+      "bottom": [
+        "#231d4a",
+        "#292154",
+        "#291f59",
+        "#291e5b",
+        "#0f092d"
+      ],
+      "left": [
+        "#100d29",
+        "#0c0a20",
+        "#0e0c24",
+        "#0e0b26",
+        "#211c45"
+      ],
+      "right": [
+        "#110b2d",
+        "#292549",
+        "#2c264f",
+        "#272146",
+        "#0f092d"
+      ],
+      "TL": "#100d28",
+      "TR": "#110b2d",
+      "BL": "#2e2858",
+      "BR": "#0f092e"
+    },
+    "radius_px": 38,
+    "glass_likely": true,
+    "fill_variance": 1943.76,
+    "alpha": {
+      "alpha_est": 0.169,
+      "fill_rgb": [
+        43,
+        39,
+        85
+      ],
+      "bg_rgb": [
+        18,
+        14,
+        47
+      ],
+      "fill_hex": "#2b2654",
+      "bg_hex": "#120d2e"
+    },
+    "outer": {
+      "detected": true,
+      "delta": 37.37,
+      "ring_hex": "#14122d",
+      "far_hex": "#252548",
+      "kind": "shadow",
+      "suggest_blur_px": 40,
+      "suggest_opacity": 0.467
+    },
+    "text": {
+      "light": "#afa0e5",
+      "muted": "#675ea6"
+    },
+    "lighting": {
+      "top_brightness": 33.6,
+      "bottom_brightness": 35.1,
+      "top_lit": false
+    }
+  },
+  "vision": {
+    "shape": "rounded",
+    "radius_css": "38px",
+    "background": {
+      "kind": "linear",
+      "css": "linear-gradient(180deg, #615795 0%, #47349e 25%, #141430 50%, #0d0a25 75%, #100d2a 100%)"
+    },
+    "border": {
+      "kind": "gradient",
+      "width_px": 1,
+      "css": "linear-gradient(180deg, #1e1741, #100d29, #292154)"
+    },
+    "shadow": [
+      {
+        "css": "0 10px 40px -10px rgba(20, 18, 45, 0.467)"
+      }
+    ],
+    "glass": {
+      "backdrop_blur_px": 12,
+      "notes": "Semi-transparent linear gradient on dark background suggests glassmorphism."
+    },
+    "typography": {
+      "color": "#afa0e5",
+      "weight": 500,
+      "size_px": null
+    },
+    "confidence": 95,
+    "notes": "Extracted gradient background with rich dark purple tones, paired with an outer drop shadow for depth."
+  },
+  "merged_css": {
+    "border_radius": "38px",
+    "background": "linear-gradient(180deg, rgba(97,87,149,0.169) 0%, rgba(71,52,158,0.169) 25%, rgba(20,20,48,0.169) 50%, rgba(13,10,37,0.169) 75%, rgba(16,13,42,0.169) 100%)",
+    "border": "1px solid rgba(30,23,65,0.319)",
+    "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(46,40,88,0.450), 0 4px 40px rgba(20,18,45,0.467)",
+    "backdrop_filter": "blur(12px)",
+    "color": "#afa0e5",
+    "font_size_px": 217,
+    "font_weight": 500,
+    "height_px": 620,
+    "min_width_px": 240,
+    "alpha_used": 0.169,
+    "border_vision": "linear-gradient(180deg, #1e1741, #100d29, #292154)",
+    "shadow_vision": [
+      "0 10px 40px -10px rgba(20, 18, 45, 0.467)"
+    ],
+    "background_vision": "linear-gradient(180deg, #615795 0%, #47349e 25%, #141430 50%, #0d0a25 75%, #100d2a 100%)"
+  },
+  "merge_policy": "fill/gradient/rim hex from pixels; alpha from VLM when pixel alpha\u226aglass; blur+shape from VLM"
+}

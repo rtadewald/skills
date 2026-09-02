@@ -1,0 +1,32 @@
+{
+  "shape": "rounded",
+  "radius_css": "24px",
+  "background": {
+    "kind": "linear",
+    "css": "linear-gradient(90deg, rgba(57, 54, 107, 0.55) 0%, rgba(37, 37, 75, 0.55) 25%, rgba(26, 26, 54, 0.55) 50%, rgba(21, 19, 43, 0.55) 75%, rgba(17, 15, 37, 0.55) 100%)"
+  },
+  "border": {
+    "kind": "gradient",
+    "width_px": 1,
+    "css": "linear-gradient(to right, #25254c, #6255a7, #0e0b25, #1a1637, #2d2e5a)"
+  },
+  "shadow": [
+    {
+      "css": "0 0 40px rgba(38, 36, 72, 0.08)"
+    },
+    {
+      "css": "inset 0 1px 0 rgba(98, 85, 167, 0.3)"
+    }
+  ],
+  "glass": {
+    "backdrop_blur_px": 12,
+    "notes": "Glassmorphism with variable opacity gradient fill"
+  },
+  "typography": {
+    "color": "#a8a3d6",
+    "weight": 400,
+    "size_px": 14
+  },
+  "confidence": 92,
+  "notes": "Used a rounded rectangle with 24px radius (estimated from image, data said 2px which seems too low). Masked linear-gradient border for rim."
+}

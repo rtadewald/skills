@@ -1,0 +1,76 @@
+┌─ nav ──────────────────┐
+│ [ico:logo] [h3: ChatGPT]│
+│                        │
+│ [ico:home] [lnk: Home] │
+│ [ico:compass] [lnk: Explore GPTs] │
+│ [ico:book] [lnk: Library] │
+│ [ico:folder] [lnk: Projects] │
+│ [ico:brain] [lnk: Memory] │
+│ [ico:spark] [lnk: Custom GPTs] │
+│ [ico:gear] [lnk: Settings] │
+│                        │
+│ [h2: Recent Chats] [ico:plus] │
+│ [t2: The Future of AI] [t3: Today] │
+│ [t2: Brainstorming Ideas] [t3: Today] │
+│ [t2: Python Code Help] [t3: Yesterday] │
+│ [t2: Design a Website] [t3: Yesterday] │
+│ [t2: Workout Plan] [t3: 2 days ago] │
+│                        │
+│ [btn: View all chats [ico:arrow]] │
+└────────────────────────┘
+
+┌─ section ────────────────────────────────────────────────────────────────────┐
+│ [ico:search] [in: Search ChatGPT] [t3: ⌘K]                                   │
+│                     [btn2: [ico:plus] New Chat] [ico:bell] [av: user]        │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌─ hero ───────────────────────────────────────────────────────────────────────┐
+│                                                                              │
+│              [h1: What can I help with today?]                               │
+│                                                                              │
+│ ┌─ form ───────────────────────────────────────────────────────────────────┐ │
+│ │ [in: Message ChatGPT...]                                                 │ │
+│ │ [ico:paperclip]                                   [btn2: [ico:wave]]     │ │
+│ └──────────────────────────────────────────────────────────────────────────┘ │
+│                                                                              │
+│ [btn2: [ico:image] Create Image]  [btn2: [ico:doc] Summarize Text]          │
+│ [btn2: [ico:bulb] Brainstorm]     [btn2: [ico:grid] More]                   │
+│                                                                              │
+│ ┌─ card2 ──────────┐ ┌─ card2 ──────────┐ ┌─ card2 ──────────┐ ┌─ card2 ──────────┐
+│ │ [ico:mail]       │ │ [ico:chart]      │ │ [ico:help]       │ │ [ico:code]       │
+│ │ [h3: Write an email] │ [h3: Analyze data] │ [h3: Explain anything] │ [h3: Code something] │
+│ │ [t2: Professional]│ │ [t2: CSV, Excel, etc.] │ [t2: In simple terms] │ [t2: Python, JS, etc.] │
+│ └──────────────────┘ └──────────────────┘ └──────────────────┘ └──────────────────┘
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌─ rail ─────────────────┐
+│ ┌─ card ─────────────┐ │
+│ │ [h2: GPT-4o]       │ │
+│ │ [img: glass layers + purple sphere] │
+│ │ [t1: Our most advanced model for complex tasks.] │
+│ └────────────────────┘ │
+│                        │
+│ ┌─ card ─────────────┐ │
+│ │ [ico:check] [t2: Web Browsing] │
+│ │ [ico:check] [t2: Data Analysis] │
+│ │ [ico:check] [t2: Image Generation] │
+│ │ [ico:check] [t2: Code Interpreter] │
+│ └────────────────────┘ │
+│                        │
+│ ┌─ card ─────────────┐ │
+│ │ [h2: Your Activity]│ │
+│ │ [t3: Messages sent]│ │
+│ │ [h3: 1,231]        │ │
+│ │ [t3: Responses received] │
+│ │ [h3: 1,876]        │ │
+│ │ [t3: Time saved]   │ │
+│ │ [h3: 45h+]         │ │
+│ │ [chart: activity wave] │
+│ └────────────────────┘ │
+│                        │
+│ ┌─ card3 ────────────┐ │
+│ │ [ico:star]         │ │
+│ │ [h3: ChatGPT Plus] │ │
+│ │ [t3: Upgrade for more access] │
+│ └────────────────────┘ │
+└────────────────────────┘

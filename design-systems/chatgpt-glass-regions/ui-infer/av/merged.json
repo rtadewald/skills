@@ -1,0 +1,164 @@
+{
+  "measured": {
+    "type": "av",
+    "box": [
+      937,
+      49,
+      967,
+      81
+    ],
+    "size": [
+      30,
+      32
+    ],
+    "fill": "#a289a1",
+    "gradient": {
+      "angle_deg": 180,
+      "axis": "vertical",
+      "stops": [
+        {
+          "pct": 0,
+          "hex": "#5a4f68"
+        },
+        {
+          "pct": 25,
+          "hex": "#c4a5b0"
+        },
+        {
+          "pct": 50,
+          "hex": "#c196a3"
+        },
+        {
+          "pct": 75,
+          "hex": "#bf9bad"
+        },
+        {
+          "pct": 100,
+          "hex": "#9c8196"
+        }
+      ]
+    },
+    "rim": {
+      "top": [
+        "#130e2e",
+        "#4f486c",
+        "#a4a0be",
+        "#aaa9c6",
+        "#241d3f"
+      ],
+      "bottom": [
+        "#0f0b26",
+        "#2b264a",
+        "#34253f",
+        "#352740",
+        "#211b3d"
+      ],
+      "left": [
+        "#140f2f",
+        "#3a3455",
+        "#958db3",
+        "#665f84",
+        "#110d27"
+      ],
+      "right": [
+        "#171031",
+        "#cac2ec",
+        "#dfcbf2",
+        "#c7bbee",
+        "#1c1639"
+      ],
+      "TL": "#171232",
+      "TR": "#787194",
+      "BL": "#2b2744",
+      "BR": "#544c79"
+    },
+    "radius_px": 6,
+    "glass_likely": true,
+    "fill_variance": 4813.93,
+    "alpha": {
+      "alpha_est": 0.55,
+      "fill_rgb": [
+        178,
+        144,
+        161
+      ],
+      "bg_rgb": [
+        17,
+        13,
+        40
+      ],
+      "fill_hex": "#b18fa0",
+      "bg_hex": "#100c28"
+    },
+    "outer": {
+      "detected": true,
+      "delta": 16.33,
+      "ring_hex": "#16112f",
+      "far_hex": "#1e183b",
+      "kind": "shadow",
+      "suggest_blur_px": 31,
+      "suggest_opacity": 0.204
+    },
+    "text": {
+      "light": "#d0bfe1",
+      "muted": "#917080"
+    },
+    "lighting": {
+      "top_brightness": 153.1,
+      "bottom_brightness": 42.7,
+      "top_lit": true
+    }
+  },
+  "vision": {
+    "shape": "rounded",
+    "radius_css": "6px",
+    "background": {
+      "kind": "linear",
+      "css": "linear-gradient(180deg, rgba(90, 79, 104, 0.55) 0%, rgba(196, 165, 176, 0.55) 25%, rgba(193, 150, 163, 0.55) 50%, rgba(191, 155, 173, 0.55) 75%, rgba(156, 129, 150, 0.55) 100%)"
+    },
+    "border": {
+      "kind": "gradient",
+      "width_px": 1,
+      "css": "linear-gradient(180deg, #a4a0be, #dfcbf2, #34253f)"
+    },
+    "shadow": [
+      {
+        "css": "0 16px 31px rgba(22, 17, 47, 0.2)"
+      },
+      {
+        "css": "inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+      }
+    ],
+    "glass": {
+      "backdrop_blur_px": 12,
+      "notes": "glassmorphism profile picture container"
+    },
+    "typography": {
+      "color": "#d0bfe1",
+      "weight": 500,
+      "size_px": null
+    },
+    "confidence": 85,
+    "notes": "Gradient background with alpha blending, top lit rim, outer shadow."
+  },
+  "merged_css": {
+    "border_radius": "6px",
+    "background": "linear-gradient(180deg, rgba(90,79,104,0.550) 0%, rgba(196,165,176,0.550) 25%, rgba(193,150,163,0.550) 50%, rgba(191,155,173,0.550) 75%, rgba(156,129,150,0.550) 100%)",
+    "border": "1px solid rgba(170,169,198,0.550)",
+    "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(120,113,148,0.450), 0 4px 31px rgba(22,17,47,0.204)",
+    "backdrop_filter": "blur(12px)",
+    "color": "#d0bfe1",
+    "font_size_px": 11,
+    "font_weight": 500,
+    "height_px": 32,
+    "min_width_px": 30,
+    "alpha_used": 0.55,
+    "border_vision": "linear-gradient(180deg, #a4a0be, #dfcbf2, #34253f)",
+    "shadow_vision": [
+      "0 16px 31px rgba(22, 17, 47, 0.2)",
+      "inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+    ],
+    "background_vision": "linear-gradient(180deg, rgba(90, 79, 104, 0.55) 0%, rgba(196, 165, 176, 0.55) 25%, rgba(193, 150, 163, 0.55) 50%, rgba(191, 155, 173, 0.55) 75%, rgba(156, 129, 150, 0.55) 100%)"
+  },
+  "merge_policy": "fill/gradient/rim hex from pixels; alpha from VLM when pixel alpha\u226aglass; blur+shape from VLM"
+}

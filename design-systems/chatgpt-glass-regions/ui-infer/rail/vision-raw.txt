@@ -1,0 +1,29 @@
+{
+  "shape": "rounded",
+  "radius_css": "38px",
+  "background": {
+    "kind": "linear",
+    "css": "linear-gradient(180deg, #615795 0%, #47349e 25%, #141430 50%, #0d0a25 75%, #100d2a 100%)"
+  },
+  "border": {
+    "kind": "gradient",
+    "width_px": 1,
+    "css": "linear-gradient(180deg, #1e1741, #100d29, #292154)"
+  },
+  "shadow": [
+    {
+      "css": "0 10px 40px -10px rgba(20, 18, 45, 0.467)"
+    }
+  ],
+  "glass": {
+    "backdrop_blur_px": 12,
+    "notes": "Semi-transparent linear gradient on dark background suggests glassmorphism."
+  },
+  "typography": {
+    "color": "#afa0e5",
+    "weight": 500,
+    "size_px": null
+  },
+  "confidence": 95,
+  "notes": "Extracted gradient background with rich dark purple tones, paired with an outer drop shadow for depth."
+}

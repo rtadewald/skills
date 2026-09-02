@@ -1,0 +1,160 @@
+{
+  "measured": {
+    "type": "card2",
+    "box": [
+      258,
+      441,
+      370,
+      593
+    ],
+    "size": [
+      112,
+      152
+    ],
+    "fill": "#2c2e50",
+    "gradient": {
+      "angle_deg": 180,
+      "axis": "vertical",
+      "stops": [
+        {
+          "pct": 0,
+          "hex": "#2d2e55"
+        },
+        {
+          "pct": 25,
+          "hex": "#25274b"
+        },
+        {
+          "pct": 50,
+          "hex": "#212345"
+        },
+        {
+          "pct": 75,
+          "hex": "#1d203f"
+        },
+        {
+          "pct": 100,
+          "hex": "#1d203f"
+        }
+      ]
+    },
+    "rim": {
+      "top": [
+        "#2b2c58",
+        "#4e4e7f",
+        "#444476",
+        "#434475",
+        "#282956"
+      ],
+      "bottom": [
+        "#15172f",
+        "#28284a",
+        "#262648",
+        "#2b2b4f",
+        "#1d1c43"
+      ],
+      "left": [
+        "#2b2c57",
+        "#353762",
+        "#2e3155",
+        "#2d2e51",
+        "#15172f"
+      ],
+      "right": [
+        "#2a2b57",
+        "#3e3f6d",
+        "#32335a",
+        "#2d2f55",
+        "#1e1e45"
+      ],
+      "TL": "#2b2c59",
+      "TR": "#292a57",
+      "BL": "#191a36",
+      "BR": "#25244c"
+    },
+    "radius_px": 2,
+    "glass_likely": true,
+    "fill_variance": 1037.62,
+    "alpha": {
+      "alpha_est": 0.1,
+      "fill_rgb": [
+        43,
+        45,
+        78
+      ],
+      "bg_rgb": [
+        28,
+        29,
+        62
+      ],
+      "fill_hex": "#2b2d4e",
+      "bg_hex": "#1b1d3d"
+    },
+    "outer": {
+      "detected": true,
+      "delta": 10.1,
+      "ring_hex": "#222348",
+      "far_hex": "#1f1f3f",
+      "kind": "glow",
+      "suggest_blur_px": 40,
+      "suggest_opacity": 0.126
+    },
+    "text": {
+      "light": "#bbbcdb",
+      "muted": "#67688e"
+    },
+    "lighting": {
+      "top_brightness": 88.4,
+      "bottom_brightness": 53.1,
+      "top_lit": true
+    }
+  },
+  "vision": {
+    "shape": "rounded",
+    "radius_css": "16px",
+    "background": {
+      "kind": "linear",
+      "css": "linear-gradient(180deg, rgba(45, 46, 85, 0.4) 0%, rgba(37, 39, 75, 0.4) 25%, rgba(33, 35, 69, 0.4) 50%, rgba(29, 32, 63, 0.4) 75%, rgba(29, 32, 63, 0.4) 100%)"
+    },
+    "border": {
+      "kind": "gradient",
+      "width_px": 1,
+      "css": "linear-gradient(180deg, rgba(78, 78, 127, 0.5), rgba(43, 43, 79, 0.1))"
+    },
+    "shadow": [
+      {
+        "css": "0 8px 32px 0 rgba(31, 31, 63, 0.12)"
+      }
+    ],
+    "glass": {
+      "backdrop_blur_px": 12,
+      "notes": "Strong glassmorphism effect with subtle gradient background and prominent top border highlight"
+    },
+    "typography": {
+      "color": "#bbbcdb",
+      "weight": 500,
+      "size_px": 14
+    },
+    "confidence": 90,
+    "notes": "Border radius estimated larger than 2px based on image; adjusted to 16px for typical card appearance."
+  },
+  "merged_css": {
+    "border_radius": "16px",
+    "background": "linear-gradient(180deg, rgba(45,46,85,0.400) 0%, rgba(37,39,75,0.400) 25%, rgba(33,35,69,0.400) 50%, rgba(29,32,63,0.400) 75%, rgba(29,32,63,0.400) 100%)",
+    "border": "1px solid rgba(78,78,127,0.550)",
+    "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(43,44,89,0.450), 0 0 40px rgba(34,35,72,0.126)",
+    "backdrop_filter": "blur(12px)",
+    "color": "#bbbcdb",
+    "font_size_px": 14,
+    "font_weight": 500,
+    "height_px": 152,
+    "min_width_px": 112,
+    "alpha_used": 0.4,
+    "border_vision": "linear-gradient(180deg, rgba(78, 78, 127, 0.5), rgba(43, 43, 79, 0.1))",
+    "shadow_vision": [
+      "0 8px 32px 0 rgba(31, 31, 63, 0.12)"
+    ],
+    "background_vision": "linear-gradient(180deg, rgba(45, 46, 85, 0.4) 0%, rgba(37, 39, 75, 0.4) 25%, rgba(33, 35, 69, 0.4) 50%, rgba(29, 32, 63, 0.4) 75%, rgba(29, 32, 63, 0.4) 100%)"
+  },
+  "merge_policy": "fill/gradient/rim hex from pixels; alpha from VLM when pixel alpha\u226aglass; blur+shape from VLM"
+}

@@ -1,0 +1,160 @@
+{
+  "measured": {
+    "type": "img",
+    "box": [
+      817,
+      166,
+      975,
+      276
+    ],
+    "size": [
+      158,
+      110
+    ],
+    "fill": "#6054b3",
+    "gradient": {
+      "angle_deg": 180,
+      "axis": "vertical",
+      "stops": [
+        {
+          "pct": 0,
+          "hex": "#7370c7"
+        },
+        {
+          "pct": 25,
+          "hex": "#988ce6"
+        },
+        {
+          "pct": 50,
+          "hex": "#6d57c3"
+        },
+        {
+          "pct": 75,
+          "hex": "#473d9e"
+        },
+        {
+          "pct": 100,
+          "hex": "#3d308d"
+        }
+      ]
+    },
+    "rim": {
+      "top": [
+        "#151434",
+        "#27214d",
+        "#281f50",
+        "#1f1b40",
+        "#191837"
+      ],
+      "bottom": [
+        "#252144",
+        "#30237d",
+        "#372666",
+        "#2f2a5c",
+        "#23214a"
+      ],
+      "left": [
+        "#161535",
+        "#544f91",
+        "#271d53",
+        "#241e48",
+        "#292549"
+      ],
+      "right": [
+        "#191837",
+        "#201c3e",
+        "#49367c",
+        "#2f2f62",
+        "#211f47"
+      ],
+      "TL": "#161535",
+      "TR": "#191837",
+      "BL": "#252145",
+      "BR": "#292755"
+    },
+    "radius_px": 8,
+    "glass_likely": true,
+    "fill_variance": 2578.32,
+    "alpha": {
+      "alpha_est": 0.55,
+      "fill_rgb": [
+        102,
+        91,
+        192
+      ],
+      "bg_rgb": [
+        23,
+        20,
+        51
+      ],
+      "fill_hex": "#655bc0",
+      "bg_hex": "#161433"
+    },
+    "outer": {
+      "detected": true,
+      "delta": 13.2,
+      "ring_hex": "#201d3e",
+      "far_hex": "#1a1634",
+      "kind": "glow",
+      "suggest_blur_px": 40,
+      "suggest_opacity": 0.165
+    },
+    "text": {
+      "light": "#a793f0",
+      "muted": "#6255ba"
+    },
+    "lighting": {
+      "top_brightness": 51.5,
+      "bottom_brightness": 75.2,
+      "top_lit": false
+    }
+  },
+  "vision": {
+    "shape": "rounded",
+    "radius_css": "8px",
+    "background": {
+      "kind": "linear",
+      "css": "linear-gradient(180deg, rgba(115, 112, 199, 0.55) 0%, rgba(152, 140, 230, 0.55) 25%, rgba(109, 87, 195, 0.55) 50%, rgba(71, 61, 158, 0.55) 75%, rgba(61, 48, 141, 0.55) 100%)"
+    },
+    "border": {
+      "kind": "gradient",
+      "width_px": 1,
+      "css": "linear-gradient(to bottom right, #27214d, #544f91, #30237d, #49367c)"
+    },
+    "shadow": [
+      {
+        "css": "0 0 40px rgba(32, 29, 62, 0.165)"
+      }
+    ],
+    "glass": {
+      "backdrop_blur_px": 12,
+      "notes": "Glassmorphism requested and supported by alpha metrics"
+    },
+    "typography": {
+      "color": "#a793f0",
+      "weight": 500,
+      "size_px": null
+    },
+    "confidence": 85,
+    "notes": "Extracted multi-stop gradient with semi-transparent alpha est. Border rim implies directional reflections mapped to a border gradient. Box shadow added for glow effect."
+  },
+  "merged_css": {
+    "border_radius": "8px",
+    "background": "linear-gradient(180deg, rgba(115,112,199,0.550) 0%, rgba(152,140,230,0.550) 25%, rgba(109,87,195,0.550) 50%, rgba(71,61,158,0.550) 75%, rgba(61,48,141,0.550) 100%)",
+    "border": "1px solid rgba(39,33,77,0.550)",
+    "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(41,39,85,0.450), 0 0 40px rgba(32,29,62,0.165)",
+    "backdrop_filter": "blur(12px)",
+    "color": "#a793f0",
+    "font_size_px": 38,
+    "font_weight": 500,
+    "height_px": 110,
+    "min_width_px": 158,
+    "alpha_used": 0.55,
+    "border_vision": "linear-gradient(to bottom right, #27214d, #544f91, #30237d, #49367c)",
+    "shadow_vision": [
+      "0 0 40px rgba(32, 29, 62, 0.165)"
+    ],
+    "background_vision": "linear-gradient(180deg, rgba(115, 112, 199, 0.55) 0%, rgba(152, 140, 230, 0.55) 25%, rgba(109, 87, 195, 0.55) 50%, rgba(71, 61, 158, 0.55) 75%, rgba(61, 48, 141, 0.55) 100%)"
+  },
+  "merge_policy": "fill/gradient/rim hex from pixels; alpha from VLM when pixel alpha\u226aglass; blur+shape from VLM"
+}

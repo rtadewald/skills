@@ -21,6 +21,8 @@ Quando quero tirar a linguagem visual de uma referência e deixar pronta pra imp
 - [`ds-cards-from-img`](./ds-cards-from-img): mock → cards com máscara + `sample_cards.py` (mais preciso)
 - [`ds-cards-from-img-2`](./ds-cards-from-img-2): o mesmo, fluxo **rápido** (bbox + PIL na original, sem crops/script)
 - [`img-to-html`](./img-to-html): mock → `measure.py` + vocab fechado → `index.html` + render/diff 2–3× (assets via OpenRouter)
+- [`img-to-html2`](./img-to-html2): wireframe ASCII tipado → **aprovação** → detect fontes (fal-ai OCR + Gemini 3.1 Pro / OpenRouter) → `typography.css` + `index.html` shell
+- [`img-to-html3`](./img-to-html3): toolbox (fontes, cores pixel, PNG, SVG/ASCII) dirigida por prompt humano — sem pipeline fixo
 
 ## Imagem
 
@@ -31,6 +33,7 @@ Gerar, converter, brincar com PNG.
 - [`to-svg`](./to-svg): mock PNG → wireframe SVG (`.svg` ao lado)
 - [`openrouter-img`](./openrouter-img): CLI dos modelos de imagem do OpenRouter
 - [`nano-banana-pro`](./nano-banana-pro): gerar/editar imagem com Nano Banana Pro (Gemini)
+- [`fal-ai`](./fal-ai): fal.ai Model API (auth/upload/subscribe) + Moondream detect/query/point/caption/segment
 
 ## Motion e mídia
 
@@ -51,4 +54,5 @@ Afiando ideia, quebrando em tickets, passando o bastão.
 
 Coisas soltas que salvam tempo.
 
+- [`find-font`](./find-font): crop de texto (1 linha) → TTF local + weight_css/color/overlay via API (`127.0.0.1:8000/find-font`, exige `text=`) — avulsa (não é o default do img-to-html2)
 - [`context7-mcp`](./context7-mcp): puxa docs atuais de libs via Context7 (em vez de chutar de memória)

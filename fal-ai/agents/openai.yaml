@@ -1,0 +1,6 @@
+interface:
+  display_name: "fal.ai"
+  short_description: "Chamar Model APIs da fal (Moondream, FLUX, etc.)"
+  default_prompt: "Use $fal-ai: chamar a API fal.ai (Moondream detect se for segmentação de UI)."
+policy:
+  allow_implicit_invocation: false

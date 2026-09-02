@@ -1,6 +1,0 @@
-interface:
-  display_name: "DS from SVG"
-  short_description: "Wireframe/mock SVG → design-systems/<slug>/design-system.html"
-  default_prompt: "Use $ds-from-svg: leia este SVG, escolha um slug e gere design-systems/<slug>/."
-policy:
-  allow_implicit_invocation: false

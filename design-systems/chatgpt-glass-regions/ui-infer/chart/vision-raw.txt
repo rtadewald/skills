@@ -1,0 +1,29 @@
+{
+  "shape": "rect",
+  "radius_css": "0px",
+  "background": {
+    "kind": "linear",
+    "css": "linear-gradient(180deg, rgba(15,13,41,0.15) 0%, rgba(23,18,54,0.15) 25%, rgba(53,36,99,0.15) 50%, rgba(57,38,109,0.15) 75%, rgba(37,24,82,0.15) 100%)"
+  },
+  "border": {
+    "kind": "solid",
+    "width_px": 0,
+    "css": "none"
+  },
+  "shadow": [
+    {
+      "css": "0px 0px 22px rgba(19, 16, 46, 0.08)"
+    }
+  ],
+  "glass": {
+    "backdrop_blur_px": 12,
+    "notes": "glassmorphism likely due to alpha and blur suggestions"
+  },
+  "typography": {
+    "color": "#624d96",
+    "weight": 500,
+    "size_px": null
+  },
+  "confidence": 85,
+  "notes": "Chart area with semi-transparent gradient fill and subtle drop shadow."
+}

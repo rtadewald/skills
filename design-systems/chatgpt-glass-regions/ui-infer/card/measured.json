@@ -1,0 +1,110 @@
+{
+  "type": "card",
+  "box": [
+    776,
+    97,
+    984,
+    276
+  ],
+  "size": [
+    208,
+    179
+  ],
+  "fill": "#443d7b",
+  "gradient": {
+    "angle_deg": 180,
+    "axis": "vertical",
+    "stops": [
+      {
+        "pct": 0,
+        "hex": "#1c1a3a"
+      },
+      {
+        "pct": 25,
+        "hex": "#3c385a"
+      },
+      {
+        "pct": 50,
+        "hex": "#675d9e"
+      },
+      {
+        "pct": 75,
+        "hex": "#8675db"
+      },
+      {
+        "pct": 100,
+        "hex": "#5b4eb3"
+      }
+    ]
+  },
+  "rim": {
+    "top": [
+      "#121028",
+      "#242044",
+      "#251f42",
+      "#1c183a",
+      "#100d2a"
+    ],
+    "bottom": [
+      "#100e27",
+      "#28234b",
+      "#281a81",
+      "#312a5d",
+      "#120f2c"
+    ],
+    "left": [
+      "#110f27",
+      "#1e1e3a",
+      "#1c1a34",
+      "#221f3c",
+      "#0e0c25"
+    ],
+    "right": [
+      "#100d2a",
+      "#211e3e",
+      "#1e1d3e",
+      "#39356b",
+      "#110e2b"
+    ],
+    "TL": "#110f27",
+    "TR": "#100d29",
+    "BL": "#0f0c28",
+    "BR": "#110f2e"
+  },
+  "radius_px": 2,
+  "glass_likely": true,
+  "fill_variance": 3323.69,
+  "alpha": {
+    "alpha_est": 0.453,
+    "fill_rgb": [
+      86,
+      77,
+      145
+    ],
+    "bg_rgb": [
+      15,
+      12,
+      37
+    ],
+    "fill_hex": "#554c90",
+    "bg_hex": "#0e0c25"
+  },
+  "outer": {
+    "detected": true,
+    "delta": 10.85,
+    "ring_hex": "#1a1635",
+    "far_hex": "#15122d",
+    "kind": "glow",
+    "suggest_blur_px": 40,
+    "suggest_opacity": 0.136
+  },
+  "text": {
+    "light": "#a997ed",
+    "muted": "#6457b6"
+  },
+  "lighting": {
+    "top_brightness": 48.3,
+    "bottom_brightness": 72.3,
+    "top_lit": false
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "measured": {
+    "type": "form",
+    "box": [
+      260,
+      231,
+      756,
+      347
+    ],
+    "size": [
+      496,
+      116
+    ],
+    "fill": "#211f41",
+    "gradient": {
+      "angle_deg": 90,
+      "axis": "horizontal",
+      "stops": [
+        {
+          "pct": 0,
+          "hex": "#39366b"
+        },
+        {
+          "pct": 25,
+          "hex": "#25254b"
+        },
+        {
+          "pct": 50,
+          "hex": "#1a1a36"
+        },
+        {
+          "pct": 75,
+          "hex": "#15132b"
+        },
+        {
+          "pct": 100,
+          "hex": "#110f25"
+        }
+      ]
+    },
+    "rim": {
+      "top": [
+        "#25254b",
+        "#534e92",
+        "#6255a7",
+        "#1b1a3b",
+        "#0e0c24"
+      ],
+      "bottom": [
+        "#272952",
+        "#3d3b6e",
+        "#1f1f3a",
+        "#17152b",
+        "#0d0b23"
+      ],
+      "left": [
+        "#27274c",
+        "#2f2e56",
+        "#2d2c55",
+        "#32305e",
+        "#272952"
+      ],
+      "right": [
+        "#0d0b23",
+        "#171432",
+        "#171337",
+        "#1e1644",
+        "#0e0c26"
+      ],
+      "TL": "#25254c",
+      "TR": "#0e0b25",
+      "BL": "#2d2e5a",
+      "BR": "#1a1637"
+    },
+    "radius_px": 2,
+    "glass_likely": true,
+    "fill_variance": 426.44,
+    "alpha": {
+      "alpha_est": 0.55,
+      "fill_rgb": [
+        31,
+        30,
+        62
+      ],
+      "bg_rgb": [
+        32,
+        32,
+        66
+      ],
+      "fill_hex": "#1f1d3e",
+      "bg_hex": "#1f1f41"
+    },
+    "outer": {
+      "detected": true,
+      "delta": 5.36,
+      "ring_hex": "#262448",
+      "far_hex": "#242243",
+      "kind": "glow",
+      "suggest_blur_px": 40,
+      "suggest_opacity": 0.08
+    },
+    "text": {
+      "light": "#a8a3d6",
+      "muted": "#5d5796"
+    },
+    "lighting": {
+      "top_brightness": 77.0,
+      "bottom_brightness": 49.1,
+      "top_lit": true
+    }
+  },
+  "vision": {
+    "shape": "rounded",
+    "radius_css": "24px",
+    "background": {
+      "kind": "linear",
+      "css": "linear-gradient(90deg, rgba(57, 54, 107, 0.55) 0%, rgba(37, 37, 75, 0.55) 25%, rgba(26, 26, 54, 0.55) 50%, rgba(21, 19, 43, 0.55) 75%, rgba(17, 15, 37, 0.55) 100%)"
+    },
+    "border": {
+      "kind": "gradient",
+      "width_px": 1,
+      "css": "linear-gradient(to right, #25254c, #6255a7, #0e0b25, #1a1637, #2d2e5a)"
+    },
+    "shadow": [
+      {
+        "css": "0 0 40px rgba(38, 36, 72, 0.08)"
+      },
+      {
+        "css": "inset 0 1px 0 rgba(98, 85, 167, 0.3)"
+      }
+    ],
+    "glass": {
+      "backdrop_blur_px": 12,
+      "notes": "Glassmorphism with variable opacity gradient fill"
+    },
+    "typography": {
+      "color": "#a8a3d6",
+      "weight": 400,
+      "size_px": 14
+    },
+    "confidence": 92,
+    "notes": "Used a rounded rectangle with 24px radius (estimated from image, data said 2px which seems too low). Masked linear-gradient border for rim."
+  },
+  "merged_css": {
+    "border_radius": "24px",
+    "background": "linear-gradient(90deg, rgba(57,54,107,0.550) 0%, rgba(37,37,75,0.550) 25%, rgba(26,26,54,0.550) 50%, rgba(21,19,43,0.550) 75%, rgba(17,15,37,0.550) 100%)",
+    "border": "1px solid rgba(98,85,167,0.550)",
+    "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(45,46,90,0.450), 0 0 40px rgba(38,36,72,0.080)",
+    "backdrop_filter": "blur(12px)",
+    "color": "#a8a3d6",
+    "font_size_px": 14,
+    "font_weight": 400,
+    "height_px": 116,
+    "min_width_px": 496,
+    "alpha_used": 0.55,
+    "border_vision": "linear-gradient(to right, #25254c, #6255a7, #0e0b25, #1a1637, #2d2e5a)",
+    "shadow_vision": [
+      "0 0 40px rgba(38, 36, 72, 0.08)",
+      "inset 0 1px 0 rgba(98, 85, 167, 0.3)"
+    ],
+    "background_vision": "linear-gradient(90deg, rgba(57, 54, 107, 0.55) 0%, rgba(37, 37, 75, 0.55) 25%, rgba(26, 26, 54, 0.55) 50%, rgba(21, 19, 43, 0.55) 75%, rgba(17, 15, 37, 0.55) 100%)"
+  },
+  "merge_policy": "fill/gradient/rim hex from pixels; alpha from VLM when pixel alpha\u226aglass; blur+shape from VLM"
+}

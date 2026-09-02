@@ -1,0 +1,32 @@
+{
+  "shape": "pill",
+  "radius_css": "999px",
+  "background": {
+    "kind": "linear",
+    "css": "linear-gradient(90deg, rgba(95, 79, 165, 0.257) 0%, rgba(101, 97, 151, 0.257) 25%, rgba(88, 86, 136, 0.257) 50%, rgba(83, 81, 128, 0.257) 75%, rgba(64, 63, 107, 0.257) 100%)"
+  },
+  "border": {
+    "kind": "gradient",
+    "width_px": 1,
+    "css": "linear-gradient(180deg, #474481 0%, #35346e 100%)"
+  },
+  "shadow": [
+    {
+      "css": "0 0 28px rgba(47, 47, 96, 0.087)"
+    },
+    {
+      "css": "inset 0 1px 1px rgba(255,255,255,0.05)"
+    }
+  ],
+  "glass": {
+    "backdrop_blur_px": 12,
+    "notes": "glassmorphic button with gradient border and faint glow"
+  },
+  "typography": {
+    "color": "#b6b2e1",
+    "weight": 500,
+    "size_px": null
+  },
+  "confidence": 90,
+  "notes": "Applied semi-transparent background derived from alpha_est. Border gradient from top/bottom rim midpoints."
+}

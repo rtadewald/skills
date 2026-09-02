@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1024" />
+  <title>ChatGPT Glass — UI shell</title>
+  <link rel="stylesheet" href="typography.css" />
+  <link rel="stylesheet" href="ui-tokens.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      background: #05040a;
+      padding: 24px;
+    }
+
+    .viewport {
+      width: 1024px;
+      height: 682px;
+      flex-shrink: 0;
+      transform-origin: top center;
+    }
+
+    @media (max-width: 1072px) {
+      .viewport { transform: scale(calc(100vw / 1072)); }
+    }
+
+    .shell {
+      position: relative;
+      width: 1024px;
+      height: 682px;
+      border-radius: 20px;
+      overflow: hidden;
+      color: #f2f2f7;
+      /* atmosphere from reference corners */
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 20%, rgba(120, 70, 200, 0.35), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(60, 40, 140, 0.4), transparent 50%),
+        linear-gradient(160deg, #0c0820 0%, #06040f 50%, #0a0618 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .abs { position: absolute; }
+
+    .lnk {
+      white-space: nowrap;
+      display: block;
+      color: rgba(200, 198, 230, 0.75);
+      padding: 6px 12px;
+      margin: 2px 8px;
+    }
+    .lnk.is-active {
+      display: inline-block;
+      color: #fff;
+    }
+
+    .t1, .t2, .t3, .h1, .h2, .h3 { white-space: nowrap; }
+    .t1 { color: rgba(200, 198, 230, 0.75); }
+    .t2 { color: rgba(210, 210, 230, 0.85); }
+    .t3 { color: rgba(160, 158, 190, 0.55); }
+    .h1, .h2, .h3 { color: #f4f3ff; }
+
+    .btn, .btn2 {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: default;
+      white-space: nowrap;
+      padding: 0 16px;
+    }
+
+    .in.surface {
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      color: rgba(180, 178, 210, 0.55);
+      white-space: nowrap;
+    }
+
+    .check { color: #4ade80; margin-right: 8px; }
+
+    .nav-inner {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 16px 8px 12px;
+    }
+    .nav-brand { padding: 4px 12px 20px; }
+    .nav-spacer { flex: 1; }
+    .recent { padding: 8px 12px 4px; }
+    .recent-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 4px 12px;
+    }
+
+    .card2-inner { padding: 14px 12px; height: 100%; }
+    .card-inner { padding: 14px; height: 100%; }
+    .ph-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(168, 85, 247, 0.25);
+      margin-bottom: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="viewport">
+    <div class="shell">
+
+      <!-- nav [24,32,224,661] -->
+      <aside class="abs ui-nav" style="left:24px; top:32px; width:200px; height:629px;">
+        <div class="nav-inner">
+          <div class="nav-brand h3">ChatGPT</div>
+
+          <div class="lnk is-active">Home</div>
+          <div class="lnk">Explore GPTs</div>
+          <div class="lnk">Library</div>
+          <div class="lnk">Projects</div>
+          <div class="lnk">Memory</div>
+          <div class="lnk">Custom GPTs</div>
+          <div class="lnk">Settings</div>
+
+          <div class="recent h2">Recent Chats</div>
+          <div class="recent-row"><span class="t2">The Future of AI</span><span class="t3">Today</span></div>
+          <div class="recent-row"><span class="t2">Brainstorming Ideas</span><span class="t3">Today</span></div>
+          <div class="recent-row"><span class="t2">Python Code Help</span><span class="t3">Yesterday</span></div>
+          <div class="recent-row"><span class="t2">Design a Website</span><span class="t3">Yesterday</span></div>
+          <div class="recent-row"><span class="t2">Workout Plan</span><span class="t3">2 days ago</span></div>
+
+          <div class="nav-spacer"></div>
+          <button class="btn" style="width:calc(100% - 16px); margin:0 8px; height:40px;">View all chats →</button>
+        </div>
+      </aside>
+
+      <!-- search in [241,48,627,85] -->
+      <div class="abs in surface" style="left:241px; top:48px; width:386px; height:37px;">
+        Search ChatGPT
+        <span class="t3" style="margin-left:auto;">⌘K</span>
+      </div>
+
+      <!-- New Chat btn2 [approx header right] -->
+      <button class="abs btn2" style="left:700px; top:48px; height:37px; min-width:100px;">+ New Chat</button>
+
+      <!-- avatar [937,49,967,81] -->
+      <div class="abs ui-av" style="left:937px; top:49px; width:30px; height:32px;" title="avatar"></div>
+
+      <!-- h1 -->
+      <div class="abs h1" style="left:280px; top:130px; width:480px; text-align:center;">What can I help with today?</div>
+
+      <!-- form [260,231,756,347] -->
+      <div class="abs ui-form" style="left:260px; top:231px; width:496px; height:116px; padding:18px 20px;">
+        <div class="in">Message ChatGPT...</div>
+        <button class="abs btn2" style="right:16px; bottom:14px; width:36px; height:36px; padding:0; border-radius:12px;">⌁</button>
+      </div>
+
+      <!-- pill actions -->
+      <div class="abs" style="left:260px; top:365px; display:flex; gap:10px;">
+        <button class="btn2" style="height:42px;">Create Image</button>
+        <button class="btn2" style="height:42px;">Summarize Text</button>
+        <button class="btn2" style="height:42px;">Brainstorm</button>
+        <button class="btn2" style="height:42px;">More</button>
+      </div>
+
+      <!-- card2 task cards — first at [258,441,370,593], stride ~120 -->
+      <div class="abs ui-card2" style="left:258px; top:441px; width:112px; height:152px;">
+        <div class="card2-inner">
+          <div class="ph-icon ui-ico"></div>
+          <div class="h3" style="white-space:normal; line-height:1.2;">Write an email</div>
+          <div class="t2" style="margin-top:8px;">Professional</div>
+        </div>
+      </div>
+      <div class="abs ui-card2" style="left:380px; top:441px; width:116px; height:152px;">
+        <div class="card2-inner">
+          <div class="ph-icon ui-ico"></div>
+          <div class="h3" style="white-space:normal; line-height:1.2;">Analyze data</div>
+          <div class="t2" style="margin-top:8px;">CSV, Excel, etc.</div>
+        </div>
+      </div>
+      <div class="abs ui-card2" style="left:508px; top:441px; width:112px; height:152px;">
+        <div class="card2-inner">
+          <div class="ph-icon ui-ico"></div>
+          <div class="h3" style="white-space:normal; line-height:1.2;">Explain anything</div>
+          <div class="t2" style="margin-top:8px;">In simple terms</div>
+        </div>
+      </div>
+      <div class="abs ui-card2" style="left:630px; top:441px; width:116px; height:152px;">
+        <div class="card2-inner">
+          <div class="ph-icon ui-ico"></div>
+          <div class="h3" style="white-space:normal; line-height:1.2;">Code something</div>
+          <div class="t2" style="margin-top:8px;">Python, JS, etc.</div>
+        </div>
+      </div>
+
+      <!-- card model [776,97,984,276] -->
+      <div class="abs ui-card" style="left:776px; top:97px; width:208px; height:179px;">
+        <div class="card-inner">
+          <div class="h2">GPT-4o</div>
+          <div class="ui-img" style="width:100%; height:64px; margin:10px 0;"></div>
+          <div class="t1" style="white-space:normal; line-height:1.35;">Our most advanced model for complex tasks.</div>
+        </div>
+      </div>
+
+      <!-- capabilities — style card, box from prior [778,285,982,429] -->
+      <div class="abs ui-card" style="left:778px; top:285px; width:204px; height:144px;">
+        <div class="card-inner">
+          <div style="margin:6px 0;"><span class="check">✓</span><span class="t2">Web Browsing</span></div>
+          <div style="margin:6px 0;"><span class="check">✓</span><span class="t2">Data Analysis</span></div>
+          <div style="margin:6px 0;"><span class="check">✓</span><span class="t2">Image Generation</span></div>
+          <div style="margin:6px 0;"><span class="check">✓</span><span class="t2">Code Interpreter</span></div>
+        </div>
+      </div>
+
+      <!-- activity [777,436,983,582] -->
+      <div class="abs ui-card" style="left:777px; top:436px; width:206px; height:146px;">
+        <div class="card-inner">
+          <div class="h2" style="margin-bottom:8px;">Your Activity</div>
+          <div class="t3">Messages sent</div>
+          <div class="h3" style="margin-bottom:6px;">1,231</div>
+          <div class="t3">Responses received</div>
+          <div class="h3" style="margin-bottom:6px;">1,876</div>
+          <div class="t3">Time saved</div>
+          <div class="h3">45h+</div>
+          <div class="ui-chart" style="width:100%; height:28px; margin-top:8px;"></div>
+        </div>
+      </div>
+
+      <!-- card3 upgrade [778,591,982,645] -->
+      <div class="abs ui-card3" style="left:778px; top:591px; width:204px; height:54px; display:flex; align-items:center; padding:0 16px; gap:10px;">
+        <div>
+          <div class="h3">ChatGPT Plus</div>
+          <div class="t3">Upgrade for more access</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

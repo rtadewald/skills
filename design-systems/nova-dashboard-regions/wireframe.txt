@@ -1,0 +1,52 @@
+┌─ nav ────────────────────────────────────────────────────────────────────────┐
+│ [ico:star] [h3: NOVA]                                                        │
+│    [lnk: Dashboard] [lnk: Missions] [lnk: Star Map] [lnk: Fleet]            │
+│    [lnk: Research] [lnk: Logs]                                               │
+│                         [ico:search] [ico:bell] [av: pilot] [ico:chev]       │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌─ hero ───────────────────────────────────────────┬─ media ───────────────────┐
+│ [ico:play]                                       │                           │
+│ │                                                │  [img: planet + rings]    │
+│ │ [t3: SYSTEM STATUS • NOMINAL]                  │                           │
+│ │                                                │ [t2: TARGET: KEPLER-186F] │
+│ │ [h1: EXPLORE.]                                  │                           │
+│ │ [h1: DISCOVER.]                                 │                           │
+│ │ [h1: ENDURE.]                                   │                           │
+│ │                                                │ [t2: DISTANCE: 812 LY]    │
+│ │ [t1: Navigate the unknown, catalog new worlds, and expand the boundaries of human presence.] │
+│ │ [btn: LAUNCH MISSION] [btn2: VIEW STAR MAP]    │                           │
+└──────────────────────────────────────────────────┴───────────────┬─ rail ──────┘
+                                                                 │ [ico:rocket]  │
+                                                                 │ [h2: 07]      │
+                                                                 │ [t3: ACTIVE MISSIONS] │
+                                                                 │               │
+                                                                 │ [ico:planet]  │
+                                                                 │ [h2: 23]      │
+                                                                 │ [t3: PLANETS MAPPED]  │
+                                                                 │               │
+                                                                 │ [ico:chart]   │
+                                                                 │ [h2: 1.2M]    │
+                                                                 │ [t3: DATA POINTS COLLECTED] │
+                                                                 └───────────────┘
+
+┌─ card ──────────────┐ ┌─ card2 ─────────────┐ ┌─ card3 ─────────────┐ ┌─ card4 ────────────────┐
+│ [t3: FLEET STATUS]  │ │ [t3: NEXT MISSION]  │ │ [t3: SYSTEM SCAN]   │ │ [t3: MISSION TIMELINE] │
+│            [t2: 3/5] │ │ [t3: ETA 2D 14H]    │ │ [t3: • LIVE]        │ │                        │
+│                     │ │                     │ │                     │ │ [t2: Engine Calibration] │
+│ [img: spaceship]    │ │ [img: lunar surface]│ │ [chart: radar scan] │ │ [t3: COMPLETE]         │
+│                     │ │                     │ │                     │ │                        │
+│ [h3: NSS VOYAGER • READY] │ [h3: KEPLER-186F / SURVEY MISSION] │ [t2: 7 SIGNALS DETECTED] │ [t2: Gravity Assist] │
+│                     │ │       [btn2: [ico:arrow]] │ │ [btn2: VIEW]        │ │ [t3: IN PROGRESS]      │
+│ [t3: 82%]           │ │                     │ │                     │ │                        │
+│                     │ │                     │ │                     │ │ [h3: Arrival: Kepler-186F] │
+│                     │ │                     │ │                     │ │ [t3: ETA 2D 14H]      │
+│                     │ │                     │ │                     │ │                        │
+│                     │ │                     │ │                     │ │ [t2: Surface Survey]  │
+│                     │ │                     │ │                     │ │ [t3: PENDING]         │
+└─────────────────────┘ └─────────────────────┘ └─────────────────────┘ └────────────────────────┘
+
+┌─ section ────────────────────────────────────────────────────────────────────┐
+│                                                    [img: asteroid field]     │
+│                                         [t3: SCROLL TO EXPLORE] [ico:down] │
+└──────────────────────────────────────────────────────────────────────────────┘

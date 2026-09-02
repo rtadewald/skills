@@ -1,0 +1,75 @@
+/* typography.css — img-to-html2 + Gemini 3.1 Pro (OpenRouter)
+ * h3 → Inter 500 (conf 90)
+ * lnk → Inter 500 (conf 90)
+ * h2 → Inter 600 (conf 85)
+ * t2 → Inter 500 (conf 75)
+ * t3 → Inter 500 (conf 75)
+ * btn → Inter 500 (conf 75)
+ * in → Inter 400 (conf 90)
+ * btn2 → Inter 500 (conf 90)
+ * h1 → Inter 500 (conf 85)
+ * t1 → Inter 500 (conf 90)
+ * Bruto: typography/gemini-font-results.json
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+.h1 {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 34px;
+}
+
+.h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.h3 {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 23px;
+}
+
+.t1 {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.t2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.t3 {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.lnk {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.btn {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+}
+
+.btn2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+}
+
+.in {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}

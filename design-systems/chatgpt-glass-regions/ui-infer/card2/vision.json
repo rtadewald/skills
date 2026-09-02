@@ -1,0 +1,29 @@
+{
+  "shape": "rounded",
+  "radius_css": "16px",
+  "background": {
+    "kind": "linear",
+    "css": "linear-gradient(180deg, rgba(45, 46, 85, 0.4) 0%, rgba(37, 39, 75, 0.4) 25%, rgba(33, 35, 69, 0.4) 50%, rgba(29, 32, 63, 0.4) 75%, rgba(29, 32, 63, 0.4) 100%)"
+  },
+  "border": {
+    "kind": "gradient",
+    "width_px": 1,
+    "css": "linear-gradient(180deg, rgba(78, 78, 127, 0.5), rgba(43, 43, 79, 0.1))"
+  },
+  "shadow": [
+    {
+      "css": "0 8px 32px 0 rgba(31, 31, 63, 0.12)"
+    }
+  ],
+  "glass": {
+    "backdrop_blur_px": 12,
+    "notes": "Strong glassmorphism effect with subtle gradient background and prominent top border highlight"
+  },
+  "typography": {
+    "color": "#bbbcdb",
+    "weight": 500,
+    "size_px": 14
+  },
+  "confidence": 90,
+  "notes": "Border radius estimated larger than 2px based on image; adjusted to 16px for typical card appearance."
+}

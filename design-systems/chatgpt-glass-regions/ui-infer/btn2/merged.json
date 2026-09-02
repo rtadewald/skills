@@ -1,0 +1,164 @@
+{
+  "measured": {
+    "type": "btn2",
+    "box": [
+      262,
+      365,
+      394,
+      407
+    ],
+    "size": [
+      132,
+      42
+    ],
+    "fill": "#4a4680",
+    "gradient": {
+      "angle_deg": 90,
+      "axis": "horizontal",
+      "stops": [
+        {
+          "pct": 0,
+          "hex": "#5f4fa5"
+        },
+        {
+          "pct": 25,
+          "hex": "#656197"
+        },
+        {
+          "pct": 50,
+          "hex": "#585688"
+        },
+        {
+          "pct": 75,
+          "hex": "#535180"
+        },
+        {
+          "pct": 100,
+          "hex": "#403f6b"
+        }
+      ]
+    },
+    "rim": {
+      "top": [
+        "#2b2a59",
+        "#474481",
+        "#464381",
+        "#413f79",
+        "#2d2e5f"
+      ],
+      "bottom": [
+        "#2c2d5d",
+        "#37366e",
+        "#35346e",
+        "#2d2d60",
+        "#24264e"
+      ],
+      "left": [
+        "#2a2b59",
+        "#3e3d71",
+        "#3f3c72",
+        "#323268",
+        "#2c2d5c"
+      ],
+      "right": [
+        "#2e2f5f",
+        "#323363",
+        "#313260",
+        "#383967",
+        "#24264d"
+      ],
+      "TL": "#2d2c5c",
+      "TR": "#363767",
+      "BL": "#2d2d5e",
+      "BR": "#262752"
+    },
+    "radius_px": 2,
+    "glass_likely": true,
+    "fill_variance": 1127.55,
+    "alpha": {
+      "alpha_est": 0.257,
+      "fill_rgb": [
+        81,
+        76,
+        132
+      ],
+      "bg_rgb": [
+        44,
+        45,
+        93
+      ],
+      "fill_hex": "#504c84",
+      "bg_hex": "#2c2c5c"
+    },
+    "outer": {
+      "detected": true,
+      "delta": 6.93,
+      "ring_hex": "#2f2f60",
+      "far_hex": "#2e2e5a",
+      "kind": "glow",
+      "suggest_blur_px": 28,
+      "suggest_opacity": 0.087
+    },
+    "text": {
+      "light": "#b6b2e1",
+      "muted": "#5e5698"
+    },
+    "lighting": {
+      "top_brightness": 95.6,
+      "bottom_brightness": 69.5,
+      "top_lit": true
+    }
+  },
+  "vision": {
+    "shape": "pill",
+    "radius_css": "999px",
+    "background": {
+      "kind": "linear",
+      "css": "linear-gradient(90deg, rgba(95, 79, 165, 0.257) 0%, rgba(101, 97, 151, 0.257) 25%, rgba(88, 86, 136, 0.257) 50%, rgba(83, 81, 128, 0.257) 75%, rgba(64, 63, 107, 0.257) 100%)"
+    },
+    "border": {
+      "kind": "gradient",
+      "width_px": 1,
+      "css": "linear-gradient(180deg, #474481 0%, #35346e 100%)"
+    },
+    "shadow": [
+      {
+        "css": "0 0 28px rgba(47, 47, 96, 0.087)"
+      },
+      {
+        "css": "inset 0 1px 1px rgba(255,255,255,0.05)"
+      }
+    ],
+    "glass": {
+      "backdrop_blur_px": 12,
+      "notes": "glassmorphic button with gradient border and faint glow"
+    },
+    "typography": {
+      "color": "#b6b2e1",
+      "weight": 500,
+      "size_px": null
+    },
+    "confidence": 90,
+    "notes": "Applied semi-transparent background derived from alpha_est. Border gradient from top/bottom rim midpoints."
+  },
+  "merged_css": {
+    "border_radius": "999px",
+    "background": "linear-gradient(90deg, rgba(95,79,165,0.257) 0%, rgba(101,97,151,0.257) 25%, rgba(88,86,136,0.257) 50%, rgba(83,81,128,0.257) 75%, rgba(64,63,107,0.257) 100%)",
+    "border": "1px solid rgba(71,68,129,0.407)",
+    "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(54,55,103,0.450), 0 0 28px rgba(47,47,96,0.087)",
+    "backdrop_filter": "blur(12px)",
+    "color": "#b6b2e1",
+    "font_size_px": 15,
+    "font_weight": 500,
+    "height_px": 42,
+    "min_width_px": 132,
+    "alpha_used": 0.257,
+    "border_vision": "linear-gradient(180deg, #474481 0%, #35346e 100%)",
+    "shadow_vision": [
+      "0 0 28px rgba(47, 47, 96, 0.087)",
+      "inset 0 1px 1px rgba(255,255,255,0.05)"
+    ],
+    "background_vision": "linear-gradient(90deg, rgba(95, 79, 165, 0.257) 0%, rgba(101, 97, 151, 0.257) 25%, rgba(88, 86, 136, 0.257) 50%, rgba(83, 81, 128, 0.257) 75%, rgba(64, 63, 107, 0.257) 100%)"
+  },
+  "merge_policy": "fill/gradient/rim hex from pixels; alpha from VLM when pixel alpha\u226aglass; blur+shape from VLM"
+}

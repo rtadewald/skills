@@ -1,0 +1,325 @@
+{
+  "av": {
+    "merged_css": {
+      "border_radius": "6px",
+      "background": "linear-gradient(180deg, rgba(90,79,104,0.550) 0%, rgba(196,165,176,0.550) 25%, rgba(193,150,163,0.550) 50%, rgba(191,155,173,0.550) 75%, rgba(156,129,150,0.550) 100%)",
+      "border": "1px solid rgba(170,169,198,0.550)",
+      "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(120,113,148,0.450), 0 4px 31px rgba(22,17,47,0.204)",
+      "backdrop_filter": "blur(12px)",
+      "color": "#d0bfe1",
+      "font_size_px": 11,
+      "font_weight": 500,
+      "height_px": 32,
+      "min_width_px": 30,
+      "alpha_used": 0.55,
+      "border_vision": "linear-gradient(180deg, #a4a0be, #dfcbf2, #34253f)",
+      "shadow_vision": [
+        "0 16px 31px rgba(22, 17, 47, 0.2)",
+        "inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+      ],
+      "background_vision": "linear-gradient(180deg, rgba(90, 79, 104, 0.55) 0%, rgba(196, 165, 176, 0.55) 25%, rgba(193, 150, 163, 0.55) 50%, rgba(191, 155, 173, 0.55) 75%, rgba(156, 129, 150, 0.55) 100%)"
+    },
+    "vision_confidence": 85
+  },
+  "btn": {
+    "merged_css": {
+      "border_radius": "999px",
+      "background": "linear-gradient(90deg, rgba(23,25,51,0.350) 0%, rgba(51,52,75,0.350) 25%, rgba(48,49,73,0.350) 50%, rgba(24,25,51,0.350) 75%, rgba(26,27,57,0.350) 100%)",
+      "border": "1px solid rgba(28,30,58,0.500)",
+      "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(24,25,54,0.450), 0 0 27px rgba(25,27,54,0.094)",
+      "backdrop_filter": "blur(8px)",
+      "color": "#b1b2ca",
+      "font_size_px": 14,
+      "font_weight": 500,
+      "height_px": 40,
+      "min_width_px": 176,
+      "alpha_used": 0.35,
+      "border_vision": "linear-gradient(90deg, #11132c, #272843, #2c2c51, #161735)",
+      "shadow_vision": [
+        "0 0 27px rgba(25, 27, 54, 0.09)",
+        "inset 0 1px 1px rgba(255, 255, 255, 0.03)"
+      ],
+      "background_vision": "linear-gradient(90deg, #171933 0%, #33344b 25%, #303149 50%, #181933 75%, #1a1b39 100%)"
+    },
+    "vision_confidence": 85
+  },
+  "btn2": {
+    "merged_css": {
+      "border_radius": "999px",
+      "background": "linear-gradient(90deg, rgba(95,79,165,0.257) 0%, rgba(101,97,151,0.257) 25%, rgba(88,86,136,0.257) 50%, rgba(83,81,128,0.257) 75%, rgba(64,63,107,0.257) 100%)",
+      "border": "1px solid rgba(71,68,129,0.407)",
+      "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(54,55,103,0.450), 0 0 28px rgba(47,47,96,0.087)",
+      "backdrop_filter": "blur(12px)",
+      "color": "#b6b2e1",
+      "font_size_px": 15,
+      "font_weight": 500,
+      "height_px": 42,
+      "min_width_px": 132,
+      "alpha_used": 0.257,
+      "border_vision": "linear-gradient(180deg, #474481 0%, #35346e 100%)",
+      "shadow_vision": [
+        "0 0 28px rgba(47, 47, 96, 0.087)",
+        "inset 0 1px 1px rgba(255,255,255,0.05)"
+      ],
+      "background_vision": "linear-gradient(90deg, rgba(95, 79, 165, 0.257) 0%, rgba(101, 97, 151, 0.257) 25%, rgba(88, 86, 136, 0.257) 50%, rgba(83, 81, 128, 0.257) 75%, rgba(64, 63, 107, 0.257) 100%)"
+    },
+    "vision_confidence": 90
+  },
+  "card": {
+    "merged_css": {
+      "border_radius": "16px",
+      "background": "linear-gradient(180deg, rgba(28,26,58,0.453) 0%, rgba(60,56,90,0.453) 25%, rgba(103,93,158,0.453) 50%, rgba(134,117,219,0.453) 75%, rgba(91,78,179,0.453) 100%)",
+      "border": "1px solid rgba(36,32,68,0.550)",
+      "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(17,15,46,0.450), 0 0 40px rgba(26,22,53,0.136)",
+      "backdrop_filter": "blur(12px)",
+      "color": "#a997ed",
+      "font_size_px": 63,
+      "font_weight": 500,
+      "height_px": 179,
+      "min_width_px": 208,
+      "alpha_used": 0.453,
+      "border_vision": "1px solid rgba(134, 117, 219, 0.2)",
+      "shadow_vision": [
+        "0 0 40px rgba(26, 22, 53, 0.14)"
+      ],
+      "background_vision": "linear-gradient(180deg, rgba(86, 77, 145, 0.45) 0%, rgba(28, 26, 58, 0.45) 100%)"
+    },
+    "vision_confidence": 85
+  },
+  "card2": {
+    "merged_css": {
+      "border_radius": "16px",
+      "background": "linear-gradient(180deg, rgba(45,46,85,0.400) 0%, rgba(37,39,75,0.400) 25%, rgba(33,35,69,0.400) 50%, rgba(29,32,63,0.400) 75%, rgba(29,32,63,0.400) 100%)",
+      "border": "1px solid rgba(78,78,127,0.550)",
+      "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(43,44,89,0.450), 0 0 40px rgba(34,35,72,0.126)",
+      "backdrop_filter": "blur(12px)",
+      "color": "#bbbcdb",
+      "font_size_px": 14,
+      "font_weight": 500,
+      "height_px": 152,
+      "min_width_px": 112,
+      "alpha_used": 0.4,
+      "border_vision": "linear-gradient(180deg, rgba(78, 78, 127, 0.5), rgba(43, 43, 79, 0.1))",
+      "shadow_vision": [
+        "0 8px 32px 0 rgba(31, 31, 63, 0.12)"
+      ],
+      "background_vision": "linear-gradient(180deg, rgba(45, 46, 85, 0.4) 0%, rgba(37, 39, 75, 0.4) 25%, rgba(33, 35, 69, 0.4) 50%, rgba(29, 32, 63, 0.4) 75%, rgba(29, 32, 63, 0.4) 100%)"
+    },
+    "vision_confidence": 90
+  },
+  "card3": {
+    "merged_css": {
+      "border_radius": "999px",
+      "background": "linear-gradient(180deg, rgba(23,19,56,0.130) 0%, rgba(72,69,100,0.130) 25%, rgba(21,18,50,0.130) 50%, rgba(21,17,55,0.130) 75%, rgba(25,21,59,0.130) 100%)",
+      "border": "1px solid rgba(30,26,62,0.280)",
+      "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(27,19,66,0.450), 0 0 30px rgba(24,18,57,0.080)",
+      "backdrop_filter": "blur(12px)",
+      "color": "#b8abdd",
+      "font_size_px": 14,
+      "font_weight": 500,
+      "height_px": 54,
+      "min_width_px": 204,
+      "alpha_used": 0.13,
+      "border_vision": "linear-gradient(180deg, #1e1a3e, #1c183b)",
+      "shadow_vision": [
+        "inset 0 1px 0 0 rgba(255, 255, 255, 0.05)",
+        "0 8px 30px rgba(23, 17, 54, 0.08)"
+      ],
+      "background_vision": "linear-gradient(180deg, rgba(23,19,56,0.85) 0%, rgba(72,69,100,0.2) 25%, rgba(21,18,50,0.85) 50%, rgba(21,17,55,0.85) 75%, rgba(25,21,59,0.85) 100%)"
+    },
+    "vision_confidence": 90
+  },
+  "chart": {
+    "merged_css": {
+      "border_radius": "999px",
+      "background": "linear-gradient(180deg, rgba(15,13,41,0.157) 0%, rgba(23,18,54,0.157) 25%, rgba(53,36,99,0.157) 50%, rgba(57,38,109,0.157) 75%, rgba(37,24,82,0.157) 100%)",
+      "border": "1px solid rgba(21,17,50,0.307)",
+      "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(22,19,50,0.450), 0 4px 22px rgba(19,16,46,0.080)",
+      "backdrop_filter": "blur(12px)",
+      "color": "#624d96",
+      "font_size_px": 12,
+      "font_weight": 500,
+      "height_px": 35,
+      "min_width_px": 200,
+      "alpha_used": 0.157,
+      "shadow_vision": [
+        "0px 0px 22px rgba(19, 16, 46, 0.08)"
+      ],
+      "background_vision": "linear-gradient(180deg, rgba(15,13,41,0.15) 0%, rgba(23,18,54,0.15) 25%, rgba(53,36,99,0.15) 50%, rgba(57,38,109,0.15) 75%, rgba(37,24,82,0.15) 100%)"
+    },
+    "vision_confidence": 85
+  },
+  "form": {
+    "merged_css": {
+      "border_radius": "24px",
+      "background": "linear-gradient(90deg, rgba(57,54,107,0.550) 0%, rgba(37,37,75,0.550) 25%, rgba(26,26,54,0.550) 50%, rgba(21,19,43,0.550) 75%, rgba(17,15,37,0.550) 100%)",
+      "border": "1px solid rgba(98,85,167,0.550)",
+      "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(45,46,90,0.450), 0 0 40px rgba(38,36,72,0.080)",
+      "backdrop_filter": "blur(12px)",
+      "color": "#a8a3d6",
+      "font_size_px": 14,
+      "font_weight": 400,
+      "height_px": 116,
+      "min_width_px": 496,
+      "alpha_used": 0.55,
+      "border_vision": "linear-gradient(to right, #25254c, #6255a7, #0e0b25, #1a1637, #2d2e5a)",
+      "shadow_vision": [
+        "0 0 40px rgba(38, 36, 72, 0.08)",
+        "inset 0 1px 0 rgba(98, 85, 167, 0.3)"
+      ],
+      "background_vision": "linear-gradient(90deg, rgba(57, 54, 107, 0.55) 0%, rgba(37, 37, 75, 0.55) 25%, rgba(26, 26, 54, 0.55) 50%, rgba(21, 19, 43, 0.55) 75%, rgba(17, 15, 37, 0.55) 100%)"
+    },
+    "vision_confidence": 92
+  },
+  "hero": {
+    "merged_css": {
+      "border_radius": "11px",
+      "background": "linear-gradient(180deg, rgba(104,95,165,0.200) 0%, rgba(30,29,60,0.200) 25%, rgba(24,24,53,0.200) 50%, rgba(18,19,43,0.200) 75%, rgba(24,24,49,0.200) 100%)",
+      "border": "1px solid rgba(35,35,70,0.350)",
+      "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(27,28,56,0.450), 0 4px 40px rgba(31,30,63,0.084)",
+      "backdrop_filter": "blur(12px)",
+      "color": "#c9c7e0",
+      "font_size_px": 172,
+      "font_weight": 500,
+      "height_px": 490,
+      "min_width_px": 520,
+      "alpha_used": 0.2,
+      "border_vision": "linear-gradient(180deg, rgba(104, 95, 165, 0.5), rgba(29, 29, 67, 0.5))",
+      "shadow_vision": [
+        "0px 4px 40px 0px rgba(31, 30, 63, 0.08)",
+        "inset 0px 1px 0px 0px rgba(104, 95, 165, 0.2)"
+      ],
+      "background_vision": "linear-gradient(180deg, rgba(104, 95, 165, 0.2) 0%, rgba(30, 29, 60, 0.4) 25%, rgba(24, 24, 53, 0.4) 50%, rgba(18, 19, 43, 0.4) 75%, rgba(24, 24, 49, 0.4) 100%)"
+    },
+    "vision_confidence": 90
+  },
+  "ico": {
+    "merged_css": {
+      "border_radius": "9px",
+      "background": "linear-gradient(270deg, rgba(135,107,230,0.550) 0%, rgba(172,144,232,0.550) 25%, rgba(182,147,243,0.550) 50%, rgba(173,140,229,0.550) 75%, rgba(170,141,226,0.550) 100%)",
+      "border": "1px solid rgba(169,136,244,0.550)",
+      "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(163,132,242,0.450), 0 0 40px rgba(99,88,178,0.525)",
+      "backdrop_filter": "blur(12px)",
+      "color": "#b496f2",
+      "font_size_px": 11,
+      "font_weight": 500,
+      "height_px": 24,
+      "min_width_px": 24,
+      "alpha_used": 0.55,
+      "border_vision": "linear-gradient(to bottom, #9375ec, #5c4baa)",
+      "shadow_vision": [
+        "0px 0px 40px rgba(99, 88, 178, 0.525)",
+        "inset 0 1px 1px rgba(255, 255, 255, 0.15)"
+      ],
+      "background_vision": "linear-gradient(270deg, rgba(135, 107, 230, 0.55) 0%, rgba(172, 144, 232, 0.55) 25%, rgba(182, 147, 243, 0.55) 50%, rgba(173, 140, 229, 0.55) 75%, rgba(170, 141, 226, 0.55) 100%)"
+    },
+    "vision_confidence": 85
+  },
+  "img": {
+    "merged_css": {
+      "border_radius": "8px",
+      "background": "linear-gradient(180deg, rgba(115,112,199,0.550) 0%, rgba(152,140,230,0.550) 25%, rgba(109,87,195,0.550) 50%, rgba(71,61,158,0.550) 75%, rgba(61,48,141,0.550) 100%)",
+      "border": "1px solid rgba(39,33,77,0.550)",
+      "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(41,39,85,0.450), 0 0 40px rgba(32,29,62,0.165)",
+      "backdrop_filter": "blur(12px)",
+      "color": "#a793f0",
+      "font_size_px": 38,
+      "font_weight": 500,
+      "height_px": 110,
+      "min_width_px": 158,
+      "alpha_used": 0.55,
+      "border_vision": "linear-gradient(to bottom right, #27214d, #544f91, #30237d, #49367c)",
+      "shadow_vision": [
+        "0 0 40px rgba(32, 29, 62, 0.165)"
+      ],
+      "background_vision": "linear-gradient(180deg, rgba(115, 112, 199, 0.55) 0%, rgba(152, 140, 230, 0.55) 25%, rgba(109, 87, 195, 0.55) 50%, rgba(71, 61, 158, 0.55) 75%, rgba(61, 48, 141, 0.55) 100%)"
+    },
+    "vision_confidence": 85
+  },
+  "in": {
+    "merged_css": {
+      "border_radius": "999px",
+      "background": "linear-gradient(90deg, rgba(61,61,95,0.350) 0%, rgba(26,28,53,0.350) 25%, rgba(21,22,43,0.350) 50%, rgba(19,20,41,0.350) 75%, rgba(19,18,39,0.350) 100%)",
+      "border": "1px solid rgba(35,36,66,0.500)",
+      "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(26,27,57,0.450), 0 4px 39px rgba(21,21,45,0.260)",
+      "backdrop_filter": "blur(12px)",
+      "color": "#a0a1c2",
+      "font_size_px": 14,
+      "font_weight": 400,
+      "height_px": 37,
+      "min_width_px": 386,
+      "alpha_used": 0.35,
+      "border_vision": "1px solid rgba(160, 161, 194, 0.15)",
+      "shadow_vision": [
+        "0 4px 39px rgba(0, 0, 0, 0.26)",
+        "inset 0 1px 0 rgba(255, 255, 255, 0.05)"
+      ],
+      "background_vision": "linear-gradient(90deg, #3d3d5f 0%, #1a1c35 25%, #15162b 50%, #131429 75%, #131227 100%)"
+    },
+    "vision_confidence": 85
+  },
+  "nav": {
+    "merged_css": {
+      "border_radius": "2px",
+      "background": "linear-gradient(180deg, rgba(34,34,69,0.500) 0%, rgba(24,25,51,0.500) 25%, rgba(46,49,69,0.500) 50%, rgba(15,17,36,0.500) 75%, rgba(16,17,36,0.500) 100%)",
+      "border": "1px solid rgba(102,98,177,0.550)",
+      "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(73,73,129,0.450), 0 0 40px rgba(42,42,82,0.468)",
+      "backdrop_filter": "blur(12px)",
+      "color": "#b7b4dc",
+      "font_size_px": 220,
+      "font_weight": 500,
+      "height_px": 629,
+      "min_width_px": 200,
+      "alpha_used": 0.5,
+      "border_vision": "linear-gradient(180deg, #6662b1, #27274c, #1a1a39)",
+      "shadow_vision": [
+        "0 0 40px rgba(42,42,82,0.468)",
+        "inset 0 1px 0 rgba(72,72,126,0.2)"
+      ],
+      "background_vision": "linear-gradient(180deg, rgba(34,34,69,0.5) 0%, rgba(24,25,51,0.5) 25%, rgba(46,49,69,0.5) 50%, rgba(15,17,36,0.5) 75%, rgba(16,17,36,0.5) 100%)"
+    },
+    "vision_confidence": 85
+  },
+  "rail": {
+    "merged_css": {
+      "border_radius": "38px",
+      "background": "linear-gradient(180deg, rgba(97,87,149,0.169) 0%, rgba(71,52,158,0.169) 25%, rgba(20,20,48,0.169) 50%, rgba(13,10,37,0.169) 75%, rgba(16,13,42,0.169) 100%)",
+      "border": "1px solid rgba(30,23,65,0.319)",
+      "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(46,40,88,0.450), 0 4px 40px rgba(20,18,45,0.467)",
+      "backdrop_filter": "blur(12px)",
+      "color": "#afa0e5",
+      "font_size_px": 217,
+      "font_weight": 500,
+      "height_px": 620,
+      "min_width_px": 240,
+      "alpha_used": 0.169,
+      "border_vision": "linear-gradient(180deg, #1e1741, #100d29, #292154)",
+      "shadow_vision": [
+        "0 10px 40px -10px rgba(20, 18, 45, 0.467)"
+      ],
+      "background_vision": "linear-gradient(180deg, #615795 0%, #47349e 25%, #141430 50%, #0d0a25 75%, #100d2a 100%)"
+    },
+    "vision_confidence": 95
+  },
+  "section": {
+    "merged_css": {
+      "border_radius": "999px",
+      "background": "linear-gradient(270deg, rgba(26,26,52,0.500) 0%, rgba(19,20,40,0.500) 25%, rgba(47,47,69,0.500) 50%, rgba(12,10,29,0.500) 75%, rgba(34,28,66,0.500) 100%)",
+      "border": "1px solid rgba(27,28,58,0.550)",
+      "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(26,28,54,0.450)",
+      "backdrop_filter": "blur(12px)",
+      "color": "#c6badc",
+      "font_size_px": 19,
+      "font_weight": 500,
+      "height_px": 55,
+      "min_width_px": 740,
+      "alpha_used": 0.5,
+      "border_vision": "linear-gradient(270deg, #1b1c3a, #1a1533)",
+      "shadow_vision": [
+        "inset 0 1px 1px rgba(255, 255, 255, 0.05)"
+      ],
+      "background_vision": "rgba(21, 19, 42, 0.5)"
+    },
+    "vision_confidence": 85
+  }
+}

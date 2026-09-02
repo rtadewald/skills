@@ -1,4 +1,0 @@
-- **CSS custom properties** — tokens for color, type, spacing, radii, shadows
-- **Google Fonts · DM Sans** — UI sans for labels and metrics
-- **SVG charts** — line, stem, donut, area approximations in plain markup
-- **Keyed flora PNGs** — tree / flower / leaves breakouts from the reference

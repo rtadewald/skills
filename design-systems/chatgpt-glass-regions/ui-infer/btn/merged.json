@@ -1,0 +1,164 @@
+{
+  "measured": {
+    "type": "btn",
+    "box": [
+      38,
+      606,
+      214,
+      646
+    ],
+    "size": [
+      176,
+      40
+    ],
+    "fill": "#22233e",
+    "gradient": {
+      "angle_deg": 90,
+      "axis": "horizontal",
+      "stops": [
+        {
+          "pct": 0,
+          "hex": "#171933"
+        },
+        {
+          "pct": 25,
+          "hex": "#33344b"
+        },
+        {
+          "pct": 50,
+          "hex": "#303149"
+        },
+        {
+          "pct": 75,
+          "hex": "#181933"
+        },
+        {
+          "pct": 100,
+          "hex": "#1a1b39"
+        }
+      ]
+    },
+    "rim": {
+      "top": [
+        "#12142d",
+        "#1c1e36",
+        "#1a1b34",
+        "#1c1e3a",
+        "#161832"
+      ],
+      "bottom": [
+        "#1b1c3b",
+        "#181a33",
+        "#171833",
+        "#1b1c3a",
+        "#171834"
+      ],
+      "left": [
+        "#11132c",
+        "#1d1f3a",
+        "#272843",
+        "#1e1f3c",
+        "#1b1c3b"
+      ],
+      "right": [
+        "#151630",
+        "#222342",
+        "#2c2c51",
+        "#262747",
+        "#161735"
+      ],
+      "TL": "#11132c",
+      "TR": "#151732",
+      "BL": "#181936",
+      "BR": "#161734"
+    },
+    "radius_px": 4,
+    "glass_likely": true,
+    "fill_variance": 903.39,
+    "alpha": {
+      "alpha_est": 0.061,
+      "fill_rgb": [
+        39,
+        41,
+        66
+      ],
+      "bg_rgb": [
+        28,
+        29,
+        59
+      ],
+      "fill_hex": "#272841",
+      "bg_hex": "#1c1c3b"
+    },
+    "outer": {
+      "detected": true,
+      "delta": 7.55,
+      "ring_hex": "#191b36",
+      "far_hex": "#151631",
+      "kind": "glow",
+      "suggest_blur_px": 27,
+      "suggest_opacity": 0.094
+    },
+    "text": {
+      "light": "#b1b2ca",
+      "muted": "#76778f"
+    },
+    "lighting": {
+      "top_brightness": 28.4,
+      "bottom_brightness": 25.7,
+      "top_lit": false
+    }
+  },
+  "vision": {
+    "shape": "pill",
+    "radius_css": "999px",
+    "background": {
+      "kind": "linear",
+      "css": "linear-gradient(90deg, #171933 0%, #33344b 25%, #303149 50%, #181933 75%, #1a1b39 100%)"
+    },
+    "border": {
+      "kind": "gradient",
+      "width_px": 1,
+      "css": "linear-gradient(90deg, #11132c, #272843, #2c2c51, #161735)"
+    },
+    "shadow": [
+      {
+        "css": "0 0 27px rgba(25, 27, 54, 0.09)"
+      },
+      {
+        "css": "inset 0 1px 1px rgba(255, 255, 255, 0.03)"
+      }
+    ],
+    "glass": {
+      "backdrop_blur_px": 8,
+      "notes": "Slight blur due to glassmorphism indication"
+    },
+    "typography": {
+      "color": "#b1b2ca",
+      "weight": 500,
+      "size_px": 14
+    },
+    "confidence": 85,
+    "notes": "Pill shape derived from image proportions and common UI patterns. Gradient border reflects rim highlights on the left/right."
+  },
+  "merged_css": {
+    "border_radius": "999px",
+    "background": "linear-gradient(90deg, rgba(23,25,51,0.350) 0%, rgba(51,52,75,0.350) 25%, rgba(48,49,73,0.350) 50%, rgba(24,25,51,0.350) 75%, rgba(26,27,57,0.350) 100%)",
+    "border": "1px solid rgba(28,30,58,0.500)",
+    "box_shadow": "inset 0 1px 0 rgba(200,204,232,0.220), inset 0 1px 0 rgba(24,25,54,0.450), 0 0 27px rgba(25,27,54,0.094)",
+    "backdrop_filter": "blur(8px)",
+    "color": "#b1b2ca",
+    "font_size_px": 14,
+    "font_weight": 500,
+    "height_px": 40,
+    "min_width_px": 176,
+    "alpha_used": 0.35,
+    "border_vision": "linear-gradient(90deg, #11132c, #272843, #2c2c51, #161735)",
+    "shadow_vision": [
+      "0 0 27px rgba(25, 27, 54, 0.09)",
+      "inset 0 1px 1px rgba(255, 255, 255, 0.03)"
+    ],
+    "background_vision": "linear-gradient(90deg, #171933 0%, #33344b 25%, #303149 50%, #181933 75%, #1a1b39 100%)"
+  },
+  "merge_policy": "fill/gradient/rim hex from pixels; alpha from VLM when pixel alpha\u226aglass; blur+shape from VLM"
+}

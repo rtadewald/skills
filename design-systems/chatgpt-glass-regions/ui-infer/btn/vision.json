@@ -1,0 +1,32 @@
+{
+  "shape": "pill",
+  "radius_css": "999px",
+  "background": {
+    "kind": "linear",
+    "css": "linear-gradient(90deg, #171933 0%, #33344b 25%, #303149 50%, #181933 75%, #1a1b39 100%)"
+  },
+  "border": {
+    "kind": "gradient",
+    "width_px": 1,
+    "css": "linear-gradient(90deg, #11132c, #272843, #2c2c51, #161735)"
+  },
+  "shadow": [
+    {
+      "css": "0 0 27px rgba(25, 27, 54, 0.09)"
+    },
+    {
+      "css": "inset 0 1px 1px rgba(255, 255, 255, 0.03)"
+    }
+  ],
+  "glass": {
+    "backdrop_blur_px": 8,
+    "notes": "Slight blur due to glassmorphism indication"
+  },
+  "typography": {
+    "color": "#b1b2ca",
+    "weight": 500,
+    "size_px": 14
+  },
+  "confidence": 85,
+  "notes": "Pill shape derived from image proportions and common UI patterns. Gradient border reflects rim highlights on the left/right."
+}

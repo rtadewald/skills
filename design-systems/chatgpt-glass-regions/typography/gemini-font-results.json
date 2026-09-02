@@ -1,0 +1,212 @@
+{
+  "h3": {
+    "text": "ChatGPT",
+    "crop": "typography/crops/h3.png",
+    "box_px": [
+      86,
+      51,
+      163,
+      74
+    ],
+    "result": {
+      "family": "Inter",
+      "weight": 500,
+      "confidence": 90,
+      "alternatives": [
+        "Roboto",
+        "Open Sans"
+      ],
+      "notes": "Geometric, humanist sans-serif with subtle contrast. The 'C', 'h', and 'a' suggest Inter or a similar modern sans-serif like Roboto.",
+      "raw": "{\"family\":\"Inter\",\"weight\":500,\"confidence\":90,\"alternatives\":[\"Roboto\",\"Open Sans\"],\"notes\":\"Geometric, humanist sans-serif with subtle contrast. The 'C', 'h', and 'a' suggest Inter or a similar modern sans-serif like Roboto.\"}"
+    }
+  },
+  "lnk": {
+    "text": "Explore GPTs",
+    "crop": "typography/crops/lnk.png",
+    "box_px": [
+      69,
+      152,
+      142,
+      170
+    ],
+    "result": {
+      "family": "Inter",
+      "weight": 500,
+      "confidence": 90,
+      "alternatives": [
+        "Roboto",
+        "Open Sans"
+      ],
+      "notes": "Geometric, neutral sans-serif characteristics align closely with Inter, especially given the context of modern UI text.",
+      "raw": "{\"family\":\"Inter\",\"weight\":500,\"confidence\":90,\"alternatives\":[\"Roboto\",\"Open Sans\"],\"notes\":\"Geometric, neutral sans-serif characteristics align closely with Inter, especially given the context of modern UI text.\"}"
+    }
+  },
+  "h2": {
+    "text": "Your Activity",
+    "crop": "typography/crops/h2.png",
+    "box_px": [
+      792,
+      448,
+      857,
+      466
+    ],
+    "result": {
+      "family": "Inter",
+      "weight": 600,
+      "confidence": 85,
+      "alternatives": [
+        "Roboto",
+        "Open Sans"
+      ],
+      "notes": "Semi-bold sans-serif, standard proportions, 't' has a flat top and straight stem, 'A' has a standard apex.",
+      "raw": "{\"family\":\"Inter\",\"weight\":600,\"confidence\":85,\"alternatives\":[\"Roboto\",\"Open Sans\"],\"notes\":\"Semi-bold sans-serif, standard proportions, 't' has a flat top and straight stem, 'A' has a standard apex.\"}"
+    }
+  },
+  "t2": {
+    "text": "Brainstorming Ideas",
+    "crop": "typography/crops/t2.png",
+    "box_px": [
+      44,
+      446,
+      138,
+      462
+    ],
+    "result": {
+      "family": "Inter",
+      "weight": 500,
+      "confidence": 75,
+      "alternatives": [
+        "Roboto",
+        "Open Sans"
+      ],
+      "notes": "Geometric sans-serif with neutral, legible letterforms. 'B' has balanced proportions, 'r' has a smooth curve, 'a' is double-story, 's' has subtle curves. The overall feel is modern and clean, very typical of Inter or Roboto. Medium weight (500) seems appropriate given the stroke thickness.",
+      "raw": "{\"family\":\"Inter\",\"weight\":500,\"confidence\":75,\"alternatives\":[\"Roboto\",\"Open Sans\"],\"notes\":\"Geometric sans-serif with neutral, legible letterforms. 'B' has balanced proportions, 'r' has a smooth curve, 'a' is double-story, 's' has subtle curves. The overall feel is modern and clean, very typical of Inter or Roboto. Medium weight (500) seems appropriate given the stroke thickness.\"}"
+    }
+  },
+  "t3": {
+    "text": "Upgrade for more access",
+    "crop": "typography/crops/t3.png",
+    "box_px": [
+      825,
+      620,
+      929,
+      635
+    ],
+    "result": {
+      "family": "Inter",
+      "weight": 500,
+      "confidence": 75,
+      "alternatives": [
+        "Roboto",
+        "SF Pro Display"
+      ],
+      "notes": "Clean, neutral sans-serif with 'g' and 'a' typical of Inter/Roboto; slightly rounded/smooth appearance fits Inter medium/regular.",
+      "raw": "{\"family\":\"Inter\",\"weight\":500,\"confidence\":75,\"alternatives\":[\"Roboto\",\"SF Pro Display\"],\"notes\":\"Clean, neutral sans-serif with 'g' and 'a' typical of Inter/Roboto; slightly rounded/smooth appearance fits Inter medium/regular.\"}"
+    }
+  },
+  "btn": {
+    "text": "View all chats",
+    "crop": "typography/crops/btn.png",
+    "box_px": [
+      82,
+      616,
+      151,
+      633
+    ],
+    "result": {
+      "family": "Inter",
+      "weight": 500,
+      "confidence": 75,
+      "alternatives": [
+        "Roboto",
+        "SF Pro Display"
+      ],
+      "notes": "Clean, neutral sans-serif with a slightly geometric structure, typical of Inter or similar modern UI fonts. 'V' and 'w' are sharp.",
+      "raw": "{\"family\":\"Inter\",\"weight\":500,\"confidence\":75,\"alternatives\":[\"Roboto\",\"SF Pro Display\"],\"notes\":\"Clean, neutral sans-serif with a slightly geometric structure, typical of Inter or similar modern UI fonts. 'V' and 'w' are sharp.\"}"
+    }
+  },
+  "in": {
+    "text": "Message ChatGTP ...",
+    "crop": "typography/crops/in.png",
+    "box_px": [
+      273,
+      248,
+      382,
+      266
+    ],
+    "result": {
+      "family": "Inter",
+      "weight": 400,
+      "confidence": 90,
+      "alternatives": [
+        "Roboto",
+        "Open Sans"
+      ],
+      "notes": "The 'e' has a horizontal crossbar and standard proportions, the 'a' is double-story, common in Inter and similar neo-grotesques. The overall slightly condensed feel and very clean, uniform stroke width strongly suggest Inter.",
+      "raw": "{\"family\":\"Inter\",\"weight\":400,\"confidence\":90,\"alternatives\":[\"Roboto\",\"Open Sans\"],\"notes\":\"The 'e' has a horizontal crossbar and standard proportions, the 'a' is double-story, common in Inter and similar neo-grotesques. The overall slightly condensed feel and very clean, uniform stroke width strongly suggest Inter.\"}"
+    }
+  },
+  "btn2": {
+    "text": "Summarize Text",
+    "crop": "typography/crops/btn2.png",
+    "box_px": [
+      440,
+      375,
+      521,
+      392
+    ],
+    "result": {
+      "family": "Inter",
+      "weight": 500,
+      "confidence": 90,
+      "alternatives": [
+        "Roboto",
+        "Open Sans"
+      ],
+      "notes": "Geometric, low-contrast sans-serif with vertical terminals on S, common in UI.",
+      "raw": "{\"family\":\"Inter\",\"weight\":500,\"confidence\":90,\"alternatives\":[\"Roboto\",\"Open Sans\"],\"notes\":\"Geometric, low-contrast sans-serif with vertical terminals on S, common in UI.\"}"
+    }
+  },
+  "h1": {
+    "text": "What can I help",
+    "crop": "typography/crops/h1.png",
+    "box_px": [
+      413,
+      142,
+      606,
+      176
+    ],
+    "result": {
+      "family": "Inter",
+      "weight": 500,
+      "confidence": 85,
+      "alternatives": [
+        "Roboto",
+        "SF Pro Text"
+      ],
+      "notes": "'W', 'a', 't', 'c', 'n', 'h', 'e', 'l', 'p' match Inter's neo-grotesque style; flat tops and clean vertical terminals.",
+      "raw": "{\"family\":\"Inter\",\"weight\":500,\"confidence\":85,\"alternatives\":[\"Roboto\",\"SF Pro Text\"],\"notes\":\"'W', 'a', 't', 'c', 'n', 'h', 'e', 'l', 'p' match Inter's neo-grotesque style; flat tops and clean vertical terminals.\"}"
+    }
+  },
+  "t1": {
+    "text": "Our most advanced model",
+    "crop": "typography/crops/t1.png",
+    "box_px": [
+      792,
+      136,
+      918,
+      152
+    ],
+    "result": {
+      "family": "Inter",
+      "weight": 500,
+      "confidence": 90,
+      "alternatives": [
+        "Roboto",
+        "Open Sans"
+      ],
+      "notes": "Neutral sans-serif, standard proportions, characteristic 'a' and 'e'",
+      "raw": "{\"family\":\"Inter\",\"weight\":500,\"confidence\":90,\"alternatives\":[\"Roboto\",\"Open Sans\"],\"notes\":\"Neutral sans-serif, standard proportions, characteristic 'a' and 'e'\"}"
+    }
+  }
+}
