@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 851 1024" fill="none">
+  <rect width="851" height="1024" fill="#f0f0f0"/>
+
+  <!-- nav: left sidebar -->
+  <rect x="16" y="16" width="168" height="992" rx="10" stroke="#666" stroke-width="1.25"/>
+  <text x="26" y="34" fill="#666" font-family="sans-serif" font-size="11">nav</text>
+  <text x="28" y="56" fill="#333" font-family="sans-serif" font-size="11">[ico:logo] [t1: ServiceFlow]</text>
+  <!-- active nav item = btn (pill); inactive = lnk -->
+  <text x="28" y="86" fill="#222" font-family="sans-serif" font-size="11">[btn: [ico:grid] Overview]</text>
+  <text x="28" y="106" fill="#444" font-family="sans-serif" font-size="11">[lnk: [ico:briefcase] Jobs]</text>
+  <text x="28" y="126" fill="#444" font-family="sans-serif" font-size="11">[lnk: [ico:users] Technicians]</text>
+  <text x="28" y="146" fill="#444" font-family="sans-serif" font-size="11">[lnk: [ico:calendar] Schedules]</text>
+  <text x="28" y="166" fill="#444" font-family="sans-serif" font-size="11">[lnk: [ico:user] Customers]</text>
+  <text x="28" y="186" fill="#444" font-family="sans-serif" font-size="11">[lnk: [ico:chart] Analytics]</text>
+  <text x="28" y="206" fill="#444" font-family="sans-serif" font-size="11">[lnk: [ico:file] Reports]</text>
+  <text x="28" y="226" fill="#444" font-family="sans-serif" font-size="11">[lnk: [ico:gear] Settings]</text>
+
+  <!-- card2: Today Schedule (container) -->
+  <rect x="28" y="250" width="144" height="540" rx="8" stroke="#666" stroke-width="1.25"/>
+  <text x="36" y="268" fill="#666" font-family="sans-serif" font-size="10">card2</text>
+  <text x="36" y="288" fill="#333" font-family="sans-serif" font-size="11">[h3: Today Schedule]</text>
+
+  <!-- card4: nested schedule job cards -->
+  <rect x="36" y="300" width="128" height="72" rx="6" stroke="#888" stroke-width="1"/>
+  <text x="42" y="314" fill="#666" font-family="sans-serif" font-size="9">card4</text>
+  <text x="42" y="330" fill="#444" font-family="sans-serif" font-size="9">[t2: 8:00 AM]</text>
+  <text x="42" y="346" fill="#333" font-family="sans-serif" font-size="9">[av:] [t1: HVAC Maintenance]</text>
+  <text x="42" y="360" fill="#555" font-family="sans-serif" font-size="9">[t3: Downtown District]</text>
+
+  <rect x="36" y="380" width="128" height="72" rx="6" stroke="#888" stroke-width="1"/>
+  <text x="42" y="394" fill="#666" font-family="sans-serif" font-size="9">card4</text>
+  <text x="42" y="410" fill="#444" font-family="sans-serif" font-size="9">[t2: 9:30 AM]</text>
+  <text x="42" y="426" fill="#333" font-family="sans-serif" font-size="9">[av:] [t1: Plumbing Repair]</text>
+  <text x="42" y="440" fill="#555" font-family="sans-serif" font-size="9">[t3: Westside Plaza]</text>
+
+  <rect x="36" y="460" width="128" height="72" rx="6" stroke="#888" stroke-width="1"/>
+  <text x="42" y="474" fill="#666" font-family="sans-serif" font-size="9">card4</text>
+  <text x="42" y="490" fill="#444" font-family="sans-serif" font-size="9">[t2: 11:00 AM]</text>
+  <text x="42" y="506" fill="#333" font-family="sans-serif" font-size="9">[av:] [t1: Electrical Inspect]</text>
+  <text x="42" y="520" fill="#555" font-family="sans-serif" font-size="9">[t3: Harbor Complex]</text>
+
+  <rect x="36" y="540" width="128" height="72" rx="6" stroke="#888" stroke-width="1"/>
+  <text x="42" y="554" fill="#666" font-family="sans-serif" font-size="9">card4</text>
+  <text x="42" y="570" fill="#444" font-family="sans-serif" font-size="9">[t2: 1:00 PM]</text>
+  <text x="42" y="586" fill="#333" font-family="sans-serif" font-size="9">[av:] [t1: System Check]</text>
+  <text x="42" y="600" fill="#555" font-family="sans-serif" font-size="9">[t3: Midtown Tower]</text>
+
+  <text x="36" y="640" fill="#333" font-family="sans-serif" font-size="10">[btn3: View Full Schedule]</text>
+
+  <!-- top chrome -->
+  <rect x="200" y="16" width="635" height="56" rx="10" stroke="#666" stroke-width="1.25"/>
+  <text x="210" y="34" fill="#666" font-family="sans-serif" font-size="11">nav</text>
+  <text x="220" y="52" fill="#444" font-family="sans-serif" font-size="11">[in: Search jobs, technicians...]</text>
+  <text x="500" y="52" fill="#444" font-family="sans-serif" font-size="11">[btn2: [ico:bell]] [btn2: [ico:chat]]</text>
+  <text x="620" y="52" fill="#333" font-family="sans-serif" font-size="11">[av:] [t1: Alex Johnson]</text>
+  <text x="720" y="52" fill="#555" font-family="sans-serif" font-size="10">[t3: Ops Manager]</text>
+
+  <!-- hero -->
+  <rect x="200" y="84" width="420" height="52" rx="8" stroke="#666" stroke-width="1"/>
+  <text x="210" y="102" fill="#666" font-family="sans-serif" font-size="11">hero</text>
+  <text x="214" y="122" fill="#222" font-family="sans-serif" font-size="13">[h1: Good Morning, Alex]</text>
+  <text x="400" y="122" fill="#555" font-family="sans-serif" font-size="10">[t2: here is what is happening today]</text>
+
+  <!-- card: KPI stats -->
+  <rect x="200" y="148" width="138" height="88" rx="8" stroke="#666" stroke-width="1"/>
+  <text x="208" y="164" fill="#666" font-family="sans-serif" font-size="10">card</text>
+  <text x="210" y="182" fill="#444" font-family="sans-serif" font-size="10">[t2: Active Jobs]</text>
+  <text x="210" y="202" fill="#222" font-family="sans-serif" font-size="14">[h2: 128]</text>
+  <text x="250" y="202" fill="#444" font-family="sans-serif" font-size="10">[t3: +12%]</text>
+  <text x="210" y="222" fill="#555" font-family="sans-serif" font-size="10">[chart: sparkline]</text>
+
+  <rect x="348" y="148" width="138" height="88" rx="8" stroke="#666" stroke-width="1"/>
+  <text x="356" y="164" fill="#666" font-family="sans-serif" font-size="10">card</text>
+  <text x="358" y="182" fill="#444" font-family="sans-serif" font-size="10">[t2: Technicians Online]</text>
+  <text x="358" y="202" fill="#222" font-family="sans-serif" font-size="14">[h2: 84]</text>
+  <text x="398" y="202" fill="#444" font-family="sans-serif" font-size="10">[t3: +8%]</text>
+  <text x="358" y="222" fill="#555" font-family="sans-serif" font-size="10">[chart: sparkline]</text>
+
+  <rect x="496" y="148" width="138" height="88" rx="8" stroke="#666" stroke-width="1"/>
+  <text x="504" y="164" fill="#666" font-family="sans-serif" font-size="10">card</text>
+  <text x="506" y="182" fill="#444" font-family="sans-serif" font-size="10">[t2: Jobs Completed]</text>
+  <text x="506" y="202" fill="#222" font-family="sans-serif" font-size="14">[h2: 342]</text>
+  <text x="546" y="202" fill="#444" font-family="sans-serif" font-size="10">[t3: +19%]</text>
+  <text x="506" y="222" fill="#555" font-family="sans-serif" font-size="10">[chart: sparkline]</text>
+
+  <!-- card: Avg Response Time -->
+  <rect x="648" y="84" width="187" height="70" rx="8" stroke="#666" stroke-width="1"/>
+  <text x="656" y="100" fill="#666" font-family="sans-serif" font-size="10">card</text>
+  <text x="658" y="118" fill="#444" font-family="sans-serif" font-size="10">[t2: Avg. Response Time]</text>
+  <text x="658" y="140" fill="#222" font-family="sans-serif" font-size="14">[h2: 32m]</text>
+  <text x="710" y="140" fill="#444" font-family="sans-serif" font-size="10">[t3: -5m]</text>
+
+  <!-- media: Live Job Map -->
+  <rect x="200" y="252" width="434" height="420" rx="10" stroke="#666" stroke-width="1.25"/>
+  <text x="210" y="270" fill="#666" font-family="sans-serif" font-size="11">media</text>
+  <text x="214" y="292" fill="#333" font-family="sans-serif" font-size="12">[h3: Live Job Map]</text>
+  <text x="214" y="360" fill="#555" font-family="sans-serif" font-size="11">[img: city map 3d]</text>
+  <text x="214" y="384" fill="#555" font-family="sans-serif" font-size="10">[av: pin] [av: pin] [av: pin]</text>
+
+  <!-- card6: map job tooltip (floating card) -->
+  <rect x="300" y="400" width="200" height="64" rx="6" stroke="#888" stroke-width="1"/>
+  <text x="308" y="416" fill="#666" font-family="sans-serif" font-size="9">card6</text>
+  <text x="308" y="434" fill="#333" font-family="sans-serif" font-size="9">[t1: Job #5624 HVAC Maintenance]</text>
+  <text x="308" y="450" fill="#555" font-family="sans-serif" font-size="9">[t2: In Progress] [t3: Est. 45 min]</text>
+
+  <!-- card7: map dock controls -->
+  <rect x="340" y="620" width="160" height="36" rx="18" stroke="#888" stroke-width="1"/>
+  <text x="348" y="634" fill="#666" font-family="sans-serif" font-size="9">card7</text>
+  <text x="348" y="648" fill="#444" font-family="sans-serif" font-size="9">[btn2: [ico:user]] [btn2: [ico:target]] [btn2: [ico:layers]] [btn2: [ico:signal]]</text>
+
+  <!-- rail: Performance Overview -->
+  <rect x="648" y="168" width="187" height="300" rx="10" stroke="#666" stroke-width="1.25"/>
+  <text x="656" y="186" fill="#666" font-family="sans-serif" font-size="11">rail</text>
+  <text x="658" y="208" fill="#333" font-family="sans-serif" font-size="11">[h3: Performance Overview]</text>
+  <text x="658" y="250" fill="#555" font-family="sans-serif" font-size="10">[chart: gauge 92%]</text>
+  <text x="658" y="270" fill="#222" font-family="sans-serif" font-size="12">[h2: 92%]</text>
+  <text x="658" y="288" fill="#555" font-family="sans-serif" font-size="10">[t2: Service Efficiency]</text>
+  <text x="658" y="318" fill="#444" font-family="sans-serif" font-size="10">[t1: Completed Jobs]</text>
+  <text x="658" y="338" fill="#444" font-family="sans-serif" font-size="10">[t1: Customer Satisfaction]</text>
+  <text x="658" y="358" fill="#444" font-family="sans-serif" font-size="10">[t1: First Time Fix Rate]</text>
+  <text x="658" y="400" fill="#333" font-family="sans-serif" font-size="10">[btn2: View Analytics]</text>
+
+  <!-- card3: Recent Alerts -->
+  <rect x="648" y="484" width="187" height="188" rx="10" stroke="#666" stroke-width="1.25"/>
+  <text x="656" y="502" fill="#666" font-family="sans-serif" font-size="11">card3</text>
+  <text x="658" y="522" fill="#333" font-family="sans-serif" font-size="11">[h3: Recent Alerts]</text>
+  <text x="658" y="546" fill="#444" font-family="sans-serif" font-size="10">[ico:alert] [t1: High Priority]</text>
+  <text x="658" y="562" fill="#555" font-family="sans-serif" font-size="10">[t3: 5m ago]</text>
+  <text x="658" y="586" fill="#444" font-family="sans-serif" font-size="10">[ico:info] [t1: Technician Update]</text>
+  <text x="658" y="602" fill="#555" font-family="sans-serif" font-size="10">[t3: 12m ago]</text>
+  <text x="658" y="626" fill="#444" font-family="sans-serif" font-size="10">[ico:cal] [t1: Schedule Change]</text>
+  <text x="658" y="642" fill="#555" font-family="sans-serif" font-size="10">[t3: 28m ago]</text>
+  <text x="658" y="660" fill="#333" font-family="sans-serif" font-size="10">[btn2: View All Alerts]</text>
+
+  <!-- section: Analytics Dashboard -->
+  <rect x="200" y="692" width="635" height="316" rx="10" stroke="#666" stroke-width="1.25"/>
+  <text x="210" y="710" fill="#666" font-family="sans-serif" font-size="11">section</text>
+  <text x="214" y="732" fill="#333" font-family="sans-serif" font-size="12">[h3: Analytics Dashboard]</text>
+
+  <!-- card5: analytics chart cards (same visual family) -->
+  <rect x="214" y="752" width="190" height="236" rx="8" stroke="#666" stroke-width="1.25"/>
+  <text x="222" y="768" fill="#666" font-family="sans-serif" font-size="10">card5</text>
+  <text x="222" y="788" fill="#333" font-family="sans-serif" font-size="10">[h3: Job Status Distribution]</text>
+  <text x="222" y="860" fill="#555" font-family="sans-serif" font-size="10">[chart: donut]</text>
+  <text x="222" y="880" fill="#222" font-family="sans-serif" font-size="11">[h2: 128]</text>
+  <text x="222" y="902" fill="#555" font-family="sans-serif" font-size="10">[t3: In Progress]</text>
+  <text x="222" y="918" fill="#555" font-family="sans-serif" font-size="10">[t3: Completed]</text>
+  <text x="222" y="934" fill="#555" font-family="sans-serif" font-size="10">[t3: Scheduled]</text>
+  <text x="222" y="950" fill="#555" font-family="sans-serif" font-size="10">[t3: On Hold]</text>
+
+  <rect x="420" y="752" width="190" height="236" rx="8" stroke="#666" stroke-width="1.25"/>
+  <text x="428" y="768" fill="#666" font-family="sans-serif" font-size="10">card5</text>
+  <text x="428" y="788" fill="#333" font-family="sans-serif" font-size="10">[h3: Jobs Over Time]</text>
+  <text x="428" y="860" fill="#555" font-family="sans-serif" font-size="10">[chart: line week]</text>
+  <text x="428" y="900" fill="#555" font-family="sans-serif" font-size="10">[t3: Mon .. Sun]</text>
+
+  <rect x="626" y="752" width="190" height="236" rx="8" stroke="#666" stroke-width="1.25"/>
+  <text x="634" y="768" fill="#666" font-family="sans-serif" font-size="10">card5</text>
+  <text x="634" y="788" fill="#333" font-family="sans-serif" font-size="10">[h3: Top Service Types]</text>
+  <text x="634" y="820" fill="#444" font-family="sans-serif" font-size="10">[t1: HVAC] [chart: bar]</text>
+  <text x="634" y="848" fill="#444" font-family="sans-serif" font-size="10">[t1: Plumbing] [chart: bar]</text>
+  <text x="634" y="876" fill="#444" font-family="sans-serif" font-size="10">[t1: Electrical] [chart: bar]</text>
+  <text x="634" y="904" fill="#444" font-family="sans-serif" font-size="10">[t1: Inspection] [chart: bar]</text>
+</svg>

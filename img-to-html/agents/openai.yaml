@@ -1,6 +1,6 @@
 interface:
   display_name: "Img to HTML"
-  short_description: "Mock → measure/OCR → HTML (vocab fechado) → render/diff 2–3×; assets OpenRouter"
-  default_prompt: "Use $img-to-html: measure.py → plan/slots → type+images → compile (vocab) → render/diff loop em design-systems/<slug>/."
+  short_description: "Mock de UI → HTML/CSS/JS estático em etapas com aprovação"
+  default_prompt: "Use $img-to-html: a partir desta imagem de mock, rode o fluxo completo (wireframe → bg → nav + cards → assets gpt2 → fontes) gerando index.html + assets/styles.css, parando para aprovação em cada etapa."
 policy:
   allow_implicit_invocation: false
