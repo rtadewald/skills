@@ -1,6 +1,0 @@
-interface:
-  display_name: "DS Cards from Img 2"
-  short_description: "Mock → cards HTML rápido (bbox+PIL, sem crops)"
-  default_prompt: "Use $ds-cards-from-img-2: replique os cards desta imagem com o fluxo rápido (1× Read + 1× PIL em bboxes na original, sem crops) em design-systems/<slug>-cards/."
-policy:
-  allow_implicit_invocation: false

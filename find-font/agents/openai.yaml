@@ -1,6 +1,0 @@
-interface:
-  display_name: "Find Font"
-  short_description: "Detect font via local API on :8000 (text + image)"
-  default_prompt: "Use $find-font: detect the font from this crop (port 8000)"
-policy:
-  allow_implicit_invocation: false

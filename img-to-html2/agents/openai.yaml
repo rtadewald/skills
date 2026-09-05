@@ -1,6 +1,0 @@
-interface:
-  display_name: "Img to HTML 2"
-  short_description: "Wireframe tipado → aprovação → Gemini fontes → typography shell"
-  default_prompt: "Use $img-to-html2: wireframe.txt tipado → aprovação → Gemini 3.1 Pro (fontes) → typography.css + index.html shell em design-systems/<slug>-regions/."
-policy:
-  allow_implicit_invocation: false

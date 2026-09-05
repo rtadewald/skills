@@ -1,6 +1,0 @@
-interface:
-  display_name: "DS Cards from Img"
-  short_description: "Mock → cards HTML (máscara+sample rápido, sem prosa)"
-  default_prompt: "Use $ds-cards-from-img: 1× Read → boxes.json → sample_cards.py → cards.html silencioso em design-systems/<slug>-cards/ (máscaras, ângulo de gradiente, bordas; sem re-Read de crops)."
-policy:
-  allow_implicit_invocation: false

@@ -1,6 +1,0 @@
-interface:
-  display_name: "DS from Img"
-  short_description: "Mock image → design-systems/<slug>/design-system.html"
-  default_prompt: "Use $ds-from-img: analise esta imagem, escolha um slug e gere design-systems/<slug>/ (design-system.html + assets + STACK.md)."
-policy:
-  allow_implicit_invocation: false
