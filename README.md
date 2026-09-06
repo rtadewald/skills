@@ -15,12 +15,13 @@ Pra inventar e fechar a cara de um app antes de gerar mock.
 
 Quando quero tirar a linguagem visual de uma referência e deixar pronta pra implementar. Prefixo: `ds-from-…` / `ds-cards-…`
 
-- [`ds-from-html`](./ds-from-html): HTML monolítico → `design-system.html` limpo + assets
+- [`ds-from-html`](./ds-from-html) / [`extract-design-system`](./ds-from-html): HTML de referência → `design-system.html` (pattern library viva, classes/assets originais)
+- [`ds-from-react`](./ds-from-react): aplicação React hospedada → `design-system.html` (pattern library viva, UI e arquivos reais)
 - [`ds-from-img`](./ds-from-img): mock (imagem) → `design-systems/<slug>/` com HTML + CSS
 - [`ds-from-svg`](./ds-from-svg): wireframe/mock SVG → `design-systems/<slug>/` com HTML + CSS
 - [`ds-cards-from-img`](./ds-cards-from-img): mock → cards com máscara + `sample_cards.py` (mais preciso)
 - [`ds-cards-from-img-2`](./ds-cards-from-img-2): o mesmo, fluxo **rápido** (bbox + PIL na original, sem crops/script)
-- [`img-to-html`](./img-to-html): mock → **wireframe SVG tipado** → **aprovação** → `index.html` + `assets/styles.css` (sem framework) bottom-up (bg → nav + cards pixel-perfect → assets gpt2 → fontes), cada etapa com gate
+- [`img-to-html`](./img-to-html): mock → **wireframe SVG tipado + plano** → **aprovação** → `index.html` + `assets/styles.css` (sem framework): fundo completo (CSS/imagens) → componentes com fontes → assets restantes → revisão final, cada etapa aplicável com gate
 - [`img-to-html2`](./img-to-html2): wireframe ASCII tipado → **aprovação** → detect fontes (fal-ai OCR + Gemini 3.1 Pro / OpenRouter) → `typography.css` + `index.html` shell
 - [`img-to-html3`](./img-to-html3): toolbox (fontes, cores pixel, PNG, SVG/ASCII) dirigida por prompt humano — sem pipeline fixo
 
@@ -29,8 +30,7 @@ Quando quero tirar a linguagem visual de uma referência e deixar pronta pra imp
 Gerar, converter, brincar com PNG.
 
 - [`to-img`](./to-img): qualquer pedido → n PNGs em paralelo (OpenRouter, gpt2 @ 1K) em `mocks/`
-- [`to-ascii`](./to-ascii): mock PNG → planta ASCII (`.txt` ao lado)
-- [`to-svg`](./to-svg): mock PNG → wireframe SVG (`.svg` ao lado)
+- [`to-wireframe`](./to-wireframe): tela de app → wireframe SVG **tipado** e aninhado (`.wireframe.svg` ao lado), no padrão do img-to-html
 - [`openrouter-img`](./openrouter-img): CLI dos modelos de imagem do OpenRouter
 - [`nano-banana-pro`](./nano-banana-pro): gerar/editar imagem com Nano Banana Pro (Gemini)
 - [`fal-ai`](./fal-ai): fal.ai Model API (auth/upload/subscribe) + Moondream detect/query/point/caption/segment

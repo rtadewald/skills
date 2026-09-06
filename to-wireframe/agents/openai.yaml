@@ -1,0 +1,6 @@
+interface:
+  display_name: "To Wireframe"
+  short_description: "Tela de app → wireframe SVG tipado"
+  default_prompt: "Use $to-wireframe: leia esta tela de app e grave ao lado um wireframe SVG tipado, completo e aninhado."
+policy:
+  allow_implicit_invocation: false
