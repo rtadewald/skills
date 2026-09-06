@@ -1,0 +1,6 @@
+interface:
+  display_name: "Mediabunny"
+  short_description: "Áudio e vídeo no browser com Mediabunny"
+  default_prompt: "Use $mediabunny: trabalhe com este áudio ou vídeo usando Mediabunny."
+policy:
+  allow_implicit_invocation: false

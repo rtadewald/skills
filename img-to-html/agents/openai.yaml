@@ -1,6 +1,6 @@
 interface:
   display_name: "Img to HTML"
   short_description: "Mock de UI → HTML/CSS/JS estático em etapas com aprovação"
-  default_prompt: "Use $img-to-html: recrie este mock em index.html + assets/styles.css seguindo wireframe com plano → fundo completo (CSS e/ou imagens) → componentes com fontes → assets restantes → revisão final, parando para aprovação em cada etapa aplicável."
+  default_prompt: "Use $img-to-html: recrie este mock em index.html + assets/styles.css seguindo wireframe ASCII com plano → fundo completo (CSS e/ou imagens) → componentes com fontes → assets restantes → revisão final, parando para aprovação em cada etapa aplicável."
 policy:
   allow_implicit_invocation: false

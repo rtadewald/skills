@@ -1,0 +1,6 @@
+interface:
+  display_name: "Extract DS"
+  short_description: "HTML ou imagem → Foundations, Components e Layouts"
+  default_prompt: "Use $extract-ds: extraia desta referência um design system HTML-first em Foundations, Components e Layouts, com aprovação por camada."
+policy:
+  allow_implicit_invocation: false

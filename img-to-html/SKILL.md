@@ -2,7 +2,7 @@
 name: img-to-html
 description: >-
   Recria um mock de UI (imagem) como HTML + CSS + JS estáticos (sem framework),
-  em etapas com aprovação do usuário: wireframe SVG tipado com plano → fundo
+  em etapas com aprovação do usuário: wireframe ASCII tipado com plano → fundo
   completo → componentes com fontes → assets restantes → revisão final. Use when the user
   mentions img-to-html or asks to recreate a UI mock as HTML.
 disable-model-invocation: true
@@ -27,7 +27,7 @@ Recriar a tela inteira de uma vez falha (cores, glass, ícones e fontes misturam
 ## Pipeline
 
 ```
-1. reference → $to-wireframe → wireframe.svg + plano → [usuário aprova ambos]
+1. reference → $to-wireframe format=ascii → wireframe.txt + plano → [usuário aprova ambos]
 2. fundo completo (CSS e/ou imagens)       → [usuário aprova]
 3. estrutura e componentes + fontes       → [usuário aprova]
 4. assets restantes (ícones, imagens etc.) → [usuário aprova, se houver]
@@ -51,7 +51,7 @@ A aprovação do plano autoriza a sequência proposta, sem substituir os gates d
 ```
 design-systems/<slug>/
   reference.[ext]      # cópia da imagem de entrada
-  wireframe.svg        # planta tipada criada por $to-wireframe; plano apresentado junto
+  wireframe.txt        # planta tipada criada por $to-wireframe format=ascii; plano apresentado junto
   index.html           # markup — só estrutura, sem <style>/<script> inline
   assets/
     styles.css         # todo o CSS
@@ -77,7 +77,7 @@ Se o usuário pedir React/Vite explicitamente, aí sim mude a stack.
 
 ---
 
-## Etapa 1 — Wireframe SVG tipado + plano
+## Etapa 1 — Wireframe ASCII tipado + plano
 
 Objetivo: a **planta estrutural** da tela — quais regiões existem e que texto tem dentro delas — acompanhada de um plano curto de implementação por região.
 
@@ -86,13 +86,13 @@ O wireframe é o **contrato** com o HTML: cada região e cada tag tipada vira de
 ### Criar o wireframe
 
 1. Criar `design-systems/<slug>/` e copiar a imagem para `reference.[ext]`.
-2. Invocar a skill **`$to-wireframe`** usando essa cópia como entrada. Ele gera `reference.wireframe.svg` no mesmo diretório.
-3. Renomear o resultado para `design-systems/<slug>/wireframe.svg`, mantendo-o como o contrato canônico desta execução.
-4. Não alterar o wireframe depois da entrega do `$to-wireframe`; qualquer correção estrutural volta para `$to-wireframe` com a mesma imagem de referência.
+2. Invocar a skill **`$to-wireframe`** com `format=ascii`, `image=design-systems/<slug>/reference.[ext]` e `output=design-systems/<slug>/wireframe.txt`.
+3. Manter `wireframe.txt` como o contrato canônico desta execução. Não gerar SVG nesta etapa.
+4. Não alterar o wireframe depois da entrega do `$to-wireframe`; qualquer correção estrutural volta para `$to-wireframe` com a mesma imagem e `format=ascii`.
 
 ### Plano de implementação (na mesma aprovação)
 
-Depois de receber o SVG do `$to-wireframe`, indique para cada região **a etapa de implementação e a técnica prevista**. Agrupe regiões iguais. Apresente o plano na mensagem, em uma tabela curta. Ele não é adicionado ao SVG: etapas e técnicas não fazem parte dos ids/classes nem do texto da interface.
+Depois de receber o ASCII do `$to-wireframe`, indique para cada região **a etapa de implementação e a técnica prevista**. Agrupe regiões iguais. Apresente o plano na mensagem, em uma tabela curta. Ele não é adicionado ao ASCII: etapas e técnicas não fazem parte dos ids/classes nem do texto da interface.
 
 Exemplo de plano (adaptar à referência):
 
@@ -109,7 +109,7 @@ Escolha visualmente entre **CSS, imagem ou composição dos dois**, considerando
 
 Classifique imagens pela **função**, não pelo formato: fundo da tela → etapa 2; fundo de componente → etapa 3; imagem de conteúdo, ícone ou avatar → etapa 4. Nenhuma superfície deve ser aprovada com parte essencial do seu fundo ainda pendente. Planejar esses assets na etapa 1 não significa recortá-los ou gerá-los ali.
 
-Faça somente a revisão do plano: ele cobre todas as regiões do wireframe e distingue assets de fundo dos assets restantes? Depois abra `wireframe.svg`, apresente-o junto do plano e aplique o **gate único para estrutura + sequência/técnicas propostas**.
+Faça somente a revisão do plano: ele cobre todas as regiões do wireframe e distingue assets de fundo dos assets restantes? Depois mostre `wireframe.txt` junto do plano e aplique o **gate único para estrutura + sequência/técnicas propostas**.
 
 ---
 
@@ -118,7 +118,7 @@ Faça somente a revisão do plano: ele cobre todas as regiões do wireframe e di
 Pré-requisito: wireframe e plano aprovados.
 
 1. Criar `index.html` (esqueleto mínimo com o `<link>` para `assets/styles.css` e `<body>` vazio) e `assets/styles.css` (reset curto + `:root` com as custom properties que já der para definir).
-2. Recriar o fundo completo com a técnica escolhida no plano: CSS, imagem única ou composição de camadas. Produzir agora as imagens necessárias, usando o procedimento de assets abaixo; não deixá-las para a etapa 4.
+2. Recriar o fundo completo com a técnica escolhida no plano: CSS, imagem única ou composição de camadas. Produzir agora as imagens necessárias, usando o procedimento de assets abaixo; não deixá-las para a etapa 4. Quando houver várias camadas independentes, gere-as no mesmo lote paralelo e só componha o fundo depois que todas terminarem.
 3. Sem navbar, cards ou conteúdo. O `<body>` pode receber elementos decorativos quando necessários para compor o fundo; também podem ser usados backgrounds CSS e pseudo-elementos.
 4. Ajustar posição, escala, recorte, transparência e mistura entre camadas. Abrir o arquivo no browser (`open index.html`) e comparar o fundo composto com a referência.
 5. **Gate.**
@@ -127,7 +127,7 @@ Pré-requisito: wireframe e plano aprovados.
 
 ## Etapa 3 — Estrutura e componentes + fontes
 
-Aqui entram a estrutura e os textos do wireframe (markup no `index.html`, estilo no `assets/styles.css`): primeiro o chrome (`nav` — top bar e/ou sidebar), depois cada tipo de card (`card`, `card2`, …) e as demais regiões. Imagens que compõem o fundo de um componente entram junto dele. Um gate só, no fim.
+Aqui entram a estrutura e os textos do wireframe (markup no `index.html`, estilo no `assets/styles.css`): primeiro o chrome (`nav` — top bar e/ou sidebar), depois cada tipo de card (`card`, `card2`, …) e as demais regiões. Imagens que compõem o fundo de um componente entram junto dele; as independentes usam o mesmo lote paralelo do procedimento de assets. Um gate só, no fim.
 
 ### Fontes antes do ajuste fino
 
@@ -158,26 +158,35 @@ Somente os assets atribuídos à etapa 4 continuam como placeholders, com dimens
 
 ## Etapa 4 — Assets restantes
 
-Implementar os `[ico:]` / `[img:]` / `[av:]` e demais assets que o plano deixou para esta etapa. Reutilizar os assets de fundo já aprovados; não regenerá-los apenas para cumprir esta etapa. Aplicar o procedimento abaixo, comparar o conjunto e apresentar o **gate**. Se não houver pendências, omitir esta etapa conforme o plano.
+Implementar os `[ico:]` / `[img:]` / `[av:]` e demais assets que o plano deixou para esta etapa. Reutilizar os assets de fundo já aprovados; não regenerá-los apenas para cumprir esta etapa. Preparar todos os recortes da etapa e gerar os assets independentes em paralelo pelo procedimento abaixo; depois comparar o conjunto e apresentar o **gate**. Se não houver pendências, omitir esta etapa conforme o plano.
 
 ### Procedimento de assets (usado nas etapas 2, 3 e 4)
 
-1. Crop na `reference` → `assets/crops/{id}.png`.
-2. Regenerar com **GPT Image 2** via OpenRouter (`gpt2`). Para ícones ou camadas recortadas, pedir PNG com **fundo transparente**; para um fundo completo, preservar o fundo necessário. Adaptar o prompt à arte (foto, textura, 3D etc.); não impor estilo flat a todo asset. Exemplo para ícone:
+1. Fazer todos os crops necessários na `reference` → `assets/crops/{id}.png` antes de iniciar qualquer geração.
+2. Separar os requests em lotes: assets sem dependência entre si e com arquivos de destino distintos pertencem ao mesmo lote. Um asset que depende de uma imagem recém-gerada, ou de uma composição ainda não aprovada, fica no lote seguinte.
+3. Regenerar cada lote com **GPT Image 2** via OpenRouter (`gpt2`) em paralelo. Para ícones ou camadas recortadas, pedir PNG com **fundo transparente**; para um fundo completo, preservar o fundo necessário. Adaptar o prompt à arte (foto, textura, 3D etc.); não impor estilo flat a todo asset. Inicie cada comando em segundo plano e execute `wait` antes de encaixar qualquer resultado. Exemplo para dois ícones independentes:
 
 ```bash
 uv run ~/.agents/skills/openrouter-img/scripts/generate_image.py \
   --prompt "Recreate this UI icon/asset exactly. Flat, clean edges. Transparent background. No extra padding, no mockup frame." \
   --input-image design-systems/<slug>/assets/crops/{id}.png \
   --filename design-systems/<slug>/assets/{id}.png \
-  --model gpt2 --resolution 1K --aspect-ratio 1:1
+  --model gpt2 --resolution 1K --aspect-ratio 1:1 &
+
+uv run ~/.agents/skills/openrouter-img/scripts/generate_image.py \
+  --prompt "Recreate this UI icon/asset exactly. Flat, clean edges. Transparent background. No extra padding, no mockup frame." \
+  --input-image design-systems/<slug>/assets/crops/{id-2}.png \
+  --filename design-systems/<slug>/assets/{id-2}.png \
+  --model gpt2 --resolution 1K --aspect-ratio 1:1 &
+
+wait
 ```
 
-Rodar a partir do cwd do repo de skills (ou paths absolutos). Ajustar `--aspect-ratio` ao crop ou à camada de destino. Ao gerar um fundo a partir do mock, pedir apenas a arte de fundo, sem reproduzir textos, cards ou controles sobrepostos. Requer `OPENROUTER_API_KEY` (`.env` do projeto ou `~/.env`).
+Rodar a partir do cwd do repo de skills (ou paths absolutos). Para um único asset, rode o mesmo comando sem `&` e sem `wait`. Ajustar `--aspect-ratio` ao crop ou à camada de destino. Ao gerar um fundo a partir do mock, pedir apenas a arte de fundo, sem reproduzir textos, cards ou controles sobrepostos. Requer `OPENROUTER_API_KEY` (`.env` do projeto ou `~/.env`).
 
-3. Encaixar no HTML via `<img src="assets/{id}.png">` (ou `background-image`); comparar com a ref.
-4. Se falhou: novo prompt / nova geração até o agente julgar que acertou.
-5. Avaliar o asset na composição da etapa que o utiliza; o gate é o dessa etapa, sem uma aprovação extra por arquivo.
+4. Depois do `wait`, encaixar cada resultado no HTML via `<img src="assets/{id}.png">` (ou `background-image`) e comparar com a ref.
+5. Se algum falhou: preparar somente os assets afetados para um novo lote, com prompt ajustado; não regenerar os que já passaram.
+6. Avaliar os assets na composição da etapa que os utiliza; o gate é o dessa etapa, sem uma aprovação extra por arquivo.
 
 ---
 

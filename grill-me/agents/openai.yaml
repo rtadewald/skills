@@ -1,5 +1,6 @@
 interface:
   display_name: "Grill Me"
   short_description: "Sharpen a plan through interview"
+  default_prompt: "Use $grill-me: entreviste-me para fechar este plano ou design."
 policy:
   allow_implicit_invocation: false

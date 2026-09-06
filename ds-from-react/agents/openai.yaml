@@ -1,6 +1,0 @@
-interface:
-  display_name: "DS from React"
-  short_description: "App React viva → design-system.html fiel"
-  default_prompt: "Use $ds-from-react: hospede esta aplicação React, analise a UI e os arquivos, e gere um design-system.html fiel ao sistema existente."
-policy:
-  allow_implicit_invocation: false

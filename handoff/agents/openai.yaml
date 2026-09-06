@@ -1,5 +1,6 @@
 interface:
   display_name: "Handoff"
   short_description: "Compact a conversation into a handoff"
+  default_prompt: "Use $handoff: gere um documento de handoff desta conversa."
 policy:
   allow_implicit_invocation: false

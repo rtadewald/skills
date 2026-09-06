@@ -1,0 +1,6 @@
+interface:
+  display_name: "Nano Banana Pro"
+  short_description: "Gere ou edite imagens com Nano Banana Pro"
+  default_prompt: "Use $nano-banana-pro: gere ou edite esta imagem em 512, salvo resolução informada."
+policy:
+  allow_implicit_invocation: false

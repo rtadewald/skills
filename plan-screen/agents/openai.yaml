@@ -1,0 +1,6 @@
+interface:
+  display_name: "Plan Screen"
+  short_description: "Ideia → fluxo; wireframes ASCII e PNGs em mocks/"
+  default_prompt: "Use $plan-screen: defina uma tela ou fluxo, proponha três direções com wireframes ASCII e, após minha aprovação, gere os PNGs."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Context7 MCP"
+  short_description: "Documentação atual de bibliotecas via Context7"
+  default_prompt: "Use $context7-mcp: busque a documentação atual desta biblioteca no Context7."
+policy:
+  allow_implicit_invocation: false

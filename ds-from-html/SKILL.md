@@ -1,10 +1,10 @@
 ---
-name: extract-design-system
+name: ds-from-html
 description: >-
   Build a living design-system.html pattern library from a reference website
   HTML, reusing exact classes, assets, animations, and components (hero clone,
   typography, colors, UI, layout, motion, icons). Use when the user mentions
-  extract-design-system or asks for a design system / pattern library from HTML.
+  ds-from-html or asks for a design system / pattern library from HTML.
 disable-model-invocation: true
 ---
 
