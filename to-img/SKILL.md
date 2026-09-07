@@ -1,34 +1,86 @@
 ---
 name: to-img
 description: >-
-  Gera n imagens em paralelo via OpenRouter (default gpt2 @ 1K) a partir de
-  qualquer pedido do usuário e salva em mocks/. Use when the user mentions to-img.
+  Gera imagens em paralelo via OpenRouter a partir de um pedido simples ou de
+  um batch com prompts e filenames definidos. Usa gpt2 em 1K por padrão. Use
+  when the user mentions to-img or asks to generate image variants via OpenRouter.
 disable-model-invocation: true
 ---
 
 # To Img
 
-Recebe qualquer pedido de imagem do usuário e gera **n** versões em paralelo via OpenRouter. Default: `gpt2` (GPT Image 2), `1K`, `16:9`. Salva em `mocks/`.
+Gere imagens via OpenRouter e salve-as em `mocks/`. Aceite um pedido simples ou uma lista de jobs independentes.
 
-## Fluxo
+Defaults: `model=gpt2` (GPT Image 2), `resolution=1K` e `aspect-ratio=16:9`. Altere-os somente quando o usuário ou a skill chamadora fornecer outros valores.
 
-1. Pegue o pedido do usuário. Se ele não disser **n**, pergunte (default **3**). Se passar uma imagem de referência, use como `--input-image`.
-2. Monte o `--prompt` a partir do pedido. Se for tela de app, deixe explícito que é um aplicativo usável.
-3. Olhe `mocks/` e use o próximo `{n}` livre (ou o que o usuário indicar): `{n}-a.png`, `{n}-b.png`, `{n}-c.png`…
-4. Dispare as **n** chamadas em paralelo no cwd do usuário, com `OPENROUTER_API_KEY` (`.env` do projeto ou `~/.env`):
+## Entrada
+
+### Pedido simples
+
+Receba:
+
+- o pedido ou `prompt`;
+- `count`, opcional e igual a `3` quando ausente;
+- `input-image`, opcional;
+- `aspect-ratio`, opcional.
+
+Se for uma tela de app, deixe explícito no prompt que a imagem representa um aplicativo usável.
+
+Encontre o maior número já usado em `mocks/`, adote o próximo como `{cycle}` e nomeie as variantes:
+
+```text
+mocks/{cycle}-a.png
+mocks/{cycle}-b.png
+mocks/{cycle}-c.png
+```
+
+Não use `count` como número do ciclo. Variações podem explorar interpretações diferentes da mesma ideia quando o usuário não tiver definido prompts exatos.
+
+### Batch
+
+Aceite uma lista de jobs. Cada job contém:
+
+- `prompt`, obrigatório;
+- `filename`, obrigatório;
+- `input-image`, opcional;
+- `aspect-ratio`, opcional.
+
+Exemplo:
+
+```text
+Use $to-img com estes jobs:
+
+- filename=mocks/12-dashboard-a.png
+  prompt="Dashboard operacional do produto..."
+  aspect-ratio=16:9
+
+- filename=mocks/12-detail-a.png
+  prompt="Tela de detalhe do mesmo produto..."
+  aspect-ratio=16:9
+  input-image=references/style.png
+```
+
+Quando um job fornecer `filename`, use o path exatamente como recebido. Não procure outro ciclo, não renomeie o arquivo e não combine prompts de jobs distintos.
+
+## Geração
+
+1. Confirme que cada job possui prompt e destino válidos.
+2. Crie `mocks/` ou os diretórios de destino necessários.
+3. Use `OPENROUTER_API_KEY` disponível no `.env` do projeto ou em `~/.env`.
+4. Execute todas as chamadas independentes em paralelo no cwd do usuário.
+5. Aguarde todas e confirme que cada arquivo esperado foi criado.
+
+Para cada job, use:
 
 ```bash
 uv run ~/.agents/skills/openrouter-img/scripts/generate_image.py \
-  --prompt "..." --filename "mocks/{n}-a.png" \
-  --model gpt2 --resolution 1K --aspect-ratio 16:9 &
-
-uv run ~/.agents/skills/openrouter-img/scripts/generate_image.py \
-  --prompt "..." --filename "mocks/{n}-b.png" \
-  --model gpt2 --resolution 1K --aspect-ratio 16:9 &
-
-wait
+  --prompt "..." \
+  --filename "mocks/{cycle}-a.png" \
+  --model gpt2 \
+  --resolution 1K \
+  --aspect-ratio 16:9
 ```
 
-Cada versão pode ter um prompt ligeiramente diferente (mesma ideia, outro ângulo), se fizer sentido. Suba resolução / mude modelo só se o usuário pedir. Com referência: acrescente `--input-image` em todas.
+Inclua `--input-image` quando fornecido. Preserve diferenças de prompt, filename, referência e proporção entre jobs. Faça o escaping seguro de prompts e paths ao construir os comandos.
 
-5. Mostre os paths e pare.
+Se algum job falhar, identifique-o pelo filename e preserve os resultados concluídos. Ao terminar, mostre todos os paths gerados e pare.

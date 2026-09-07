@@ -18,6 +18,8 @@ Skill para transformar um **mock de interface** (PNG/JPG/WebP) numa **recriaçã
 
 **Saída:** pasta `design-systems/<slug>/` com a referência copiada, o wireframe, o **`index.html`** e uma pasta **`assets/`** com o CSS, o JS e as mídias geradas.
 
+O entrypoint final deve se chamar exatamente **`index.html`**. Não use outro nome para o HTML principal.
+
 `<slug>` = nome curto do mock em kebab-case (ex.: `chatgpt-glass-dash`). Se o usuário não indicar, derive do nome do arquivo ou pergunte.
 
 ## Por que em etapas

@@ -1,6 +1,0 @@
-interface:
-  display_name: "DS from HTML"
-  short_description: "HTML de referência → design-system.html (pattern library viva)"
-  default_prompt: "Use $ds-from-html: a partir deste HTML de referência, gere o design-system.html."
-policy:
-  allow_implicit_invocation: false

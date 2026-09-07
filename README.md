@@ -15,7 +15,7 @@ Pra inventar e fechar a cara de um app antes de gerar mock.
 Quando quero tirar a linguagem visual de uma referência e deixar pronta pra implementar. Prefixo: `ds-from-…` / `ds-cards-…`
 
 - [`ds-from-html`](./ds-from-html): HTML de referência → `design-system.html` (pattern library viva, classes/assets originais)
-- [`extract-ds`](./extract-ds): HTML ou imagem → wireframe → Foundations → Components → Layouts, com aprovação por camada
+- [`extract-ds`](./extract-ds): `index.html` existente → catálogo direto com Overview, Foundations, Components e Layouts
 - [`clean-ds-from-html`](./clean-ds-from-html): HTML → design system limpo com assets extraídos
 - [`ds-from-react`](./ds-from-react): aplicação React hospedada → `design-system.html` (pattern library viva, UI e arquivos reais)
 - [`ds-from-img`](./ds-from-img): mock (imagem) → `design-systems/<slug>/` com HTML + CSS

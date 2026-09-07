@@ -1,6 +1,10 @@
 # Layouts
 
+<<<<<<< ours
 Leia este arquivo somente depois da aprovação de Components.
+=======
+Leia este arquivo somente depois de implementar e verificar Components.
+>>>>>>> theirs
 
 ## Definição
 
@@ -12,7 +16,11 @@ Um card ou navbar isolado é Component. Navbar + headline + CTA + mídia + backg
 
 ## Construção
 
+<<<<<<< ours
 Use `data-ds-section="layout"`. Cada Layout deve utilizar os Components, classes, Foundations, motions e assets reais já aprovados. Não duplique um componente com markup alternativo apenas para fazê-lo caber no exemplo.
+=======
+Use `data-ds-section="layout"`. Cada Layout deve utilizar os Components, classes, Foundations, motions e assets reais já extraídos. Não duplique um componente com markup alternativo apenas para fazê-lo caber no exemplo.
+>>>>>>> theirs
 
 Para cada Layout, torne claros:
 
@@ -21,7 +29,11 @@ Para cada Layout, torne claros:
 - grid, containers, colunas, gaps e alinhamentos;
 - assets que pertencem ao arranjo completo;
 - comportamento responsivo observado; e
+<<<<<<< ours
 - partes `inferred` ou `suggested`.
+=======
+- relações ou nomes semânticos marcados como `inferred` quando não forem explícitos no código.
+>>>>>>> theirs
 
 ## Assets do layout
 
@@ -31,6 +43,7 @@ Um fundo global já copiado na casca pode ser reutilizado. Efeitos específicos 
 
 ## Responsividade e fidelidade
 
+<<<<<<< ours
 Em HTML, preserve breakpoints e mudanças de arranjo observadas. Uma imagem de desktop não comprova comportamento mobile; qualquer reflow criado deve ser `suggested`. O catálogo em si deve continuar utilizável em viewport razoável, independentemente da responsividade extraída.
 
 Preserve o que torna o arranjo reconhecível: hierarquia, ritmo, densidade, iluminação, background, mídia, 3D e relação entre componentes. Prefira poucos Layouts representativos a reconstruir todas as páginas da aplicação.
@@ -40,9 +53,24 @@ Preserve o que torna o arranjo reconhecível: hierarquia, ritmo, densidade, ilum
 Confirme que:
 
 - todos os Layouts usam Components já aprovados;
+=======
+Preserve os breakpoints, media queries e mudanças de arranjo implementadas no HTML. Não invente reflow ou comportamento mobile ausente. O catálogo em si deve continuar utilizável em viewport razoável, independentemente da responsividade extraída.
+
+Preserve o que torna o arranjo reconhecível: hierarquia, ritmo, densidade, iluminação, background, mídia, 3D e relação entre componentes. Prefira poucos Layouts representativos a reconstruir todas as páginas da aplicação.
+
+## Verificação de Layouts
+
+Confirme que:
+
+- todos os Layouts usam Components já extraídos;
+>>>>>>> theirs
 - assets amplos aparecem no Layout proprietário;
 - nenhuma responsividade foi apresentada como observada sem evidência;
 - background e efeitos executam sem erros; e
 - os exemplos ensinam como criar novas interfaces coerentes.
 
+<<<<<<< ours
 Depois, construa o Overview final, mostre o catálogo integrado e aguarde aprovação.
+=======
+Depois, revise o Overview contra as seções concluídas e faça a revisão final do catálogo.
+>>>>>>> theirs
