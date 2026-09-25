@@ -1,6 +1,6 @@
 interface:
   display_name: "Extract DS 3"
-  short_description: "Fast copy-first Overview and source-backed Components"
-  default_prompt: "Use $extract-ds3 to quickly copy and minimally adapt this finished local website as Overview, then extract Components only after approval."
+  short_description: "Copy a website into an approval-gated design system"
+  default_prompt: "Use $extract-ds3 to classify this site's runtime, copy it into a design system, present Overview for approval, then build Components."
 policy:
   allow_implicit_invocation: false

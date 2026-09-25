@@ -17,7 +17,7 @@ Quando quero tirar a linguagem visual de uma referência e deixar pronta pra imp
 - [`ds-from-html`](./ds-from-html): HTML de referência → `design-system.html` (pattern library viva, classes/assets originais)
 - [`extract-ds`](./extract-ds): `index.html` existente → catálogo direto com Overview, Foundations, Components e Layouts
 - [`extract-ds2`](./extract-ds2): site local → DS HTML desktop autocontido; navegação + Components (foundations primeiro) na primeira entrega, depois Overview e Layouts, com aprovação entre entregas
-- [`extract-ds3`](./extract-ds3): site/HTML pronto → cópia limpa no Overview e Components extraídos somente dele após aprovação
+- [`extract-ds3`](./extract-ds3): site pronto → cópia funcional preservando o runtime ou convertida para `file://`, com aprovação de Overview e Components
 - [`clean-ds-from-html`](./clean-ds-from-html): HTML → design system limpo com assets extraídos
 - [`ds-from-react`](./ds-from-react): aplicação React hospedada → `design-system.html` (pattern library viva, UI e arquivos reais)
 - [`ds-from-img`](./ds-from-img): mock (imagem) → `design-systems/<slug>/` com HTML + CSS

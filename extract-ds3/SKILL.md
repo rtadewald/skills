@@ -1,101 +1,160 @@
 ---
 name: extract-ds3
 description: >-
-  Quickly turn a finished local HTML page or website into a copy-first design
-  system catalog. Deliver a minimally adapted Overview first; extract Components
-  only after approval.
+  Build a design system from a finished local website by copying its repository,
+  rapidly identifying whether it runs through file:// or a local server, and
+  preserving its main animations. Use when the user invokes extract-ds3 or
+  requests this approval-gated workflow.
 ---
 
 # Extract DS 3
 
-Build a design system catalog from a finished local page. The first handoff must
-be fast: copy the working project, make small safe edits, wrap it as Overview,
-and show it to the user.
+You are a Design System Builder.
 
-The catalog has exactly two views:
+The user will give you a finished local website. Copy its repository into a new
+design system and preserve its structure, visual identity, interactions, main
+animations, and chosen runtime.
 
-1. **Overview** — a working copy of the page with its main visible copy adapted
-   to describe the observed design system.
-2. **Components** — live foundations and components extracted only after the
-   user approves Overview.
+Work in two approval-gated phases: first deliver Overview and stop; only after the
+user approves it, build Components and stop for approval again. Do not redesign
+or rebuild the source.
 
-Do not redesign, rebuild, optimize, audit, or reverse-engineer the source.
+## Required outcome
 
-## Speed contract
+- Copy the source project into the new design system output.
+- Rapidly determine whether the source currently runs through `file://` or a
+  local server.
+- When it requires a server, ask whether the user wants the slower `file://`
+  conversion or the faster server-preserving path.
+- Preserve the page structure, styling, effects, interactions, and main animations.
+- Adapt the hero copy to present `<observed brand> Design System`.
+- Replace the remaining visible page copy with generic Lorem Ipsum.
+- Present Overview and stop for explicit approval.
+- Build Components only after that approval, then present it and stop for a
+  second explicit approval.
 
-For an ordinary local page, target the Overview handoff in about 1–2 minutes.
-Favor a useful working copy over a minimal or exhaustively verified package.
+## Output naming
 
-- Copy first; inspect only what blocks copying or opening.
-- Prefer one broad copy over tracing every dependency.
-- Make direct edits; do not create transformation or comparison scripts.
-- Do not analyze or rewrite minified/generated bundles.
-- Do not run visual diffs, geometry comparisons, exhaustive audits, or broad
-  interaction tests.
-- Do not start two servers or try multiple browser stacks.
-- Do not open a browser during the normal Overview path. Use one brief smoke
-  test only when the copy is visibly or evidently broken, or when requested.
-- Stop as soon as Overview is usable and the catalog opens.
+Unless the user provides an explicit destination, create `$OUTPUT` beside
+`$SOURCE` with the exact pattern:
 
-## Input, output, and phases
+```text
+<brand-name>-design-system/
+```
 
-`$SOURCE` is a finished HTML file or local website. Treat it as read-only.
+Derive `<brand-name>` from the brand visibly presented by the source, not from
+the repository folder, domain, page title suffix, campaign, or technical project
+name. Normalize it to lowercase kebab-case. Reuse that same folder during
+Overview corrections and the Components phase; do not create numbered copies.
 
-`$OUTPUT` defaults to `<source-name>-design-system/` beside the source. Create
-new files only inside it. The entry point is `$OUTPUT/design-system.html`, and
-Overview normally lives at `$OUTPUT/assets/overview/index.html`.
+The catalog entry point is `$OUTPUT/design-system.html`.
 
-- No approved Overview: build only Overview and stop.
-- Overview correction: change only Overview/catalog shell and stop.
-- Approved Overview: build Components.
-- Existing output: continue from its latest approved phase.
+## Runtime preflight
 
-## Fast runtime decision
+Before creating `$OUTPUT`, make one shallow inspection of the source runtime.
+Check only the entry page, obvious project instructions or start scripts, and
+clear runtime signals such as local ES modules, fetch/XHR, routing, workers,
+WASM, or root-relative assets. Do not start a server, open a browser, trace every
+dependency, or prove both modes.
 
-Decide from one shallow pass over the entry page and obvious scripts:
+Classify the source as one of these:
 
-- Use `file://` when relative HTML, CSS, images, fonts, and classic scripts can
-  work directly, including after small path or packaging changes.
-- Use a minimal local server when modules, fetch/CORS, routing, workers, or a
-  runtime loader make `file://` unreliable.
-- Do not test both approaches. Do not debug a complex runtime merely to force
-  `file://`; state the server requirement and continue.
-- Keep working CDN references. Offline packaging is out of scope unless asked.
+- **Runs through `file://`** — continue directly to Phase 1 without asking.
+- **Requires a local server** — briefly name the reason and ask the user:
+  “Este projeto roda atualmente por servidor local. Quer que eu o adapte para
+  `file://`? Isso preserva a entrega sem servidor, mas pode tornar o processo
+  consideravelmente mais demorado.”
 
-## Phase 1 — Fast Overview
+If the user says yes, set the chosen runtime to `file://` and begin Overview by
+performing that conversion. If the user says no, preserve the existing server
+runtime and prioritize delivery speed. Stop and wait for the answer before
+creating Overview. Do not ask when the user already stated a runtime preference.
 
-### 1. Copy
+## Working principles
 
-Locate the active entry page, normally `index.html`. Copy its containing project
-or the smallest obvious working subtree into `$OUTPUT/assets/overview/`, keeping
-relative paths intact.
+- Copy first; inspect only what is needed to preserve runtime behavior.
+- Prefer direct, local changes over rebuilding the project.
+- Keep existing filenames, directories, markup, classes, CSS, and assets.
+- Do not audit unused code, optimize media, reorganize styles, or reverse-engineer
+  minified bundles.
+- Do not create analysis, transformation, or comparison scripts for one-off work.
+- Do not compare original and copy pixel by pixel or start multiple servers.
+- Keep working CDN resources unless offline packaging was explicitly requested.
 
-It is acceptable to copy some unused local assets when that is faster and safer
-than tracing references. Exclude only obvious bulk or unrelated material such as
-`node_modules`, caches, source maps, tests, drafts, screenshots, and editor files.
+## Phase 1 — Overview
 
-Do not inventory the whole project or follow every CSS/JavaScript import.
+### 1. Copy the project
 
-### 2. Adapt the copy minimally
+Treat `$SOURCE` as read-only. Copy the repository or complete working project into:
 
-Work only in the copy.
+```text
+$OUTPUT/assets/overview/
+```
 
-- Rewrite prominent visible copy: hero, section headings, short descriptions,
-  and relevant CTA labels. Describe only visual qualities present in the page.
-- Preserve text slots, hierarchy, spans, effects, approximate lengths, markup,
-  classes, styles, assets, and interactions.
-- Remove comments, analytics, tracking, and production integrations only when
-  the edit is obvious and safe. Do not perform a cleanup audit.
-- For static HTML, replace text directly.
-- For generated pages whose text lives in bundles, do not edit the bundle.
-  Inject a short end-of-body DOM text map when necessary and move on.
-- Leave legal or incidental interface copy unchanged when adapting it would
-  require runtime surgery.
+Preserve its internal paths and include the files needed by its runtime. Exclude
+only repository metadata and obvious development bulk that the finished page does
+not load, such as `.git`, caches, source maps, test output, and `node_modules`.
+It is better to include a few unused assets than to spend time tracing every
+dependency.
 
-Do not recreate components, reorganize CSS, rename runtime files, extract inline
-code, minify, replace libraries, optimize media, or audit unused selectors.
+Locate the copied entry page, normally `assets/overview/index.html`. Make all
+subsequent changes only inside `$OUTPUT`.
 
-### 3. Wrap it in the catalog
+### 2. Preserve or adapt the chosen runtime
+
+If the source already runs through `file://`, preserve that behavior and make
+only necessary path fixes.
+
+If the user chose the fast server path, retain the existing start command and
+runtime structure. Do not convert modules, fetches, routing, workers, or binary
+loaders merely to remove the server.
+
+If the user approved conversion from a server to `file://`, preserve the main
+animations while adapting only the mechanisms that require an HTTP origin.
+
+Use the smallest relevant fixes:
+
+- keep relative HTML, CSS, image, media, and classic-script paths;
+- rewrite root-relative paths to paths relative to the copied entry page;
+- bundle local ES module graphs into browser-ready classic scripts when needed;
+- keep remote CDN scripts and fonts when they work from a `null` origin;
+- replace blocked local font loading with permitted CDN loading or embedded data;
+- adapt local `fetch`/XHR binary loading for images, JSON, WASM, Rive, GLB, HDR,
+  and similar assets with local maps, embedded data, Blob URLs, or equivalent;
+- adapt Workers and WASM initialization only when used by a main animation;
+- keep navigation inside the copied Overview instead of relying on server routes;
+- avoid parent/iframe origin access from the Overview.
+
+Preserve the source's main visual motion, especially hero/background WebGL, canvas,
+Rive, marquee, scroll, and entrance animations. Production APIs, analytics,
+tracking, authentication, checkout, and secondary routes do not need emulation.
+
+During an approved `file://` conversion, do not silently fall back to a server.
+If a protected remote service, DRM, or another external restriction makes a main
+animation genuinely impossible through `file://`, report the exact blocker and
+ask whether to continue with the existing server runtime.
+
+### 3. Replace the copy
+
+In the hero:
+
+- use the observed brand or product name followed by `Design System`;
+- use a short supporting sentence describing only visible visual qualities;
+- keep the existing hierarchy, spans, line breaks, effects, and approximate length.
+
+Everywhere else, replace visible marketing/editorial copy with generic Lorem Ipsum
+of roughly similar length. Preserve element structure so layout and animation hooks
+continue to work. Keep functional or accessibility text only when changing it
+would break behavior.
+
+For static HTML, edit text directly. If text is generated by a bundle, do not edit
+the minified bundle: use a small early DOM text mapping in the copied page, timed
+before animation initialization when necessary.
+
+Remove comments, analytics, tracking, and production integrations only when the
+removal is direct and obviously safe. Do not perform a cleanup audit.
+
+### 4. Create the catalog and navbar
 
 Create `$OUTPUT/design-system.html` with:
 
@@ -103,39 +162,53 @@ Create `$OUTPUT/design-system.html` with:
 Overview | Components
 ```
 
-If the source has a navbar, adapt it into the catalog navbar: reuse its identity,
-logo, size, styling, and responsive behavior; replace destinations with Overview
-and Components; suppress the duplicate navbar and spacer inside Overview. Never
-stack a generic navbar above the source navbar.
+If the source already has a navbar, adapt it into the catalog navbar. Reuse its
+identity, logo, dimensions, styling, and responsive behavior; replace its
+destinations with Overview and Components; suppress the duplicate navbar and its
+spacer inside Overview. Never stack a generic catalog navbar above the original.
 
-Use `#overview` and `#components`, select Overview initially, and keep Components
-disabled until approval. Display Overview in a borderless iframe filling the area
-below the navbar. Do not add documentation, cards, device frames, or browser chrome.
+If no navbar exists, derive a minimal one from the source's visual language.
 
-### 4. Hand off immediately
+Use `#overview` and `#components`, preserve browser history, and select Overview
+initially. Show Components as disabled until approval. Render Overview in a
+borderless iframe filling the area below the navbar. Do not add cards, device
+frames, browser chrome, or documentation around it.
 
-Perform only a cheap structural check: entry files exist, iframe/path targets are
-correct, and the chosen runtime command is clear. Do not validate original and
-copy side by side as a routine step.
+### 5. Check and present Overview
 
-Deliver the exact `design-system.html` path, say whether it opens via `file://` or
-give one minimal server command, and ask for Overview approval. Stop.
+Perform one short check using the chosen runtime. For `file://`, open the exact
+catalog file. For the server path, reuse the existing minimal start command and
+do not introduce another server. Confirm:
 
-## Phase 2 — Components after approval
+- Overview loads through the chosen runtime;
+- the main animations initialize;
+- the adapted navbar is the only top navbar;
+- no missing local file prevents the page from rendering.
 
-Inspect the approved Overview from beginning to end. Document only elements and
-states visible there or reachable through a real interaction. Ignore unused code
-and unobserved variants.
+Fix only concrete blockers found in this check. Do not compare against the
+original, create comparison tooling, or expand into a general audit.
 
-Read [references/component-formats.md](references/component-formats.md) only now,
-and only the sections relevant to observed groups. Put foundations first, then
-complete components. Omit empty groups and do not create a separate inventory.
+Deliver the exact `design-system.html` path, state whether it opens through
+`file://` or give the existing minimal server command, show Overview to the user,
+and request explicit approval. Stop.
+
+## Phase 2 — Components after Overview approval
+
+After approval, inspect only the approved Overview. A foundation, component,
+variant, or state may be documented only when visible there or reachable through
+a real interaction.
+
+Read [references/component-formats.md](references/component-formats.md) now and
+follow only the sections relevant to observed groups. Put foundations first, then
+complete components. Omit empty groups and group repeated instances.
 
 Enable Components in the existing catalog. Add a sticky left sidebar containing
-only group names and stack all groups in the main area. Reuse Overview HTML, CSS,
-copy, assets, states, effects, and required context. Group repeated instances and
-store source selectors as code metadata instead of verbose visible provenance.
+only group names and stack all groups in the main area. Every specimen must reuse
+Overview HTML, CSS, Lorem Ipsum copy, assets, states, effects, and required context.
+Store selectors or sources as code metadata instead of verbose visible provenance.
 
-Smoke-test only the catalog switching, hashes, scrolling, and the representative
-states actually documented. Investigate deeper only when something is visibly
-broken or the user requests it. Deliver the same catalog and ask for approval.
+Keep the completed catalog compatible with the runtime chosen before Overview.
+Perform one short smoke test of Overview/Components switching, hashes, scrolling,
+and representative documented states. Fix concrete failures only.
+
+Present Components to the user and request explicit approval again. Stop.
