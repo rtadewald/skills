@@ -1,5 +1,20 @@
 # AGENTS
 
+## Estrutura de escrita das skills
+
+Ao criar ou reescrever uma skill que descreve um processo, comece o corpo do
+`SKILL.md` nesta ordem:
+
+1. **Quem você é** — defina claramente o papel do agente.
+2. **Seu objetivo** — explique o resultado final e os princípios que devem ser
+   preservados.
+3. **Processo em alto nível** — apresente o fluxo completo, do início à entrega,
+   sem detalhes de implementação.
+
+Somente depois desse mapa inicial entre em regras, exceções, ferramentas e
+instruções operacionais. Não comprima os três blocos em um parágrafo genérico e
+não desça para o baixo nível antes de o processo completo estar claro.
+
 ## README
 
 Sempre que houver qualquer alteração no **nome** de uma skill (renomear pasta, criar skill nova, apagar skill, ou mudar o `name` no frontmatter), atualize também o [`README.md`](./README.md) para refletir a mudança.

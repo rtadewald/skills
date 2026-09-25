@@ -1,6 +1,6 @@
 interface:
   display_name: "Extract DS"
-  short_description: "Copy a website into an approval-gated design system"
-  default_prompt: "Use $extract-ds to classify this site's runtime, copy it into a design system, present Overview for approval, then build Components."
+  short_description: "Fast copy-first website design system workflow"
+  default_prompt: "Use $extract-ds to take the fastest copy-first path: classify the runtime, present Overview for approval, then build source-backed Components."
 policy:
   allow_implicit_invocation: false

@@ -68,11 +68,6 @@ borders, masks, shadows, glow, and other effects that produce the surface.
 Gradients may appear as part of that composition, but never create a separate
 Gradients group.
 
-## Spacing and containers
-
-Show only recurring or structurally important measurements. Pair each measured
-pixel value with its observed role: padding, gap, max-width, column, or alignment.
-Do not invent a spacing scale.
 
 ## Icons
 
