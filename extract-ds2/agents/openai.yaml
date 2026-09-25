@@ -1,6 +1,0 @@
-interface:
-  display_name: "Extract DS 2"
-  short_description: "Design system fiel ao site, com aprovação por etapa"
-  default_prompt: "Use $extract-ds2 para extrair desta pasta um design system HTML autocontido, focado em desktop: entregue navegação e Components juntos, com foundations primeiro, depois Overview e Layouts, com aprovação entre entregas."
-policy:
-  allow_implicit_invocation: false
