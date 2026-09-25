@@ -46,12 +46,12 @@ handoff in about 1–2 minutes. The normal path is exactly:
 2. one broad project copy;
 3. one batch copy rewrite;
 4. one catalog/navbar integration;
-5. one browser check.
+5. one structural handoff to the user.
 
-After a concrete failure, make the smallest fix and allow only one final rerun.
 Do not inventory assets, trace every dependency, compare original and copy,
-generate contact sheets, or broaden the check into an audit. Stop as soon as the
-Overview opens, its main animation runs, and the catalog has one correct navbar.
+generate contact sheets, open a browser, or broaden the handoff into an audit.
+Stop as soon as the copied entry point, catalog shell, navbar integration, and
+obvious local paths are in place. The user validates the rendered Overview.
 
 ## Paths, output, and existing work
 
@@ -181,33 +181,21 @@ initially, and keep Components disabled until approval. Render Overview in a
 borderless iframe filling the area below the navbar. Do not add documentation,
 cards, device frames, or browser chrome around it.
 
-### 5. Check once and present Overview
+### 5. Hand off Overview for user validation
 
-Use one browser that supports the chosen runtime. For `file://`, skip any browser
-known not to accept local files and go directly to the installed local Chrome or
-Chromium. If the chosen browser unexpectedly rejects `file://`, use one local
-Chrome/Chromium fallback and do not try additional browser stacks, MCP browsers,
-or a temporary server.
+Perform only cheap structural checks: confirm that `design-system.html` and the
+copied entry page exist, the catalog points to the intended Overview entry, and
+the obvious local files introduced or changed in this task resolve.
 
-Open the exact `$OUTPUT/design-system.html` for `file://`. For the server path,
-reuse the project's existing minimal start command and do not introduce a second
-server.
+Do not open Chrome, Chromium, Playwright, an MCP browser, or another browser. Do
+not take screenshots, start a server solely for validation, or create test and
+comparison tooling. Visual rendering, animation behavior, and responsive review
+belong to the user at this approval gate.
 
-Confirm only:
-
-- Overview loads through the chosen runtime;
-- the main animation initializes;
-- the adapted navbar is the only top navbar;
-- no missing local file prevents the page from rendering.
-
-Do not take screenshots unless the user requested one or a screenshot is the
-only practical way to inspect a concrete rendering failure. After one concrete
-fix, allow one final rerun. If no capable local browser is available, perform a
-structural path check, clearly state that visual verification was unavailable,
-and stop instead of building new test infrastructure.
-
-Deliver the exact `design-system.html` path, state whether it uses `file://` or
-the preserved server command, and request explicit Overview approval. Stop.
+Deliver the exact `design-system.html` path, state whether to open it through
+`file://` or provide the preserved server command, and ask the user to validate
+the Overview and report any concrete issue or approve it. Stop. Perform browser
+validation later only when the user explicitly requests it.
 
 ## Phase 2 — Components after Overview approval
 

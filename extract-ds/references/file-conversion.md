@@ -28,5 +28,6 @@ or another external restriction makes a main animation genuinely impossible via
 `file://`, report the exact blocker and ask whether to preserve the original
 server runtime.
 
-The normal verification budget still applies: one browser check and one final
-rerun only after a concrete fix. Do not build comparison or screenshot tooling.
+After conversion, follow the normal Overview handoff: make only cheap structural
+checks and let the user validate rendering and animations. Do not open a browser
+or build comparison, screenshot, or test tooling unless the user explicitly asks.
