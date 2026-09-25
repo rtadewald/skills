@@ -1,0 +1,6 @@
+interface:
+  display_name: "Extract DS 3"
+  short_description: "Fast copy-first Overview and source-backed Components"
+  default_prompt: "Use $extract-ds3 to quickly copy and minimally adapt this finished local website as Overview, then extract Components only after approval."
+policy:
+  allow_implicit_invocation: false
