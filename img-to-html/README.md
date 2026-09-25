@@ -83,7 +83,7 @@ design-systems/<slug>/
     *.png / …
 ```
 
-Stack: HTML + CSS + JS separados. Sem build, bundler, Tailwind ou CDN. Abre com `open index.html`.
+Stack: HTML + CSS + JS separados. Sem build, bundler, Tailwind ou CDN. Abre `index.html` direto no browser.
 
 - Todo CSS em `assets/styles.css` (nada de `<style>` / `style="…"`)
 - Custom properties no `:root`
