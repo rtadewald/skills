@@ -199,21 +199,34 @@ validation later only when the user explicitly requests it.
 
 ## Phase 2 — Components after Overview approval
 
-Inspect only the approved Overview. A foundation, component, variant, or state
-may be documented only when visible there or reachable through a normal
-interaction.
+Work only from the approved Overview. Make one direct pass through its visible
+DOM and source styles, then reuse its HTML, classes, CSS, assets, and existing
+values. Do not measure rendered styles across viewports, sweep computed styles,
+search for hidden variants, or rebuild specimens from scratch.
 
-Read [references/component-formats.md](references/component-formats.md) now and
-follow only the sections relevant to observed groups. Put foundations first,
-then complete components. Omit empty groups and group repeated instances.
+Read [references/component-formats.md](references/component-formats.md) now.
+Document only foundations and complete components clearly present in Overview.
+Put foundations first, group repeated instances, and omit empty groups.
 
 Enable Components in the existing catalog. Add a sticky left sidebar containing
-only group names and stack all groups in the main area. Every specimen must reuse
-Overview HTML, CSS, Lorem Ipsum copy, assets, states, effects, and required
-context. Store selectors or sources as compact code metadata.
+only group names and stack the groups in the main area. Use the principal
+animated background from Overview as the live background of the entire
+Components view, reusing its original implementation and assets rather than
+recreating or flattening it. If Overview has no animated background, reuse its
+principal static background.
 
-Keep the chosen runtime. Perform one browser check of Overview/Components
-switching, hashes, scrolling, and representative documented states. After a
-concrete fix, allow one final rerun; do not create a visual regression workflow.
+Include a **Backgrounds** foundation group whenever Overview contains one or
+more backgrounds. Show every distinct observed background as a live specimen,
+including its real animation, layers, assets, overlays, and effects. Do not use
+screenshots or invent variants.
 
-Present Components and request explicit approval again. Stop.
+Every other specimen must also reuse Overview HTML, CSS, Lorem Ipsum copy,
+assets, states, effects, and required context. Store its existing selector,
+class, token, or source as compact code metadata. Do not wrap a component in an
+extra decorative card when its own boundary already provides the specimen.
+
+Keep the chosen runtime. Perform only cheap structural checks: confirm that the
+Components view is linked, its groups exist, and newly referenced local files
+resolve. Do not open a browser, take screenshots, or create test tooling. Ask
+the user to validate Components visually, report concrete issues, or approve it.
+Stop.
