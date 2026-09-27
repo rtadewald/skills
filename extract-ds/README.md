@@ -3,7 +3,9 @@
 Transforma um site local finalizado em um design system navegável, preservando a
 identidade visual, o código existente, as interações e as principais animações.
 
-![Demonstração da Extract DS com Sonic.Link e Asimov](assets/extract-ds-demo.gif)
+![Demonstração da Extract DS com Sonic.Link e Asimov](assets/extract-ds-demo.webp)
+
+[Assistir à demonstração em alta qualidade (MP4)](assets/extract-ds-demo.mp4)
 
 O fluxo é **copy-first**: a skill copia e adapta o projeto original em vez de
 redesenhar ou reconstruir a interface. A entrega acontece em duas etapas, cada
