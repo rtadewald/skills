@@ -1,38 +1,53 @@
 # Extract DS
 
-Transforma um site local finalizado em um design system navegável, preservando a
-identidade visual, o código existente, as interações e as principais animações.
+**Extract DS é uma skill para agentes de IA que transforma um site pronto em um
+design system navegável e reutilizável.**
+
+Você aponta o agente para a pasta local de uma página já finalizada. Ele devolve
+um catálogo visual baseado no próprio site, no qual é possível rever a
+experiência original e explorar os elementos que formam sua interface. Tudo
+isso sem trocar a identidade da marca por um template genérico e sem reconstruir
+a página do zero.
 
 ![Demonstração da Extract DS com Sonic.Link e Asimov](assets/extract-ds-demo.webp)
 
-[Assistir à demonstração em alta qualidade (MP4)](assets/extract-ds-demo.mp4)
+## O que você recebe
 
-O fluxo é **copy-first**: a skill copia e adapta o projeto original em vez de
-redesenhar ou reconstruir a interface. A entrega acontece em duas etapas, cada
-uma com aprovação explícita do usuário.
+O resultado reúne duas áreas no mesmo catálogo:
 
-## O que ela faz
+- **Overview:** o site original adaptado para apresentar seu próprio design
+  system, preservando layout, identidade, interações e animações principais.
+- **Components:** uma biblioteca visual extraída do Overview aprovado, com
+  tipografia, cores, backgrounds e componentes reais encontrados na página.
 
-1. Analisa rapidamente como o projeto roda: `file://` ou servidor local.
-2. Copia o projeto completo para `<marca>-design-system/`.
-3. Cria o **Overview**, preservando layout, navbar, efeitos e animações.
-4. Adapta a hero para apresentar o design system e troca a copy editorial por
-   Lorem Ipsum.
-5. Entrega o Overview para validação do usuário e aguarda aprovação.
-6. Extrai o catálogo de **Components** diretamente do Overview aprovado.
-7. Entrega Components para uma segunda validação.
+O catálogo final fica em uma nova pasta chamada
+`<marca>-design-system/`, separado do projeto original.
 
-O catálogo reaproveita HTML, classes, CSS, assets e estados reais. A página de
-Components usa a principal animação do Overview como fundo e inclui os
-backgrounds observados como espécimes vivos — sem screenshots ou recriações.
+## Como funciona
 
-### Decisão de runtime
+1. A skill entende rapidamente como o site está organizado e como ele deve ser
+   aberto.
+2. Copia o projeto e prepara o **Overview**, reutilizando o código e os assets
+   existentes.
+3. Mostra o Overview para você revisar e aguarda sua aprovação.
+4. Depois da aprovação, extrai e organiza a área de **Components**.
+5. Mostra o catálogo completo para uma segunda revisão.
 
-- Se o projeto já funciona por `file://`, a skill segue pelo caminho rápido.
-- Se exige servidor, ela pergunta se deve preservar o runtime atual ou fazer a
-  conversão mais demorada para `file://`.
-- A validação visual fica com o usuário. A skill não abre Chrome, Playwright ou
-  ferramentas de screenshot automaticamente.
+Esse processo em duas etapas evita gastar tempo documentando uma página que
+ainda não foi aprovada. Você valida primeiro a reprodução do site e só então a
+biblioteca de componentes.
+
+## O que a skill preserva
+
+- a identidade visual da marca;
+- a estrutura e o comportamento da página;
+- a navbar existente, adaptada para navegar entre Overview e Components;
+- animações, efeitos e backgrounds que definem a experiência; e
+- HTML, CSS, classes, assets e estados reais do projeto.
+
+A copy comercial é substituída por uma apresentação neutra do design system e
+por Lorem Ipsum. O objetivo é documentar a interface, não manter o conteúdo da
+campanha original.
 
 ## Instalação
 
@@ -42,62 +57,52 @@ Clone este repositório:
 git clone https://github.com/rtadewald/skills.git
 ```
 
-Copie a pasta `extract-ds` para o diretório de skills usado pelo seu agente.
+Depois copie a pasta `extract-ds` para o diretório de skills do seu agente.
 
-Exemplo para o diretório compartilhado de agents:
+Para agents que usam `~/.agents/skills`:
 
 ```bash
 mkdir -p ~/.agents/skills
 cp -R skills/extract-ds ~/.agents/skills/
 ```
 
-Exemplo para Claude Code:
+Para Claude Code:
 
 ```bash
 mkdir -p ~/.claude/skills
 cp -R skills/extract-ds ~/.claude/skills/
 ```
 
-Se você já clonou o repositório dentro do diretório de skills, não precisa fazer
-a cópia novamente.
+Se o repositório já estiver clonado dentro do diretório de skills, nenhuma cópia
+adicional é necessária.
 
 ## Como usar
 
-Passe o caminho absoluto do site finalizado:
+Informe o caminho da pasta que contém o site pronto:
 
 ```text
 Use $extract-ds no projeto "/caminho/absoluto/para/o-site".
 ```
 
-Em clientes que expõem skills como comandos:
+Em clientes que disponibilizam skills como comandos:
 
 ```text
 /extract-ds "/caminho/absoluto/para/o-site"
 ```
 
-Caminhos com espaços ou parênteses devem permanecer entre aspas.
+Mantenha caminhos com espaços ou parênteses entre aspas.
 
-### Fluxo esperado
+## Servidor ou arquivo local
 
-```text
-site original
-    ↓ cópia fiel
-<marca>-design-system/
-    ↓
-Overview → aprovação do usuário
-    ↓
-Components → aprovação final
-```
+Se o projeto já abre diretamente como arquivo local, a skill mantém esse modo.
+Se ele depende de um servidor, ela explica isso antes de começar e pergunta se
+você prefere:
 
-A saída principal fica em:
+- manter o funcionamento atual e receber o Overview mais rapidamente; ou
+- adaptar o projeto para abrir sem servidor, quando isso for viável.
 
-```text
-<marca>-design-system/design-system.html
-```
-
-Abra esse arquivo diretamente quando o runtime escolhido for `file://`. Se o
-projeto preservar um servidor local, use o comando original informado pela
-skill.
+A conversão é opcional porque alguns sites dependem do servidor para carregar
+módulos, dados ou animações.
 
 ## Estrutura da entrega
 
@@ -109,5 +114,5 @@ skill.
         └── ...cópia funcional do projeto original
 ```
 
-O resultado final mantém Overview e Components no mesmo catálogo, com navegação
-por hash e uma única navbar adaptada à identidade visual do projeto.
+`design-system.html` é a entrada do catálogo e contém a navegação entre
+**Overview** e **Components**.
