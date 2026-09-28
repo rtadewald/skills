@@ -15,6 +15,29 @@ Somente depois desse mapa inicial entre em regras, exceções, ferramentas e
 instruções operacionais. Não comprima os três blocos em um parágrafo genérico e
 não desça para o baixo nível antes de o processo completo estar claro.
 
+## Clareza, concisão e exemplos
+
+Antes de explicar **como** uma skill funciona, diga em poucas palavras:
+
+1. o que ela permite fazer;
+2. qual é seu principal benefício; e
+3. qual resultado o usuário recebe.
+
+Avance sempre do geral para o específico: **valor → resultado → processo →
+regras e ferramentas**. Use frases curtas e precisas. Elimine contexto,
+repetições e justificativas que não mudem uma decisão.
+
+Sempre inclua ao menos um exemplo curto para tornar a instrução concreta.
+
+Exemplo de abertura:
+
+> Extract DS é uma Skill que te permite gerar Design Systems completos a partir
+> de uma simples página HTML local. Isso permite criar novas interfaces usando
+> referências visuais de alta qualidade, já implementadas e validadas.
+
+Somente depois desse benefício explique detalhes como tipografia, cores,
+componentes, runtime ou ferramentas.
+
 ## README
 
 Sempre que houver qualquer alteração no **nome** de uma skill (renomear pasta, criar skill nova, apagar skill, ou mudar o `name` no frontmatter), atualize também o [`README.md`](./README.md) para refletir a mudança.

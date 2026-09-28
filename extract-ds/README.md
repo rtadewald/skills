@@ -1,13 +1,18 @@
 # Extract DS
 
-**Extract DS é uma skill para agentes de IA que transforma um site pronto em um
-design system navegável e reutilizável.**
+**Extract DS é uma Skill que te permite gerar Design Systems completos a partir
+de uma simples página HTML local.**
 
-Você aponta o agente para a pasta local de uma página já finalizada. Ele devolve
-um catálogo visual baseado no próprio site, no qual é possível rever a
-experiência original e explorar os elementos que formam sua interface. Tudo
-isso sem trocar a identidade da marca por um template genérico e sem reconstruir
-a página do zero.
+Com ela, você pode criar sites, aplicativos e dashboards com designs muito mais
+sofisticados, usando referências visuais de alta qualidade que já foram
+implementadas e validadas. Isso dá aos Agentes de IA uma base concreta para
+trabalhar, aumentando a precisão, a consistência e a fidelidade dos novos
+projetos.
+
+Na prática, você escolhe uma página cuja direção visual deseja reutilizar. A
+Extract DS preserva essa identidade, transforma a página em uma Overview
+navegável e organiza seus padrões em um catálogo de Components. O resultado se
+torna uma referência visual completa para a criação de novas interfaces.
 
 ![Demonstração da Extract DS com Sonic.Link e Asimov](assets/extract-ds-demo.webp)
 
