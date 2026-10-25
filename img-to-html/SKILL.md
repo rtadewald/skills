@@ -40,7 +40,9 @@ Recriar a tela inteira de uma vez falha (cores, glass, ícones e fontes misturam
 
 Ao terminar uma etapa:
 
-1. Mostre o resultado (path + `open` no macOS e/ou screenshot no browser).
+1. Mostre o resultado: o path, o arquivo aberto no browser e/ou um screenshot.
+   Abrir varia por plataforma — `open` no macOS, `start` no Windows, `xdg-open` no Linux;
+   num ambiente headless, use o MCP de navegador disponível para capturar a tela.
 2. Pergunte se está correto / se mudaria algo.
 3. **Pare.** Não inicie a etapa seguinte.
 
@@ -64,7 +66,7 @@ design-systems/<slug>/
 
 ### Stack: HTML + CSS + JS separados
 
-**Sem build, sem bundler, sem framework, sem `node_modules`, sem dev server** — abre com `open index.html` e funciona.
+**Sem build, sem bundler, sem framework, sem `node_modules`, sem dev server** — abre o arquivo direto no browser e funciona.
 
 - `index.html` carrega os outros dois: `<link rel="stylesheet" href="assets/styles.css">` no `<head>` e `<script src="assets/app.js" defer></script>`.
 - **Nada de `<style>` ou `<script>` inline** no HTML, e nada de `style="…"` nos elementos. Todo CSS vive em `assets/styles.css`.
@@ -122,7 +124,7 @@ Pré-requisito: wireframe e plano aprovados.
 1. Criar `index.html` (esqueleto mínimo com o `<link>` para `assets/styles.css` e `<body>` vazio) e `assets/styles.css` (reset curto + `:root` com as custom properties que já der para definir).
 2. Recriar o fundo completo com a técnica escolhida no plano: CSS, imagem única ou composição de camadas. Produzir agora as imagens necessárias, usando o procedimento de assets abaixo; não deixá-las para a etapa 4. Quando houver várias camadas independentes, gere-as no mesmo lote paralelo e só componha o fundo depois que todas terminarem.
 3. Sem navbar, cards ou conteúdo. O `<body>` pode receber elementos decorativos quando necessários para compor o fundo; também podem ser usados backgrounds CSS e pseudo-elementos.
-4. Ajustar posição, escala, recorte, transparência e mistura entre camadas. Abrir o arquivo no browser (`open index.html`) e comparar o fundo composto com a referência.
+4. Ajustar posição, escala, recorte, transparência e mistura entre camadas. Abrir o arquivo no browser e comparar o fundo composto com a referência.
 5. **Gate.**
 
 ---
