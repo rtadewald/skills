@@ -57,3 +57,4 @@ Coisas soltas que salvam tempo.
 
 - [`find-font`](./find-font): crop de texto (1 linha) → TTF local + weight_css/color/overlay via API (`127.0.0.1:8000/find-font`, exige `text=`) — avulsa (não é o default do img-to-html2)
 - [`context7-mcp`](./context7-mcp): puxa docs atuais de libs via Context7 (em vez de chutar de memória)
+- [`agent-qa-testing`](./agent-qa-testing): testes web em linguagem natural com memória avançada memidex e autoaperfeiçoamento; seleciona o fluxo, executa no escopo autorizado e entrega resultados com evidências
