@@ -1,7 +1,7 @@
 {
   "id": "INT-04",
   "name": "Option wheel",
-  "mode": "interactions",
+  "mode": "components",
   "category": "Navegação e seleção",
   "entry": "demo.html",
   "files": [

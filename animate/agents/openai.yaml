@@ -1,6 +1,6 @@
 interface:
   display_name: "Animate"
-  short_description: "Catálogo local de animações reutilizáveis para web"
-  default_prompt: "Use $animate: abra ou mantenha o catálogo local, adicione ou refine uma animação e localize sua implementação."
+  short_description: "Componentes animados e backgrounds reutilizáveis"
+  default_prompt: "Use $animate: abra ou mantenha o catálogo local, adicione ou refine um componente animado ou background e localize sua implementação."
 policy:
   allow_implicit_invocation: false

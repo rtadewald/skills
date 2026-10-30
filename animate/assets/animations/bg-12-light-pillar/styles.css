@@ -113,11 +113,6 @@ h1 em { color: var(--muted); font-style: normal; font-weight: 400; }
 .collection-card strong { position: absolute; right: 22px; bottom: 22px; color: var(--muted); font: 10px var(--mono); text-transform: uppercase; }
 .collection-card strong span { color: var(--acid); }
 .collection-preview { position: relative; height: 165px; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #090c0a; }
-.entrance-preview { display: flex; align-items: end; gap: 7px; padding: 26px; }
-.entrance-preview i { width: 24%; height: 45%; border: 1px solid rgba(199,255,74,.35); background: rgba(199,255,74,.08); animation: miniEnter 2.8s ease-in-out infinite; }
-.entrance-preview i:nth-child(2) { height: 70%; animation-delay: .16s; }
-.entrance-preview i:nth-child(3) { height: 95%; animation-delay: .32s; }
-@keyframes miniEnter { 0%,20% { opacity: 0; transform: translateY(22px); } 50%,85% { opacity: 1; transform: none; } 100% { opacity: 0; } }
 .component-preview { display: grid; place-items: center; }
 .component-preview i { width: 112px; height: 70px; border: 1px solid rgba(157,124,255,.5); border-radius: 10px; background: rgba(157,124,255,.09); animation: miniFloat 3s ease-in-out infinite; }
 .component-preview b { position: absolute; width: 130px; height: 90px; border-radius: 50%; background: rgba(157,124,255,.15); filter: blur(25px); animation: miniPulse 2s ease-in-out infinite; }

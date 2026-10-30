@@ -40,7 +40,7 @@ Gerar, converter, brincar com PNG.
 
 Mexer em animação, áudio e vídeo.
 
-- [`animate`](./animate): serve e mantém um catálogo local SABLE com animações reutilizáveis, IDs estáveis e caminhos copiáveis
+- [`animate`](./animate): serve e mantém um catálogo local de componentes animados e backgrounds, com IDs estáveis e caminhos copiáveis
 - [`mediabunny`](./mediabunny): áudio/vídeo com a lib Mediabunny
 
 ## Planejamento e entrega

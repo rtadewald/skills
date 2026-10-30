@@ -1,0 +1,6 @@
+interface:
+  display_name: "Img2HTML (one pass)"
+  short_description: "UI mock → static HTML: plan of layers back to front, one approval, then built in one go with self-review"
+  default_prompt: "Use $img2html: send the plan of the screen's layers from back to front (technique per layer, fonts, assets, interactions) and stop for approval; then build the whole page in the fixed order with self-review (max 3 rounds per step), log steps.md, and deliver the page with a side-by-side and the remaining differences."
+policy:
+  allow_implicit_invocation: false

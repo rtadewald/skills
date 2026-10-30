@@ -1,0 +1,6 @@
+interface:
+  display_name: "Video to HTML"
+  short_description: "UI video → live HTML: plan, the risky piece (e.g. 3D character) with approval, then the rest autonomously"
+  default_prompt: "Use $video2html: read the video and its source image, send the plan (one line per element, the Phase 1 piece, layers, artefacts) and stop for approval; build the Phase 1 piece in place and stop for approval; then build everything else in the fixed order with self-review (max 3 rounds per step) and deliver the finished page with the remaining differences."
+policy:
+  allow_implicit_invocation: true

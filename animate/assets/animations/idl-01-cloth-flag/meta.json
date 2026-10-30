@@ -1,7 +1,7 @@
 {
   "id": "IDL-01",
   "name": "Cloth flag",
-  "mode": "idle",
+  "mode": "components",
   "category": "Mídia e marca",
   "entry": "demo.html",
   "files": [

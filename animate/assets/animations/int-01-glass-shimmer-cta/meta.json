@@ -1,7 +1,7 @@
 {
   "id": "INT-01",
   "name": "Glass shimmer CTA",
-  "mode": "interactions",
+  "mode": "components",
   "category": "Botões e CTAs",
   "entry": "demo.html",
   "files": [

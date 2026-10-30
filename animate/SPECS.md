@@ -2,214 +2,170 @@
 
 ## Visão
 
-Animate é uma skill e um catálogo local de animações reutilizáveis para sites.
-Ela permite navegar pelos exemplos em uma interface visual, evoluir a biblioteca
-ao longo do tempo e copiar o caminho de uma implementação para que outro agente a
-integre em um projeto.
-
-O catálogo usa a linguagem visual do design system SABLE, mas a identidade exibida
-é `ANIMATE`.
+Animate é uma skill e um catálogo local de componentes animados e backgrounds
+reutilizáveis para sites. A galeria permite avaliar exemplos ao vivo e copiar o
+caminho absoluto de uma implementação para uso por outro agente.
 
 ## Responsabilidades
 
-A skill é responsável por:
-
 - iniciar, reutilizar e manter o servidor local;
 - abrir o catálogo quando invocada sem outro pedido;
-- adicionar, refinar, classificar e validar animações;
+- adicionar, refinar, classificar e validar itens;
 - preservar IDs e caminhos publicados;
 - fornecer o caminho absoluto de qualquer implementação.
 
-A integração da animação em outro projeto pode ser feita por outro agente usando o
-caminho copiado. O catálogo não precisa conhecer antecipadamente a stack de destino.
+## Tipos
 
-## Modos
+O catálogo possui apenas:
 
-O catálogo possui quatro modos na navbar:
+1. **Componentes** (#components) — elementos aplicados à interface: carrosséis,
+   sliders, parallax, cards, botões, menus, mídia, objetos 3D e controles;
+2. **Backgrounds** (#backgrounds) — atmosferas aplicadas ao fundo de páginas,
+   seções, banners, cards e outras superfícies.
 
-1. **Idle** — movimento contínuo em elementos com a página parada.
-2. **Entradas e transições** — aparição no carregamento, na viewport ou em mudança
-   de estado.
-3. **Interações** — respostas a hover, clique, foco, drag, seleção e scroll.
-4. **Backgrounds** — movimento ambiental aplicado ao fundo de uma superfície.
+Animações exclusivamente de entrada, reveal inicial ou entrada na viewport não
+fazem parte do catálogo.
 
-As rotas canônicas são `#idle`, `#transitions`, `#interactions` e `#backgrounds`.
+## Navegação e filtros
 
-## Navegação e categorias
+- A primeira navbar contém ANIMATE, Componentes e Backgrounds.
+- A segunda navbar contém filtros do tipo ativo.
+- Todos exibe a grade completa; os demais filtros reduzem a mesma grade.
+- Categorias descrevem onde ou como o item é aplicado, não sua tecnologia.
+- Filtros vazios não são criados.
 
-Cada modo possui uma sidebar inspirada na aba Components do SABLE.
+Vocabulário inicial para Componentes:
 
-- As categorias descrevem **onde** a animação é aplicada, não a tecnologia.
-- Apenas categorias com exemplos são exibidas.
-- A taxonomia pode crescer conforme novas animações forem adicionadas.
-- No desktop, a sidebar é escura e sticky.
-- No mobile, vira um trilho horizontal rolável abaixo da navbar.
-
-Vocabulário possível para os três primeiros modos:
-
-- Textos e tipografia;
+- Carrosséis e sliders;
+- Cards;
 - Botões e CTAs;
-- Cards e itens de lista;
-- Navegação e menus;
-- Formulários e controles;
-- Painéis e overlays;
-- Mídia e produto;
-- Ícones e marca;
-- Seções e layout;
-- Feedback e status.
+- Navegação;
+- Mídia e marca;
+- Objetos 3D;
+- Seções com parallax.
 
-Vocabulário possível para Backgrounds:
+Vocabulário inicial para Backgrounds:
 
-- Página inteira;
-- Hero e seções;
-- Cards e painéis;
-- Mídia e máscaras;
-- Overlays decorativos.
-
-Essas listas orientam novas classificações, mas não criam seções antecipadamente.
+- Página e seções;
+- Hero e banners;
+- Overlays de superfície;
+- Bordas de seção.
 
 ## Layout
 
-- Navbar SABLE com quatro modos e wordmark central `ANIMATE`.
-- Área principal Bone `#EFEDE8` e sidebar Ink `#101010`.
-- Tipografia Archivo variável.
-- Títulos editoriais em caixa alta, regras finas e bastante espaço negativo.
-- Idle, Entradas e Interações: grid de três colunas no desktop.
-- Backgrounds: uma coluna.
-- Mobile: uma coluna para todos.
-
-## Exemplo visual
-
-Cada item mostra somente:
-
-- código estável e nome;
-- demonstração ao vivo;
-- botão `COPY ANIMATION`;
-- botão `REPLAY` apenas em Entradas e transições.
-
-Idle e Backgrounds rodam continuamente. Interações respondem ao gesto real. Uma
-legenda discreta pode instruir `arraste`, `passe o cursor` ou outro gesto essencial.
-
-Descrição, dependências, origem e acessibilidade ficam em `meta.json`.
+- Fundo branco e duas navbars compactas alinhadas à esquerda.
+- Tipografia Archivo.
+- Cards com borda suave, preview 16:9 e rodapé com nome, ID e COPY PATH.
+- Componentes: quatro colunas no desktop.
+- Backgrounds: três colunas no desktop.
+- Mobile: uma coluna e navbars horizontalmente roláveis.
 
 ## IDs
 
-Os prefixos são:
-
-| Modo | Prefixo | Exemplo |
+| Tipo | Prefixo novo | Observação |
 | --- | --- | --- |
-| Idle | `IDL-` | `IDL-01` |
-| Entradas e transições | `TRN-` | `TRN-04` |
-| Interações | `INT-` | `INT-03` |
-| Backgrounds | `BG-` | `BG-09` |
+| Componentes | CMP- | IDL- e INT- permanecem como IDs legados |
+| Backgrounds | BG- | preservado |
 
-IDs publicados nunca são renumerados nem reutilizados. Uma animação refinada
-preserva seu ID.
+IDs publicados nunca são renumerados ou reutilizados. TRN- está aposentado e não
+deve ser criado.
 
-## Estrutura técnica
+## Estrutura
 
-```text
+~~~text
 animate/
 ├── SKILL.md
 ├── SPECS.md
 ├── index.html
-├── agents/
-│   └── openai.yaml
+├── agents/openai.yaml
 ├── assets/
-│   ├── animations/
-│   │   └── <id>-<slug>/
-│   │       ├── meta.json
-│   │       ├── demo.html
-│   │       ├── styles.css
-│   │       ├── script.js
-│   │       └── assets/
+│   ├── animations/<id>-<slug>/
+│   │   ├── meta.json
+│   │   ├── demo.html
+│   │   ├── styles.css
+│   │   ├── script.js
+│   │   └── assets/
 │   ├── css/
 │   ├── js/
 │   └── runtime/
 └── scripts/
     ├── server.py
     └── validate.py
-```
+~~~
 
-O runtime é HTML, CSS e JavaScript puro, sem build. O catálogo é servido por HTTP
-local porque módulos ES, `fetch`, Canvas e WebGL dependem de uma origem.
+O runtime usa HTML, CSS e JavaScript puros. HTTP local é necessário para módulos,
+fetch, Canvas e WebGL.
 
 ## Servidor
 
-- Endereço padrão: `127.0.0.1:4173`.
-- Se a porta estiver ocupada, usar a próxima livre.
+- Endereço padrão: 127.0.0.1:4173.
 - Reutilizar o servidor ativo.
-- Não expor o servidor na rede local.
-- Manter o processo ativo até pedido explícito de encerramento.
-- Registrar estado em `/tmp/animate-server.json`.
+- Se a porta estiver ocupada, usar a próxima livre.
+- Não expor na rede local.
+- Manter ativo até pedido explícito de encerramento.
+- Registrar estado em /tmp/animate-server.json.
 
-## Pacote de animação
+## Pacote
 
-`meta.json` deve registrar pelo menos:
+Exemplo:
 
-```json
+~~~json
 {
-  "id": "INT-01",
-  "name": "Glass shimmer CTA",
-  "mode": "interactions",
-  "category": "Botões e CTAs",
+  "id": "CMP-01",
+  "name": "Inertial carousel",
+  "mode": "components",
+  "category": "Carrosséis e sliders",
   "entry": "demo.html",
   "files": ["demo.html", "styles.css", "script.js"],
   "dependencies": [],
-  "source": { "name": "Aura", "url": "...", "license": "verificar origem" },
+  "source": { "name": "Implementação local", "url": "", "license": "Revisar" },
   "accessibility": { "reducedMotion": true }
 }
-```
+~~~
 
-O botão `COPY ANIMATION` copia o caminho absoluto da pasta, não o código nem uma
-instrução composta.
+COPY PATH copia a pasta absoluta, não código nem uma instrução composta.
 
-## Conteúdo inicial
+## Conteúdo ativo
 
-A v0 reaproveita os 22 exemplos funcionais do antigo `motion-lab`:
-
-- 2 Idle;
-- 4 Entradas e transições;
-- 4 Interações;
+- 6 Componentes com IDs legados preservados;
 - 12 Backgrounds.
 
-As implementações existentes são preservadas e a interface antiga é substituída
-pelo shell SABLE. Dependências remotas permanecem apenas onde já são essenciais,
-sempre com metadata e fallback quando disponível.
+Novos Componentes usam CMP-. Os antigos exemplos de entrada foram removidos da
+biblioteca ativa.
 
 ## Performance e acessibilidade
 
-- Respeitar `prefers-reduced-motion`.
-- Pausar efeitos quando a aba ficar oculta.
+- Respeitar prefers-reduced-motion.
+- Pausar efeitos quando a aba estiver oculta.
 - Efeitos pesados podem pausar fora da viewport.
-- Não adicionar uma camada universal complexa apenas para efeitos leves.
 - Recursos gráficos, listeners, timers e RAFs devem possuir cleanup.
+- Dependências remotas precisam de fallback local quando possível.
 
 ## Fluxos
 
 ### Abrir
 
-1. Consultar o estado do servidor.
+1. Consultar o servidor.
 2. Reutilizar ou iniciar.
-3. Abrir a URL do catálogo.
+3. Abrir o catálogo.
 
 ### Adicionar
 
-1. Escolher modo e superfície de aplicação.
-2. Alocar o próximo ID livre.
-3. Criar o pacote diretamente, sem rascunho.
-4. Registrar no catálogo.
-5. Validar e abrir no modo correspondente.
+1. Escolher Componentes ou Backgrounds.
+2. Escolher a categoria por uso.
+3. Alocar o próximo ID.
+4. Criar pacote e registrar.
+5. Validar pacote, filtro e rota.
 
 ### Refinar
 
 1. Resolver o ID.
-2. Editar o pacote existente.
+2. Editar o pacote.
 3. Preservar ID e caminho.
-4. Validar e recarregar o catálogo.
+4. Validar catálogo e demo isolado.
 
 ### Compartilhar
 
-1. Localizar o exemplo no catálogo.
-2. Clicar em `COPY ANIMATION`.
-3. Colar o caminho para o agente que fará a integração.
+1. Localizar o card.
+2. Clicar em COPY PATH.
+3. Colar o caminho para o agente de integração.

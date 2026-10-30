@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Character</title>
+<!--
+  Phase 1 page for a rigged 3D character (video2html). Set the constants in "SETTINGS" and fit it over the image.
+  Layers, back to front: reference image (dimmed; key R toggles) · character canvas (transparent) · glow canvas (screen).
+  The character looks at the cursor, idles, and talks on click (voice files drive the glow and small nods).
+  Hooks for Phase 2: window.character.lookAt(x, y, ms) · window.character.say(i) · window.character.voice (envelope).
+  Serve the folder over http (python3 -m http.server): WebGL cannot load the GLB from file://.
+-->
+<style>
+  :root { --bg: #03060b; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); overflow: hidden; font: 14px/1.5 system-ui, sans-serif; }
+  /* the stage has the image's proportion and fits the window; everything inside uses image pixels */
+  .stage { position: absolute; left: 50%; top: 50%; width: min(100vw, calc(100vh * var(--ratio))); aspect-ratio: var(--ratio);
+    translate: -50% -50%; overflow: hidden; background: var(--bg); }
+  .stage > * { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .stage canvas { display: block; pointer-events: none; }
+  .reference { object-fit: cover; opacity: 0.45; }
+  .reference.off { opacity: 0; }
+  .glow { mix-blend-mode: screen; }
+  /* the bottom of the bust fades out, as in the image */
+  .character, .glow { -webkit-mask-image: linear-gradient(to bottom, #000 var(--fade-from), transparent var(--fade-to));
+    mask-image: linear-gradient(to bottom, #000 var(--fade-from), transparent var(--fade-to)); }
+  .hit { inset: auto; border-radius: 50%; cursor: pointer; }
+  .caption { inset: auto; left: 50%; bottom: 6%; width: 50%; height: auto; translate: -50% 0; text-align: center; color: #cfe3ff;
+    text-shadow: 0 0 18px rgba(90, 184, 255, 0.6); opacity: 0; transition: opacity .3s; pointer-events: none; }
+  .caption.on { opacity: 1; }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <img class="reference" id="reference" alt="">
+  <canvas class="character" id="cvCharacter"></canvas>
+  <canvas class="glow" id="cvGlow"></canvas>
+  <div class="hit" id="hit" title="Talk"></div>
+  <div class="caption" id="caption"></div>
+</div>
+
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.170.0/+esm'
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/loaders/GLTFLoader.js/+esm'
+import { RoomEnvironment } from 'https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/environments/RoomEnvironment.js/+esm'
+import { EffectComposer } from 'https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/postprocessing/EffectComposer.js/+esm'
+import { RenderPass } from 'https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/postprocessing/RenderPass.js/+esm'
+import { UnrealBloomPass } from 'https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/postprocessing/UnrealBloomPass.js/+esm'
+import { OutputPass } from 'https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/postprocessing/OutputPass.js/+esm'
+
+// ---------- SETTINGS (image pixels) ----------
+const STAGE = { w: 1536, h: 864 }                 // the image size
+const MODEL = 'character.glb'                      // the rigged GLB (bones: bust → neck → head)
+const REFERENCE = '../reference.png'               // shown dimmed behind the character while fitting; '' to hide
+const HEAD_AT = { x: 572, y: 356 }                 // where the camera puts its aim point (move to place the head)
+const CAM_Z = 7.15                                 // camera distance: larger = smaller character
+const MODEL_YAW = 0                                // resting turn of the model (degrees), to match the view in the image
+const FADE = ['62%', '76%']                        // the bust fades out between these heights of the stage
+const HIT = { x: 430, y: 233, w: 290, h: 370 }     // the clickable area that makes it talk
+const VOICES = [                                   // voice files and their captions; an empty list disables talking
+  { src: 'voice/1.mp3', text: 'Hello. I am online.' },
+]
+const GLOW = 1                                     // strength of the emissive parts (eyes, strips)
+const GLOW_TINT = 0xffffff                         // tint of the emissive parts (shift toward the image's glow color)
+const BLOOM = 1.1                                  // bloom strength on the glow canvas
+const TURN = { yaw: 0.6, pitch: 0.35 }             // max head turn (rad)
+const SPLIT = { neck: 0.35, head: 0.65 }           // how the turn is shared between the neck and the head
+const FLOAT = { height: 0, period: 2.8, tilt: 0 }   // floating characters: bob height (world units), period (s), sway (rad)
+const SPIN = { yaw: 0, period: 9 }                 // idle: the body turns side to side by this much (rad) over this period (s)
+const ARMS = { reach: 1.6, swing: 0.05, depth: 1.4 } // arms (bones arm_l/arm_r, rig_bust --arms): max turn to point (rad), idle swing, how far in front of the body the pointed spot is (world units)
+const POINTS = []                                  // demo: image points the character points at in turn, e.g. [{ x: 917, y: 153 }]
+const ENV = 0.35                                   // strength of the environment reflections (lower it if black glossy parts look grey)
+const BACKDROP = '#03060b'                         // the page color behind everything (use the scene's own: dark or paper)
+const LIGHTS = [[0xdfe8ff, 1.6, [2.5, 3, 4]], [0x3aa0ff, 5, [-3, 2, -3]], [0x6a5cff, 2.5, [3, 1.5, -2.5]]]  // key · rim · back
+
+// ---------- stage ----------
+const stage = document.getElementById('stage'), ref = document.getElementById('reference')
+stage.style.setProperty('--ratio', `${STAGE.w} / ${STAGE.h}`)
+document.documentElement.style.setProperty('--bg', BACKDROP)
+stage.style.setProperty('--fade-from', FADE[0]); stage.style.setProperty('--fade-to', FADE[1])
+if (REFERENCE) ref.src = REFERENCE; else ref.remove()
+addEventListener('keydown', (e) => { if (e.key === 'r' || e.key === 'R') ref.classList.toggle('off') })
+const hit = document.getElementById('hit')
+Object.assign(hit.style, { left: `${HIT.x / STAGE.w * 100}%`, top: `${HIT.y / STAGE.h * 100}%`, width: `${HIT.w / STAGE.w * 100}%`, height: `${HIT.h / STAGE.h * 100}%` })
+
+// ---------- 3D: the character (transparent canvas) + the glow (second canvas, screen-blended) ----------
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('cvCharacter'), antialias: true, alpha: true })
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2)); renderer.setClearColor(0, 0); renderer.toneMapping = THREE.ACESFilmicToneMapping
+const rGlow = new THREE.WebGLRenderer({ canvas: document.getElementById('cvGlow') })
+rGlow.setPixelRatio(Math.min(devicePixelRatio, 2)); rGlow.setClearColor(0x000000, 1)
+const scene = new THREE.Scene()
+scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = ENV
+for (const [color, power, pos] of LIGHTS) { const l = new THREE.DirectionalLight(color, power); l.position.set(...pos); scene.add(l) }
+const camera = new THREE.PerspectiveCamera(30, STAGE.w / STAGE.h, 0.05, 60)
+camera.position.set(0, 1.51, CAM_Z); camera.lookAt(0, 1.51, 0)
+const gltf = await new GLTFLoader().loadAsync(MODEL)
+scene.add(gltf.scene)
+const bones = {}; let mesh = null
+gltf.scene.rotation.y = THREE.MathUtils.degToRad(MODEL_YAW)
+gltf.scene.traverse((o) => { if (o.isBone) bones[o.name] = o; if (o.isMesh) { mesh = o; o.frustumCulled = false } })
+const HEAD = bones.head || bones.cabeca, NECK = bones.neck || bones.pescoco
+const material = mesh.material; material.emissive = new THREE.Color(GLOW_TINT)
+const glowMaterial = new THREE.MeshBasicMaterial({ map: material.emissiveMap })
+const tint = new THREE.Color(GLOW_TINT)
+const ARM_L = bones.arm_l, ARM_R = bones.arm_r
+const rest = new Map([HEAD, NECK, ARM_L, ARM_R].filter(Boolean).map((b) => [b, b.quaternion.clone()]))
+const composer = new EffectComposer(rGlow); composer.addPass(new RenderPass(scene, camera))
+const bloom = new UnrealBloomPass(new THREE.Vector2(512, 512), BLOOM, 0.6, 0.0)
+composer.addPass(bloom); composer.addPass(new OutputPass())
+
+function resize() {
+  const b = stage.getBoundingClientRect()
+  for (const r of [renderer, rGlow]) r.setSize(b.width, b.height, false)
+  composer.setSize(b.width, b.height)
+  // shift the view so the aim point lands on HEAD_AT, without moving the model
+  camera.setViewOffset(b.width, b.height, (STAGE.w / 2 - HEAD_AT.x) * b.width / STAGE.w, (STAGE.h / 2 - HEAD_AT.y) * b.height / STAGE.h, b.width, b.height)
+}
+new ResizeObserver(resize).observe(stage); resize()
+
+// ---------- looking: at the cursor, or at a point for a while (lookAt), or an idle drift ----------
+const qP = new THREE.Quaternion(), qD = new THREE.Quaternion(), eu = new THREE.Euler()
+// rotation of a bone around its rest pose, expressed in the model's resting frame (so pitch is a nod even when the model
+// rests turned by MODEL_YAW): D = M · E · M⁻¹, then local = P⁻¹ · D · P · rest
+// M follows the body's current turn (MODEL_YAW + the idle SPIN)
+const UP = new THREE.Vector3(0, 1, 0), VIEW = new THREE.Vector3(0, 0, 1)
+const qM = new THREE.Quaternion(), qMi = new THREE.Quaternion()
+let bodyYaw = THREE.MathUtils.degToRad(MODEL_YAW)
+const turn = (bone, yaw, pitch, roll = 0) => { bone.parent.getWorldQuaternion(qP); qD.setFromEuler(eu.set(pitch, yaw, roll, 'YXZ')).premultiply(qM).multiply(qMi); bone.quaternion.copy(qP.clone().invert().multiply(qD).multiply(qP)).multiply(rest.get(bone)) }
+const ray = new THREE.Raycaster(), plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -1.6), target = new THREE.Vector3(), headPos = new THREE.Vector3()
+const ndc = (x, y) => new THREE.Vector2(x / STAGE.w * 2 - 1, -(y / STAGE.h) * 2 + 1)
+const mouse = { x: 0, y: 0, inside: false }
+stage.addEventListener('pointermove', (e) => { const b = stage.getBoundingClientRect(); mouse.x = (e.clientX - b.left) / b.width * STAGE.w; mouse.y = (e.clientY - b.top) / b.height * STAGE.h; mouse.inside = true })
+stage.addEventListener('pointerleave', () => { mouse.inside = false })
+let focus = null, focusUntil = 0
+// pointing: the arm on the target's side turns in 3D from its resting direction toward the target, seen on a plane in
+// front of the body (so it reaches forward and sideways, like pointing, instead of flapping in the screen plane)
+let pointTo = null, pointUntil = 0
+const armQ = new Map(), vS = new THREE.Vector3(), vT = new THREE.Vector3(), vR = new THREE.Vector3(), qW = new THREE.Quaternion(), qGoal = new THREE.Quaternion(), qI = new THREE.Quaternion()
+const armPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0)
+function aimArm(bone, at, swing) {
+  bone.quaternion.copy(rest.get(bone)); bone.updateMatrixWorld(true)
+  bone.getWorldPosition(vS); bone.getWorldQuaternion(qW)
+  vR.set(0, 1, 0).applyQuaternion(qW).normalize()            // the bone's resting direction (glTF bones point along +Y)
+  qGoal.identity()
+  if (at) {
+    armPlane.constant = -(vS.z + ARMS.depth)
+    ray.setFromCamera(ndc(at.x, at.y), camera)
+    if (ray.ray.intersectPlane(armPlane, vT)) {
+      const dir = vT.sub(vS).normalize()
+      qGoal.setFromUnitVectors(vR, dir)
+      const ang = 2 * Math.acos(Math.min(1, Math.abs(qGoal.w)))
+      if (ang > ARMS.reach) qGoal.slerp(qI, 1 - ARMS.reach / ang)
+    }
+  } else qGoal.setFromAxisAngle(VIEW, swing)
+  const q = (armQ.get(bone) || new THREE.Quaternion()).slerp(qGoal, 0.09)   // ease toward the goal
+  armQ.set(bone, q)
+  bone.parent.getWorldQuaternion(qP)
+  bone.quaternion.copy(qP.clone().invert().multiply(q).multiply(qP)).multiply(rest.get(bone))
+}
+const onScreen = (v) => { const p = v.clone().project(camera); return { x: (p.x + 1) / 2 * STAGE.w, y: (1 - p.y) / 2 * STAGE.h } }
+const gaze = { yaw: 0, pitch: 0 }
+
+// ---------- voice: the volume envelope drives the glow; each syllable nods the head ----------
+const voice = { env: 0, slow: 0, nod: 0, beatT: -99, talking: false, lit: 0 }
+let actx = null, analyser = null, samples = null, next = 0
+const audios = [], caption = document.getElementById('caption')
+function say(i = next++ % Math.max(1, VOICES.length)) {
+  if (!VOICES.length) return
+  actx = actx || new AudioContext(); actx.resume()
+  if (!analyser) { analyser = actx.createAnalyser(); analyser.fftSize = 512; samples = new Float32Array(512); analyser.connect(actx.destination) }
+  audios.forEach((a) => { a.pause(); a.currentTime = 0 })
+  if (!audios[i]) { const a = new Audio(VOICES[i].src); actx.createMediaElementSource(a).connect(analyser); a.addEventListener('ended', () => { voice.talking = false; caption.classList.remove('on') }); audios[i] = a }
+  audios[i].play(); voice.talking = true; caption.textContent = VOICES[i].text; caption.classList.add('on')
+}
+hit.addEventListener('click', () => say())
+
+// ---------- loop ----------
+const clock = new THREE.Clock()
+let nextBlink = 2, blink = 0
+function frame() {
+  requestAnimationFrame(frame)
+  const t = clock.getElapsedTime()
+  let vol = 0
+  if (voice.talking && analyser) { analyser.getFloatTimeDomainData(samples); let q = 0; for (const v of samples) q += v * v; vol = Math.min(1, Math.sqrt(q / samples.length) * 3.5) }
+  voice.env += (vol - voice.env) * (vol > voice.env ? 0.5 : 0.15); voice.slow += (voice.env - voice.slow) * 0.05
+  if (voice.env - voice.slow > 0.18 && t - voice.beatT > 0.28) { voice.nod = Math.min(1, voice.nod + 0.35); voice.beatT = t }
+  voice.nod *= 0.88
+  voice.lit += ((voice.talking ? 1 : 0) - voice.lit) * 0.12   // talking lights the eyes even if the volume cannot be read
+
+  // the body: resting turn + idle spin; the head turns are measured from it
+  bodyYaw = THREE.MathUtils.degToRad(MODEL_YAW) + Math.sin(t / SPIN.period * Math.PI * 2) * SPIN.yaw
+  gltf.scene.rotation.y = bodyYaw
+  qM.setFromAxisAngle(UP, bodyYaw); qMi.copy(qM).invert()
+  gltf.scene.updateMatrixWorld(true)
+  let yaw = Math.sin(t * 0.23) * 0.2, pitch = Math.sin(t * 0.31) * 0.05
+  const at = performance.now() < focusUntil ? focus : mouse.inside ? mouse : null
+  headPos.set(0, 0.39, 0); HEAD.localToWorld(headPos)   // the center of the head, above the pivot
+  if (at) {
+    ray.setFromCamera(ndc(at.x, at.y), camera); ray.ray.intersectPlane(plane, target)
+    // the turn is measured from the resting direction (MODEL_YAW), so at rest the character keeps the image's view
+    yaw = THREE.MathUtils.clamp(Math.atan2(target.x - headPos.x, target.z - headPos.z) - bodyYaw, -TURN.yaw, TURN.yaw)
+    pitch = THREE.MathUtils.clamp(-Math.atan2(target.y - headPos.y, Math.hypot(target.x - headPos.x, target.z - headPos.z)), -TURN.pitch, TURN.pitch)
+  }
+  gaze.yaw += (yaw - gaze.yaw) * 0.08; gaze.pitch += (pitch - gaze.pitch) * 0.08
+  const p = gaze.pitch + Math.sin(t * 1.7) * 0.01 + voice.nod * 0.09, y = gaze.yaw + Math.sin(t * 1.3) * 0.012
+  turn(NECK, y * SPLIT.neck, p * SPLIT.neck); NECK.updateMatrixWorld(true)
+  turn(HEAD, y * SPLIT.head, p * SPLIT.head, Math.sin(t * 0.7) * 0.015)
+  // arms: the one on the target's side points at it; otherwise both hang with a small swing
+  if (ARM_L && ARM_R) {
+    const sL = onScreen(ARM_L.getWorldPosition(vS)), sR = onScreen(ARM_R.getWorldPosition(vS))
+    const pointing = performance.now() < pointUntil ? pointTo : null
+    for (const [bone, s, other, sign] of [[ARM_L, sL, sR, 1], [ARM_R, sR, sL, -1]]) {
+      // this arm points when the target is on its side of the body (screen x); otherwise it hangs with a small swing
+      const mine = pointing && Math.sign(pointing.x - (s.x + other.x) / 2) === Math.sign(s.x - other.x)
+      aimArm(bone, mine ? pointing : null, Math.sin(t * 1.1 + sign) * ARMS.swing * sign)
+    }
+  }
+  if (t > nextBlink) { blink = 1; nextBlink = t + 3 + Math.random() * 4 } blink *= 0.82
+  material.emissiveIntensity = GLOW * (1.4 + (Math.sin(t * 1.6) * 0.5 + 0.5) * 0.25 + voice.lit * 2.6 + voice.env * 2.2) * (1 - blink * 0.85)
+
+  if (FLOAT.height || FLOAT.tilt) {   // a floating character bobs and sways a little
+    const ph = t / FLOAT.period * Math.PI * 2
+    gltf.scene.position.y = Math.sin(ph) * FLOAT.height
+    gltf.scene.rotation.z = Math.sin(ph * 0.5 + 1) * FLOAT.tilt
+  }
+  bloom.strength = BLOOM * (1 + voice.lit * 2.5 + voice.env * 1.5)   // talking widens the glow (visible even on light backgrounds)
+  renderer.render(scene, camera)
+  glowMaterial.color.copy(tint).multiplyScalar(material.emissiveIntensity * 0.55)
+  mesh.material = glowMaterial; composer.render(); mesh.material = material
+}
+frame()
+
+const point = (x, y, ms = 2200) => { pointTo = { x, y }; pointUntil = performance.now() + ms; focus = { x, y }; focusUntil = pointUntil }
+window.character = {
+  lookAt: (x, y, ms = 1400) => { focus = { x, y }; focusUntil = performance.now() + ms },
+  point, say, voice,
+}
+// demo: point at each of POINTS in turn
+let nextPoint = 0
+if (POINTS.length) setInterval(() => { const p = POINTS[nextPoint++ % POINTS.length]; point(p.x, p.y) }, 3600)
+</script>
+</body>
+</html>

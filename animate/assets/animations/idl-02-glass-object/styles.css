@@ -113,11 +113,6 @@ h1 em { color: var(--muted); font-style: normal; font-weight: 400; }
 .collection-card strong { position: absolute; right: 22px; bottom: 22px; color: var(--muted); font: 10px var(--mono); text-transform: uppercase; }
 .collection-card strong span { color: var(--acid); }
 .collection-preview { position: relative; height: 165px; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #090c0a; }
-.entrance-preview { display: flex; align-items: end; gap: 7px; padding: 26px; }
-.entrance-preview i { width: 24%; height: 45%; border: 1px solid rgba(199,255,74,.35); background: rgba(199,255,74,.08); animation: miniEnter 2.8s ease-in-out infinite; }
-.entrance-preview i:nth-child(2) { height: 70%; animation-delay: .16s; }
-.entrance-preview i:nth-child(3) { height: 95%; animation-delay: .32s; }
-@keyframes miniEnter { 0%,20% { opacity: 0; transform: translateY(22px); } 50%,85% { opacity: 1; transform: none; } 100% { opacity: 0; } }
 .component-preview { display: grid; place-items: center; }
 .component-preview i { width: 112px; height: 70px; border: 1px solid rgba(157,124,255,.5); border-radius: 10px; background: rgba(157,124,255,.09); animation: miniFloat 3s ease-in-out infinite; }
 .component-preview b { position: absolute; width: 130px; height: 90px; border-radius: 50%; background: rgba(157,124,255,.15); filter: blur(25px); animation: miniPulse 2s ease-in-out infinite; }
@@ -548,7 +543,7 @@ body[data-page='spatial-3d'] .catalog-grid { grid-template-columns: 1fr; }
 .three-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .three-label { position: absolute; top: 18px; left: 18px; z-index: 2; color: var(--dim); font: 9px var(--mono); text-transform: uppercase; pointer-events: none; }
 .three-error { z-index: 3; max-width: 460px; color: var(--muted); font-size: 13px; text-align: center; }
-.glass-object-stage { background: #080a09 url('../assets/glass-backdrop.svg') center / cover no-repeat; }
+.glass-object-stage { background: #080a09 url('assets/glass-backdrop.svg') center / cover no-repeat; }
 .glass-object-stage canvas { z-index: 2; cursor: grab; mix-blend-mode: screen; }
 .glass-object-stage canvas:active { cursor: grabbing; }
 .glass-object-fallback { position: relative; z-index: 1; width: 178px; aspect-ratio: 1; border: 1px solid rgba(255, 255, 255, .46); border-radius: 42% 58% 46% 54% / 54% 40% 60% 46%; background: linear-gradient(145deg, rgba(255,255,255,.5), rgba(88,228,255,.08) 46%, rgba(157,124,255,.24)); box-shadow: inset 18px 18px 40px rgba(255,255,255,.16), inset -22px -26px 48px rgba(157,124,255,.2), 0 34px 70px rgba(0,0,0,.42); backdrop-filter: blur(16px) saturate(1.5); animation: glassFallbackFloat 4s ease-in-out infinite alternate; }

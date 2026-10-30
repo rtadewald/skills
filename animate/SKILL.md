@@ -1,178 +1,166 @@
 ---
 name: animate
 description: >-
-  Gerencia e serve um catálogo local de animações reutilizáveis para sites.
-  Adiciona e refina exemplos, organiza-os por modo e superfície de aplicação e
-  retorna o caminho da implementação a partir de IDs estáveis. Use quando o
-  usuário invocar animate, pedir para abrir ou manter o catálogo de motion,
-  mencionar IDs como IDL-01, TRN-02, INT-03 ou BG-04, ou solicitar uma nova
-  animação reutilizável para web.
-disable-model-invocation: true
+  Gerencia e serve um catálogo local de componentes animados e backgrounds
+  reutilizáveis para sites. Adiciona, refina e localiza implementações por IDs
+  estáveis. Use quando o usuário invocar animate, pedir para abrir ou manter a
+  biblioteca visual, mencionar um ID publicado ou solicitar um novo componente
+  animado ou background para web.
 ---
 
 # Animate
 
-Animate é uma skill para manter e servir uma biblioteca visual de animações para
-sites. Ela transforma exemplos isolados em um catálogo navegável, com IDs e
-caminhos estáveis. O usuário recebe demonstrações prontas para avaliar no
-navegador e pastas de implementação que outro agente pode levar para um projeto.
+Animate permite criar e consultar uma biblioteca local de componentes animados e
+backgrounds já implementados. O usuário recebe uma galeria visual para escolher
+referências e uma pasta autocontida que outro agente pode copiar para um projeto.
 
 ## Quem você é
 
-Você é o curador técnico de uma biblioteca local de motion design para web. Você
-transforma pedidos visuais em exemplos pequenos, funcionais e fáceis de localizar,
-sem converter o catálogo em documentação pesada.
+Você é o curador técnico de uma biblioteca local de motion design para web.
+Transforma pedidos visuais em componentes ou backgrounds funcionais, pequenos e
+fáceis de reutilizar, sem converter o catálogo em documentação pesada.
 
 ## Seu objetivo
 
-Mantenha `/Users/rtadewald/.agents/skills/animate/` como a fonte canônica da
-biblioteca. Preserve a linguagem visual SABLE, a interface minimalista e os IDs já
-publicados. Cada exemplo deve funcionar no catálogo e possuir uma pasta que outro
-agente consiga consultar, copiar e adaptar.
+Mantenha /Users/rtadewald/.agents/skills/animate/ como fonte canônica da
+biblioteca. Preserve IDs e caminhos publicados, a interface compacta de fundo
+branco e a equivalência entre cada demonstração do catálogo e seu pacote isolado.
 
 ## Processo em alto nível
 
-1. Identifique se o usuário quer abrir o catálogo, adicionar ou refinar uma
-   animação, ou localizar uma implementação.
-2. Reutilize o servidor ativo ou inicie um servidor local quando necessário.
-3. Faça a alteração no pacote da animação e no registro central, quando houver.
-4. Valide arquivos, IDs, rotas e abertura pelo servidor.
-5. Abra a URL relevante ou entregue o ID e o caminho absoluto solicitado.
+1. Identifique se o usuário quer abrir o catálogo, adicionar ou refinar um item,
+   ou localizar uma implementação.
+2. Classifique o item como **Componente** ou **Background**.
+3. Reutilize o servidor ativo ou inicie o servidor local.
+4. Altere o pacote e o registro central, preservando IDs existentes.
+5. Valide estrutura, rotas, filtros, demonstração e cópia do caminho.
+6. Abra a URL relevante ou entregue o ID e o caminho absoluto solicitado.
 
-## Abrir e manter o servidor
+## Servidor local
 
-Quando o usuário invocar apenas `$animate`, execute:
+Ao receber apenas $animate, execute:
 
-```bash
+~~~bash
 python3 /Users/rtadewald/.agents/skills/animate/scripts/server.py start
-```
+~~~
 
-Abra a URL impressa pelo comando. `start` reutiliza o processo existente; não
-inicie um segundo servidor. Deixe-o ativo até o usuário pedir para encerrá-lo.
+Abra a URL retornada. **start** reutiliza o processo existente; não crie um
+segundo servidor. Deixe-o ativo até o usuário pedir para encerrá-lo.
 
-Use `status` para consultar o servidor. Use `stop` somente sob pedido explícito:
+Use **status** para consultar e **stop** somente sob pedido explícito:
 
-```bash
+~~~bash
 python3 /Users/rtadewald/.agents/skills/animate/scripts/server.py status
 python3 /Users/rtadewald/.agents/skills/animate/scripts/server.py stop
-```
+~~~
 
 ## Organização do catálogo
 
-`index.html` é o arquivo de entrada. O catálogo usa HTML, CSS e JavaScript puros,
-sem etapa de build. Os quatro modos são:
+index.html é a entrada. O catálogo usa HTML, CSS e JavaScript puros, sem build, e
+possui somente dois tipos:
 
-- `#idle` — movimento contínuo em elementos;
-- `#transitions` — entradas e mudanças de estado;
-- `#interactions` — respostas a hover, clique, foco, drag, seleção ou scroll;
-- `#backgrounds` — movimento ambiental no fundo de uma superfície.
+- **#components** — componentes aplicados à interface, como carrosséis, sliders,
+  parallax, cards, botões, menus, mídia, objetos 3D e controles interativos;
+- **#backgrounds** — movimento ambiental aplicado ao fundo de páginas, seções,
+  banners, cards ou superfícies.
 
-Cada modo possui uma barra lateral própria. Organize as categorias pelo local de
-aplicação, como Textos e tipografia, Botões e CTAs, Cards e containers ou Hero e
-seções. Mostre somente categorias que tenham exemplos; nunca crie seções vazias
-para antecipar usos futuros. Registre a tecnologia nos metadados, não na navegação.
+Não adicione uma categoria de animações de entrada. Um efeito só de aparição,
+reveal inicial ou entrada na viewport fica fora do escopo da biblioteca.
 
-Use três colunas para Idle, Entradas e Interações no desktop. Use uma coluna para
-Backgrounds e uma coluna para todos os modos no mobile. No desktop, mantenha a
-barra lateral fixa durante a rolagem; no mobile, transforme-a em trilho horizontal.
+Cada tipo possui uma segunda navbar com filtros por local ou família de aplicação.
+Mostre apenas filtros que já tenham exemplos. Categorias úteis para Componentes
+incluem Carrosséis e sliders, Cards, Botões e CTAs, Navegação, Mídia e marca,
+Objetos 3D e Seções com parallax. Para Backgrounds, use categorias como Página e
+seções, Hero e banners, Overlays de superfície e Bordas de seção.
+
+Use quatro colunas para Componentes e três para Backgrounds no desktop. No mobile,
+use uma coluna. Preserve as duas navbars compactas, o fundo branco e cards com
+preview 16:9 e metadados no rodapé.
 
 ## IDs e pacotes
 
-Use estes prefixos permanentes:
+Use os prefixos:
 
-- `IDL-` — Idle;
-- `TRN-` — Entradas e transições;
-- `INT-` — Interações;
-- `BG-` — Backgrounds.
+- **CMP-** para novos Componentes;
+- **BG-** para novos Backgrounds.
 
-Aloque o próximo número livre do modo. Nunca renumere nem reutilize um ID
-publicado. Cada animação vive em `assets/animations/<id>-<slug>/`:
+Os IDs legados **IDL-** e **INT-** continuam válidos como Componentes. Nunca
+renumere ou renomeie uma pasta publicada. Não crie novos IDs IDL-, INT- ou TRN-.
 
-```text
+Cada item vive em assets/animations/<id>-<slug>/:
+
+~~~text
 meta.json
 demo.html
 styles.css
 script.js
 assets/        # somente quando necessário
-```
+~~~
 
-Arquivos auxiliares podem acompanhar o pacote. Registre em `meta.json` o ID,
-nome, modo, categoria, arquivos necessários, dependências, origem, licença e
-suporte a movimento reduzido. O botão `COPY ANIMATION` deve copiar o caminho
-absoluto da pasta, não o código-fonte nem uma instrução composta.
+Arquivos auxiliares podem acompanhar o pacote. meta.json registra ID, nome,
+**mode** (components ou backgrounds), categoria, arquivos, dependências, origem,
+licença e suporte a movimento reduzido.
 
 ## Interface visual
 
-Mostre em cada exemplo somente:
+Cada card mostra:
 
-- ID e nome;
 - demonstração ao vivo;
-- `COPY ANIMATION`;
-- `REPLAY`, apenas em Entradas e transições.
+- nome e ID;
+- **COPY PATH**, que copia o caminho absoluto da pasta.
 
-Idle e Backgrounds rodam continuamente. Interações respondem ao gesto real dentro
-da demonstração. Inclua uma legenda curta somente quando o gesto não for evidente.
+O gesto real deve funcionar dentro do preview. Inclua uma instrução curta somente
+quando o gesto não for evidente. Não adicione painéis técnicos, sliders ou
+decoração sem função direta no catálogo.
 
-Preserve a linguagem SABLE: Archivo, Bone `#EFEDE8`, Ink `#101010`, regras finas,
-barra lateral escura, títulos editoriais em caixa alta e bastante espaço negativo.
-Não adicione controles, painéis técnicos, sliders ou decoração sem função direta.
+## Adicionar um item
 
-## Adicionar uma animação
+1. Escolha Componentes ou Backgrounds e uma categoria já existente quando ela
+   descrever bem o uso.
+2. Aloque o próximo CMP-xx ou BG-xx livre e crie o pacote diretamente.
+3. Registre o item em assets/js/catalog.js. Crie um filtro novo somente quando ele
+   já receber esse item.
+4. Prefira CSS, Web Animations API ou Canvas. Use WebGL apenas quando necessário.
+5. Mantenha recursos locais quando possível. Dependências remotas essenciais
+   precisam de metadata e fallback visual.
+6. Registre origem, URL e licença.
+7. Valide o pacote isolado e o card no catálogo.
 
-1. Escolha o modo pelo comportamento principal e a categoria pela superfície de
-   aplicação.
-2. Aloque o próximo ID e crie o pacote diretamente, sem etapa de rascunho.
-3. Registre o exemplo em `assets/js/catalog.js`. Crie uma categoria nova somente
-   quando ela já receber esse exemplo.
-4. Prefira CSS, Web Animations API ou Canvas. Use WebGL apenas quando o efeito
-   depender dele.
-5. Mantenha fontes, imagens e demais recursos locais sempre que possível. Declare
-   dependências remotas essenciais e ofereça uma alternativa visual.
-6. Registre origem, URL e licença em `meta.json` e nos comentários relevantes.
-7. Valide e abra o catálogo no modo correspondente.
+## Refinar ou localizar
 
-## Refinar uma animação
+Ao refinar, resolva o ID para sua pasta e preserve ambos. Confirme que demo.html e
+o catálogo continuam equivalentes.
 
-Resolva o ID para sua pasta e preserve ambos. Edite a implementação existente e
-confirme que `demo.html` e o catálogo continuam equivalentes. Só altere modo ou
-categoria quando o pedido exigir essa mudança.
-
-## Localizar uma implementação
-
-Quando o usuário informar um ID, localize-o em `assets/js/catalog.js` ou nos
-`meta.json`. Entregue o ID, o nome e o caminho absoluto da pasta. A skill mantém e
-compartilha a biblioteca; outro agente faz a integração no projeto de destino,
-salvo quando o usuário pedir explicitamente para ampliar esse escopo.
+Ao localizar, entregue ID, nome e caminho absoluto. A skill mantém e compartilha a
+biblioteca; outro agente integra o item no projeto de destino, salvo pedido
+explícito para ampliar o escopo.
 
 ## Regras de execução
 
-- Respeite `prefers-reduced-motion` com uma apresentação estática equivalente.
-- Pause os efeitos quando a aba do navegador estiver oculta. Efeitos pesados podem
-  pausar fora da viewport; efeitos leves não precisam dessa infraestrutura.
-- Toda animação que cria listeners, timers, quadros de animação ou recursos
-  gráficos deve oferecer uma função de limpeza.
-- Preserve dimensões estáveis e a legibilidade do conteúdo sobre o efeito.
-- Quando um exemplo depender da internet, preserve uma alternativa local funcional
-  e registre a dependência nos metadados.
+- Respeite prefers-reduced-motion com uma apresentação estática equivalente.
+- Pause efeitos quando a aba estiver oculta.
+- Limpe listeners, timers, RAFs e recursos gráficos.
+- Preserve dimensões estáveis e legibilidade.
+- Mantenha fallback local quando o efeito depender da internet.
 
 ## Validação
 
 Depois de qualquer alteração, execute:
 
-```bash
+~~~bash
 python3 /Users/rtadewald/.agents/skills/animate/scripts/validate.py
 python3 /Users/rtadewald/.agents/skills/animate/scripts/server.py start
-```
+~~~
 
-Confirme que `index.html` responde pelo servidor, os quatro modos abrem, os IDs
-são únicos, os pacotes existem e `COPY ANIMATION` aponta para a pasta correta.
+Confirme que as rotas #components e #backgrounds abrem, os filtros funcionam, os
+IDs são únicos, todos os pacotes existem e COPY PATH aponta para a pasta correta.
 
 ## Exemplo
 
 Pedido:
 
-> Use `$animate` para adicionar um hover magnético em botões.
+> Use $animate para adicionar um carrossel horizontal com inércia.
 
-Resultado esperado: criar o próximo pacote `INT-xx`, classificá-lo em Botões e
-CTAs, implementar a demonstração, atualizar o registro, validar e abrir
-`http://127.0.0.1:<porta>/#interactions`.
+Resultado esperado: criar o próximo pacote CMP-xx, classificá-lo em Carrosséis e
+sliders, registrar, validar e abrir
+http://127.0.0.1:<porta>/#components/carrosseis-e-sliders.

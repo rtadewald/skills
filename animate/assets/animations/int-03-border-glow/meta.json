@@ -1,7 +1,7 @@
 {
   "id": "INT-03",
   "name": "Border glow",
-  "mode": "interactions",
+  "mode": "components",
   "category": "Cards e containers",
   "entry": "demo.html",
   "files": [
