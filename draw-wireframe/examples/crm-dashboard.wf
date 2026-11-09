@@ -1,0 +1,28 @@
+# a CRM dashboard, with text for testing typography
+screen dashboard
+col pad=20 gap=14
+  navbar "nexo" links="Visão geral|Pipeline|Clientes|Agenda" cta="Exportar"
+  row h=84 gap=24
+    title "Visão geral de vendas" size=34
+    space
+    kpi "R$ 90.235" "ganho no mês" w=170
+    kpi "R$ 1,23 mi" "pipeline aberto" w=170
+    kpi "54%" "taxa de ganho" w=130
+  row gap=14
+    card f=3 gap=8
+      title "Receita" size=16
+      kpi "R$ 746.084" "em 12 meses" h=74
+      bars n=12 labels="J|F|M|A|M|J|J|A|S|O|N|D"
+    card f=2
+      title "Negócios quentes" size=16
+      list items="Plano de manutenção · R$ 59.510|Troca de inversor · R$ 55.850|Auditoria de energia · R$ 51.680|Expansão de site · R$ 47.070"
+  row h=220 gap=14
+    card
+      title "Meta do time" size=16
+      donut pct=54
+    card
+      title "Funil por etapa" size=16
+      funnel labels="Qualificação|Proposta|Negociação|Fechamento"
+    card
+      title "Atividades" size=16
+      list items="Ligação com Kestrel|Proposta enviada|Reunião de revisão"

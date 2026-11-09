@@ -38,6 +38,10 @@ The user is asked **three times at most**. Between those points, work without as
 At each approval point: show the result (path + screenshot), ask if it is right, and **stop**. Continue only on an
 explicit "ok" / "approved" / "go on". If the user asks for changes, make them, show again, and wait again.
 
+**The project's own rules come first.** If the folder you work in has an `AGENTS.md` (or `CLAUDE.md`) with its own way to
+start the work, report progress, register generated files or show a page for approval, read it before Step 1 and
+follow it at every step and at every approval point, in addition to this skill.
+
 ---
 
 ## Step 1 — Plan
@@ -68,6 +72,10 @@ Rules for the plan:
   light it up on hover or click.
 - Decide the **layer order** (back to front) now. Most integration bugs are an element drawn in front of something it
   should be behind.
+- **No 2.5D, ever.** A character, robot, mascot, product or any object with volume in the image is a **3D model** (a
+  GLB, rigged and animated in Three.js). Do not plan, offer or fall back to fake depth: cut-out layers with parallax,
+  depth-map displacement, CSS 3D transforms on a picture, sprite sheets. They look cheap as soon as anything moves. If
+  image-to-3D fails with every model, stop and tell the user; do not propose 2.5D as the alternative.
 
 ## Step 2 — Phase 1: the riskiest element
 

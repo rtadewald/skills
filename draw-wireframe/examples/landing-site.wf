@@ -1,0 +1,15 @@
+# a landing page: the height grows with the sections
+screen site
+col pad=20 gap=16
+  navbar "Marca"
+  hero "O título principal da sua página" "Uma frase de apoio explicando o que o produto faz e para quem." cta="Começar agora" h=480
+  title "Como funciona" size=30 center
+  cardgrid n=3 cols=3 h=280 items="Conecte|Analise|Decida"
+  card dir=row h=320 pad=24 gap=24
+    col gap=10
+      title "Tudo num lugar só" size=30
+      text "Um parágrafo curto explicando o benefício principal com um pouco mais de detalhe, para testar a leitura." size=16 h=90 muted
+      button "Saiba mais" w=150
+      space
+    image
+  footer cols=4

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": 1793299540114,
+  "lastUpdated": 1793695113217,
   "skills": [
     {
       "skillId": "built-in-browser",
@@ -21,8 +21,7 @@
       "name": "pdf",
       "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.",
       "source": "anthropic",
-      "updatedAt": "2026-07-10T19:23:15.432550Z",
-      "creatorType": "anthropic"
+      "updatedAt": "2026-11-03T08:00:21.562085Z"
     },
     {
       "skillId": "deep-research",
@@ -116,7 +115,7 @@
       "name": "docx",
       "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx) or Word templates (.dotx). Triggers include: any mention of Microsoft Word Documents, such as 'Word doc', 'word document', '.docx', '.dotx', 'microsoft doc'. Also use when extracting or reorganizing content from .docx or .dotx files, inserting or replacing images in documents, find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a deliverable as a Word or .docx file (to download, email or print), use this skill. However, if they ask for a document, page, report, memo, or notes WITHOUT naming a file format and the session offers Claude's own dedicated document or page skill or connector, use that instead, even if they will email or print it. Do NOT use for PDFs, spreadsheets, Google Docs, or coding unrelated to document generation.",
       "source": "anthropic",
-      "updatedAt": "2026-09-30T02:00:31.677168Z"
+      "updatedAt": "2026-11-03T06:00:23.958841Z"
     },
     {
       "skillId": "skill_011qXpm1pS8evibrUjrLnLjD",

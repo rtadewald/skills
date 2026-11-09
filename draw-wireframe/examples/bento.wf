@@ -1,0 +1,74 @@
+# the skeleton of a bento-style dashboard
+screen dashboard
+col pad=20 gap=14
+  row h=44 gap=8
+    pill w=110 h=44
+    pill w=400 h=44 knob=right
+    space
+    pill w=90 h=44
+    dot size=44
+    dot size=44
+    pill w=150 h=44 knob=right
+  row h=44 gap=8
+    dot size=44
+    space
+    pill w=110 h=44
+    pill w=110 h=44
+    pill w=110 h=44
+    pill w=110 h=44
+    pill w=110 h=44
+    pill w=110 h=44
+  row gap=14
+    col gap=14 f=3
+      card pad=42
+        image pad=20
+          row h=40
+            space
+            pill w=80 h=40 solid
+          space
+          row h=46 gap=8
+            space
+            dot size=46
+            dot size=46
+      pill h=44 knob=both
+    col gap=14 f=3
+      card
+        lines n=2 bold
+        space
+        pill w=80 h=46 solid
+      card dir=row f=0.7 pad=14
+        col gap=10
+          opill w=100
+          lines n=2 bold
+          lines n=3
+        image pad=14
+          row h=40
+            space
+            dot size=40
+          space
+          row h=38
+            space
+            pill w=110 h=38 knob=right
+    col gap=14 f=2
+      card
+        row h=36
+          opill w=90
+          space
+          dot size=36
+        lines n=2
+        dots n=5 size=38
+      card
+        row h=36
+          opill w=90
+          space
+          dot size=36
+        space
+        divider
+        pill h=30 solid
+      card
+        row h=36
+          opill w=90
+          space
+          dot size=36
+        lines n=2
+        fan

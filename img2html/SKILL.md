@@ -29,6 +29,10 @@ without stopping, checking each step against the image yourself. The user is ask
 At each approval point: show (path + screenshot), ask, and **stop**. Continue only on an explicit "ok" / "approved" /
 "go on". If the user asks for changes, make them, show again, wait again.
 
+**The project's own rules come first.** If the folder you work in has an `AGENTS.md` (or `CLAUDE.md`) with its own way to
+start the work, report progress, register generated files or show a page for approval, read it before Step 1 and
+follow it at every step and at every approval point, in addition to this skill.
+
 ---
 
 ## Step 1 — Plan, from back to front

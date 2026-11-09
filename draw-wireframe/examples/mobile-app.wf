@@ -1,0 +1,17 @@
+# a phone screen
+screen app
+col pad=16 gap=12
+  row h=40
+    title "Olá, Ana" size=24
+    space
+    dot size=40
+  input "Buscar clientes"
+  tabs items="Hoje|Semana|Mês" active=1 h=38
+  card h=190
+    kpi "R$ 12.480" "vendas hoje"
+    area
+  card
+    title "Próximos" size=15
+    list items="Reunião 14:30|Follow-up Kestrel|Revisar proposta"
+  button "Novo negócio"
+  tabbar n=5

@@ -11,6 +11,8 @@ shape come from?**
 | 4 | **Shader** | one formula per pixel | smoke, living backgrounds, glow, distortion, bloom |
 | 5 | **3D model** | a mesh (GLB) | a character, a product, an object that turns |
 
+These five are the only options. **2.5D is not one of them** (see "3D model" below).
+
 Inside a category, use the **lightest technique that stays faithful**: Canvas 2D before WebGL, CSS before SVG
 filters, an image before a shader when nothing moves.
 
@@ -61,6 +63,9 @@ renderer when several WebGL elements sit on the same layer.
 - From an image: generate the model with image-to-3D, rig it, animate it in Three.js. Full recipe:
   [character-3d.md](character-3d.md).
 - From scratch (abstract objects: spheres, orbs, knots): build it in Three.js with geometry + shaders.
+- **Never 2.5D.** If the element has volume (a character, a robot, a product), it is a real mesh. Faking it with
+  layered cut-outs and parallax, a depth map, CSS 3D on an image or a sprite sheet is forbidden, also as a fallback.
+  If every image-to-3D model fails, stop and ask the user.
 
 ## Media
 

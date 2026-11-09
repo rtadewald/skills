@@ -26,6 +26,8 @@ Rules:
 - Say what moves and what reacts. Behaviour that the video does not show but that the element obviously has (a node
   that lights up on hover) goes here too.
 - List the artefacts so nobody rebuilds them.
+- Every element gets one of the five categories. Anything with volume is `3D model`; never write "2.5D", "parallax
+  layers" or "depth map" in a plan.
 
 ## Example
 

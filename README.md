@@ -32,6 +32,7 @@ Gerar, converter, brincar com PNG.
 
 - [`to-img`](./to-img): qualquer pedido → n PNGs em paralelo (OpenRouter, gpt2 @ 1K) em `mocks/`
 - [`to-wireframe`](./to-wireframe): imagem ou brief de tela → wireframe **tipado** e aninhado em SVG ou ASCII (`format=svg|ascii`)
+- [`draw-wireframe`](./draw-wireframe): conversa, brief ou imagem → wireframe **visual** em cinza (dashboard, site ou app) desenhado por script, sem API de imagem; cru ou com texto real para testar tipografia
 - [`openrouter-img`](./openrouter-img): CLI dos modelos de imagem do OpenRouter
 - [`nano-banana-pro`](./nano-banana-pro): gerar/editar imagem com Nano Banana Pro (Gemini)
 - [`fal-ai`](./fal-ai): fal.ai Model API (auth/upload/subscribe) + Moondream detect/query/point/caption/segment
