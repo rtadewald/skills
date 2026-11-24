@@ -13,6 +13,7 @@ Layers, back to front:
 2. …
 
 Fonts: <text style> → <family weight> (alternative: …)
+Scale: body in the image ≈ <N> px at 1536 → <13 to 14.5> px (factor <k>); fills the room with <…>; exception: <…, or "none">
 Assets to generate: <list, or "none">
 Interactions: <hover / focus / inputs / tabs>
 ```
@@ -46,6 +47,8 @@ Layers, back to front:
 
 Fonts: logo and titles → Inter 500 · body → Inter 400 · input placeholder → Inter 400 (alternative: SF Pro if Inter is
 too wide).
+Scale: body in the image ≈ 18 px → 13.5 px (factor 0.75); the conversation list grows from 6 to 7 rows and the
+answer gets one more paragraph; exception: none.
 Assets to generate: the background plate (1).
 Interactions: hover on conversation rows and buttons, focus ring on inputs, the input accepts text.
 ```

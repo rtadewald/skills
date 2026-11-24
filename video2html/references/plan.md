@@ -16,6 +16,7 @@ Phase 2: the rest, in the fixed order (background → structure and fonts → co
 Phase 1 piece → interactions → review).
 
 Layers (back to front): <element numbers>
+Scale: body in the image ≈ <N> px at 1536 → <13 to 14.5> px (factor <k>); fills the room with <…>; exception: <…, or "none">
 Ignore (video artefacts): <list>
 ```
 
@@ -53,5 +54,7 @@ Phase 1: the robot (3) with its glow (4) — a 3D character is the riskiest piec
 Phase 2: the rest, in the fixed order.
 
 Layers (back to front): 1 → 2 → 8 → 3 → 4 → 5, 6, 7, 9
+Scale: body in the image ≈ 17 px → 13.5 px (factor 0.8); telemetry gets two more rows and the chat one more message;
+the robot keeps its size; exception: none.
 Ignore (video artefacts): node labels that melt between 2.8 and 4.5 s; flicker on the robot's mesh.
 ```

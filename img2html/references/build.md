@@ -42,7 +42,8 @@ uv run ~/.agents/skills/img2html/scripts/fonts.py reference.png review/fonts.png
 ```
 
 It renders each candidate with the same text next to the crop of the image. Pick the closest shape (letter widths,
-terminals, the shape of a, g, R, S), then set size and letter-spacing by measuring the ink box. If none matches (a custom
+terminals, the shape of a, g, R, S), then measure the ink box to know the size in the image and set letter-spacing.
+The size used on the page is that size times the plan's factor, kept inside the size table (SKILL.md, Scale). If none matches (a custom
 logo), draw the letters as an SVG path.
 
 ## Surfaces

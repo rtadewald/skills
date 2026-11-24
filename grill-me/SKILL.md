@@ -16,7 +16,6 @@ Each question should be formatted like so:
 ➡️ <your recommended answer>
 ```
 
-When grilling, ask one question at a time.
 
 Each round the user answers reshapes the tree: settled decisions push the frontier outward and unblock questions that depended on them. Recompute the frontier and ask the next round. A question whose answer depends on another question still open in this round belongs to a _later_ round, not this one.
 

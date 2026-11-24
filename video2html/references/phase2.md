@@ -16,6 +16,9 @@ only the final result.
    .logo { left: calc(53 * var(--px)); top: calc(47 * var(--px)); font-size: calc(18 * var(--px)); }
    ```
 
+   Positions come from the image; font sizes, control heights, paddings and gaps come from the size table (SKILL.md,
+   Scale), using the plan's factor.
+
    Every element that must follow the image's coordinates needs `position: absolute`. A parent left `static` breaks
    the whole group.
 
@@ -29,7 +32,7 @@ only the final result.
 | # | Step | Done when |
 |---|---|---|
 | 1 | **Background**: colors, gradients, base texture | sampled colors at 6–8 points match within a few levels |
-| 2 | **Structure and texts, with fonts**: every block placed, every text real; family and weight identified first | text ink boxes within ±2 px |
+| 2 | **Structure and texts, with fonts**: every block placed, every text real; family and weight identified first | text in the right place, at the sizes of the table |
 | 3 | **Components**: logo, charts, cards, panels, nodes, one at a time, still static | each crop side by side looks the same |
 | 4 | **Icons**: all in one go, inline SVG, one stroke style (a sprite of `<symbol>` + `<use>`) | no placeholder left |
 | 5 | **Light live layers**: animated SVG, shaders, particles | their motion reads like the video |

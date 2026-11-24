@@ -15,11 +15,12 @@ description: >-
 still image the video was made from. If the user gives only the video, use its first frame as the image.
 
 **Output:** a folder with a live `index.html` that looks like the image and moves like the video, and that reacts to
-the cursor and to clicks beyond what the video shows.
+the cursor and to clicks beyond what the video shows, at the proportions of a normal dashboard (see [Scale](#scale)).
 
 **Two sources, two jobs:**
 
-- The **image** is the source of truth for content: layout, texts, colors, sizes. It is sharper than the video.
+- The **image** is the source of truth for content: layout, texts, colors, materials. It is sharper than the video.
+  Its type and control sizes are not: they follow the [size table](#scale).
 - The **video** is the source of truth for motion: what moves, how, and when. Video models also invent things (text
   that melts, labels that change, objects that flicker). Those are artefacts: never reproduce them.
 
@@ -61,7 +62,9 @@ Goal: decide **what** each element is and **how** it will be rebuilt, before wri
 3. Classify every element into one of the five **categories** in [references/categories.md](references/categories.md):
    **Media · DOM · Particles · Shader · 3D model**. Pick the lightest technique that stays faithful.
 4. Write the plan in the chat, in the format of [references/plan.md](references/plan.md): one line per element
-   (*what it is → how it will be built*), the Phase 1 element(s), the layer order, and the artefacts to ignore.
+   (*what it is → how it will be built*), the Phase 1 element(s), the layer order, the **scale** (the body text size
+   measured in the image at 1536 px wide, the factor that brings it into the [size table](#scale), and what will fill
+   the room it frees), and the artefacts to ignore.
 5. **Stop for approval.**
 
 Rules for the plan:
@@ -104,7 +107,8 @@ only when the plan has nothing for it.
 
 1. **Background**: colors, gradients, base texture.
 2. **Structure and texts, with fonts**: every block in its place, every text real and correct. Identify font family
-   and weight before fine-tuning sizes.
+   and weight first; sizes come from the [size table](#scale), not from the image, and the panels keep filling the
+   stage.
 3. **Components, one by one**: logo, charts, cards, panels, nodes. Still static.
 4. **Icons**: all together, in one consistent stroke style (inline SVG).
 5. **Light live layers**: animated SVG, shaders, particles from the plan.
@@ -120,12 +124,51 @@ Details, the log format and the review loop: [references/phase2.md](references/p
 1. Take a headless screenshot: `uv run scripts/snap.py <url> review/<step>.png --shot`
 2. Compare the step's region with the same crop of the image:
    `uv run scripts/compare.py reference.png review/<step>.png review/<step> --regions "name:x,y,w,h"`
-   Look at the side-by-side and read the numbers: position, size, color, weight, glow.
+   Look at the side-by-side and read the numbers: position, color, weight, glow. Smaller text and controls, and the
+   extra rows that fill the room, are intended differences.
 3. Fix and repeat, **at most 3 rounds**. If a difference remains, write it down and move on. Do not loop forever.
 4. Log the step in `steps.md`: the side-by-side image and one line, `ok` or `difference: …`.
 
-**Final delivery:** the page URL, a full-screen side-by-side with the image, a short recording, and the list of
-differences that remain from `steps.md`. **Stop for approval.**
+**Final delivery:** the page URL, a full-screen side-by-side with the image, a short recording, the body size
+before → after, and the list of differences that remain from `steps.md`. **Stop for approval.**
+
+---
+
+## Scale
+
+Image and video models draw UI too large: copying the image's proportions gives giant type, chunky buttons and
+half-empty panels. The page keeps the image's look, composition and motion, but its type and controls follow this
+table, measured on a stage 1536 px wide (for another width, multiply by width ÷ 1536). It is the same table as the
+`img2html` skill.
+
+| Element | Size |
+|---|---|
+| Body, list items, table cells, chat bubbles | 13 to 14.5 px |
+| Secondary text, labels, metadata | 11 to 12.5 px (never below 11) |
+| Tabs and navigation | 12 to 13.5 px |
+| Panel title | 17 to 20 px |
+| Numbers inside a panel (KPI, multiplier) | 22 to 28 px |
+| The page's highlight number | up to 64 px |
+| The page's main title | up to 48 to 56 px |
+| List row | 44 to 60 px high |
+| Compact table row | at least 28 px high |
+| Button, field, pill | 30 to 38 px high |
+| Avatar | 28 to 40 px |
+| Logo | up to 26 px |
+
+- **Measure first.** In Step 1, measure the body text of the image (the x-height or cap height of a list or a table,
+  converted to font size) and pick one factor, usually 13.5 ÷ that size. If the body is already 13 to 14.5 px, change
+  only what falls outside the table.
+- **Scale everything with it,** not only the type: paddings, gaps, radii, icons, avatars, thumbnails, chart labels, and
+  the coordinates in JS and SVG that place them (tooltips, chart points, travelling lights). Hairlines of 1 to 2 px stay
+  as they are. The Phase 1 piece (a 3D character, a shader) keeps the size it has in the image: it is art, not UI.
+- **Fill the room it frees.** The panels keep the positions and sizes of the image and occupy the stage, with outer
+  margins of 38 to 50 px and gaps of 14 to 20 px. Fill, in this order: more rows in the same pattern (a list, a table, a
+  chat), wider columns or taller blocks, and only as a last resort a new block in the page's style. At most 7 rows in a
+  list and 4 to 6 messages in a chat (an empty stretch between the messages and the input is normal). Prefer widening
+  columns to stacking content. New rows get the same motion as their neighbours.
+- **Identity exception.** When giant type is the direction of the screen (a poster-like title, a huge number that is the
+  whole point), that one element may stay well above the table. Say so in the plan. Everything else follows the table.
 
 ---
 
