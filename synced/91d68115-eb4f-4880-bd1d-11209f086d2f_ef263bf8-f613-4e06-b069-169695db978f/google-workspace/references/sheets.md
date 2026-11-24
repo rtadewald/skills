@@ -196,7 +196,7 @@ python <skill>/scripts/sheets_helper.py range "'P&L Model'!B4:D10" --meta meta.j
 ## Read
 
 - **Tabs and IDs:** `get_spreadsheet` with `fields: ["sheets.properties"]`. It returns each tab's `title`, `sheetId`, and grid size. Keep it small: never call `get_spreadsheet` without `fields`.
-- **Field masks: one path per array item, no parentheses.** This connector rejects `sheets.properties(sheetId,title)` and `"spreadsheetId,properties.title"` as one item, even though the tool's own description suggests the parenthesized form. Pass separate items instead: `["spreadsheetId", "properties.title", "sheets.properties"]`.
+- **Field masks: one path per array item, no parentheses.** This connector rejects `sheets.properties(sheetId,title)` and `"spreadsheetId,properties.title"` as one item. Pass separate items instead: `["spreadsheetId", "properties.title", "sheets.properties"]`.
 - **Displayed values:** `get_values` returns what the UI shows, as strings (`"$125"`, `"25.0%"`, `"#DIV/0!"`). It has no option for formulas or raw values. An empty row comes back as `[]`, trailing empty cells and rows are dropped, and a fully empty range comes back with no `values` key at all.
 - **Read to the end of the data with an open range.** On a small tab, `'Log'!A:F` returns the header and every filled row, and nothing past the last one, so one read gives both the layout and where the data ends. Don't guess a fixed end such as `A1:Z1000`: a range past the tab's last row can fail with "exceeds grid limits", and deleting rows makes the tab shorter. To format a column down to the end, leave `endRowIndex` out of the grid range (`sheets_helper.py range "D2:D"` does this).
 - **Formulas, raw values, and errors:** read the grid instead. Use exactly this call, which is small and has everything the helper needs:
@@ -233,7 +233,7 @@ Add `--errors-only` to list only the error cells. Add `sheets.data.rowData.value
 
 ## Batch updates: structure, formatting, charts
 
-`update_spreadsheet` sends raw `spreadsheets.batchUpdate` requests. `get_spreadsheet` returns a `revisionId` even with a field mask, but don't send it: send these requests without `writeControl`, and read again right before a write that depends on positions.
+`update_spreadsheet` sends raw `spreadsheets.batchUpdate` requests. `get_spreadsheet` doesn't return a `revisionId`, even when `fields` names it: send these requests without `writeControl`, and read again right before a write that depends on positions.
 
 - **Field masks inside requests have the same rule:** comma-separated full paths, no parentheses. `"fields": "userEnteredFormat.numberFormat,userEnteredFormat.textFormat.foregroundColor"` works; `"userEnteredFormat(numberFormat,textFormat)"` is rejected.
 - **Colors are `red`, `green`, `blue` from 0 to 1**, not hex.

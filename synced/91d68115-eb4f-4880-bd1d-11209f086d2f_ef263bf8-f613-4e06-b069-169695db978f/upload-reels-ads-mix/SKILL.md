@@ -11,12 +11,17 @@ As regras 🚫 REGRA ABSOLUTA e ⚠️ REGRA DE OURO do `CLAUDE.md` da pasta val
 
 1. Rodrigo aponta uma pasta dentro de `Filmes` (esta pasta) com arquivos brutos de um tipo de conteúdo.
 2. Identifique os grupos de arquivos que pertencem à mesma peça de conteúdo (mesmo nome-base, prefixos/sufixos diferentes — ver cada tipo abaixo).
-3. Para cada grupo, monte o plano (nome da pasta no Drive, template do Notion, valores dos campos) e peça autorização.
+3. Para cada grupo, monte o plano (nome da pasta no Drive, template do Notion, valores dos campos **e a nota do Obsidian que vai receber o link do card**, ver passo 4) e peça autorização.
 4. Após aprovação:
    - Crie a pasta no Drive com a nomenclatura correta.
    - Faça upload dos arquivos do grupo para essa pasta.
    - Crie o card no Notion com o template correto, preenchendo os campos.
    - Cole o link da pasta do Drive no campo **"Link da Pasta"** do Notion.
+   - **Pareie o card com a nota do Obsidian** (regra fixa desde 14/11/2026): ache a copy correspondente no vault, em `/Users/rtadewald/Obsidian Notes/1 Copies/1 Priorizar/` ou `2 Publicados/`, e grave o link do card na propriedade `notion:` do frontmatter dela.
+     - Para achar a nota, compare pelo nome-base do conteúdo (o nome da nota é `<marca de status><emoji do formato> <nome>`: 🔹/🧑🏼‍🔧 no começo, 📱 Reels, 💰 Ad, 📺 VSL, 🏞️ Carrossel). Ads com destino diferente são notas diferentes (`💰 VSL - Caveman` ≠ `💰 LP - Caveman`; no Notion, `[VSL]_…` e `[LP]_…`).
+     - Um link: `notion: "https://app.notion.com/p/…"`. Se a mesma copy já tiver outro card (versão, reteste, horizontal/vertical), vire lista: `notion:` seguido de `  - "link 1"` / `  - "link 2"` (não apague o que já está lá).
+     - Edite só a linha `notion:` do frontmatter (o template `2 Notas/Engine/templates/T-Copy.md` já traz a chave vazia). Não mexa nas outras propriedades nem no corpo.
+     - Se não achar a nota, ou houver mais de uma candidata, diga isso no resumo final em vez de chutar.
 5. Atualize esta skill (ou o `CLAUDE.md` central, se for cross-cutting) sempre que aprender algo novo sobre o processo (nova convenção, correção de um campo, novo tipo de tarefa, etc.).
 
 ## Tipo 1 — Reels
@@ -49,7 +54,7 @@ As regras 🚫 REGRA ABSOLUTA e ⚠️ REGRA DE OURO do `CLAUDE.md` da pasta val
 
 ## Pendências / Futuro
 
-- **Roteiros no Obsidian**: Rodrigo guarda os roteiros dos ads/reels em `/Users/rtadewald/Obsidian Notes/1 Copies/1 Priorizar` (fora da pasta `Filmes`, vault Obsidian separado). Pasta confirmada existente via listagem skeleton em 21/08, mas o acesso completo (`device_request_folder_access`) ainda **não foi concedido** — a primeira tentativa expirou sem resposta do Rodrigo. Objetivo futuro (pedido por Rodrigo em 21/08, ainda não confirmado como ativo): ao processar Tipo 1/2 (upload de reels/ads), buscar o roteiro correspondente nessa pasta do Obsidian e colar dentro do card do Notion, numa seção de "roteiro". **Ainda não implementado** — pedir acesso à pasta de novo na próxima vez que for relevante, e só then tratar como parte padrão do processo.
+- **Roteiros no Obsidian** (o pareamento card ↔ nota pelo `notion:` já é passo fixo, ver passo 4; o que segue é a ideia antiga de colar o roteiro no card): Rodrigo guarda os roteiros dos ads/reels em `/Users/rtadewald/Obsidian Notes/1 Copies/1 Priorizar` (fora da pasta `Filmes`, vault Obsidian separado). Pasta confirmada existente via listagem skeleton em 21/08, mas o acesso completo (`device_request_folder_access`) ainda **não foi concedido** — a primeira tentativa expirou sem resposta do Rodrigo. Objetivo futuro (pedido por Rodrigo em 21/08, ainda não confirmado como ativo): ao processar Tipo 1/2 (upload de reels/ads), buscar o roteiro correspondente nessa pasta do Obsidian e colar dentro do card do Notion, numa seção de "roteiro". **Ainda não implementado** — pedir acesso à pasta de novo na próxima vez que for relevante, e só then tratar como parte padrão do processo.
 
 ## Aprendizados / ajustes (manter atualizado)
 

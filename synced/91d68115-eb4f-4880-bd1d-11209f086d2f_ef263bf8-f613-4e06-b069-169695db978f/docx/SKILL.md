@@ -1,7 +1,7 @@
 ---
 name: docx
 description: "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx) or Word templates (.dotx). Triggers include: any mention of Microsoft Word Documents, such as 'Word doc', 'word document', '.docx', '.dotx', 'microsoft doc'. Also use when extracting or reorganizing content from .docx or .dotx files, inserting or replacing images in documents, find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a deliverable as a Word or .docx file (to download, email or print), use this skill. However, if they ask for a document, page, report, memo, or notes WITHOUT naming a file format and the session offers Claude's own dedicated document or page skill or connector, use that instead, even if they will email or print it. Do NOT use for PDFs, spreadsheets, Google Docs, or coding unrelated to document generation."
-license: Proprietary. LICENSE.txt has complete terms
+license: Complete terms in LICENSE.txt
 ---
 
 # DOCX creation, editing, and analysis
@@ -13,10 +13,14 @@ A `.docx` is a ZIP archive of XML files. Choose your approach by task:
 | Task | Approach |
 |---|---|
 | **Create** a new document | Write a `docx` (npm) script — see gotchas below |
-| **Edit** an existing document | `unzip` → edit `word/document.xml` → `zip` (docx-js cannot open existing files) |
+| **Edit** an existing document | unpack → edit `word/document.xml` → `zip` (docx-js cannot open existing files) |
 | **Read** content | `pandoc -t markdown file.docx` |
 
 > Script paths below are relative to this skill's directory.
+
+## Fitting a page limit
+
+When a document runs over the page limit the user asked for, cut words. Don't shrink the type, narrow the margins or tighten the spacing to fit — that makes the page harder to read. Keep body text at 11–12 pt and margins at 0.75–1 in, or at the size and margins the user's own file already uses. Cut filler and repetition before facts, and cut no more than the limit needs. Safety warnings, doses, limits, fees and contract terms are an exception: keep their full meaning, with every condition attached, because readers act on them and a dropped condition can cause harm or cost money. If a document can't fit without dropping or weakening one of these items, make the margins, spacing or type slightly smaller (body text no smaller than 10 pt) or let the document run over, and tell the user which change you made and why. Then compare your version with the original and list every fact, name, number or point you removed; don't say everything was kept unless it was. If the user asks for or allows smaller type, narrower margins or tighter spacing, or says not to cut any text, do what they said.
 
 ## Creating with docx-js — gotchas
 
@@ -40,6 +44,7 @@ A `.docx` is a ZIP archive of XML files. Choose your approach by task:
 After writing a `.docx`, render it and look at it:
 
 ```bash
+zip -d output.docx '*/' >/dev/null || true   # drop the ZIP's folder entries: Word has refused a file that has them when opened through a cloud co-editing service
 python scripts/office/soffice.py --headless --convert-to pdf output.docx
 pdftoppm -jpeg -r 100 output.pdf page
 ls page-*.jpg   # then Read the images
@@ -52,11 +57,10 @@ ls page-*.jpg   # then Read the images
 Legacy `.doc` files must be converted first: `python scripts/office/soffice.py --headless --convert-to docx file.doc`.
 
 ```bash
-unzip -q doc.docx -d unpacked/
-find unpacked -type l -delete   # strip symlink entries — docx from external parties is untrusted
+python3 -c "import sys,zipfile; zipfile.ZipFile(sys.argv[1]).extractall('unpacked')" doc.docx   # not unzip, which restores symlinks — docx from external parties is untrusted
 python scripts/merge_runs.py unpacked/   # coalesce fragmented runs so text is findable
 # edit unpacked/word/document.xml in place — do NOT reformat or pretty-print
-(cd unpacked && rm -f ../out.docx && zip -Xr ../out.docx .)
+(cd unpacked && rm -f ../out.docx && zip -XrDy ../out.docx .)
 python scripts/office/validate.py out.docx --original doc.docx   # XSD checks; --auto-repair fixes common issues
 # redlining? add --author "<the name you redlined under>" to check every edit is tracked
 ```
