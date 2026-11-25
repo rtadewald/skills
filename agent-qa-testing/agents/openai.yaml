@@ -1,0 +1,6 @@
+interface:
+  display_name: "agent-qa: testes web"
+  short_description: "Execute testes web e revise evidências do agent-qa"
+  default_prompt: "Use $agent-qa-testing: verifique o fluxo solicitado com os testes existentes e reporte o resultado e suas evidências."
+policy:
+  allow_implicit_invocation: false
